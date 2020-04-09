@@ -652,7 +652,7 @@ namespace WhoIsDemo.form
         {
             try
             {
-                //VerifyIfVideoRun();
+                
                 if (graffitsPresenter.IsLoadFile)
                 {
                     graffitsPresenter.IsLoadFile = false;

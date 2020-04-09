@@ -652,13 +652,7 @@ namespace WhoIsDemo.form
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            //Task.Run(() =>
-            //{
-            //    CaptureFrame();
-
-            //});
-            //Thread thr = new Thread(CaptureFrame);
-            //thr.Start();
+            
             this.btnStart.Enabled = false;
             this.btnStop.Enabled = true;
             this.btnFrontVideo.Enabled = true;
@@ -699,7 +693,7 @@ namespace WhoIsDemo.form
         {
             try
             {
-                //VerifyIfVideoRun();
+                
                 isFinishSlider = true;
                 isFinishNewCard = true;
                 if (subscriptionHearUser != null) subscriptionHearUser.Dispose();
