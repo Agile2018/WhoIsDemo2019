@@ -8,11 +8,12 @@ namespace WhoIsDemo.model
 {
     class ParamsFile
     {
-        public string directory_train { get; set; }
-        public string directory_work { get; set; }
+        //public string directory_train { get; set; }
+        //public string directory_work { get; set; }
         public string file_database { get; set; }
         public string file_face { get; set; }
-        public string file_video { get; set; }
+        public string file_tracking { get; set; }
         public string file_identify { get; set; }
+        public string file_flow { get; set; }
     }
 }

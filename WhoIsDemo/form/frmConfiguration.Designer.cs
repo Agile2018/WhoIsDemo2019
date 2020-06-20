@@ -31,8 +31,20 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConfiguration));
             this.tcConfiguration = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.btnDetect = new System.Windows.Forms.Button();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnTestChannel = new System.Windows.Forms.Button();
+            this.txtDescriptionChannel = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.rbTypeChannelDevice = new System.Windows.Forms.RadioButton();
+            this.rbTypeChannelFile = new System.Windows.Forms.RadioButton();
+            this.rbTypeChannelIP = new System.Windows.Forms.RadioButton();
+            this.cboChannel = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.btnSaveConfiguration = new System.Windows.Forms.Button();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cboRegisterUser = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.txtBestMatched = new System.Windows.Forms.TextBox();
             this.label20 = new System.Windows.Forms.Label();
             this.txtASimilarity = new System.Windows.Forms.TextBox();
@@ -50,7 +62,6 @@
             this.label21 = new System.Windows.Forms.Label();
             this.lblTrackingOk = new System.Windows.Forms.Label();
             this.chkDeepTrack = new System.Windows.Forms.CheckBox();
-            this.btnSaveTracking = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.txtMinEyeTrack = new System.Windows.Forms.TextBox();
@@ -59,13 +70,10 @@
             this.txtConfidenceTrack = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtMaxEyeTrack = new System.Windows.Forms.TextBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.cboRefreshCapture = new System.Windows.Forms.ComboBox();
-            this.cboLevelResolution = new System.Windows.Forms.ComboBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.lblOkDetect = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.txtModelQuality = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.cboExtractionMode = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
             this.cboDetectorMode = new System.Windows.Forms.ComboBox();
@@ -78,13 +86,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtMaxDetect = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.lblVideoOk = new System.Windows.Forms.Label();
-            this.btnSaveVideosFile = new System.Windows.Forms.Button();
-            this.lvwVideo = new System.Windows.Forms.ListView();
-            this.txtIpVideo = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.btnSaveVideoList = new System.Windows.Forms.Button();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lblOkClearDatabase = new System.Windows.Forms.Label();
@@ -98,11 +99,11 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.tcConfiguration.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.groupBox7.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -111,7 +112,6 @@
             // tcConfiguration
             // 
             this.tcConfiguration.Controls.Add(this.tabPage1);
-            this.tcConfiguration.Controls.Add(this.tabPage2);
             this.tcConfiguration.Controls.Add(this.tabPage3);
             resources.ApplyResources(this.tcConfiguration, "tcConfiguration");
             this.tcConfiguration.Name = "tcConfiguration";
@@ -119,27 +119,109 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.btnDetect);
+            this.tabPage1.Controls.Add(this.groupBox7);
+            this.tabPage1.Controls.Add(this.btnSaveConfiguration);
             this.tabPage1.Controls.Add(this.groupBox6);
             this.tabPage1.Controls.Add(this.groupBox5);
-            this.tabPage1.Controls.Add(this.groupBox4);
             this.tabPage1.Controls.Add(this.lblOkDetect);
             this.tabPage1.Controls.Add(this.groupBox3);
             resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // btnDetect
+            // groupBox7
             // 
-            this.btnDetect.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnDetect.BackgroundImage = global::WhoIsDemo.Properties.Resources.ic_save_black_48dp;
-            resources.ApplyResources(this.btnDetect, "btnDetect");
-            this.btnDetect.Name = "btnDetect";
-            this.btnDetect.UseVisualStyleBackColor = false;
-            this.btnDetect.Click += new System.EventHandler(this.btnDetect_Click);
+            this.groupBox7.Controls.Add(this.btnTestChannel);
+            this.groupBox7.Controls.Add(this.txtDescriptionChannel);
+            this.groupBox7.Controls.Add(this.label18);
+            this.groupBox7.Controls.Add(this.groupBox8);
+            this.groupBox7.Controls.Add(this.cboChannel);
+            this.groupBox7.Controls.Add(this.label16);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.TabStop = false;
+            // 
+            // btnTestChannel
+            // 
+            this.btnTestChannel.FlatAppearance.BorderSize = 0;
+            this.btnTestChannel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.btnTestChannel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
+            resources.ApplyResources(this.btnTestChannel, "btnTestChannel");
+            this.btnTestChannel.Image = global::WhoIsDemo.Properties.Resources.test_tube;
+            this.btnTestChannel.Name = "btnTestChannel";
+            this.btnTestChannel.UseVisualStyleBackColor = true;
+            this.btnTestChannel.Click += new System.EventHandler(this.btnTestChannel_Click);
+            // 
+            // txtDescriptionChannel
+            // 
+            resources.ApplyResources(this.txtDescriptionChannel, "txtDescriptionChannel");
+            this.txtDescriptionChannel.Name = "txtDescriptionChannel";
+            // 
+            // label18
+            // 
+            resources.ApplyResources(this.label18, "label18");
+            this.label18.Name = "label18";
+            // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.rbTypeChannelDevice);
+            this.groupBox8.Controls.Add(this.rbTypeChannelFile);
+            this.groupBox8.Controls.Add(this.rbTypeChannelIP);
+            resources.ApplyResources(this.groupBox8, "groupBox8");
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.TabStop = false;
+            // 
+            // rbTypeChannelDevice
+            // 
+            resources.ApplyResources(this.rbTypeChannelDevice, "rbTypeChannelDevice");
+            this.rbTypeChannelDevice.Name = "rbTypeChannelDevice";
+            this.rbTypeChannelDevice.TabStop = true;
+            this.rbTypeChannelDevice.UseVisualStyleBackColor = true;
+            // 
+            // rbTypeChannelFile
+            // 
+            resources.ApplyResources(this.rbTypeChannelFile, "rbTypeChannelFile");
+            this.rbTypeChannelFile.Name = "rbTypeChannelFile";
+            this.rbTypeChannelFile.TabStop = true;
+            this.rbTypeChannelFile.UseVisualStyleBackColor = true;
+            // 
+            // rbTypeChannelIP
+            // 
+            resources.ApplyResources(this.rbTypeChannelIP, "rbTypeChannelIP");
+            this.rbTypeChannelIP.Name = "rbTypeChannelIP";
+            this.rbTypeChannelIP.TabStop = true;
+            this.rbTypeChannelIP.UseVisualStyleBackColor = true;
+            // 
+            // cboChannel
+            // 
+            this.cboChannel.FormattingEnabled = true;
+            this.cboChannel.Items.AddRange(new object[] {
+            resources.GetString("cboChannel.Items"),
+            resources.GetString("cboChannel.Items1"),
+            resources.GetString("cboChannel.Items2"),
+            resources.GetString("cboChannel.Items3")});
+            resources.ApplyResources(this.cboChannel, "cboChannel");
+            this.cboChannel.Name = "cboChannel";
+            this.cboChannel.SelectedIndexChanged += new System.EventHandler(this.cboChannel_SelectedIndexChanged);
+            // 
+            // label16
+            // 
+            resources.ApplyResources(this.label16, "label16");
+            this.label16.Name = "label16";
+            // 
+            // btnSaveConfiguration
+            // 
+            this.btnSaveConfiguration.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSaveConfiguration.BackgroundImage = global::WhoIsDemo.Properties.Resources.ic_save_black_48dp;
+            resources.ApplyResources(this.btnSaveConfiguration, "btnSaveConfiguration");
+            this.btnSaveConfiguration.Name = "btnSaveConfiguration";
+            this.btnSaveConfiguration.UseVisualStyleBackColor = false;
+            this.btnSaveConfiguration.Click += new System.EventHandler(this.btnSaveConfiguration_Click);
             // 
             // groupBox6
             // 
+            this.groupBox6.Controls.Add(this.cboRegisterUser);
+            this.groupBox6.Controls.Add(this.label11);
             this.groupBox6.Controls.Add(this.txtBestMatched);
             this.groupBox6.Controls.Add(this.label20);
             this.groupBox6.Controls.Add(this.txtASimilarity);
@@ -151,6 +233,20 @@
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
+            // 
+            // cboRegisterUser
+            // 
+            this.cboRegisterUser.FormattingEnabled = true;
+            this.cboRegisterUser.Items.AddRange(new object[] {
+            resources.GetString("cboRegisterUser.Items"),
+            resources.GetString("cboRegisterUser.Items1")});
+            resources.ApplyResources(this.cboRegisterUser, "cboRegisterUser");
+            this.cboRegisterUser.Name = "cboRegisterUser";
+            // 
+            // label11
+            // 
+            resources.ApplyResources(this.label11, "label11");
+            this.label11.Name = "label11";
             // 
             // txtBestMatched
             // 
@@ -239,7 +335,6 @@
             this.groupBox5.Controls.Add(this.label21);
             this.groupBox5.Controls.Add(this.lblTrackingOk);
             this.groupBox5.Controls.Add(this.chkDeepTrack);
-            this.groupBox5.Controls.Add(this.btnSaveTracking);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.label17);
             this.groupBox5.Controls.Add(this.txtMinEyeTrack);
@@ -310,15 +405,6 @@
             this.chkDeepTrack.Name = "chkDeepTrack";
             this.chkDeepTrack.UseVisualStyleBackColor = true;
             // 
-            // btnSaveTracking
-            // 
-            this.btnSaveTracking.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSaveTracking.BackgroundImage = global::WhoIsDemo.Properties.Resources.ic_save_black_48dp;
-            resources.ApplyResources(this.btnSaveTracking, "btnSaveTracking");
-            this.btnSaveTracking.Name = "btnSaveTracking";
-            this.btnSaveTracking.UseVisualStyleBackColor = false;
-            this.btnSaveTracking.Click += new System.EventHandler(this.btnSaveTracking_Click);
-            // 
             // label13
             // 
             resources.ApplyResources(this.label13, "label13");
@@ -363,55 +449,6 @@
             this.txtMaxEyeTrack.Name = "txtMaxEyeTrack";
             this.txtMaxEyeTrack.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaxEyeTrack_KeyPress);
             // 
-            // groupBox4
-            // 
-            this.groupBox4.Controls.Add(this.label11);
-            this.groupBox4.Controls.Add(this.cboRefreshCapture);
-            this.groupBox4.Controls.Add(this.cboLevelResolution);
-            this.groupBox4.Controls.Add(this.label1);
-            resources.ApplyResources(this.groupBox4, "groupBox4");
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.TabStop = false;
-            // 
-            // label11
-            // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
-            // 
-            // cboRefreshCapture
-            // 
-            this.cboRefreshCapture.FormattingEnabled = true;
-            this.cboRefreshCapture.Items.AddRange(new object[] {
-            resources.GetString("cboRefreshCapture.Items"),
-            resources.GetString("cboRefreshCapture.Items1"),
-            resources.GetString("cboRefreshCapture.Items2"),
-            resources.GetString("cboRefreshCapture.Items3"),
-            resources.GetString("cboRefreshCapture.Items4"),
-            resources.GetString("cboRefreshCapture.Items5"),
-            resources.GetString("cboRefreshCapture.Items6"),
-            resources.GetString("cboRefreshCapture.Items7")});
-            resources.ApplyResources(this.cboRefreshCapture, "cboRefreshCapture");
-            this.cboRefreshCapture.Name = "cboRefreshCapture";
-            this.cboRefreshCapture.SelectedIndexChanged += new System.EventHandler(this.cboRefreshCapture_SelectedIndexChanged);
-            // 
-            // cboLevelResolution
-            // 
-            this.cboLevelResolution.FormattingEnabled = true;
-            this.cboLevelResolution.Items.AddRange(new object[] {
-            resources.GetString("cboLevelResolution.Items"),
-            resources.GetString("cboLevelResolution.Items1"),
-            resources.GetString("cboLevelResolution.Items2"),
-            resources.GetString("cboLevelResolution.Items3"),
-            resources.GetString("cboLevelResolution.Items4")});
-            resources.ApplyResources(this.cboLevelResolution, "cboLevelResolution");
-            this.cboLevelResolution.Name = "cboLevelResolution";
-            this.cboLevelResolution.SelectedIndexChanged += new System.EventHandler(this.cboLevelResolution_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
-            // 
             // lblOkDetect
             // 
             resources.ApplyResources(this.lblOkDetect, "lblOkDetect");
@@ -420,6 +457,8 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.txtModelQuality);
+            this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.cboExtractionMode);
             this.groupBox3.Controls.Add(this.label24);
             this.groupBox3.Controls.Add(this.cboDetectorMode);
@@ -435,6 +474,16 @@
             resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
+            // 
+            // txtModelQuality
+            // 
+            resources.ApplyResources(this.txtModelQuality, "txtModelQuality");
+            this.txtModelQuality.Name = "txtModelQuality";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
             // 
             // cboExtractionMode
             // 
@@ -507,63 +556,6 @@
             // 
             resources.ApplyResources(this.label7, "label7");
             this.label7.Name = "label7";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.lblVideoOk);
-            this.tabPage2.Controls.Add(this.btnSaveVideosFile);
-            this.tabPage2.Controls.Add(this.lvwVideo);
-            this.tabPage2.Controls.Add(this.txtIpVideo);
-            this.tabPage2.Controls.Add(this.label12);
-            this.tabPage2.Controls.Add(this.btnSaveVideoList);
-            resources.ApplyResources(this.tabPage2, "tabPage2");
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // lblVideoOk
-            // 
-            resources.ApplyResources(this.lblVideoOk, "lblVideoOk");
-            this.lblVideoOk.ForeColor = System.Drawing.Color.Red;
-            this.lblVideoOk.Name = "lblVideoOk";
-            // 
-            // btnSaveVideosFile
-            // 
-            this.btnSaveVideosFile.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSaveVideosFile.BackgroundImage = global::WhoIsDemo.Properties.Resources.ic_save_black_48dp;
-            resources.ApplyResources(this.btnSaveVideosFile, "btnSaveVideosFile");
-            this.btnSaveVideosFile.Name = "btnSaveVideosFile";
-            this.btnSaveVideosFile.UseVisualStyleBackColor = false;
-            this.btnSaveVideosFile.Click += new System.EventHandler(this.btnSaveVideosFile_Click);
-            // 
-            // lvwVideo
-            // 
-            this.lvwVideo.FullRowSelect = true;
-            this.lvwVideo.GridLines = true;
-            this.lvwVideo.HideSelection = false;
-            resources.ApplyResources(this.lvwVideo, "lvwVideo");
-            this.lvwVideo.Name = "lvwVideo";
-            this.lvwVideo.UseCompatibleStateImageBehavior = false;
-            this.lvwVideo.View = System.Windows.Forms.View.Details;
-            this.lvwVideo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lvwVideo_KeyDown);
-            // 
-            // txtIpVideo
-            // 
-            resources.ApplyResources(this.txtIpVideo, "txtIpVideo");
-            this.txtIpVideo.Name = "txtIpVideo";
-            // 
-            // label12
-            // 
-            resources.ApplyResources(this.label12, "label12");
-            this.label12.Name = "label12";
-            // 
-            // btnSaveVideoList
-            // 
-            this.btnSaveVideoList.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.btnSaveVideoList.BackgroundImage = global::WhoIsDemo.Properties.Resources.done;
-            resources.ApplyResources(this.btnSaveVideoList, "btnSaveVideoList");
-            this.btnSaveVideoList.Name = "btnSaveVideoList";
-            this.btnSaveVideoList.UseVisualStyleBackColor = false;
-            this.btnSaveVideoList.Click += new System.EventHandler(this.btnSaveVideoList_Click);
             // 
             // tabPage3
             // 
@@ -655,19 +647,20 @@
             this.Name = "frmConfiguration";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmConfiguration_FormClosing);
             this.Load += new System.EventHandler(this.frmConfiguration_Load);
+            this.Shown += new System.EventHandler(this.frmConfiguration_Shown);
             this.tcConfiguration.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -681,13 +674,7 @@
 
         private System.Windows.Forms.TabControl tcConfiguration;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.Button btnSaveVideosFile;
-        private System.Windows.Forms.ListView lvwVideo;
-        private System.Windows.Forms.Button btnSaveVideoList;
-        private System.Windows.Forms.TextBox txtIpVideo;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnSaveDatabase;
         private System.Windows.Forms.TextBox txtConnect;
@@ -707,15 +694,9 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Label lblOkDetect;
-        private System.Windows.Forms.Label lblVideoOk;
         private System.Windows.Forms.Label lblOkClearDatabase;
         private System.Windows.Forms.ComboBox cboDetectorMode;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.ComboBox cboLevelResolution;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox cboRefreshCapture;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.TextBox txtMaxEyeTrack;
         private System.Windows.Forms.Label label17;
@@ -725,7 +706,6 @@
         private System.Windows.Forms.TextBox txtConfidenceTrack;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Button btnSaveTracking;
         private System.Windows.Forms.CheckBox chkDeepTrack;
         private System.Windows.Forms.Label lblTrackingOk;
         private System.Windows.Forms.GroupBox groupBox6;
@@ -737,7 +717,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.TextBox txtASimilarity;
         private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Button btnDetect;
+        private System.Windows.Forms.Button btnSaveConfiguration;
         private System.Windows.Forms.ComboBox cboTrackMotion;
         private System.Windows.Forms.ComboBox cboTrackSpeed;
         private System.Windows.Forms.ComboBox cboTrackingMode;
@@ -746,5 +726,19 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.ComboBox cboExtractionMode;
         private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.TextBox txtDescriptionChannel;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.RadioButton rbTypeChannelDevice;
+        private System.Windows.Forms.RadioButton rbTypeChannelFile;
+        private System.Windows.Forms.RadioButton rbTypeChannelIP;
+        private System.Windows.Forms.ComboBox cboChannel;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox txtModelQuality;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox cboRegisterUser;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button btnTestChannel;
     }
 }

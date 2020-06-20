@@ -1,8 +1,8 @@
 ﻿namespace WhoIsDemo.model
 {
-    public class Detect
+    class Flow
     {
         public string configuration { get; set; }
-        public ParamsDetect Params { get; set; }
+        public ParamsFlow Params { get; set; }
     }
 }

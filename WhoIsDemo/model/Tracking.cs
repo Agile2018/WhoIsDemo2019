@@ -1,8 +1,8 @@
 ﻿namespace WhoIsDemo.model
 {
-    public class Detect
+    class Tracking
     {
         public string configuration { get; set; }
-        public ParamsDetect Params { get; set; }
+        public ParamsTracking Params { get; set; }
     }
 }

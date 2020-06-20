@@ -17,5 +17,7 @@ namespace WhoIsDemo.model
         public int A_FaceDetectThreshold { get; set; }
         public int A_BestMatchedCandidates { get; set; }
 
+        public int is_register { get; set; }
+
     }
 }

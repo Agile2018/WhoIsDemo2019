@@ -161,6 +161,12 @@
     <Compile Include="form\CardTwoImage.Designer.cs">
       <DependentUpon>CardTwoImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\frmAccessControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmAccessControl.Designer.cs">
+      <DependentUpon>frmAccessControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\frmConfiguration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -173,11 +179,11 @@
     <Compile Include="form\frmEnroll.Designer.cs">
       <DependentUpon>frmEnroll.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\frmEntryControl.cs">
+    <Compile Include="form\frmManagerChannels.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form\frmEntryControl.Designer.cs">
-      <DependentUpon>frmEntryControl.cs</DependentUpon>
+    <Compile Include="form\frmManagerChannels.Designer.cs">
+      <DependentUpon>frmManagerChannels.cs</DependentUpon>
     </Compile>
     <Compile Include="locatable resources\StringResource.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -198,31 +204,39 @@
     <Compile Include="mdiMain.Designer.cs">
       <DependentUpon>mdiMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="model\Channel.cs" />
     <Compile Include="model\Configuration.cs" />
     <Compile Include="model\Database.cs" />
     <Compile Include="model\DatabaseConfig.cs" />
     <Compile Include="model\Detect.cs" />
     <Compile Include="model\FileConfiguration.cs" />
+    <Compile Include="model\Flow.cs" />
     <Compile Include="model\Identify.cs" />
     <Compile Include="model\Image.cs" />
+    <Compile Include="model\Image64.cs" />
+    <Compile Include="model\ImageBMP.cs" />
     <Compile Include="model\Params.cs" />
     <Compile Include="model\ParamsDatabase.cs" />
     <Compile Include="model\ParamsDetect.cs" />
     <Compile Include="model\ParamsFile.cs" />
+    <Compile Include="model\ParamsFlow.cs" />
     <Compile Include="model\ParamsIdentify.cs" />
+    <Compile Include="model\ParamsPerformance.cs" />
+    <Compile Include="model\ParamsTracking.cs" />
     <Compile Include="model\People.cs" />
+    <Compile Include="model\PerformanceRecognition.cs" />
     <Compile Include="model\Person.cs" />
     <Compile Include="model\PersonDb.cs" />
     <Compile Include="model\TimePerson.cs" />
+    <Compile Include="model\Tracking.cs" />
     <Compile Include="model\Video.cs" />
     <Compile Include="model\VideoConfig.cs" />
     <Compile Include="presenter\DiskPresenter.cs" />
     <Compile Include="presenter\DropDatabasePresenter.cs" />
+    <Compile Include="presenter\FilesRecognitionPresenter.cs" />
     <Compile Include="presenter\FindImagePresenter.cs" />
-    <Compile Include="presenter\GraffitsPresenter.cs" />
     <Compile Include="presenter\HearInvalidPresenter.cs" />
     <Compile Include="presenter\HearUserPresenter.cs" />
-    <Compile Include="presenter\QueueMatPresenter.cs" />
     <Compile Include="presenter\SynchronizationPeoplePresenter.cs" />
     <Compile Include="presenter\UpdatePersonPresenter.cs" />
     <Compile Include="Program.cs" />
@@ -246,6 +260,12 @@
     <EmbeddedResource Include="form\CardTwoImage.resx">
       <DependentUpon>CardTwoImage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="form\frmAccessControl.es.resx">
+      <DependentUpon>frmAccessControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmAccessControl.resx">
+      <DependentUpon>frmAccessControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\frmConfiguration.es.resx">
       <DependentUpon>frmConfiguration.cs</DependentUpon>
     </EmbeddedResource>
@@ -258,11 +278,8 @@
     <EmbeddedResource Include="form\frmEnroll.resx">
       <DependentUpon>frmEnroll.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form\frmEntryControl.es.resx">
-      <DependentUpon>frmEntryControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="form\frmEntryControl.resx">
-      <DependentUpon>frmEntryControl.cs</DependentUpon>
+    <EmbeddedResource Include="form\frmManagerChannels.resx">
+      <DependentUpon>frmManagerChannels.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="locatable resources\StringResource.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -305,6 +322,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="License-LGPL.txt" />
+    <None Include="Resources\test-tube.png" />
+    <None Include="Resources\playBig.png" />
+    <None Include="Resources\stop.png" />
+    <None Include="Resources\reload.png" />
+    <None Include="Resources\play.png" />
+    <None Include="Resources\pause.png" />
     <None Include="Resources\arrow-down-bold.png" />
     <None Include="Resources\arrow-up-bold.png" />
     <None Include="Resources\arrow-right.png" />

@@ -117,7 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="tabPage1.Text" xml:space="preserve">
+    <value>Reconocimiento</value>
+  </data>
+  <data name="tabPage3.Text" xml:space="preserve">
+    <value>Base de datos</value>
+  </data>
+  <data name="groupBox7.Text" xml:space="preserve">
+    <value>Selecione canal</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="label18.Size" type="System.Drawing.Size, System.Drawing">
+    <value>66, 13</value>
+  </data>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Descripción:</value>
+  </data>
+  <data name="groupBox8.Text" xml:space="preserve">
+    <value>Tipo de canal</value>
+  </data>
+  <data name="label16.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 13</value>
+  </data>
+  <data name="label16.Text" xml:space="preserve">
+    <value>Canal:</value>
+  </data>
+  <data name="groupBox6.Text" xml:space="preserve">
+    <value>Identificación</value>
+  </data>
+  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 190</value>
+  </data>
+  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+    <value>89, 13</value>
+  </data>
+  <data name="label11.Text" xml:space="preserve">
+    <value>Registrar usuario:</value>
+  </data>
   <data name="label20.Location" type="System.Drawing.Point, System.Drawing">
     <value>7, 152</value>
   </data>
@@ -154,8 +190,8 @@
   <data name="label2.Text" xml:space="preserve">
     <value>Velocidad de identificación:</value>
   </data>
-  <data name="groupBox6.Text" xml:space="preserve">
-    <value>Identificación</value>
+  <data name="groupBox5.Text" xml:space="preserve">
+    <value>Rastreo</value>
   </data>
   <data name="cboTrackMotion.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 315</value>
@@ -201,9 +237,6 @@
   </data>
   <data name="chkDeepTrack.Text" xml:space="preserve">
     <value>Rastreo profundo</value>
-  </data>
-  <data name="btnSaveTracking.Location" type="System.Drawing.Point, System.Drawing">
-    <value>136, 347</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 58</value>
@@ -253,26 +286,14 @@
   <data name="txtMaxEyeTrack.Location" type="System.Drawing.Point, System.Drawing">
     <value>155, 19</value>
   </data>
-  <data name="groupBox5.Text" xml:space="preserve">
-    <value>Rastreo</value>
-  </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
-    <value>155, 13</value>
-  </data>
-  <data name="label11.Text" xml:space="preserve">
-    <value>Refrescar control entrada (min):</value>
-  </data>
-  <data name="cboRefreshCapture.Location" type="System.Drawing.Point, System.Drawing">
-    <value>191, 77</value>
-  </data>
-  <data name="cboLevelResolution.Location" type="System.Drawing.Point, System.Drawing">
-    <value>191, 37</value>
+  <data name="groupBox3.Text" xml:space="preserve">
+    <value>Detección</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 13</value>
+    <value>82, 13</value>
   </data>
   <data name="label1.Text" xml:space="preserve">
-    <value>Nivel de resolución:</value>
+    <value>Calidad modelo:</value>
   </data>
   <data name="cboExtractionMode.Location" type="System.Drawing.Point, System.Drawing">
     <value>120, 221</value>
@@ -352,23 +373,11 @@
   <data name="label7.Text" xml:space="preserve">
     <value>Detección Máxima:</value>
   </data>
-  <data name="groupBox3.Text" xml:space="preserve">
-    <value>Detección</value>
-  </data>
-  <data name="tabPage1.Text" xml:space="preserve">
-    <value>Reconocimiento</value>
-  </data>
-  <data name="label12.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 24</value>
-  </data>
-  <data name="label12.Size" type="System.Drawing.Size, System.Drawing">
-    <value>63, 13</value>
-  </data>
-  <data name="label12.Text" xml:space="preserve">
-    <value>Ruta Video:</value>
-  </data>
   <data name="groupBox2.Text" xml:space="preserve">
     <value>Limpiar base de datos</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Cambiar base de datos</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
     <value>32, 86</value>
@@ -387,12 +396,6 @@
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Nombre base de datos:</value>
-  </data>
-  <data name="groupBox1.Text" xml:space="preserve">
-    <value>Cambiar base de datos</value>
-  </data>
-  <data name="tabPage3.Text" xml:space="preserve">
-    <value>Base de datos</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Configuración</value>

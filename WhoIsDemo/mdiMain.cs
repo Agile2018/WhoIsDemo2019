@@ -3,7 +3,6 @@ using System.Drawing;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
-using WhoIsDemo.domain.interactor;
 using WhoIsDemo.form;
 using WhoIsDemo.model;
 using WhoIsDemo.presenter;
@@ -74,47 +73,10 @@ namespace WhoIsDemo
             managerControlView.CreateStatusBar(this, statusStrip);
             
             SubscriptionReactive();
-            diskPresenter.CreateDirectoryWork();
+            diskPresenter.CreateDirectoryWork(0);
             VerifyFileConfiguration();
-            GetListVideos();
-            SetValueRegistryLevelResolution();
-            SetValueRegistryTimeRefreshEntryControl();
-            GetParamsTracking();
-        }
-
-        private void SetValueRegistryLevelResolution()
-        {
-            string level = "0";
-            if (!string.IsNullOrEmpty(registryValueDataReader
-                .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                RegistryValueDataReader.LEVEL_RESOLUTION)))
-            {
-                level = registryValueDataReader
-                    .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                    RegistryValueDataReader.LEVEL_RESOLUTION);
-            }            
-            Configuration.Instance.ResolutionWidthDefault = Configuration
-                    .Instance.ListWidthResolution[Convert.ToInt16(level)];
-            Configuration.Instance.ResolutionHeightDefault = Configuration
-                .Instance.ListHeightResolution[Convert.ToInt16(level)];
-        }
-
-        private void SetValueRegistryTimeRefreshEntryControl()
-        {
-            string timeIndex = "0";
-            if (!string.IsNullOrEmpty(registryValueDataReader
-                .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                RegistryValueDataReader.REFRESH_ENTRY_CONTROL)))
-            {
-                timeIndex = registryValueDataReader
-                    .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                    RegistryValueDataReader.REFRESH_ENTRY_CONTROL);
-            }
-           
-            Configuration.Instance.TimeRefreshEntryControl = Configuration
-                    .Instance.ListTimeRefreshEntryControl[Convert.ToInt16(timeIndex)];
-
-        }
+            
+        }        
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -129,14 +91,15 @@ namespace WhoIsDemo
         {
             if (!string.IsNullOrEmpty(Configuration.Instance.ConnectDatabase))
             {
-                RequestAipu.Instance.InitLibrary();
-                RequestAipu.Instance.LoadConfiguration(DiskPresenter.directory);
+                AipuFace.Instance.ConnectDatabase();
+                AipuFace.Instance.InitLibrary();
+                
             }
             else
             {
                 this.statusStrip.Invoke(new Action(() => managerControlView
                     .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
-                    .GetString("configuration_empty"), 0, this.statusStrip)));
+                    .GetString("library_not_load"), 0, this.statusStrip)));
 
             }
 
@@ -151,7 +114,7 @@ namespace WhoIsDemo
             paramsDatabase.connect = "mongodb://localhost:27017/?minPoolSize=3&maxPoolSize=3";
             paramsDatabase.name = "dbass";
             databaseConfig.Params = paramsDatabase;
-            diskPresenter.SaveDatabaseConfiguration(databaseConfig);
+            diskPresenter.SaveDatabaseConfiguration(0, databaseConfig);
             Configuration.Instance.ConnectDatabase = databaseConfig.Params.connect;
             Configuration.Instance.NameDatabase = databaseConfig.Params.name;
             InitDatabase();
@@ -168,9 +131,9 @@ namespace WhoIsDemo
             paramsDetect.mineye = 20;
             paramsDetect.modedetect = 1;
             paramsDetect.extractionmode = 0;
-            //paramsDetect.refreshInterval = 2000;
+            paramsDetect.qualitymodel = 60;
             detect.Params = paramsDetect;
-            diskPresenter.SaveDetectConfiguration(detect);
+            diskPresenter.SaveDetectConfiguration(0, detect);
         }
 
         private void CreateParamsIdentify()
@@ -185,19 +148,61 @@ namespace WhoIsDemo
             paramsIdentify.A_SimilarityThreshold = 40;
             paramsIdentify.A_FaceDetectThreshold = 450;
             paramsIdentify.A_BestMatchedCandidates = 1;
+            paramsIdentify.is_register = 1;
             identify.Params = paramsIdentify;
-            diskPresenter.SaveIdentifyConfiguration(identify);
+            diskPresenter.SaveIdentifyConfiguration(0, identify);
             
+        }
+
+        private void CreateParamsTracking()
+        {
+            Tracking tracking = new Tracking();
+            tracking.configuration = "tracking_configuration";
+            ParamsTracking paramsTracking = new ParamsTracking();
+            paramsTracking.refreshInterval = 2000;
+            paramsTracking.maxeye = 200;
+            paramsTracking.mineye = 20;
+            paramsTracking.maxfaces = 5;
+            paramsTracking.faceConfidenceThresh = 450;
+            paramsTracking.trackingMode = 1;
+            paramsTracking.trackSpeed = 2;
+            paramsTracking.motionOptimization = 2;
+            paramsTracking.deepTrack = 1;
+            paramsTracking.qualitymodel = 60;
+            tracking.Params = paramsTracking;
+            diskPresenter.SaveTrackingConfiguration(0, tracking);
+        }
+
+        private void CreateParamsFlow()
+        {
+            Flow flow = new Flow();
+            flow.configuration = "flowvideo_configuration";
+            ParamsFlow paramsFlow = new ParamsFlow();
+            paramsFlow.deviceVideo = string.Empty;
+            paramsFlow.fileVideo = "video5.mp4";
+            paramsFlow.ipCamera = string.Empty;
+            paramsFlow.sourceFlow = 2;
+            paramsFlow.videoScaleMethod = 1;
+            flow.Params = paramsFlow;
+            diskPresenter.SaveFlowConfiguration(0, flow);
         }
 
         private void VerifyFileConfiguration()
         {
-            if (!diskPresenter.VerifyFileOfConfiguration())
+            if (!diskPresenter.VerifyFileOfConfiguration(0))
             {
-                diskPresenter.CreateContentDirectoryWork();
+                diskPresenter.CreateContentDirectoryWork(0);
                 CreateParamsDatabase();
                 CreateParamsDetect();
                 CreateParamsIdentify();
+                CreateParamsTracking();
+                CreateParamsFlow();
+
+                registryValueDataReader.setKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
+                        RegistryValueDataReader.NUM_CHANNELS_KEY, Convert.ToString(0));
+                Configuration.Instance.NumberChannels = 0;
+                diskPresenter.GenerateListChannels();
+
                 this.statusStrip.Invoke(new Action(() => managerControlView
                     .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
                     .GetString("configuration_empty"), 0, this.statusStrip)));
@@ -206,6 +211,20 @@ namespace WhoIsDemo
             else
             {
                 GetDatabaseConfiguration();
+                GenerateChannels();
+            }
+        }
+
+        private void GenerateChannels()
+        {            
+            if (!string.IsNullOrEmpty(registryValueDataReader
+                .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
+                RegistryValueDataReader.NUM_CHANNELS_KEY)))
+            {
+                Configuration.Instance.NumberChannels = Convert.ToInt16(registryValueDataReader
+                    .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
+                    RegistryValueDataReader.NUM_CHANNELS_KEY));
+                diskPresenter.GenerateListChannels();
             }
         }
 
@@ -213,27 +232,14 @@ namespace WhoIsDemo
         {
             System.Threading.Thread closeLibrary = new System
                 .Threading.Thread(new System.Threading
-                .ThreadStart(RequestAipu.Instance.Terminate));
+                .ThreadStart(AipuFace.Instance.Terminate));
             closeLibrary.Start();
             
         }
-        
-
-        private void GetListVideos()
-        {
-            Configuration.Instance.ListVideo = diskPresenter.ReadListVideo();
-            if (Configuration.Instance.ListVideo.Count != 0)
-            {
-                foreach(Video vid in Configuration.Instance.ListVideo)
-                {
-                    cboVideo.Items.Add(vid.path);
-                }
-            }
-        }
-
+                
         private void GetDatabaseConfiguration()
         {
-            DatabaseConfig databaseConfig = diskPresenter.ReadDatabaseConfiguration();
+            DatabaseConfig databaseConfig = diskPresenter.ReadDatabaseConfiguration(0);
             if (!string.IsNullOrEmpty(databaseConfig.Params.connect))
             {
                 Configuration.Instance.ConnectDatabase = databaseConfig.Params.connect;
@@ -251,30 +257,15 @@ namespace WhoIsDemo
             Database.Instance.Connect();
             Database.Instance.GetTables();
 
-        }
-
-        private void cboVideo_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            int index = cboVideo.SelectedIndex;
-            if (index != -1)
-            {
-                Configuration.Instance.VideoDefault = Configuration
-                    .Instance.ListVideo[index].path;
-                Configuration.Instance.VideoTypeDefault = Configuration
-                    .Instance.ListVideo[index].type;
-            }
-        }     
+        }        
        
-
         private void enrolamientoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             
             managerControlView.SetValueTextStatusStrip("", 0, statusStrip);
             frmEnroll frmWork = new frmEnroll() { MdiParent = this };
-            frmWork.strNameMenu = "enrolamientoToolStripMenuItem";
-            frmWork.LinkVideo = random.Next(51);
-            enrolamientoToolStripMenuItem.Enabled = false;
-            controlDeEntradaToolStripMenuItem.Enabled = false;
+            frmWork.strNameMenu = "enrolamientoToolStripMenuItem";            
+            enrolamientoToolStripMenuItem.Enabled = false;            
             configuraciónToolStripMenuItem.Enabled = false;
             frmWork.Show();
         }
@@ -283,11 +274,12 @@ namespace WhoIsDemo
         {
             
             managerControlView.SetValueTextStatusStrip("", 0, statusStrip);
-            frmEntryControl frmWork = new frmEntryControl() { MdiParent = this };
+            
+            frmAccessControl frmWork = new frmAccessControl() { MdiParent = this };
             frmWork.strNameMenu = "controlDeEntradaToolStripMenuItem";
-            frmWork.LinkVideo = random.Next(50, 101);
+            
             controlDeEntradaToolStripMenuItem.Enabled = false;
-            enrolamientoToolStripMenuItem.Enabled = false;
+            
             configuraciónToolStripMenuItem.Enabled = false;
             frmWork.Show();
         }
@@ -302,101 +294,21 @@ namespace WhoIsDemo
             frmConfiguration frmWork = new frmConfiguration() { MdiParent = this };
             frmWork.strNameMenu = "configuraciónToolStripMenuItem";
             configuraciónToolStripMenuItem.Enabled = false;
+            channelHandlerToolStripMenuItem.Enabled = false;
             controlDeEntradaToolStripMenuItem.Enabled = false;
             enrolamientoToolStripMenuItem.Enabled = false;
             frmWork.Show();
         }
 
-        private void GetParamsTracking()
+        private void channelHandlerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-            if (!string.IsNullOrEmpty(registryValueDataReader
-                .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                RegistryValueDataReader.MAXEYE_KEY)))
-            {
-                Configuration.Instance.MaxEyeTrack = Convert.ToInt16(registryValueDataReader
-                    .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                    RegistryValueDataReader.MAXEYE_KEY));
-                
-            }
-            if (!string.IsNullOrEmpty(registryValueDataReader
-                .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                RegistryValueDataReader.MINEYE_KEY)))
-            {
-                Configuration.Instance.MinEyeTrack = Convert.ToInt16(registryValueDataReader
-                    .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                    RegistryValueDataReader.MINEYE_KEY));
-               
-            }
-
-            if (!string.IsNullOrEmpty(registryValueDataReader
-               .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-               RegistryValueDataReader.REFRESH_INTERVAL_KEY)))
-            {
-                Configuration.Instance.RefreshIntervalTrack = Convert.ToInt16(registryValueDataReader
-                    .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                    RegistryValueDataReader.REFRESH_INTERVAL_KEY));
-                
-            }
-
-            if (!string.IsNullOrEmpty(registryValueDataReader
-               .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-               RegistryValueDataReader.CONFIDENCE_KEY)))
-            {
-                Configuration.Instance.ConfidenceTrack = Convert.ToInt16(registryValueDataReader
-                    .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                    RegistryValueDataReader.CONFIDENCE_KEY));
-                
-            }
-
-            if (!string.IsNullOrEmpty(registryValueDataReader
-               .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-               RegistryValueDataReader.DEEPTRACK_KEY)))
-            {
-                Configuration.Instance.DeepTrack = registryValueDataReader
-                    .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                    RegistryValueDataReader.DEEPTRACK_KEY);
-
-            }
-
-            string level = "0";
-            if (!string.IsNullOrEmpty(registryValueDataReader
-               .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-               RegistryValueDataReader.TRACKMODE_KEY)))
-            {
-
-                level = registryValueDataReader
-                        .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                        RegistryValueDataReader.TRACKMODE_KEY);
-
-            }
-            Configuration.Instance.TrackMode = Convert.ToInt16(level);
-            level = "0";
-
-            if (!string.IsNullOrEmpty(registryValueDataReader
-               .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-               RegistryValueDataReader.TRACKSPEED_KEY)))
-            {
-
-                level = registryValueDataReader
-                        .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                        RegistryValueDataReader.TRACKSPEED_KEY);
-
-            }
-            Configuration.Instance.TrackSpeed = Convert.ToInt16(level);
-            level = "0";
-
-            if (!string.IsNullOrEmpty(registryValueDataReader
-               .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-               RegistryValueDataReader.TRACKMOTION_KEY)))
-            {
-
-                level = registryValueDataReader
-                        .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
-                        RegistryValueDataReader.TRACKMOTION_KEY);
-
-            }
-            Configuration.Instance.TrackMotion = Convert.ToInt16(level);
+            frmManagerChannels frmWork = new frmManagerChannels() { MdiParent = this };
+            frmWork.strNameMenu = "channelHandlerToolStripMenuItem";
+            channelHandlerToolStripMenuItem.Enabled = false;
+            configuraciónToolStripMenuItem.Enabled = false;
+            frmWork.Show();
         }
+
+        
     }
 }

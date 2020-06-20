@@ -32,16 +32,14 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.archivoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.channelHandlerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.detecciónToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.enrolamientoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.controlDeEntradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.cboVideo = new System.Windows.Forms.ToolStripComboBox();
             this.menuStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -56,6 +54,7 @@
             // 
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.configuraciónToolStripMenuItem,
+            this.channelHandlerToolStripMenuItem,
             this.salirToolStripMenuItem});
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
             resources.ApplyResources(this.archivoToolStripMenuItem, "archivoToolStripMenuItem");
@@ -65,6 +64,12 @@
             this.configuraciónToolStripMenuItem.Name = "configuraciónToolStripMenuItem";
             resources.ApplyResources(this.configuraciónToolStripMenuItem, "configuraciónToolStripMenuItem");
             this.configuraciónToolStripMenuItem.Click += new System.EventHandler(this.configuraciónToolStripMenuItem_Click);
+            // 
+            // channelHandlerToolStripMenuItem
+            // 
+            this.channelHandlerToolStripMenuItem.Name = "channelHandlerToolStripMenuItem";
+            resources.ApplyResources(this.channelHandlerToolStripMenuItem, "channelHandlerToolStripMenuItem");
+            this.channelHandlerToolStripMenuItem.Click += new System.EventHandler(this.channelHandlerToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem
             // 
@@ -99,23 +104,8 @@
             // 
             // toolStrip1
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel1,
-            this.cboVideo});
             resources.ApplyResources(this.toolStrip1, "toolStrip1");
             this.toolStrip1.Name = "toolStrip1";
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            resources.ApplyResources(this.toolStripLabel1, "toolStripLabel1");
-            // 
-            // cboVideo
-            // 
-            this.cboVideo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboVideo.Name = "cboVideo";
-            resources.ApplyResources(this.cboVideo, "cboVideo");
-            this.cboVideo.SelectedIndexChanged += new System.EventHandler(this.cboVideo_SelectedIndexChanged);
             // 
             // mdiMain
             // 
@@ -135,8 +125,6 @@
             this.Shown += new System.EventHandler(this.mdiMain_Shown);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -151,10 +139,9 @@
         private System.Windows.Forms.ToolStripMenuItem detecciónToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripComboBox cboVideo;
         private System.Windows.Forms.ToolStripMenuItem enrolamientoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem controlDeEntradaToolStripMenuItem;
-        private System.Windows.Forms.ToolStripLabel toolStripLabel1;
+        private System.Windows.Forms.ToolStripMenuItem channelHandlerToolStripMenuItem;
     }
 }
 

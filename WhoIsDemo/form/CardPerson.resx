@@ -124,20 +124,17 @@
   <data name="picPhoto.Location" type="System.Drawing.Point, System.Drawing">
     <value>8, 16</value>
   </data>
-  <data name="&gt;&gt;txtFirstName.ZOrder" xml:space="preserve">
-    <value>4</value>
+  <data name="&gt;&gt;lblChannel.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
-  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
-    <value>btnSave</value>
+  <data name="&gt;&gt;txtFirstName.ZOrder" xml:space="preserve">
+    <value>5</value>
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt</value>
   </data>
   <data name="&gt;&gt;picPhoto.ZOrder" xml:space="preserve">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;txtFirstName.Parent" xml:space="preserve">
-    <value>panel1</value>
+    <value>9</value>
   </data>
   <data name="&gt;&gt;panel1.Name" xml:space="preserve">
     <value>panel1</value>
@@ -177,8 +174,8 @@
   <data name="&gt;&gt;txtFirstName.Type" xml:space="preserve">
     <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>6, 13</value>
+  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt, style=Bold</value>
   </data>
   <data name="panel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>263, 181</value>
@@ -226,7 +223,10 @@
     <value>Arturo</value>
   </data>
   <data name="&gt;&gt;txtLastName.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;lblChannel.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;label2.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
@@ -237,8 +237,11 @@
   <data name="btnSave.Location" type="System.Drawing.Point, System.Drawing">
     <value>221, 145</value>
   </data>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>6, 13</value>
+  </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>41, 13</value>
@@ -246,11 +249,20 @@
   <data name="label3.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt, style=Bold</value>
   </data>
+  <data name="lblChannel.Location" type="System.Drawing.Point, System.Drawing">
+    <value>36, 8</value>
+  </data>
   <data name="&gt;&gt;txtId.Name" xml:space="preserve">
     <value>txtId</value>
   </data>
   <data name="btnSave.TabIndex" type="System.Int32, mscorlib">
     <value>35</value>
+  </data>
+  <data name="lblChannel.TabIndex" type="System.Int32, mscorlib">
+    <value>37</value>
+  </data>
+  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>118, 65</value>
   </data>
   <data name="&gt;&gt;label4.Name" xml:space="preserve">
     <value>label4</value>
@@ -264,8 +276,8 @@
   <data name="&gt;&gt;btnSave.Type" xml:space="preserve">
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;txtId.Type" xml:space="preserve">
-    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
     <value>LASTNAME:</value>
@@ -283,19 +295,19 @@
     <value>0</value>
   </data>
   <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="label1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt, style=Bold</value>
+    <value>1</value>
   </data>
   <data name="&gt;&gt;panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
   <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>8</value>
   </data>
   <data name="&gt;&gt;label2.Parent" xml:space="preserve">
     <value>panel1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="txtLastName.TabIndex" type="System.Int32, mscorlib">
     <value>6</value>
@@ -312,8 +324,8 @@
   <data name="txtLastName.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 118</value>
   </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>36</value>
+  <data name="&gt;&gt;txtFirstName.Parent" xml:space="preserve">
+    <value>panel1</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -322,7 +334,7 @@
     <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnSave.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="txtId.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -336,8 +348,8 @@
   <data name="label1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>CardPerson</value>
+  <data name="&gt;&gt;lblChannel.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="btnSave.Size" type="System.Drawing.Size, System.Drawing">
     <value>31, 27</value>
@@ -354,8 +366,11 @@
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>5</value>
   </data>
-  <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>118, 65</value>
+  <data name="txtId.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Tahoma, 8.25pt, style=Italic</value>
+  </data>
+  <data name="&gt;&gt;btnSave.Name" xml:space="preserve">
+    <value>btnSave</value>
   </data>
   <data name="txtId.Location" type="System.Drawing.Point, System.Drawing">
     <value>121, 46</value>
@@ -382,22 +397,25 @@
     <value>Silva</value>
   </data>
   <data name="&gt;&gt;txtId.ZOrder" xml:space="preserve">
-    <value>6</value>
+    <value>7</value>
   </data>
-  <data name="txtId.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 8.25pt, style=Italic</value>
+  <data name="&gt;&gt;txtId.Type" xml:space="preserve">
+    <value>System.Windows.Forms.TextBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="txtId.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 14</value>
   </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>System.Windows.Forms.UserControl, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="&gt;&gt;lblChannel.Name" xml:space="preserve">
+    <value>lblChannel</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>CardPerson</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="label4.TabIndex" type="System.Int32, mscorlib">
+    <value>36</value>
   </data>
   <data name="txtFirstName.Size" type="System.Drawing.Size, System.Drawing">
     <value>131, 14</value>

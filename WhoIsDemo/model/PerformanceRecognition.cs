@@ -1,8 +1,8 @@
 ﻿namespace WhoIsDemo.model
 {
-    public class Detect
+    public class PerformanceRecognition
     {
         public string configuration { get; set; }
-        public ParamsDetect Params { get; set; }
+        public ParamsPerformance Params { get; set; }
     }
 }

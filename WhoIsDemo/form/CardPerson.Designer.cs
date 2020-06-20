@@ -39,6 +39,7 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.picPhoto = new System.Windows.Forms.PictureBox();
+            this.lblChannel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
             this.SuspendLayout();
@@ -48,6 +49,7 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.LightCyan;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.lblChannel);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnSave);
             this.panel1.Controls.Add(this.txtLastName);
@@ -121,6 +123,12 @@
             this.picPhoto.Name = "picPhoto";
             this.picPhoto.TabStop = false;
             // 
+            // lblChannel
+            // 
+            resources.ApplyResources(this.lblChannel, "lblChannel");
+            this.lblChannel.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblChannel.Name = "lblChannel";
+            // 
             // CardPerson
             // 
             resources.ApplyResources(this, "$this");
@@ -146,5 +154,6 @@
         private System.Windows.Forms.PictureBox picPhoto;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblChannel;
     }
 }

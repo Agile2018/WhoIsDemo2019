@@ -21,6 +21,7 @@ namespace WhoIsDemo.form
         private Image photoCamera;
         private string idFace;
         private string dateTime;
+        private string channel;
         #endregion
         public CardTwoImage()
         {
@@ -55,6 +56,22 @@ namespace WhoIsDemo.form
                 txtFirstName.Text = value;
             }
         }
+
+        [Category("CardTwo Props")]
+        public string Channel
+        {
+            get
+            {
+                return channel;
+            }
+
+            set
+            {
+                channel = value;
+                lblNameChannel.Text = "Video " + value;
+            }
+        }
+
         [Category("CardTwo Props")]
         public string LastName
         {

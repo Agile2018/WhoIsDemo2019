@@ -122,13 +122,19 @@
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="configuraciónToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>163, 22</value>
   </data>
   <data name="configuraciónToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Configuration</value>
   </data>
+  <data name="channelHandlerToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
+    <value>163, 22</value>
+  </data>
+  <data name="channelHandlerToolStripMenuItem.Text" xml:space="preserve">
+    <value>Channel Handler</value>
+  </data>
   <data name="salirToolStripMenuItem.Size" type="System.Drawing.Size, System.Drawing">
-    <value>148, 22</value>
+    <value>163, 22</value>
   </data>
   <data name="salirToolStripMenuItem.Text" xml:space="preserve">
     <value>&amp;Exit</value>
@@ -212,18 +218,6 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>241, 17</value>
   </metadata>
-  <data name="toolStripLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>76, 22</value>
-  </data>
-  <data name="toolStripLabel1.Text" xml:space="preserve">
-    <value>Select video: </value>
-  </data>
-  <data name="cboVideo.Size" type="System.Drawing.Size, System.Drawing">
-    <value>400, 25</value>
-  </data>
-  <data name="cboVideo.ToolTipText" xml:space="preserve">
-    <value>Select video</value>
-  </data>
   <data name="toolStrip1.Location" type="System.Drawing.Point, System.Drawing">
     <value>0, 24</value>
   </data>
@@ -276,6 +270,12 @@
   <data name="&gt;&gt;configuraciónToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="&gt;&gt;channelHandlerToolStripMenuItem.Name" xml:space="preserve">
+    <value>channelHandlerToolStripMenuItem</value>
+  </data>
+  <data name="&gt;&gt;channelHandlerToolStripMenuItem.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="&gt;&gt;salirToolStripMenuItem.Name" xml:space="preserve">
     <value>salirToolStripMenuItem</value>
   </data>
@@ -299,18 +299,6 @@
   </data>
   <data name="&gt;&gt;controlDeEntradaToolStripMenuItem.Type" xml:space="preserve">
     <value>System.Windows.Forms.ToolStripMenuItem, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;toolStripLabel1.Name" xml:space="preserve">
-    <value>toolStripLabel1</value>
-  </data>
-  <data name="&gt;&gt;toolStripLabel1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripLabel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;cboVideo.Name" xml:space="preserve">
-    <value>cboVideo</value>
-  </data>
-  <data name="&gt;&gt;cboVideo.Type" xml:space="preserve">
-    <value>System.Windows.Forms.ToolStripComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>mdiMain</value>

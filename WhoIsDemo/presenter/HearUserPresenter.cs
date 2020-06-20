@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Reactive.Subjects;
 using WhoIsDemo.domain.interactor;
 using WhoIsDemo.model;
@@ -9,12 +10,11 @@ namespace WhoIsDemo.presenter
     class HearUserPresenter
     {
         #region variables        
-        IDisposable subscriptionUser;
-        int idVideo = 0;
-
+        IDisposable subscriptionUser;        
+        private List<int> idVideos = new List<int>();
         public Subject<Person> subjectUser = new Subject<Person>();
-
-        public int IdVideo { get => idVideo; set => idVideo = value; }
+        
+        public List<int> IdVideos { get => idVideos; set => idVideos = value; }
 
         #endregion
 
@@ -39,12 +39,15 @@ namespace WhoIsDemo.presenter
             {
                 
                 person = JsonConvert.DeserializeObject<Person>(user);
-                int idVid = Convert.ToInt16(person.Params.Client);
-                if (idVid == IdVideo)
+                if (person != null)
                 {
-                    subjectUser.OnNext(person);
-                }
-                             
+                    int idVid = Convert.ToInt16(person.Params.Client);
+
+                    if (idVideos.Count > 0 && idVideos.Contains(idVid))
+                    {
+                        subjectUser.OnNext(person);
+                    }
+                }                                                             
             }
             catch (Newtonsoft.Json.JsonReaderException ex)
             {
@@ -52,18 +55,14 @@ namespace WhoIsDemo.presenter
             }
         }
 
-        public bool EnableObserverUser()
+        public void EnableObserverUser()
         {
-            bool result = false;
-            if (AipuFace.Instance.IsLoadConfiguration)
+
+            if (!AipuFace.Instance.IsObserverUser())
             {
-                if (!RequestAipu.Instance.IsEnableObserverUser())
-                {
-                    RequestAipu.Instance.EnableEarUser();
-                }
-                result = true;
+                AipuFace.Instance.EnableObserverUser();
             }
-            return result;
+
         }
 
         #endregion

@@ -373,6 +373,32 @@ namespace WhoIsDemo.view.tool
             }
         }
 
+        public void DisabledOptionMenu(string nameMenu, string nameMDI)
+        {
+            Form frm = new Form();
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Name == nameMDI)
+                    frm = f;
+            }
+
+
+            foreach (ToolStripMenuItem mnu in frm.MainMenuStrip.Items)
+            {
+                foreach (ToolStripDropDownItem smnu in mnu.DropDownItems)
+                {
+
+                    if (smnu.Name == nameMenu)
+                    {
+                        smnu.Enabled = false;
+                        smnu.Visible = false;
+                    }
+
+
+                }
+            }
+        }
+
         public void OnlyInteger(KeyPressEventArgs e)
         {
             if (char.IsNumber(e.KeyChar) || (char.IsControl(e.KeyChar)))

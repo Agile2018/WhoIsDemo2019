@@ -14,11 +14,28 @@ namespace WhoIsDemo.form
         private string lastName;
         private Image photo;
         private string idFace;
+        private string channel;
         #endregion
         public CardPerson()
         {
             InitializeComponent();
         }
+
+        [Category("Card Props")]
+        public string Channel
+        {
+            get
+            {
+                return channel;
+            }
+
+            set
+            {
+                channel = value;
+                lblChannel.Text = "Video " + value;
+            }
+        }
+
         [Category("Card Props")]
         public string Id {
             get

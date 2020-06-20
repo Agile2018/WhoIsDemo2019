@@ -128,27 +128,87 @@
   <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
   </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnStopLoadFile.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="btnStopLoadFile.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnStopLoadFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnStopLoadFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>65, 8</value>
+  </data>
+  <data name="btnStopLoadFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 30</value>
+  </data>
+  <data name="btnStopLoadFile.TabIndex" type="System.Int32, mscorlib">
+    <value>25</value>
+  </data>
+  <data name="&gt;&gt;btnStopLoadFile.Name" xml:space="preserve">
+    <value>btnStopLoadFile</value>
+  </data>
+  <data name="&gt;&gt;btnStopLoadFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnStopLoadFile.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;btnStopLoadFile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnLoadFile.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnLoadFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnLoadFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 10</value>
+  </data>
+  <data name="btnLoadFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 30</value>
+  </data>
+  <data name="btnLoadFile.TabIndex" type="System.Int32, mscorlib">
+    <value>24</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFile.Name" xml:space="preserve">
+    <value>btnLoadFile</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFile.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFile.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 14pt, style=Bold</value>
   </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 9</value>
+    <value>148, 11</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>115, 23</value>
+    <value>135, 23</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
+    <value>20</value>
   </data>
   <data name="label2.Text" xml:space="preserve">
-    <value>Enrollment</value>
+    <value>Entry control</value>
   </data>
   <data name="&gt;&gt;label2.Name" xml:space="preserve">
     <value>label2</value>
@@ -160,7 +220,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -174,182 +234,23 @@
   <data name="&gt;&gt;splitContainer1.Panel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="lblQuantityRecords.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="lblQuantityRecords.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 12pt, style=Bold</value>
-  </data>
-  <data name="lblQuantityRecords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>97, 6</value>
-  </data>
-  <data name="lblQuantityRecords.Size" type="System.Drawing.Size, System.Drawing">
-    <value>19, 19</value>
-  </data>
-  <data name="lblQuantityRecords.TabIndex" type="System.Int32, mscorlib">
-    <value>23</value>
-  </data>
-  <data name="lblQuantityRecords.Text" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;lblQuantityRecords.Name" xml:space="preserve">
-    <value>lblQuantityRecords</value>
-  </data>
-  <data name="&gt;&gt;lblQuantityRecords.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;lblQuantityRecords.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;lblQuantityRecords.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="btnDownRecords.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Bottom, Left</value>
-  </data>
-  <data name="btnDownRecords.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="btnDownRecords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 311</value>
-  </data>
-  <data name="btnDownRecords.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 58</value>
-  </data>
-  <data name="btnDownRecords.TabIndex" type="System.Int32, mscorlib">
-    <value>22</value>
-  </data>
-  <data name="&gt;&gt;btnDownRecords.Name" xml:space="preserve">
-    <value>btnDownRecords</value>
-  </data>
-  <data name="&gt;&gt;btnDownRecords.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnDownRecords.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;btnDownRecords.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="btnUploadRecords.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="btnUploadRecords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>209, 37</value>
-  </data>
-  <data name="btnUploadRecords.Size" type="System.Drawing.Size, System.Drawing">
-    <value>60, 43</value>
-  </data>
-  <data name="btnUploadRecords.TabIndex" type="System.Int32, mscorlib">
-    <value>21</value>
-  </data>
-  <data name="&gt;&gt;btnUploadRecords.Name" xml:space="preserve">
-    <value>btnUploadRecords</value>
-  </data>
-  <data name="&gt;&gt;btnUploadRecords.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnUploadRecords.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;btnUploadRecords.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="btnStopLoadFile.Enabled" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="btnStopLoadFile.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="btnStopLoadFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>200, 3</value>
-  </data>
-  <data name="btnStopLoadFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 30</value>
-  </data>
-  <data name="btnStopLoadFile.TabIndex" type="System.Int32, mscorlib">
-    <value>18</value>
-  </data>
-  <data name="&gt;&gt;btnStopLoadFile.Name" xml:space="preserve">
-    <value>btnStopLoadFile</value>
-  </data>
-  <data name="&gt;&gt;btnStopLoadFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnStopLoadFile.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;btnStopLoadFile.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="flpDatabase.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left</value>
-  </data>
-  <data name="flpDatabase.AutoScroll" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="flpDatabase.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 37</value>
-  </data>
-  <data name="flpDatabase.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 338</value>
-  </data>
-  <data name="flpDatabase.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="&gt;&gt;flpDatabase.Name" xml:space="preserve">
-    <value>flpDatabase</value>
-  </data>
-  <data name="&gt;&gt;flpDatabase.Type" xml:space="preserve">
-    <value>System.Windows.Forms.FlowLayoutPanel, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;flpDatabase.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;flpDatabase.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="btnLoadFile.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="btnLoadFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>155, 3</value>
-  </data>
-  <data name="btnLoadFile.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 30</value>
-  </data>
-  <data name="btnLoadFile.TabIndex" type="System.Int32, mscorlib">
-    <value>17</value>
-  </data>
-  <data name="&gt;&gt;btnLoadFile.Name" xml:space="preserve">
-    <value>btnLoadFile</value>
-  </data>
-  <data name="&gt;&gt;btnLoadFile.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnLoadFile.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;btnLoadFile.ZOrder" xml:space="preserve">
-    <value>5</value>
-  </data>
   <data name="flowLayoutPanel1.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="flowLayoutPanel1.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
-    <value>Right</value>
+    <value>Fill</value>
   </data>
   <data name="flowLayoutPanel1.FlowDirection" type="System.Windows.Forms.FlowDirection, System.Windows.Forms">
     <value>BottomUp</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>273, 0</value>
+    <value>0, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 387</value>
+    <value>430, 450</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
+    <value>25</value>
   </data>
   <data name="flowLayoutPanel1.WrapContents" type="System.Boolean, mscorlib">
     <value>False</value>
@@ -364,37 +265,7 @@
     <value>splitContainer1.Panel2</value>
   </data>
   <data name="&gt;&gt;flowLayoutPanel1.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="label4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Tahoma, 12pt, style=Bold</value>
-  </data>
-  <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>12, 6</value>
-  </data>
-  <data name="label4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 19</value>
-  </data>
-  <data name="label4.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="label4.Text" xml:space="preserve">
-    <value>Enrolled:</value>
-  </data>
-  <data name="&gt;&gt;label4.Name" xml:space="preserve">
-    <value>label4</value>
-  </data>
-  <data name="&gt;&gt;label4.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label4.Parent" xml:space="preserve">
-    <value>splitContainer1.Panel2</value>
-  </data>
-  <data name="&gt;&gt;label4.ZOrder" xml:space="preserve">
-    <value>7</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel2.Name" xml:space="preserve">
     <value>splitContainer1.Panel2</value>
@@ -409,10 +280,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 434</value>
+    <value>430, 501</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>43</value>
+    <value>47</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -436,16 +307,13 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>584, 434</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>Manual</value>
+    <value>430, 501</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>Enrollment</value>
+    <value>Entry Control</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>frmEnroll</value>
+    <value>frmAccessControl</value>
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>System.Windows.Forms.Form, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

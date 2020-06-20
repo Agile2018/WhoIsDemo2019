@@ -1,12 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
-using System.Linq;
 using System.Reactive.Subjects;
-using System.Text;
-using System.Threading.Tasks;
 using WhoIsDemo.domain.interactor;
 using WhoIsDemo.model;
 
@@ -15,38 +11,38 @@ namespace WhoIsDemo.presenter
     class FindImagePresenter
     {
         #region variables
-        private string connection;
-        private string nameDatabase;
+        //private string connection;
+        //private string nameDatabase;
         FindImage findImage = new FindImage();
 
-        public string Connection {
-            get
-            {
-                return connection;
-            }
+        //public string Connection {
+        //    get
+        //    {
+        //        return connection;
+        //    }
 
-            set
-            {
-                connection = value;
-                findImage.Connection = connection;
-            }
-        }
+        //    set
+        //    {
+        //        connection = value;
+        //        findImage.Connection = connection;
+        //    }
+        //}
 
-        public string NameDatabase {
-            get
-            {
-                return nameDatabase;
-            }
+        //public string NameDatabase {
+        //    get
+        //    {
+        //        return nameDatabase;
+        //    }
 
-            set
-            {
-                nameDatabase = value;
-                findImage.NameDatabase = nameDatabase;
-            }
-        }
+        //    set
+        //    {
+        //        nameDatabase = value;
+        //        findImage.NameDatabase = nameDatabase;
+        //    }
+        //}
 
-        public Subject<Bitmap> subjectImage = new Subject<Bitmap>();
-        public Subject<List<Bitmap>> subjectListImage = new Subject<List<Bitmap>>();
+        public Subject<ImageBMP> subjectImage = new Subject<ImageBMP>();
+        //public Subject<List<Bitmap>> subjectListImage = new Subject<List<Bitmap>>();
         #endregion
 
         #region methods
@@ -54,8 +50,8 @@ namespace WhoIsDemo.presenter
         {
             this.findImage.OnImage += new FindImage
                 .ImageDelegate(SendBitmap);
-            this.findImage.OnListImage += new FindImage
-                .ListImageDelegate(SendListBitmap);
+            //this.findImage.OnListImage += new FindImage
+            //    .ListImageDelegate(SendListBitmap);
         }
         //public void Connect()
         //{
@@ -74,29 +70,51 @@ namespace WhoIsDemo.presenter
             findImage.GetListImageByIdFace(idFace);
         }
 
-        private void SendBitmap(string image64)
+        private void SendBitmap(Image64 image64)
         {
-            Bitmap imageTransform = Base64StringToBitmap(image64);
-            subjectImage.OnNext(imageTransform);
+            ImageBMP imageBMP = new ImageBMP();
+            if (String.IsNullOrEmpty(image64.data_64_aux))
+            {                
+                Bitmap imageTransform = Base64StringToBitmap(image64.data_64);
+                if (imageTransform != null)
+                {
+                    imageBMP.id_face = image64.id_face;
+                    imageBMP.imageStore = imageTransform;
+                    subjectImage.OnNext(imageBMP);
+                }
+            }
+            else
+            {
+                Bitmap imageGallery = Base64StringToBitmap(image64.data_64);
+                Bitmap imageCamera = Base64StringToBitmap(image64.data_64_aux);
+                if (imageGallery != null && imageCamera != null)
+                {
+                    imageBMP.id_face = image64.id_face;
+                    imageBMP.imageStore = imageGallery;
+                    imageBMP.imageNew = imageCamera;
+                    subjectImage.OnNext(imageBMP);
+                }
+            }
+            
         }
 
-        private void SendListBitmap(List<String> list)
-        {
-            Bitmap imageGallery = Base64StringToBitmap(list[0]);
-            Bitmap imageCamera = Base64StringToBitmap(list[1]);
+        //private void SendListBitmap(List<String> list)
+        //{
+        //    Bitmap imageGallery = Base64StringToBitmap(list[0]);
+        //    Bitmap imageCamera = Base64StringToBitmap(list[1]);
 
-            List<Bitmap> listImage = new List<Bitmap>();
-            if (imageGallery != null)
-            {
-                listImage.Add(imageGallery);
-            }
-            if (imageCamera != null)
-            {
-                listImage.Add(imageCamera);
-            }
-            subjectListImage.OnNext(listImage);
+        //    List<Bitmap> listImage = new List<Bitmap>();
+        //    if (imageGallery != null)
+        //    {
+        //        listImage.Add(imageGallery);
+        //    }
+        //    if (imageCamera != null)
+        //    {
+        //        listImage.Add(imageCamera);
+        //    }
+        //    subjectListImage.OnNext(listImage);
 
-        }
+        //}
 
         public Bitmap Base64StringToBitmap(string
                                            base64String)

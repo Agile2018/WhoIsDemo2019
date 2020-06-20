@@ -120,11 +120,17 @@
   <data name="app_name" xml:space="preserve">
     <value>WhoIs DEMO</value>
   </data>
+  <data name="channels" xml:space="preserve">
+    <value>Join channel: </value>
+  </data>
+  <data name="channel_not_exist" xml:space="preserve">
+    <value>The channel does not exist it must be created.</value>
+  </data>
   <data name="complete" xml:space="preserve">
     <value>Operation Completed.</value>
   </data>
   <data name="configuration_empty" xml:space="preserve">
-    <value>Define configuration parameters, please</value>
+    <value>Define configuration parameters and channels, take a video test, please. </value>
   </data>
   <data name="delete_database" xml:space="preserve">
     <value>Are you sure to delete the database? The application will close.</value>
@@ -139,7 +145,10 @@
     <value>Files:</value>
   </data>
   <data name="ip_video_empty" xml:space="preserve">
-    <value>The video address is empty.</value>
+    <value>The video address is incorrect.</value>
+  </data>
+  <data name="library_not_load" xml:space="preserve">
+    <value>The library of recognition face can´t load.</value>
   </data>
   <data name="load_library" xml:space="preserve">
     <value>The library is not loaded, please check.</value>
@@ -156,6 +165,9 @@
   <data name="reset" xml:space="preserve">
     <value>Reset application, please.</value>
   </data>
+  <data name="save_ok" xml:space="preserve">
+    <value>Data saved correctly</value>
+  </data>
   <data name="stop_library" xml:space="preserve">
     <value>Stop Library.</value>
   </data>
@@ -167,6 +179,12 @@
   </data>
   <data name="verify_key" xml:space="preserve">
     <value>Verify Key.</value>
+  </data>
+  <data name="video_ok" xml:space="preserve">
+    <value>The video is correct.</value>
+  </data>
+  <data name="window_disabled" xml:space="preserve">
+    <value>The video must be disabled and library load.</value>
   </data>
   <data name="work" xml:space="preserve">
     <value>Working...</value>

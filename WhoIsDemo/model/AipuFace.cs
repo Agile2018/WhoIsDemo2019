@@ -1,7 +1,4 @@
 ﻿using Aipu2NetLib;
-using System;
-using System.Runtime.InteropServices;
-using System.Threading;
 
 namespace WhoIsDemo.model
 {
@@ -14,15 +11,17 @@ namespace WhoIsDemo.model
         #region variables
         AipuNet aipu;
         AipuObserver aipuObserver;
-        private bool isLoadConfiguration = false;
+        private bool isRunVideo = false;
         private bool isStopAipu = false;
         private bool isTracking = false;
+        private bool isLoadLibrary = false;
         private static readonly AipuFace instance = new AipuFace();
         public static AipuFace Instance => instance;
 
-        public bool IsLoadConfiguration { get => isLoadConfiguration; set => isLoadConfiguration = value; }
+        public bool IsRunVideo { get => isRunVideo; set => isRunVideo = value; }
         public bool IsStopAipu { get => isStopAipu; set => isStopAipu = value; }
         public bool IsTracking { get => isTracking; set => isTracking = value; }
+        public bool IsLoadLibrary { get => isLoadLibrary; set => isLoadLibrary = value; }
         #endregion
 
         #region methods
@@ -30,177 +29,225 @@ namespace WhoIsDemo.model
         {
             aipu = new AipuNet();
             aipuObserver = new AipuObserver(aipu);
-            //Thread thr = new Thread(InitProcessAipu);
-            //thr.Start();
-            //thr.Join();
+            
         }
 
         private void InitProcessAipu()
         {
             aipu = new AipuNet();
             aipuObserver = new AipuObserver(aipu);
-        }       
+        }
 
-        public void LoadConfiguration(string nameFileConfiguration)
+        //public void LoadConfiguration(string nameFileConfiguration)
+        //{
+        //    try
+        //    {
+        //        aipu.LoadConfiguration(nameFileConfiguration);
+        //        IsLoadConfiguration = true;
+        //    }
+        //    catch (SEHException sehException)
+        //    {
+        //        throw new Exception(sehException.Message);
+
+        //    }
+        //}
+
+        public void ConnectDatabase()
         {
-            try
-            {
-                aipu.LoadConfiguration(nameFileConfiguration);
-                IsLoadConfiguration = true;
-            }
-            catch (SEHException sehException)
-            {
-                throw new Exception(sehException.Message);
-                
-            }
+            aipu.ConnectDatabase();
         }
 
         public void InitLibrary()
         {
             aipu.InitLibrary();
+            IsLoadLibrary = true;
         }
 
-        public void SetFileVideo(string file)
+        public void LoadConfiguration(int option)
         {
-            aipu.SetFileVideo(file);
+            aipu.LoadConfiguration(option);
         }
 
-        public void SetNameWindow(string name)
+        public void InitWindowMain(int option)
         {
-            aipu.SetNameWindow(name);
+            aipu.InitWindowMain(option);
         }
 
-        public void SetFramesTotal(int total)
+        public void RunVideo(int option)
         {
-            aipu.SetFramesTotal(total);
+            aipu.RunVideo(option);
+            IsRunVideo = true;
         }
 
-        public void SetWidthFrame(int value)
+        public void CloseWindow()
         {
-            aipu.SetWidthFrame(value);
+            aipu.CloseWindow();
+        }
+
+        public void ReRunVideo(int option)
+        {
+            aipu.ReRunVideo(option);
+        }
+        public void SetFinishLoop(int option)
+        {
+            aipu.SetFinishLoop(option);
+        }
+
+        //public void SetFileVideo(string file)
+        //{
+        //    aipu.SetFileVideo(file);
+        //}
+
+        //public void SetNameWindow(string name)
+        //{
+        //    aipu.SetNameWindow(name);
+        //}
+
+        //public void SetFramesTotal(int total)
+        //{
+        //    aipu.SetFramesTotal(total);
+        //}
+
+        //public void SetWidthFrame(int value)
+        //{
+        //    aipu.SetWidthFrame(value);
+
+        //}
+
+        //public void SetHeightFrame(int value)
+        //{
+        //    aipu.SetHeightFrame(value);
+
+        //}
+
+        //public void CaptureFlow(int optionFlow)
+        //{
+        //    isTracking = true;
+        //    aipu.CaptureFlow(optionFlow);
+        //}
+
+        //public void SetIpCamera(string ip)
+        //{
+        //    aipu.SetIpCamera(ip);
+        //}
+
+        //public void SetDeviceVideo(string device)
+        //{
+        //    aipu.SetDeviceVideo(device);
+        //}
+
+        //public void SetDeepTrack(string value)
+        //{
+        //    aipu.SetDeepTrack(value);
+        //}
+
+        public void SetChannel(int channel)
+        {
+            aipu.SetChannel(channel);
+        }
+
+        public void ResetPerformance(int option)
+        {
+            aipu.ResetPerformance(option);
+        }
+        public void SavePerformance(int option)
+        {
+            aipu.SavePerformance(option);
+        }
+        //public void ResetCountRepeatUser()
+        //{
+        //    aipu.ResetCountRepeatUser();
+        //}
+        //public int GetCountRepeatUser()
+        //{
+        //    return aipu.GetCountRepeatUser;
+        //}
+
+        //public void SetFaceConfidenceThresh(int value)
+        //{
+        //    aipu.SetFaceConfidenceThresh(value);
+        //}
+
+        //public void SetRefreshInterval(int value)
+        //{
+        //    aipu.SetRefreshInterval(value);
+        //}
+
+        //public void SetMinEyeDistance(int minDistance)
+        //{
+        //    aipu.SetMinEyeDistance(minDistance);
+        //}
+
+        //public void SetMaxEyeDistance(int maxDistance)
+        //{
+        //    aipu.SetMaxEyeDistance(maxDistance);
+        //}
+
+        //public void SetSequenceFps(int value)
+        //{
+        //    if (value != 0)
+        //    {
+        //        aipu.SetSequenceFps(value);
+        //    }
             
-        }
 
-        public void SetHeightFrame(int value)
-        {
-            aipu.SetHeightFrame(value);
+        //}
 
-        }
+        //public void SetClient(int value)
+        //{
+        //    aipu.SetClient(value);
+        //}
 
-        public void CaptureFlow(int optionFlow)
-        {
-            isTracking = true;
-            aipu.CaptureFlow(optionFlow);
-        }
+        //public void SetFlagFlow(bool flag)
+        //{
+        //    aipu.SetFlagFlow(flag);
+        //}
 
-        public void SetIpCamera(string ip)
-        {
-            aipu.SetIpCamera(ip);
-        }
-
-        public void SetDeviceVideo(string device)
-        {
-            aipu.SetDeviceVideo(device);
-        }
-
-        public void SetDeepTrack(string value)
-        {
-            aipu.SetDeepTrack(value);
-        }
-        public void ResetCountRepeatUser()
-        {
-            aipu.ResetCountRepeatUser();
-        }
-        public int GetCountRepeatUser()
-        {
-            return aipu.GetCountRepeatUser;
-        }
-
-        public void SetFaceConfidenceThresh(int value)
-        {
-            aipu.SetFaceConfidenceThresh(value);
-        }
-
-        public void SetRefreshInterval(int value)
-        {
-            aipu.SetRefreshInterval(value);
-        }
-
-        public void SetMinEyeDistance(int minDistance)
-        {
-            aipu.SetMinEyeDistance(minDistance);
-        }
-
-        public void SetMaxEyeDistance(int maxDistance)
-        {
-            aipu.SetMaxEyeDistance(maxDistance);
-        }
-
-        public void SetSequenceFps(int value)
-        {
-            if (value != 0)
-            {
-                aipu.SetSequenceFps(value);
-            }
-            
-
-        }
-
-        public void SetClient(int value)
-        {
-            aipu.SetClient(value);
-        }
-
-        public void SetFlagFlow(bool flag)
-        {
-            aipu.SetFlagFlow(flag);
-        }
-
-        public void ShowWindow(int option)
-        {
-            aipu.ShowWindow(option);
-        }
+        //public void ShowWindow(int option)
+        //{
+        //    aipu.ShowWindow(option);
+        //}
                 
-        public void SetConfigurationDatabase()
-        {
-            aipu.SetConfigurationDatabase();
-        }
+        //public void SetConfigurationDatabase()
+        //{
+        //    aipu.SetConfigurationDatabase();
+        //}
 
-        public void StatePlay()
+        public void StatePlay(int option)
         {
-            aipu.StatePlay();
+            aipu.StatePlay(option);
         }
-        public void StatePaused()
+        public void StatePaused(int option)
         {
-            aipu.StatePaused();
+            aipu.StatePaused(option);
         }
-        public void SetTrackingMode(int mode)
-        {
-            aipu.SetTrackingMode(mode);
-        }
-        public void SetTrackSpeed(int speed)
-        {
-            aipu.SetTrackSpeed(speed);
-        }
-        public void SetMotionOptimization(int motion)
-        {
-            aipu.SetMotionOptimization(motion);
-        }
+        //public void SetTrackingMode(int mode)
+        //{
+        //    aipu.SetTrackingMode(mode);
+        //}
+        //public void SetTrackSpeed(int speed)
+        //{
+        //    aipu.SetTrackSpeed(speed);
+        //}
+        //public void SetMotionOptimization(int motion)
+        //{
+        //    aipu.SetMotionOptimization(motion);
+        //}
 
-        public void TerminateTracking()
-        {
-            if (isTracking)
-            {
-                aipu.SetFlagFlow(true);
-            }
+        //public void TerminateTracking()
+        //{
+        //    if (isTracking)
+        //    {
+        //        aipu.SetFlagFlow(true);
+        //    }
             
-            isTracking = false;
-        }
+        //    isTracking = false;
+        //}
 
-        public void SetIsRegister(bool option)
-        {
-            aipu.SetIsRegister(option);
-        }                              
+        //public void SetIsRegister(bool option)
+        //{
+        //    aipu.SetIsRegister(option);
+        //}                              
         
         public void RecognitionFaceFiles(string file, int client)
         {
@@ -216,27 +263,27 @@ namespace WhoIsDemo.model
             return aipu.GetIsFinishLoadFiles;
         }
 
-        public void InitLibraryIdentify()
-        {
-            aipu.InitLibraryIdentify();
-        }
+        //public void InitLibraryIdentify()
+        //{
+        //    aipu.InitLibraryIdentify();
+        //}
 
-        public void ResetLowScore()
-        {
-            aipu.ResetLowScore();
-        }
-        public int GetCountLowScore()
-        {
-            return aipu.GetCountLowScore;
-        }
-        public void ResetCountNotDetect()
-        {
-            aipu.ResetCountNotDetect();
-        }
-        public int GetCountNotDetect()
-        {
-            return aipu.GetCountNotDetect;
-        }
+        //public void ResetLowScore()
+        //{
+        //    aipu.ResetLowScore();
+        //}
+        //public int GetCountLowScore()
+        //{
+        //    return aipu.GetCountLowScore;
+        //}
+        //public void ResetCountNotDetect()
+        //{
+        //    aipu.ResetCountNotDetect();
+        //}
+        //public int GetCountNotDetect()
+        //{
+        //    return aipu.GetCountNotDetect;
+        //}
         //public void SendFrame(byte[] data, int rows, int cols, int client)
         //{
         //    aipu.SetFrame(data, rows, cols, client);
@@ -260,7 +307,7 @@ namespace WhoIsDemo.model
 
         public void ReloadAipu()
         {
-            if (IsLoadConfiguration && IsStopAipu)
+            if (IsRunVideo && IsStopAipu)
             {
                 aipu.ReloadRecognitionFace();
                 IsStopAipu = false;
@@ -269,7 +316,7 @@ namespace WhoIsDemo.model
 
         public void StopAipu()
         {
-            if (IsLoadConfiguration && !IsStopAipu)
+            if (IsRunVideo && !IsStopAipu)
             {
                 aipu.Terminate();
                 IsStopAipu = true;
@@ -278,13 +325,21 @@ namespace WhoIsDemo.model
         
         public void Terminate()
         {
-            if (IsLoadConfiguration)
+            if (IsRunVideo)
+            {
+                aipu.CloseWindow();
+                aipu.Terminate();
+                IsLoadLibrary = false;                
+                IsRunVideo = false;
+            }
+
+            if (IsLoadLibrary)
             {
                 aipu.Terminate();
-                aipu.Dispose();
-                aipuObserver.Dispose();
-                IsLoadConfiguration = false;
             }
+
+            aipu.Dispose();
+            aipuObserver.Dispose();
         }
         #endregion
     }

@@ -40,6 +40,7 @@ namespace WhoIsDemo.repository
         public const string TRACKMODE_KEY = "mode_track";
         public const string TRACKSPEED_KEY = "speed_track";
         public const string TRACKMOTION_KEY = "motion_track";
+        public const string NUM_CHANNELS_KEY = "num_channels";
 
         private static readonly int KEY_WOW64_32KEY = 0x200;
         private static readonly int KEY_WOW64_64KEY = 0x100;
