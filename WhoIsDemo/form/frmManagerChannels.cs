@@ -269,6 +269,7 @@ namespace WhoIsDemo.form
             Configuration.Instance.NumberWindowsShow = numberWindow;
             SetStateButtonChannel();
             ThrowChannels();
+            EnablePanelControlVideo();
             //Thread videoThread = new Thread(new ThreadStart(ThrowChannels));
             //videoThread.Priority = ThreadPriority.AboveNormal;
             //videoThread.Start();

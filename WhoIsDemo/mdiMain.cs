@@ -80,7 +80,7 @@ namespace WhoIsDemo
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            AipuFace.Instance.Terminate();
             System.Windows.Forms.Application.Exit();
             
             

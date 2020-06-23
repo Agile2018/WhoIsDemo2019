@@ -1,11 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using WhoIsDemo.presenter;
 
@@ -22,6 +17,7 @@ namespace WhoIsDemo.form
         private string idFace;
         private string dateTime;
         private string channel;
+        private string score;
         #endregion
         public CardTwoImage()
         {
@@ -131,6 +127,22 @@ namespace WhoIsDemo.form
                 txtDatetime.Text = value;
             }
             
+        }
+
+        [Category("CardTwo Props")]
+        public string Score
+        {
+            get
+            {
+                return score;
+            }
+
+            set
+            {
+                score = value;
+                txtScore.Text = value;
+            }
+
         }
 
         private void btnSave_Click(object sender, EventArgs e)

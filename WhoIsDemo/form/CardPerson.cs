@@ -15,6 +15,7 @@ namespace WhoIsDemo.form
         private Image photo;
         private string idFace;
         private string channel;
+        private string score;
         #endregion
         public CardPerson()
         {
@@ -87,6 +88,22 @@ namespace WhoIsDemo.form
                 photo = value;
                 picPhoto.Image = value;
             }
+        }
+
+        [Category("Card Props")]
+        public string Score
+        {
+            get
+            {
+                return score;
+            }
+
+            set
+            {
+                score = value;
+                txtScore.Text = value;
+            }
+
         }
 
         public string IdFace { get => idFace; set => idFace = value; }

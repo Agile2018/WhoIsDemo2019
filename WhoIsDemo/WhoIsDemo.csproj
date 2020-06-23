@@ -140,7 +140,6 @@
     <Compile Include="domain\interactor\DropDatabase.cs" />
     <Compile Include="domain\interactor\FindImage.cs" />
     <Compile Include="domain\interactor\HearUser.cs" />
-    <Compile Include="domain\interactor\RequestAipu.cs" />
     <Compile Include="domain\interactor\SynchronizationOfPeopleWithDatabase.cs" />
     <Compile Include="domain\interactor\UpdatePerson.cs" />
     <Compile Include="form\CardPerson.cs">

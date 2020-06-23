@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardTwoImage));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtScore = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblNameChannel = new System.Windows.Forms.Label();
             this.txtDatetime = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -44,7 +47,6 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.picPhotoGallery = new System.Windows.Forms.PictureBox();
-            this.lblNameChannel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPhotoCamera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhotoGallery)).BeginInit();
@@ -55,6 +57,8 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(75)))), ((int)(((byte)(174)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtScore);
+            this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.lblNameChannel);
             this.panel1.Controls.Add(this.txtDatetime);
             this.panel1.Controls.Add(this.label7);
@@ -71,6 +75,26 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.picPhotoGallery);
             this.panel1.Name = "panel1";
+            // 
+            // txtScore
+            // 
+            resources.ApplyResources(this.txtScore, "txtScore");
+            this.txtScore.BackColor = System.Drawing.Color.White;
+            this.txtScore.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtScore.Name = "txtScore";
+            this.txtScore.ReadOnly = true;
+            // 
+            // label8
+            // 
+            resources.ApplyResources(this.label8, "label8");
+            this.label8.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label8.Name = "label8";
+            // 
+            // lblNameChannel
+            // 
+            resources.ApplyResources(this.lblNameChannel, "lblNameChannel");
+            this.lblNameChannel.ForeColor = System.Drawing.Color.White;
+            this.lblNameChannel.Name = "lblNameChannel";
             // 
             // txtDatetime
             // 
@@ -166,12 +190,6 @@
             this.picPhotoGallery.Name = "picPhotoGallery";
             this.picPhotoGallery.TabStop = false;
             // 
-            // lblNameChannel
-            // 
-            resources.ApplyResources(this.lblNameChannel, "lblNameChannel");
-            this.lblNameChannel.ForeColor = System.Drawing.Color.White;
-            this.lblNameChannel.Name = "lblNameChannel";
-            // 
             // CardTwoImage
             // 
             resources.ApplyResources(this, "$this");
@@ -204,5 +222,7 @@
         private System.Windows.Forms.TextBox txtDatetime;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblNameChannel;
+        private System.Windows.Forms.TextBox txtScore;
+        private System.Windows.Forms.Label label8;
     }
 }

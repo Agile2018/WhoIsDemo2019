@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace WhoIsDemo.model
+﻿namespace WhoIsDemo.model
 {
     public class Params
     {
@@ -14,5 +8,6 @@ namespace WhoIsDemo.model
         public string Identification { get; set; }
         public string Register { get; set; }
         public string Client { get; set; }
+        public string Score { get; set; }
     }
 }

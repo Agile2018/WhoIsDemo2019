@@ -24,7 +24,7 @@ namespace WhoIsDemo.form
         
         private bool isAddNewCard = true;
         private bool isFinishNewCard = false;
-        private bool isRunNewCard = false;
+        private bool isRunNewCard = false;        
         public string strNameMenu;
         
 
@@ -212,29 +212,38 @@ namespace WhoIsDemo.form
 
         private void AddPersonToCard(ImageBMP img, Person personNewCard)
         {
-            if (this.countFlowLayoutControls >= sizeMaxFlowLayout)
+            if (filesRecognitionPresenter.IsLoadFile)
             {
-                this.listPersonRegister.Clear();
-                this.lisTimePerson.Clear();
-            }
-
-            if (SearchPersonList(Convert.ToInt32(personNewCard.Params.Id_face),
-                    this.listPersonRegister) == -1)
-            {
-                TimePerson timePerson = new TimePerson();
-                timePerson.id = Convert.ToInt32(personNewCard.Params.Id_face);
-                timePerson.income = DateTime.Now;
-                this.lisTimePerson.Add(timePerson);
-                this.listPersonRegister.Add(personNewCard);
                 this.AddNewCardPerson(img, personNewCard);
             }
             else
             {
-                if (VerifyTimePerson(Convert.ToInt32(personNewCard.Params.Id_face)))
+                if (this.countFlowLayoutControls >= sizeMaxFlowLayout)
                 {
+                    this.listPersonRegister.Clear();
+                    this.lisTimePerson.Clear();
+                }
+
+                if (SearchPersonList(Convert.ToInt32(personNewCard.Params.Id_face),
+                        this.listPersonRegister) == -1)
+                {
+                    TimePerson timePerson = new TimePerson();
+                    timePerson.id = Convert.ToInt32(personNewCard.Params.Id_face);
+                    timePerson.income = DateTime.Now;
+                    this.lisTimePerson.Add(timePerson);
+                    this.listPersonRegister.Add(personNewCard);
                     this.AddNewCardPerson(img, personNewCard);
                 }
+                else
+                {
+                    if (VerifyTimePerson(Convert.ToInt32(personNewCard.Params.Id_face)))
+                    {
+                        this.AddNewCardPerson(img, personNewCard);
+                    }
+                }
             }
+
+            
         }
 
         private void AddImageOfPerson(ImageBMP imageBMP)
@@ -320,7 +329,7 @@ namespace WhoIsDemo.form
                 Bitmap imgCamera = findImagePresenter.ResizeBitmap(imageBMP.imageNew);
                 cardPerson.PhotoCamera = imgCamera;
                 cardPerson.Channel = personNewCard.Params.Client;
-
+                cardPerson.Score = personNewCard.Params.Score;
                 this.flowLayoutPanel1.Invoke(new Action(() =>
                 this.flowLayoutPanel1.Controls.Add(cardPerson)));
                 this.flowLayoutPanel1.Invoke(new Action(() =>
@@ -369,8 +378,8 @@ namespace WhoIsDemo.form
                 
                 this.flowLayoutPanel1.Dispose();
                 
-                this.listPersonRegister.Clear();
-                this.lisTimePerson.Clear();
+                //this.listPersonRegister.Clear();
+                //this.lisTimePerson.Clear();
                 
                 this.imagesNewCard.Clear();
                 this.listPersonNewCard.Clear();
@@ -405,8 +414,7 @@ namespace WhoIsDemo.form
                     managerControlView.DisabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);
                     filesRecognitionPresenter.IsLoadFile = true;
                     filesRecognitionPresenter.LinkVideo = hearUserPresenter.IdVideos[0];
-                    this.btnLoadFile.Enabled = false;
-
+                    this.btnLoadFile.Enabled = false;                    
                     this.btnStopLoadFile.Enabled = true;
                     managerControlView
                         .SetValueTextStatusStrip(StringResource.work,

@@ -314,7 +314,7 @@ namespace WhoIsDemo.form
                 diskPresenter.SaveDatabaseConfiguration(0, databaseConfig);
                 System.Threading.Thread closeLibrary = new System
                 .Threading.Thread(new System.Threading
-                .ThreadStart(RequestAipu.Instance.Terminate));
+                .ThreadStart(AipuFace.Instance.Terminate));
                 closeLibrary.Start();
                 System.Windows.Forms.Application.Exit();
             }
@@ -332,10 +332,12 @@ namespace WhoIsDemo.form
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question, 
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
+                AipuFace.Instance.Terminate();
                 if (dropDatabasePresenter.DropCurrentDatabase())
                 {
                     diskPresenter.FileDelete("iengine.db");
-                    lblOkClearDatabase.Text = "OK";                    
+                    lblOkClearDatabase.Text = "OK";
+                    
                     System.Windows.Forms.Application.Exit();
                 }
                 else

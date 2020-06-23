@@ -38,20 +38,6 @@ namespace WhoIsDemo.model
             aipuObserver = new AipuObserver(aipu);
         }
 
-        //public void LoadConfiguration(string nameFileConfiguration)
-        //{
-        //    try
-        //    {
-        //        aipu.LoadConfiguration(nameFileConfiguration);
-        //        IsLoadConfiguration = true;
-        //    }
-        //    catch (SEHException sehException)
-        //    {
-        //        throw new Exception(sehException.Message);
-
-        //    }
-        //}
-
         public void ConnectDatabase()
         {
             aipu.ConnectDatabase();
@@ -93,53 +79,6 @@ namespace WhoIsDemo.model
             aipu.SetFinishLoop(option);
         }
 
-        //public void SetFileVideo(string file)
-        //{
-        //    aipu.SetFileVideo(file);
-        //}
-
-        //public void SetNameWindow(string name)
-        //{
-        //    aipu.SetNameWindow(name);
-        //}
-
-        //public void SetFramesTotal(int total)
-        //{
-        //    aipu.SetFramesTotal(total);
-        //}
-
-        //public void SetWidthFrame(int value)
-        //{
-        //    aipu.SetWidthFrame(value);
-
-        //}
-
-        //public void SetHeightFrame(int value)
-        //{
-        //    aipu.SetHeightFrame(value);
-
-        //}
-
-        //public void CaptureFlow(int optionFlow)
-        //{
-        //    isTracking = true;
-        //    aipu.CaptureFlow(optionFlow);
-        //}
-
-        //public void SetIpCamera(string ip)
-        //{
-        //    aipu.SetIpCamera(ip);
-        //}
-
-        //public void SetDeviceVideo(string device)
-        //{
-        //    aipu.SetDeviceVideo(device);
-        //}
-
-        //public void SetDeepTrack(string value)
-        //{
-        //    aipu.SetDeepTrack(value);
-        //}
 
         public void SetChannel(int channel)
         {
@@ -154,64 +93,6 @@ namespace WhoIsDemo.model
         {
             aipu.SavePerformance(option);
         }
-        //public void ResetCountRepeatUser()
-        //{
-        //    aipu.ResetCountRepeatUser();
-        //}
-        //public int GetCountRepeatUser()
-        //{
-        //    return aipu.GetCountRepeatUser;
-        //}
-
-        //public void SetFaceConfidenceThresh(int value)
-        //{
-        //    aipu.SetFaceConfidenceThresh(value);
-        //}
-
-        //public void SetRefreshInterval(int value)
-        //{
-        //    aipu.SetRefreshInterval(value);
-        //}
-
-        //public void SetMinEyeDistance(int minDistance)
-        //{
-        //    aipu.SetMinEyeDistance(minDistance);
-        //}
-
-        //public void SetMaxEyeDistance(int maxDistance)
-        //{
-        //    aipu.SetMaxEyeDistance(maxDistance);
-        //}
-
-        //public void SetSequenceFps(int value)
-        //{
-        //    if (value != 0)
-        //    {
-        //        aipu.SetSequenceFps(value);
-        //    }
-            
-
-        //}
-
-        //public void SetClient(int value)
-        //{
-        //    aipu.SetClient(value);
-        //}
-
-        //public void SetFlagFlow(bool flag)
-        //{
-        //    aipu.SetFlagFlow(flag);
-        //}
-
-        //public void ShowWindow(int option)
-        //{
-        //    aipu.ShowWindow(option);
-        //}
-                
-        //public void SetConfigurationDatabase()
-        //{
-        //    aipu.SetConfigurationDatabase();
-        //}
 
         public void StatePlay(int option)
         {
@@ -220,34 +101,7 @@ namespace WhoIsDemo.model
         public void StatePaused(int option)
         {
             aipu.StatePaused(option);
-        }
-        //public void SetTrackingMode(int mode)
-        //{
-        //    aipu.SetTrackingMode(mode);
-        //}
-        //public void SetTrackSpeed(int speed)
-        //{
-        //    aipu.SetTrackSpeed(speed);
-        //}
-        //public void SetMotionOptimization(int motion)
-        //{
-        //    aipu.SetMotionOptimization(motion);
-        //}
-
-        //public void TerminateTracking()
-        //{
-        //    if (isTracking)
-        //    {
-        //        aipu.SetFlagFlow(true);
-        //    }
-            
-        //    isTracking = false;
-        //}
-
-        //public void SetIsRegister(bool option)
-        //{
-        //    aipu.SetIsRegister(option);
-        //}                              
+        }               
         
         public void RecognitionFaceFiles(string file, int client)
         {
@@ -261,34 +115,7 @@ namespace WhoIsDemo.model
         public bool GetIsFinishLoadFiles()
         {
             return aipu.GetIsFinishLoadFiles;
-        }
-
-        //public void InitLibraryIdentify()
-        //{
-        //    aipu.InitLibraryIdentify();
-        //}
-
-        //public void ResetLowScore()
-        //{
-        //    aipu.ResetLowScore();
-        //}
-        //public int GetCountLowScore()
-        //{
-        //    return aipu.GetCountLowScore;
-        //}
-        //public void ResetCountNotDetect()
-        //{
-        //    aipu.ResetCountNotDetect();
-        //}
-        //public int GetCountNotDetect()
-        //{
-        //    return aipu.GetCountNotDetect;
-        //}
-        //public void SendFrame(byte[] data, int rows, int cols, int client)
-        //{
-        //    aipu.SetFrame(data, rows, cols, client);
-
-        //}       
+        }     
 
         public AipuObserver GetObserver()
         {

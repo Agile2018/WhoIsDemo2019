@@ -117,10 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="lblNameChannel.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="lblNameChannel.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 8.25pt, style=Bold</value>
@@ -129,17 +125,8 @@
   <data name="lblNameChannel.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="lblNameChannel.Location" type="System.Drawing.Point, System.Drawing">
-    <value>95, 7</value>
-  </data>
   <data name="lblNameChannel.Size" type="System.Drawing.Size, System.Drawing">
     <value>48, 13</value>
-  </data>
-  <data name="lblNameChannel.TabIndex" type="System.Int32, mscorlib">
-    <value>42</value>
-  </data>
-  <data name="lblNameChannel.Text" xml:space="preserve">
-    <value>Video 1</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>83, 13</value>
@@ -147,20 +134,11 @@
   <data name="label7.Text" xml:space="preserve">
     <value>FECHA/HORA:</value>
   </data>
-  <data name="label6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>120, 35</value>
-  </data>
   <data name="label6.Text" xml:space="preserve">
     <value>Cámara</value>
   </data>
-  <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>5, 35</value>
-  </data>
   <data name="label5.Text" xml:space="preserve">
     <value>Galería</value>
-  </data>
-  <data name="picPhotoCamera.Location" type="System.Drawing.Point, System.Drawing">
-    <value>123, 56</value>
   </data>
   <data name="label4.Text" xml:space="preserve">
     <value>Información</value>
@@ -176,8 +154,5 @@
   </data>
   <data name="label2.Text" xml:space="preserve">
     <value>NOMBRE:</value>
-  </data>
-  <data name="picPhotoGallery.Location" type="System.Drawing.Point, System.Drawing">
-    <value>8, 56</value>
   </data>
 </root>

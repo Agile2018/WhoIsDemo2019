@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardPerson));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtScore = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblChannel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtLastName = new System.Windows.Forms.TextBox();
@@ -39,7 +42,6 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.picPhoto = new System.Windows.Forms.PictureBox();
-            this.lblChannel = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPhoto)).BeginInit();
             this.SuspendLayout();
@@ -49,6 +51,8 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.LightCyan;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtScore);
+            this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.lblChannel);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnSave);
@@ -60,6 +64,25 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.picPhoto);
             this.panel1.Name = "panel1";
+            // 
+            // txtScore
+            // 
+            resources.ApplyResources(this.txtScore, "txtScore");
+            this.txtScore.BackColor = System.Drawing.Color.Cyan;
+            this.txtScore.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtScore.Name = "txtScore";
+            // 
+            // label5
+            // 
+            resources.ApplyResources(this.label5, "label5");
+            this.label5.ForeColor = System.Drawing.Color.CadetBlue;
+            this.label5.Name = "label5";
+            // 
+            // lblChannel
+            // 
+            resources.ApplyResources(this.lblChannel, "lblChannel");
+            this.lblChannel.ForeColor = System.Drawing.Color.CadetBlue;
+            this.lblChannel.Name = "lblChannel";
             // 
             // label4
             // 
@@ -123,12 +146,6 @@
             this.picPhoto.Name = "picPhoto";
             this.picPhoto.TabStop = false;
             // 
-            // lblChannel
-            // 
-            resources.ApplyResources(this.lblChannel, "lblChannel");
-            this.lblChannel.ForeColor = System.Drawing.Color.CadetBlue;
-            this.lblChannel.Name = "lblChannel";
-            // 
             // CardPerson
             // 
             resources.ApplyResources(this, "$this");
@@ -155,5 +172,7 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label lblChannel;
+        private System.Windows.Forms.TextBox txtScore;
+        private System.Windows.Forms.Label label5;
     }
 }

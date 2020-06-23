@@ -5,7 +5,6 @@ using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using WhoIsDemo.domain.interactor;
 using WhoIsDemo.locatable_resources;
 using WhoIsDemo.model;
 using WhoIsDemo.presenter;
@@ -280,6 +279,7 @@ namespace WhoIsDemo.form
                 cardPerson.FirstName = personNewCard.Params.Name;
                 cardPerson.LastName = personNewCard.Params.Lastname;
                 cardPerson.Channel = personNewCard.Params.Client;
+                cardPerson.Score = personNewCard.Params.Score;
                 if (image != null)
                 {
                     Bitmap imgResize = findImagePresenter.ResizeBitmap(image);
