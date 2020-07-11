@@ -70,12 +70,13 @@ namespace WhoIsDemo.domain.interactor
                 Image64 image64 = new Image64();
                 image64.id_face = idFace;
                 image64.data_64 = imageDb.data_64;
-                image64.data_64_aux = imageDb.data_64_aux;
+                if (imageDb.data_64_aux != "empty")
+                {
+                    image64.data_64_aux = imageDb.data_64_aux;
+                }
+                
                 ImageReturn = image64;
-                //List<String> list = new List<string>();
-                //list.Add(imageDb.data_64);
-                //list.Add(imageDb.data_64_aux);
-                //this.ListImage = list;
+                
             }
 
         }

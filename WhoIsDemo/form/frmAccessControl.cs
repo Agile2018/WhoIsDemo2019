@@ -212,17 +212,19 @@ namespace WhoIsDemo.form
 
         private void AddPersonToCard(ImageBMP img, Person personNewCard)
         {
+
+            if (this.countFlowLayoutControls >= sizeMaxFlowLayout)
+            {
+                this.listPersonRegister.Clear();
+                this.lisTimePerson.Clear();
+            }
+
             if (filesRecognitionPresenter.IsLoadFile)
             {
                 this.AddNewCardPerson(img, personNewCard);
             }
             else
-            {
-                if (this.countFlowLayoutControls >= sizeMaxFlowLayout)
-                {
-                    this.listPersonRegister.Clear();
-                    this.lisTimePerson.Clear();
-                }
+            {                
 
                 if (SearchPersonList(Convert.ToInt32(personNewCard.Params.Id_face),
                         this.listPersonRegister) == -1)
@@ -324,10 +326,16 @@ namespace WhoIsDemo.form
                 cardPerson.FirstName = personNewCard.Params.Name;
                 cardPerson.LastName = personNewCard.Params.Lastname;
                 cardPerson.DateTime = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+
                 Bitmap imgGallery = findImagePresenter.ResizeBitmap(imageBMP.imageStore);
                 cardPerson.Photo = imgGallery;
-                Bitmap imgCamera = findImagePresenter.ResizeBitmap(imageBMP.imageNew);
-                cardPerson.PhotoCamera = imgCamera;
+                if (imageBMP.imageNew != null)
+                {
+                    Bitmap imgCamera = findImagePresenter.ResizeBitmap(imageBMP.imageNew);
+                    cardPerson.PhotoCamera = imgCamera;
+                }
+
+
                 cardPerson.Channel = personNewCard.Params.Client;
                 cardPerson.Score = personNewCard.Params.Score;
                 this.flowLayoutPanel1.Invoke(new Action(() =>
@@ -359,11 +367,13 @@ namespace WhoIsDemo.form
 
         private void AddPersonIndentify(Person person)
         {
-            
-            this.listPersonNewCard.Add(person);
-            
-            findImagePresenter.GetListImage64ByUser(Convert
+            if (person.Params.Register == "2" || person.Params.Register == "3")
+            {
+
+                this.listPersonNewCard.Add(person);
+                findImagePresenter.GetListImage64ByUser(Convert
                 .ToInt16(person.Params.Id_face));
+            }                                        
 
         }
 

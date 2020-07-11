@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reactive.Subjects;
-using System.Text;
-using System.Threading.Tasks;
 using WhoIsDemo.model;
 
 namespace WhoIsDemo.domain.interactor
@@ -29,7 +25,7 @@ namespace WhoIsDemo.domain.interactor
         {
             if (!string.IsNullOrEmpty(user))
             {
-                Console.WriteLine("WHOIS USER: " + user);
+                //Console.WriteLine("WHOIS USER: " + user);
                 subjectUser.OnNext(user);
             }
         }
