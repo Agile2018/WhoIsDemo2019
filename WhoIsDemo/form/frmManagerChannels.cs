@@ -268,6 +268,7 @@ namespace WhoIsDemo.form
             Configuration.Instance.IsShowWindow = true;
             Configuration.Instance.NumberWindowsShow = numberWindow;
             SetStateButtonChannel();
+            DisabledChannelsNotUsed();
             ThrowChannels();
             EnablePanelControlVideo();
             //Thread videoThread = new Thread(new ThreadStart(ThrowChannels));
@@ -282,7 +283,8 @@ namespace WhoIsDemo.form
             {
                 case 1:
                     Configuration.Instance.Channels[0].flow = 0;
-                    Configuration.Instance.Channels[0].loop = 0;                    
+                    Configuration.Instance.Channels[0].loop = 0;  
+                    
                     break;
                 case 2:
                     Configuration.Instance.Channels[0].flow = 0;
@@ -313,6 +315,35 @@ namespace WhoIsDemo.form
             }
         }
 
+        private void DisabledChannelsNotUsed()
+        {
+            int numberChannels = Configuration.Instance.NumberChannels + 1;
+            int diff = numberChannels - Configuration.Instance.NumberWindowsShow;
+            switch (diff)
+            {
+                case 1:
+                    Configuration.Instance.Channels[Configuration.Instance.NumberChannels].flow = 1;
+                    Configuration.Instance.Channels[Configuration.Instance.NumberChannels].loop = 1;
+                    break;
+                case 2:
+                    Configuration.Instance.Channels[Configuration.Instance.NumberChannels].flow = 1;
+                    Configuration.Instance.Channels[Configuration.Instance.NumberChannels].loop = 1;
+                    Configuration.Instance.Channels[Configuration.Instance.NumberChannels - 1].flow = 1;
+                    Configuration.Instance.Channels[Configuration.Instance.NumberChannels - 1].loop = 1;
+                    break;
+                case 3:
+                    Configuration.Instance.Channels[Configuration.Instance.NumberChannels].flow = 1;
+                    Configuration.Instance.Channels[Configuration.Instance.NumberChannels].loop = 1;
+                    Configuration.Instance.Channels[Configuration.Instance.NumberChannels - 1].flow = 1;
+                    Configuration.Instance.Channels[Configuration.Instance.NumberChannels - 1].loop = 1;
+                    Configuration.Instance.Channels[Configuration.Instance.NumberChannels - 2].flow = 1;
+                    Configuration.Instance.Channels[Configuration.Instance.NumberChannels - 2].loop = 1;
+
+                    break;
+                default:
+                    break;
+            }
+        }
         private void ThrowChannels()
         {
             AipuFace.Instance.LoadConfiguration(numberWindow);
@@ -358,7 +389,7 @@ namespace WhoIsDemo.form
         private void btnPause2_Click(object sender, EventArgs e)
         {
             AipuFace.Instance.StatePaused(2);
-            btnPlay1.Enabled = true;
+            btnPlay2.Enabled = true;
             btnPause2.Enabled = false;
             Configuration.Instance.Channels[1].flow = 1;
         }
