@@ -9,6 +9,7 @@ using WhoIsDemo.model;
 using WhoIsDemo.presenter;
 using WhoIsDemo.view.tool;
 
+
 namespace WhoIsDemo.form
 {
     public partial class frmAccessControl : Form
@@ -17,16 +18,17 @@ namespace WhoIsDemo.form
         
         private const int sizeMaxFlowLayout = 30;
         private const int elapseFrameRepeat = 10;
-
+        
         #endregion
 
         #region variables
         
+
         private bool isAddNewCard = true;
         private bool isFinishNewCard = false;
         private bool isRunNewCard = false;        
         public string strNameMenu;
-        
+        private int lastUserUnidentified = 0;
 
         private int countFlowLayoutControls = 0;
 
@@ -65,6 +67,7 @@ namespace WhoIsDemo.form
             JoinChannels();
         }
 
+               
         private void JoinChannels()
         {
             int count = 0;
@@ -306,27 +309,30 @@ namespace WhoIsDemo.form
             }
         }
 
+        private void ClearControlFlow()
+        {
+            if (this.countFlowLayoutControls >= sizeMaxFlowLayout)
+            {
+                this.countFlowLayoutControls = 0;
+                this.flowLayoutPanel1.Invoke(new Action(() =>
+                this.flowLayoutPanel1.Controls.Clear()));
+                findImagePresenter.ClearPlanCacheImages();
+                Task.Delay(20);
+            }
+        }
+
         private void AddNewCardPerson(ImageBMP imageBMP, Person personNewCard)
         {
             try
             {
-
-                if (this.countFlowLayoutControls >= sizeMaxFlowLayout)
-                {
-                    this.countFlowLayoutControls = 0;
-                    this.flowLayoutPanel1.Invoke(new Action(() =>
-                    this.flowLayoutPanel1.Controls.Clear()));
-                    findImagePresenter.ClearPlanCacheImages();
-                    Task.Delay(20);
-                }
-
+                ClearControlFlow();
                 CardTwoImage cardPerson = new CardTwoImage();
                 cardPerson.IdFace = personNewCard.Params.Id_face;
                 cardPerson.Id = personNewCard.Params.Identification;
                 cardPerson.FirstName = personNewCard.Params.Name;
                 cardPerson.LastName = personNewCard.Params.Lastname;
                 cardPerson.DateTime = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
-
+                
                 Bitmap imgGallery = findImagePresenter.ResizeBitmap(imageBMP.imageStore);
                 cardPerson.Photo = imgGallery;
                 if (imageBMP.imageNew != null)
@@ -335,7 +341,12 @@ namespace WhoIsDemo.form
                     cardPerson.PhotoCamera = imgCamera;
                 }
 
-
+                if (personNewCard.Params.Register == "3")
+                {
+                    int id = Convert.ToInt32(personNewCard.Params.Id_face);
+                    RemoveUnidentified(id);
+                    cardPerson.BackColor = Color.FromArgb(255, 0, 0);
+                }
                 cardPerson.Channel = personNewCard.Params.Client;
                 cardPerson.Score = personNewCard.Params.Score;
                 this.flowLayoutPanel1.Invoke(new Action(() =>
@@ -344,6 +355,8 @@ namespace WhoIsDemo.form
                 this.flowLayoutPanel1.Refresh()));
                 this.countFlowLayoutControls++;
 
+                
+                
 
             }
             catch (NullReferenceException ex)
@@ -365,11 +378,22 @@ namespace WhoIsDemo.form
 
         }
 
+        private void RemoveUnidentified(int id)
+        {
+            
+            if (lastUserUnidentified != 0)
+            {
+                Database.Instance.DeleteUser(lastUserUnidentified);
+                Database.Instance.DeleteImageUser(lastUserUnidentified);
+            }
+            lastUserUnidentified = id;
+        }
+
         private void AddPersonIndentify(Person person)
         {
             if (person.Params.Register == "2" || person.Params.Register == "3")
             {
-
+                
                 this.listPersonNewCard.Add(person);
                 findImagePresenter.GetListImage64ByUser(Convert
                 .ToInt16(person.Params.Id_face));
@@ -382,6 +406,7 @@ namespace WhoIsDemo.form
             try
             {                
                 isFinishNewCard = true;
+                RemoveUnidentified(0);
                 if (subscriptionHearUser != null) subscriptionHearUser.Dispose();
                 if (subscriptionFindImage != null) subscriptionFindImage.Dispose();
                 if (subscriptionGraffits != null) subscriptionGraffits.Dispose();

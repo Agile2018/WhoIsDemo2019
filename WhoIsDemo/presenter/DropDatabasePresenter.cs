@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WhoIsDemo.domain.interactor;
-using WhoIsDemo.model;
+﻿using WhoIsDemo.domain.interactor;
 
 namespace WhoIsDemo.presenter
 {

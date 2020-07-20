@@ -19,7 +19,7 @@ namespace WhoIsDemo.form
         public string strNameMenu;        
         ManagerControlView managerControlView = new ManagerControlView();
         DiskPresenter diskPresenter = new DiskPresenter();
-        DropDatabasePresenter dropDatabasePresenter = new DropDatabasePresenter();
+        //DropDatabasePresenter dropDatabasePresenter = new DropDatabasePresenter();
         private RegistryValueDataReader registryValueDataReader = new RegistryValueDataReader();
         private StatusStrip status;
         private int channelCurrent = 0;
@@ -333,19 +333,29 @@ namespace WhoIsDemo.form
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
                 AipuFace.Instance.Terminate();
-                if (dropDatabasePresenter.DropCurrentDatabase())
-                {
-                    diskPresenter.FileDelete("iengine.db");
-                    lblOkClearDatabase.Text = "OK";
+
+                Database.Instance.DropDatabase();
+
+                diskPresenter.FileDelete("iengine.db");
+                lblOkClearDatabase.Text = "OK";
+                this.MdiParent.Close();                
+                
+
+                //System.Windows.Forms.Application.Exit();
+
+                //if (dropDatabasePresenter.DropCurrentDatabase())
+                //{
+                //    diskPresenter.FileDelete("iengine.db");
+                //    lblOkClearDatabase.Text = "OK";
                     
-                    System.Windows.Forms.Application.Exit();
-                }
-                else
-                {
-                    managerControlView.SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
-                        .GetString("error"),
-                        0, this.status);
-                }
+                //    System.Windows.Forms.Application.Exit();
+                //}
+                //else
+                //{
+                //    managerControlView.SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
+                //        .GetString("error"),
+                //        0, this.status);
+                //}
             }            
             
             

@@ -143,6 +143,7 @@ namespace WhoIsDemo.form
             
             if (person.Params.Register == "1")
             {
+                
                 this.listPersonNewCard.Add(person);
                 findImagePresenter.GetImage64ByUser(Convert
                 .ToInt16(person.Params.Id_face));

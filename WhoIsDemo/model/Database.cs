@@ -127,6 +127,18 @@ namespace WhoIsDemo.model
             return result.ModifiedCount != 0;
         }
 
+        public void DeleteUser(int idFace)
+        {
+            var filter = Builders<PersonDb>.Filter.Eq("id_face", idFace);
+            users.DeleteOne(filter);
+        }
+
+        public void DeleteImageUser(int idFace)
+        {
+            var filter = Builders<Image>.Filter.Eq("id_face", idFace);
+            images.DeleteOne(filter);
+        }
+
         public Image GetImageByUser(int idFace)
         {
             try

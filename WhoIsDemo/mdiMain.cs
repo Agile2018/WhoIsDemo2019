@@ -78,12 +78,39 @@ namespace WhoIsDemo
             
         }        
 
+        public void CloseApplication()
+        {
+            try
+            {
+                for (int i = 0; i < Application.OpenForms.Count; i++)
+                {
+                    if (Application.OpenForms[i] != this)
+                    {
+                        Application.OpenForms[i].Close();
+                    }
+                }
+
+                System.Threading.Thread closeLibrary = new System
+                    .Threading.Thread(new System.Threading
+                    .ThreadStart(AipuFace.Instance.Terminate));
+                closeLibrary.Start();
+                Thread.Sleep(100);
+                System.Windows.Forms.Application.Exit();
+            }
+            catch (System.InvalidOperationException ex)
+            {
+
+                Console.WriteLine(ex.Message);
+            }
+            
+        }
+
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AipuFace.Instance.Terminate();
-            System.Windows.Forms.Application.Exit();
-            
-            
+
+            CloseApplication();
+
+
         }
   
 
@@ -230,11 +257,9 @@ namespace WhoIsDemo
 
         private void mdiMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            System.Threading.Thread closeLibrary = new System
-                .Threading.Thread(new System.Threading
-                .ThreadStart(AipuFace.Instance.Terminate));
-            closeLibrary.Start();
-            
+            CloseApplication();
+
+
         }
                 
         private void GetDatabaseConfiguration()
