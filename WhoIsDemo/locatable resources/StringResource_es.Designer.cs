@@ -214,6 +214,15 @@ namespace WhoIsDemo.locatable_resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Coloque en pausa los canales..
+        /// </summary>
+        internal static string set_pause_channels {
+            get {
+                return ResourceManager.GetString("set_pause_channels", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Librería detenida..
         /// </summary>
         internal static string stop_library {
@@ -246,6 +255,15 @@ namespace WhoIsDemo.locatable_resources {
         internal static string verify_key {
             get {
                 return ResourceManager.GetString("verify_key", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a El formulario no tiene ningún canal adjunto..
+        /// </summary>
+        internal static string video_not_found {
+            get {
+                return ResourceManager.GetString("video_not_found", resourceCulture);
             }
         }
         

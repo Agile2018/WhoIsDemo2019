@@ -54,6 +54,11 @@ namespace WhoIsDemo.model
             aipu.LoadConfiguration(option);
         }
 
+        public void LoadConfigurationPipe(int pipeline)
+        {
+            aipu.LoadConfigurationPipe(pipeline);
+        }
+
         public void InitWindowMain(int option)
         {
             aipu.InitWindowMain(option);

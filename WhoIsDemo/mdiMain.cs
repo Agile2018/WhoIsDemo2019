@@ -94,8 +94,10 @@ namespace WhoIsDemo
                     .Threading.Thread(new System.Threading
                     .ThreadStart(AipuFace.Instance.Terminate));
                 closeLibrary.Start();
+
                 Thread.Sleep(100);
                 System.Windows.Forms.Application.Exit();
+
             }
             catch (System.InvalidOperationException ex)
             {
@@ -109,7 +111,7 @@ namespace WhoIsDemo
         {
 
             CloseApplication();
-
+            
 
         }
   
@@ -291,7 +293,7 @@ namespace WhoIsDemo
             frmEnroll frmWork = new frmEnroll() { MdiParent = this };
             frmWork.strNameMenu = "enrolamientoToolStripMenuItem";            
             enrolamientoToolStripMenuItem.Enabled = false;            
-            configuraciónToolStripMenuItem.Enabled = false;
+            //configuraciónToolStripMenuItem.Enabled = false;
             frmWork.Show();
         }
 
@@ -305,7 +307,7 @@ namespace WhoIsDemo
             
             controlDeEntradaToolStripMenuItem.Enabled = false;
             
-            configuraciónToolStripMenuItem.Enabled = false;
+            //configuraciónToolStripMenuItem.Enabled = false;
             frmWork.Show();
         }
 

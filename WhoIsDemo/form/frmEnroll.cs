@@ -378,7 +378,7 @@ namespace WhoIsDemo.form
                 this.listPersonNewCard.Clear();
                 managerControlView.EnabledOptionMenu(strNameMenu, mdiMain.NAME);
                 managerControlView.EnabledOptionMenu("controlDeEntradaToolStripMenuItem", mdiMain.NAME);
-                managerControlView.EnabledOptionMenu("configuraciónToolStripMenuItem", mdiMain.NAME);
+                //managerControlView.EnabledOptionMenu("configuraciónToolStripMenuItem", mdiMain.NAME);
             }
             catch (System.AccessViolationException ex)
             {
@@ -403,7 +403,38 @@ namespace WhoIsDemo.form
 
         private void btnLoadFile_Click(object sender, EventArgs e)
         {
-            if (Configuration.Instance.IsShowWindow && CheckPauseChannels())
+            bool next = false;
+            string message = string.Empty;
+            if (Configuration.Instance.IsShowWindow)
+            {
+                if (CheckPauseChannels())
+                {
+                    next = true;
+                }
+                else
+                {
+                    message = ManagerResource
+                   .Instance.resourceManager.GetString("set_pause_channels");
+
+                }
+            }
+            else
+            {
+                if (hearUserPresenter.IdVideos.Count > 0)
+                {
+                    int pipe = hearUserPresenter.IdVideos[0];
+                    AipuFace.Instance.LoadConfigurationPipe(pipe);
+                    next = true;
+                }
+                else
+                {
+                    message = ManagerResource
+                   .Instance.resourceManager.GetString("video_not_found");
+
+                }
+            }
+
+            if (next)
             {
                 if (this.openFileDialog.ShowDialog() == DialogResult.OK)
                 {                    
@@ -427,8 +458,7 @@ namespace WhoIsDemo.form
             }
             else
             {
-                managerControlView.SetValueTextStatusStrip(ManagerResource
-                    .Instance.resourceManager.GetString("window_disabled"),
+                managerControlView.SetValueTextStatusStrip(message,
                         0, this.status);
             }
         }

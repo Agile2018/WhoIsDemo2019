@@ -87,114 +87,119 @@ namespace WhoIsDemo.form
         {
             EnableChannels();
             EnablePanelControlVideo();
+            EnableStateButton();
         }
 
         private void EnableStateButton()
         {
-            for (int i = 0; i < Configuration.Instance.Channels.Count; i++)
+            if (Configuration.Instance.IsShowWindow)
             {
-                if (Configuration.Instance.Channels[i].flow == 0)
+                for (int i = 0; i < Configuration.Instance.Channels.Count; i++)
                 {
-                    switch (i)
+                    if (Configuration.Instance.Channels[i].flow == 0)
                     {
-                        case 0:
-                            btnPlay1.Enabled = false;
-                            btnPause1.Enabled = true;
-                            break;
-                        case 1:
-                            btnPlay2.Enabled = false;
-                            btnPause2.Enabled = true;
-                            break;
-                        case 2:
-                            btnPlay3.Enabled = false;
-                            btnPause3.Enabled = true;
-                            break;
-                        case 3:
-                            btnPlay4.Enabled = false;
-                            btnPause4.Enabled = true;
-                            break;
-                        default:
-                            break;
+                        switch (i)
+                        {
+                            case 0:
+                                btnPlay1.Enabled = false;
+                                btnPause1.Enabled = true;
+                                break;
+                            case 1:
+                                btnPlay2.Enabled = false;
+                                btnPause2.Enabled = true;
+                                break;
+                            case 2:
+                                btnPlay3.Enabled = false;
+                                btnPause3.Enabled = true;
+                                break;
+                            case 3:
+                                btnPlay4.Enabled = false;
+                                btnPause4.Enabled = true;
+                                break;
+                            default:
+                                break;
+                        }
                     }
-                }
-                else
-                {
-                    switch (i)
+                    else
                     {
-                        case 0:
-                            btnPlay1.Enabled = true;
-                            btnPause1.Enabled = false;
-                            break;
-                        case 1:
-                            btnPlay2.Enabled = true;
-                            btnPause2.Enabled = false;
-                            break;
-                        case 2:
-                            btnPlay3.Enabled = true;
-                            btnPause3.Enabled = false;
-                            break;
-                        case 3:
-                            btnPlay4.Enabled = true;
-                            btnPause4.Enabled = false;
-                            break;
-                        default:
-                            break;
+                        switch (i)
+                        {
+                            case 0:
+                                btnPlay1.Enabled = true;
+                                btnPause1.Enabled = false;
+                                break;
+                            case 1:
+                                btnPlay2.Enabled = true;
+                                btnPause2.Enabled = false;
+                                break;
+                            case 2:
+                                btnPlay3.Enabled = true;
+                                btnPause3.Enabled = false;
+                                break;
+                            case 3:
+                                btnPlay4.Enabled = true;
+                                btnPause4.Enabled = false;
+                                break;
+                            default:
+                                break;
+                        }
                     }
-                }
 
-                if (Configuration.Instance.Channels[i].loop == 0)
-                {
-                    switch (i)
+                    if (Configuration.Instance.Channels[i].loop == 0)
                     {
-                        case 0:
-                            btnRunFlow1.Enabled = false;
-                            btnQuitLoop1.Enabled = true;
-                            break;
-                        case 1:
-                            btnRunFlow2.Enabled = false;
-                            btnQuitLoop2.Enabled = true;
-                            break;
-                        case 2:
-                            btnRunFlow3.Enabled = false;
-                            btnQuitLoop3.Enabled = true;
-                            break;
-                        case 3:
-                            btnRunFlow4.Enabled = false;
-                            btnQuitLoop4.Enabled = true;
-                            break;
-                        default:
-                            break;
+                        switch (i)
+                        {
+                            case 0:
+                                btnRunFlow1.Enabled = false;
+                                btnQuitLoop1.Enabled = true;
+                                break;
+                            case 1:
+                                btnRunFlow2.Enabled = false;
+                                btnQuitLoop2.Enabled = true;
+                                break;
+                            case 2:
+                                btnRunFlow3.Enabled = false;
+                                btnQuitLoop3.Enabled = true;
+                                break;
+                            case 3:
+                                btnRunFlow4.Enabled = false;
+                                btnQuitLoop4.Enabled = true;
+                                break;
+                            default:
+                                break;
+                        }
                     }
-                }
-                else
-                {
-                    switch (i)
+                    else
                     {
-                        case 0:
-                            btnRunFlow1.Enabled = true;
-                            btnQuitLoop1.Enabled = false;
-                            panel1Channel1.Enabled = false;
-                            break;
-                        case 1:
-                            btnRunFlow2.Enabled = true;
-                            btnQuitLoop2.Enabled = false;
-                            panel1Channel2.Enabled = false;
-                            break;
-                        case 2:
-                            btnRunFlow3.Enabled = true;
-                            btnQuitLoop3.Enabled = false;
-                            panel1Channel3.Enabled = false;
-                            break;
-                        case 3:
-                            btnRunFlow4.Enabled = true;
-                            btnQuitLoop4.Enabled = false;
-                            panel1Channel4.Enabled = false;
-                            break;
-                        default:
-                            break;
+                        switch (i)
+                        {
+                            case 0:
+                                btnRunFlow1.Enabled = true;
+                                btnQuitLoop1.Enabled = false;
+                                panel1Channel1.Enabled = false;
+                                break;
+                            case 1:
+                                btnRunFlow2.Enabled = true;
+                                btnQuitLoop2.Enabled = false;
+                                panel1Channel2.Enabled = false;
+                                break;
+                            case 2:
+                                btnRunFlow3.Enabled = true;
+                                btnQuitLoop3.Enabled = false;
+                                panel1Channel3.Enabled = false;
+                                break;
+                            case 3:
+                                btnRunFlow4.Enabled = true;
+                                btnQuitLoop4.Enabled = false;
+                                panel1Channel4.Enabled = false;
+                                break;
+                            default:
+                                break;
+                        }
                     }
                 }
             }
+                
         }
         private void EnablePanelControlVideo()
         {
@@ -242,8 +247,7 @@ namespace WhoIsDemo.form
                     default:
                         break;
                 }
-
-                EnableStateButton();
+               
             }
         }
 

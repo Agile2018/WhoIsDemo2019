@@ -400,9 +400,36 @@ namespace WhoIsDemo.presenter
 
         public void GenerateListChannels()
         {
-            Configuration.Instance.Channels.Clear();
-            int lim = Configuration.Instance.NumberChannels + 1;
-            for (int i = 0; i < lim; i++)
+            if (Configuration.Instance.Channels.Count == 0)
+            {
+                int news = Configuration.Instance.NumberChannels + 1;
+                AddNewsChannels(news);
+            }
+            else
+            {
+                int news = (Configuration.Instance.NumberChannels + 1) - 
+                    Configuration.Instance.Channels.Count;
+                AddNewsChannels(news);
+                UpdateChannels();
+            }
+
+
+
+            //Configuration.Instance.Channels.Clear();
+            //int lim = Configuration.Instance.NumberChannels + 1;
+            //for (int i = 0; i < lim; i++)
+            //{
+            //    Channel channel = new Channel();
+            //    channel.id = i;
+            //    Identify identify = ReadIdentifyConfiguration(i);
+            //    channel.task = identify.Params.is_register;
+            //    Configuration.Instance.Channels.Add(channel);
+            //}
+        }        
+
+        private void AddNewsChannels(int news)
+        {
+            for (int i = 0; i < news; i++)
             {
                 Channel channel = new Channel();
                 channel.id = i;
@@ -411,6 +438,16 @@ namespace WhoIsDemo.presenter
                 Configuration.Instance.Channels.Add(channel);
             }
         }
+
+        private void UpdateChannels()
+        {
+            for (int i = 0; i < Configuration.Instance.Channels.Count; i++)
+            {
+                Identify identify = ReadIdentifyConfiguration(i);
+                Configuration.Instance.Channels[i].task = identify.Params.is_register;
+            }
+        }
+
         #endregion
     }
 }

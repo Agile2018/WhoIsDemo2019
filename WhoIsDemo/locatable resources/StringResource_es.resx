@@ -168,6 +168,9 @@
   <data name="save_ok" xml:space="preserve">
     <value>Datos guardados correctamente.</value>
   </data>
+  <data name="set_pause_channels" xml:space="preserve">
+    <value>Coloque en pausa los canales.</value>
+  </data>
   <data name="stop_library" xml:space="preserve">
     <value>Librería detenida.</value>
   </data>
@@ -179,6 +182,9 @@
   </data>
   <data name="verify_key" xml:space="preserve">
     <value>Verifique la llave, por favor.</value>
+  </data>
+  <data name="video_not_found" xml:space="preserve">
+    <value>El formulario no tiene ningún canal adjunto.</value>
   </data>
   <data name="video_ok" xml:space="preserve">
     <value>El video es correcto.</value>
