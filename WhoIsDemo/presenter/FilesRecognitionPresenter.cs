@@ -61,6 +61,12 @@ namespace WhoIsDemo.presenter
             subjectLoad.OnNext(true);
             
         }
+
+        public void AddCollectionOfImages(string folder, int client, int doing)
+        {
+            AipuFace.Instance.AddCollectionOfImages(folder, client, doing);
+        }
+
         #endregion
     }
 }

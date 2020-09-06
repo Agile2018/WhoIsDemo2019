@@ -156,6 +156,9 @@
   <data name="low_score" xml:space="preserve">
     <value>Score bajo:</value>
   </data>
+  <data name="pipe_not loaded" xml:space="preserve">
+    <value>Los canales de videos no están cargados.</value>
+  </data>
   <data name="reload_library" xml:space="preserve">
     <value>Librería recargada.</value>
   </data>

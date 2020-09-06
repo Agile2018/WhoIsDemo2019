@@ -84,6 +84,35 @@ namespace WhoIsDemo.model
             aipu.SetFinishLoop(option);
         }
 
+        public void SetTaskIdentify(int value, int option)
+        {
+            aipu.SetTaskIdentify(value, option);
+        }
+
+        public void ResetEnrollVideo(int option)
+        {
+            aipu.ResetEnrollVideo(option);
+        }
+
+        public void SetColourTextFrameOne(float red, float green, float blue)
+        {
+            aipu.SetColourTextFrameOne(red, green, blue);
+        }
+
+        public void SetColourTextFrameTwo(float red, float green, float blue)
+        {
+            aipu.SetColourTextFrameTwo(red, green, blue);
+        }
+
+        public void SetColourTextFrameThree(float red, float green, float blue)
+        {
+            aipu.SetColourTextFrameThree(red, green, blue);
+        }
+
+        public void SetColourTextFrameFour(float red, float green, float blue)
+        {
+            aipu.SetColourTextFrameFour(red, green, blue);
+        }
 
         public void SetChannel(int channel)
         {
@@ -111,6 +140,11 @@ namespace WhoIsDemo.model
         public void RecognitionFaceFiles(string file, int client)
         {
             aipu.RecognitionFaceFiles(file, client);
+        }
+
+        public void AddCollectionOfImages(string folder, int client, int doing)
+        {
+            aipu.AddCollectionOfImages(folder, client, doing);
         }
 
         public void SetIsFinishLoadFiles(bool value)

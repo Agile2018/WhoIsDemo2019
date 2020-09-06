@@ -128,18 +128,369 @@
   <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
   </data>
+  <data name="gbUser.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
+  </data>
+  <data name="btnScoreEnroll.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnScoreEnroll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnScoreEnroll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>56, 39</value>
+  </data>
+  <data name="btnScoreEnroll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 31</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="btnScoreEnroll.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;btnScoreEnroll.Name" xml:space="preserve">
+    <value>btnScoreEnroll</value>
+  </data>
+  <data name="&gt;&gt;btnScoreEnroll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnScoreEnroll.Parent" xml:space="preserve">
+    <value>gbFile</value>
+  </data>
+  <data name="&gt;&gt;btnScoreEnroll.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnForcedEnroll.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnForcedEnroll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnForcedEnroll.Location" type="System.Drawing.Point, System.Drawing">
+    <value>10, 39</value>
+  </data>
+  <data name="btnForcedEnroll.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 31</value>
+  </data>
+  <data name="btnForcedEnroll.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="&gt;&gt;btnForcedEnroll.Name" xml:space="preserve">
+    <value>btnForcedEnroll</value>
+  </data>
+  <data name="&gt;&gt;btnForcedEnroll.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnForcedEnroll.Parent" xml:space="preserve">
+    <value>gbFile</value>
+  </data>
+  <data name="&gt;&gt;btnForcedEnroll.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="label3.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>54, 23</value>
+  </data>
+  <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>35, 13</value>
+  </data>
+  <data name="label3.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Score</value>
+  </data>
+  <data name="&gt;&gt;label3.Name" xml:space="preserve">
+    <value>label3</value>
+  </data>
+  <data name="&gt;&gt;label3.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label3.Parent" xml:space="preserve">
+    <value>gbFile</value>
+  </data>
+  <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>7, 23</value>
+  </data>
+  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>40, 13</value>
+  </data>
+  <data name="label1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Forced</value>
+  </data>
+  <data name="&gt;&gt;label1.Name" xml:space="preserve">
+    <value>label1</value>
+  </data>
+  <data name="&gt;&gt;label1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
+    <value>gbFile</value>
+  </data>
+  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="gbFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>115, 17</value>
+  </data>
+  <data name="gbFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 83</value>
+  </data>
+  <data name="gbFile.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="gbFile.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="&gt;&gt;gbFile.Name" xml:space="preserve">
+    <value>gbFile</value>
+  </data>
+  <data name="&gt;&gt;gbFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbFile.Parent" xml:space="preserve">
+    <value>gbUser</value>
+  </data>
+  <data name="&gt;&gt;gbFile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="btnEnrollUserVideo.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnEnrollUserVideo.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnEnrollUserVideo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>28, 47</value>
+  </data>
+  <data name="btnEnrollUserVideo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 30</value>
+  </data>
+  <data name="btnEnrollUserVideo.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="&gt;&gt;btnEnrollUserVideo.Name" xml:space="preserve">
+    <value>btnEnrollUserVideo</value>
+  </data>
+  <data name="&gt;&gt;btnEnrollUserVideo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnEnrollUserVideo.Parent" xml:space="preserve">
+    <value>gbVideo</value>
+  </data>
+  <data name="&gt;&gt;btnEnrollUserVideo.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="cboVideos.Location" type="System.Drawing.Point, System.Drawing">
+    <value>13, 20</value>
+  </data>
+  <data name="cboVideos.Size" type="System.Drawing.Size, System.Drawing">
+    <value>70, 21</value>
+  </data>
+  <data name="cboVideos.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;cboVideos.Name" xml:space="preserve">
+    <value>cboVideos</value>
+  </data>
+  <data name="&gt;&gt;cboVideos.Type" xml:space="preserve">
+    <value>System.Windows.Forms.ComboBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;cboVideos.Parent" xml:space="preserve">
+    <value>gbVideo</value>
+  </data>
+  <data name="&gt;&gt;cboVideos.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="gbVideo.Location" type="System.Drawing.Point, System.Drawing">
+    <value>11, 18</value>
+  </data>
+  <data name="gbVideo.Size" type="System.Drawing.Size, System.Drawing">
+    <value>97, 83</value>
+  </data>
+  <data name="gbVideo.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="gbVideo.Text" xml:space="preserve">
+    <value>Video</value>
+  </data>
+  <data name="&gt;&gt;gbVideo.Name" xml:space="preserve">
+    <value>gbVideo</value>
+  </data>
+  <data name="&gt;&gt;gbVideo.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbVideo.Parent" xml:space="preserve">
+    <value>gbUser</value>
+  </data>
+  <data name="&gt;&gt;gbVideo.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="gbUser.Enabled" type="System.Boolean, mscorlib">
+    <value>False</value>
+  </data>
+  <data name="gbUser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>406, 12</value>
+  </data>
+  <data name="gbUser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>218, 117</value>
+  </data>
+  <data name="gbUser.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="gbUser.Text" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="&gt;&gt;gbUser.Name" xml:space="preserve">
+    <value>gbUser</value>
+  </data>
+  <data name="&gt;&gt;gbUser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;gbUser.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;gbUser.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="rbUser.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbUser.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rbUser.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 70</value>
+  </data>
+  <data name="rbUser.Size" type="System.Drawing.Size, System.Drawing">
+    <value>47, 17</value>
+  </data>
+  <data name="rbUser.TabIndex" type="System.Int32, mscorlib">
+    <value>2</value>
+  </data>
+  <data name="rbUser.Text" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="&gt;&gt;rbUser.Name" xml:space="preserve">
+    <value>rbUser</value>
+  </data>
+  <data name="&gt;&gt;rbUser.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbUser.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;rbUser.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="rbImport.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbImport.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="rbImport.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 46</value>
+  </data>
+  <data name="rbImport.Size" type="System.Drawing.Size, System.Drawing">
+    <value>54, 17</value>
+  </data>
+  <data name="rbImport.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="rbImport.Text" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="&gt;&gt;rbImport.Name" xml:space="preserve">
+    <value>rbImport</value>
+  </data>
+  <data name="&gt;&gt;rbImport.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbImport.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;rbImport.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="rbNone.AutoSize" type="System.Boolean, mscorlib">
+    <value>True</value>
+  </data>
+  <data name="rbNone.Location" type="System.Drawing.Point, System.Drawing">
+    <value>24, 22</value>
+  </data>
+  <data name="rbNone.Size" type="System.Drawing.Size, System.Drawing">
+    <value>51, 17</value>
+  </data>
+  <data name="rbNone.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="rbNone.Text" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="&gt;&gt;rbNone.Name" xml:space="preserve">
+    <value>rbNone</value>
+  </data>
+  <data name="&gt;&gt;rbNone.Type" xml:space="preserve">
+    <value>System.Windows.Forms.RadioButton, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;rbNone.Parent" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;rbNone.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>16, 12</value>
+  </data>
+  <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>190, 104</value>
+  </data>
+  <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="groupBox1.Text" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Name" xml:space="preserve">
+    <value>groupBox1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
   <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="label2.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
   <data name="label2.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 14pt, style=Bold</value>
   </data>
+  <data name="label2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>235, 9</value>
+    <value>258, 9</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>115, 23</value>
@@ -160,7 +511,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>2</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -179,6 +530,9 @@
   </data>
   <data name="lblQuantityRecords.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 12pt, style=Bold</value>
+  </data>
+  <data name="lblQuantityRecords.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="lblQuantityRecords.Location" type="System.Drawing.Point, System.Drawing">
     <value>97, 6</value>
@@ -210,8 +564,11 @@
   <data name="btnDownRecords.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
+  <data name="btnDownRecords.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="btnDownRecords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 311</value>
+    <value>208, 322</value>
   </data>
   <data name="btnDownRecords.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 58</value>
@@ -233,6 +590,9 @@
   </data>
   <data name="btnUploadRecords.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
+  </data>
+  <data name="btnUploadRecords.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnUploadRecords.Location" type="System.Drawing.Point, System.Drawing">
     <value>209, 37</value>
@@ -260,6 +620,9 @@
   </data>
   <data name="btnStopLoadFile.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
+  </data>
+  <data name="btnStopLoadFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnStopLoadFile.Location" type="System.Drawing.Point, System.Drawing">
     <value>200, 3</value>
@@ -292,7 +655,7 @@
     <value>16, 37</value>
   </data>
   <data name="flpDatabase.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 338</value>
+    <value>190, 349</value>
   </data>
   <data name="flpDatabase.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -311,6 +674,9 @@
   </data>
   <data name="btnLoadFile.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
+  </data>
+  <data name="btnLoadFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="btnLoadFile.Location" type="System.Drawing.Point, System.Drawing">
     <value>155, 3</value>
@@ -343,10 +709,10 @@
     <value>BottomUp</value>
   </data>
   <data name="flowLayoutPanel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>273, 0</value>
+    <value>320, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>311, 387</value>
+    <value>311, 398</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>11</value>
@@ -371,6 +737,9 @@
   </data>
   <data name="label4.Font" type="System.Drawing.Font, System.Drawing">
     <value>Tahoma, 12pt, style=Bold</value>
+  </data>
+  <data name="label4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
   </data>
   <data name="label4.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 6</value>
@@ -409,10 +778,10 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>584, 434</value>
+    <value>631, 534</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>43</value>
+    <value>132</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -436,7 +805,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>584, 434</value>
+    <value>631, 534</value>
   </data>
   <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
     <value>Manual</value>

@@ -93,6 +93,16 @@ namespace WhoIsDemo.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap account_plus_outline {
+            get {
+                object obj = ResourceManager.GetObject("account_plus_outline", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap agile {
             get {
                 object obj = ResourceManager.GetObject("agile", resourceCulture);
@@ -196,6 +206,16 @@ namespace WhoIsDemo.Properties {
         internal static System.Drawing.Bitmap done {
             get {
                 object obj = ResourceManager.GetObject("done", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap expand_all {
+            get {
+                object obj = ResourceManager.GetObject("expand_all", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

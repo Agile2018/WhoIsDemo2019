@@ -113,20 +113,25 @@ namespace WhoIsDemo.form
                 txtMinEye.Text = (string.IsNullOrEmpty(detect.Params.mineye.ToString())) ? "0" :
                     detect.Params.mineye.ToString();
                 txtModelQuality.Text = (string.IsNullOrEmpty(detect.Params.qualitymodel.ToString())) ? "0" :
-                    detect.Params.qualitymodel.ToString();                
+                    detect.Params.qualitymodel.ToString();
+                cboDetectorMode.SelectedIndex = detect.Params.modedetect;
+                cboExtractionMode.SelectedIndex = detect.Params.extractionmode;
+                /////////////
                 managerControlView.SetValueToComboBox(cboDetectForced,
                     identify.Params.A_FaceDetectionForced.ToString());
                 managerControlView.SetValueToComboBox(cboIdentificationSpeed,
                     identify.Params.A_IdentificationSpeed.ToString());              
-
                 txtASimilarity.Text = (string.IsNullOrEmpty(identify.Params.A_SimilarityThreshold.ToString())) ? "0" :
                     identify.Params.A_SimilarityThreshold.ToString();
-
                 txtBestMatched.Text = (string.IsNullOrEmpty(identify.Params.A_BestMatchedCandidates.ToString())) ? "0" :
                     identify.Params.A_BestMatchedCandidates.ToString();
-                cboDetectorMode.SelectedIndex = detect.Params.modedetect;
-                
-                cboExtractionMode.SelectedIndex = detect.Params.extractionmode;
+                cboBiometricLogLevel.SelectedIndex = identify.Params.A_BiometricLogLevel;
+                cboIgnoreMultipleFaces.SelectedIndex = identify.Params.A_IgnoreMultipleFaces;
+                cboFaceDetectionMode.SelectedIndex = identify.Params.A_FaceDetectionMode;
+                txtSearchorExtractionThreads.Text = (string.IsNullOrEmpty(identify.Params.A_SearchorExtractionThreads.ToString())) ? "0" :
+                    identify.Params.A_SearchorExtractionThreads.ToString();
+                cboFaceExtractionMode.SelectedIndex = identify.Params.A_FaceExtractionMode;
+
                 cboRegisterUser.SelectedIndex = identify.Params.is_register;
             }
 
@@ -332,7 +337,7 @@ namespace WhoIsDemo.form
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question, 
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
-                AipuFace.Instance.Terminate();
+                //AipuFace.Instance.Terminate();
 
                 Database.Instance.DropDatabase();
 
@@ -553,8 +558,12 @@ namespace WhoIsDemo.form
                 paramsIdentify.A_FaceDetectionForced = Convert.ToInt16(cboDetectForced.Text);
                 paramsIdentify.A_IdentificationSpeed = Convert.ToInt16(cboIdentificationSpeed.Text);
                 paramsIdentify.A_SimilarityThreshold = Convert.ToInt16(txtASimilarity.Text);
-                paramsIdentify.A_FaceDetectThreshold = Convert.ToInt16(txtAccurancy.Text);
-                paramsIdentify.A_BestMatchedCandidates = Convert.ToInt16(txtBestMatched.Text);                
+                paramsIdentify.A_BiometricLogLevel = cboBiometricLogLevel.SelectedIndex;
+                paramsIdentify.A_BestMatchedCandidates = Convert.ToInt16(txtBestMatched.Text);
+                paramsIdentify.A_IgnoreMultipleFaces = cboIgnoreMultipleFaces.SelectedIndex;
+                paramsIdentify.A_FaceDetectionMode = cboFaceDetectionMode.SelectedIndex;
+                paramsIdentify.A_SearchorExtractionThreads = Convert.ToInt16(txtSearchorExtractionThreads.Text);
+                paramsIdentify.A_FaceExtractionMode = cboFaceExtractionMode.SelectedIndex;
                 paramsIdentify.is_register = cboRegisterUser.SelectedIndex;
                 detect.Params = paramsDetect;
                 identify.Params = paramsIdentify;
@@ -708,6 +717,9 @@ namespace WhoIsDemo.form
             
         }
 
-
+        private void txtSearchorExtractionThreads_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.managerControlView.OnlyInteger(e);
+        }
     }
 }

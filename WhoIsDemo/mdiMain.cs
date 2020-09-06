@@ -18,6 +18,7 @@ namespace WhoIsDemo
         public const string NAME = "mdiMain";
         #endregion
         #region variables
+        private bool flagCloseApplication = false;
         private ManagerControlView managerControlView = new ManagerControlView();
         DiskPresenter diskPresenter = new DiskPresenter();
         private RegistryValueDataReader registryValueDataReader = new RegistryValueDataReader();
@@ -82,6 +83,7 @@ namespace WhoIsDemo
         {
             try
             {
+                flagCloseApplication = true;
                 for (int i = 0; i < Application.OpenForms.Count; i++)
                 {
                     if (Application.OpenForms[i] != this)
@@ -172,11 +174,15 @@ namespace WhoIsDemo
             ParamsIdentify paramsIdentify = new ParamsIdentify();
             paramsIdentify.A_MinEyeDist = 20;
             paramsIdentify.A_MaxEyeDist = 250;
-            paramsIdentify.A_FaceDetectionForced = 2;
-            paramsIdentify.A_IdentificationSpeed = 5;
+            paramsIdentify.A_FaceDetectionForced = 0;
+            paramsIdentify.A_IdentificationSpeed = 0;
             paramsIdentify.A_SimilarityThreshold = 40;
-            paramsIdentify.A_FaceDetectThreshold = 450;
+            paramsIdentify.A_BiometricLogLevel = 0;
             paramsIdentify.A_BestMatchedCandidates = 1;
+            paramsIdentify.A_IgnoreMultipleFaces = 0;
+            paramsIdentify.A_FaceDetectionMode = 1;
+            paramsIdentify.A_SearchorExtractionThreads = 0;
+            paramsIdentify.A_FaceExtractionMode = 1;
             paramsIdentify.is_register = 1;
             identify.Params = paramsIdentify;
             diskPresenter.SaveIdentifyConfiguration(0, identify);
@@ -259,8 +265,10 @@ namespace WhoIsDemo
 
         private void mdiMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            CloseApplication();
-
+            if (flagCloseApplication == false)
+            {
+                CloseApplication();
+            }                       
 
         }
                 

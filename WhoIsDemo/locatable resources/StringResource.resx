@@ -156,6 +156,9 @@
   <data name="low_score" xml:space="preserve">
     <value>Low Score:</value>
   </data>
+  <data name="pipe_not loaded" xml:space="preserve">
+    <value>Video not loaded</value>
+  </data>
   <data name="reload_library" xml:space="preserve">
     <value>Reloaded library</value>
   </data>

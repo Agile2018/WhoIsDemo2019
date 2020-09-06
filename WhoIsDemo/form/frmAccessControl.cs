@@ -79,27 +79,34 @@ namespace WhoIsDemo.form
                     count++;
                 }
             }
+            SetTaskIdentify(0);
             string channels = ManagerResource.Instance.resourceManager
                 .GetString("channels") + Convert.ToString(count);
             managerControlView
                 .SetValueTextStatusStrip(channels, 0, this.status);
         }
 
-        private bool CheckPauseChannels()
+        private void SetTaskIdentify(int task)
+        {
+            if (hearUserPresenter.IdVideos.Count() != 0)
+            {
+                for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
+                {
+                    int index = hearUserPresenter.IdVideos[i];
+                    AipuFace.Instance.SetTaskIdentify(task, index);
+                }
+
+            }
+        }
+
+        private bool CheckChannels()
         {
             bool result = true;
             if (hearUserPresenter.IdVideos.Count() == 0)
             {
                 return false;
             }
-            for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
-            {
-                int index = hearUserPresenter.IdVideos[i];
-                if (Configuration.Instance.Channels[index - 1].flow != 1)
-                {
-                    result = false;
-                }
-            }
+            
 
             return result;
         }
@@ -143,6 +150,7 @@ namespace WhoIsDemo.form
                     0, this.status)));
                 this.Invoke(new Action(() => managerControlView
                 .EnabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME)));
+                SetTaskIdentify(0);
             }
         }
 
@@ -446,16 +454,11 @@ namespace WhoIsDemo.form
             string message = string.Empty;
             if (Configuration.Instance.IsShowWindow)
             {
-                if (CheckPauseChannels())
+                if (CheckChannels())
                 {
                     next = true;
                 }
-                else
-                {
-                    message = ManagerResource
-                   .Instance.resourceManager.GetString("set_pause_channels");
-                    
-                }
+                
             }
             else
             {
@@ -475,6 +478,7 @@ namespace WhoIsDemo.form
 
             if (next)
             {
+                SetTaskIdentify(-1);
                 if (this.openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     managerControlView.DisabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);

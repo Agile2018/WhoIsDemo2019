@@ -32,6 +32,19 @@ namespace WhoIsDemo.form
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEnroll));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.gbUser = new System.Windows.Forms.GroupBox();
+            this.gbFile = new System.Windows.Forms.GroupBox();
+            this.btnScoreEnroll = new System.Windows.Forms.Button();
+            this.btnForcedEnroll = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.gbVideo = new System.Windows.Forms.GroupBox();
+            this.btnEnrollUserVideo = new System.Windows.Forms.Button();
+            this.cboVideos = new System.Windows.Forms.ComboBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.rbUser = new System.Windows.Forms.RadioButton();
+            this.rbImport = new System.Windows.Forms.RadioButton();
+            this.rbNone = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
             this.lblQuantityRecords = new System.Windows.Forms.Label();
             this.btnDownRecords = new System.Windows.Forms.Button();
@@ -45,6 +58,10 @@ namespace WhoIsDemo.form
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.gbUser.SuspendLayout();
+            this.gbFile.SuspendLayout();
+            this.gbVideo.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -55,6 +72,8 @@ namespace WhoIsDemo.form
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.gbUser);
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
             // 
             // splitContainer1.Panel2
@@ -67,6 +86,122 @@ namespace WhoIsDemo.form
             this.splitContainer1.Panel2.Controls.Add(this.btnLoadFile);
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
             this.splitContainer1.Panel2.Controls.Add(this.label4);
+            // 
+            // gbUser
+            // 
+            resources.ApplyResources(this.gbUser, "gbUser");
+            this.gbUser.Controls.Add(this.gbFile);
+            this.gbUser.Controls.Add(this.gbVideo);
+            this.gbUser.ForeColor = System.Drawing.Color.DarkGray;
+            this.gbUser.Name = "gbUser";
+            this.gbUser.TabStop = false;
+            // 
+            // gbFile
+            // 
+            this.gbFile.Controls.Add(this.btnScoreEnroll);
+            this.gbFile.Controls.Add(this.btnForcedEnroll);
+            this.gbFile.Controls.Add(this.label3);
+            this.gbFile.Controls.Add(this.label1);
+            this.gbFile.ForeColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.gbFile, "gbFile");
+            this.gbFile.Name = "gbFile";
+            this.gbFile.TabStop = false;
+            // 
+            // btnScoreEnroll
+            // 
+            this.btnScoreEnroll.FlatAppearance.BorderSize = 0;
+            this.btnScoreEnroll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.btnScoreEnroll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
+            resources.ApplyResources(this.btnScoreEnroll, "btnScoreEnroll");
+            this.btnScoreEnroll.Image = global::WhoIsDemo.Properties.Resources.play;
+            this.btnScoreEnroll.Name = "btnScoreEnroll";
+            this.btnScoreEnroll.UseVisualStyleBackColor = true;
+            this.btnScoreEnroll.Click += new System.EventHandler(this.btnScoreEnroll_Click);
+            // 
+            // btnForcedEnroll
+            // 
+            this.btnForcedEnroll.FlatAppearance.BorderSize = 0;
+            this.btnForcedEnroll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.btnForcedEnroll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
+            resources.ApplyResources(this.btnForcedEnroll, "btnForcedEnroll");
+            this.btnForcedEnroll.Image = global::WhoIsDemo.Properties.Resources.play;
+            this.btnForcedEnroll.Name = "btnForcedEnroll";
+            this.btnForcedEnroll.UseVisualStyleBackColor = true;
+            this.btnForcedEnroll.Click += new System.EventHandler(this.btnForcedEnroll_Click);
+            // 
+            // label3
+            // 
+            resources.ApplyResources(this.label3, "label3");
+            this.label3.Name = "label3";
+            // 
+            // label1
+            // 
+            resources.ApplyResources(this.label1, "label1");
+            this.label1.Name = "label1";
+            // 
+            // gbVideo
+            // 
+            this.gbVideo.Controls.Add(this.btnEnrollUserVideo);
+            this.gbVideo.Controls.Add(this.cboVideos);
+            this.gbVideo.ForeColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.gbVideo, "gbVideo");
+            this.gbVideo.Name = "gbVideo";
+            this.gbVideo.TabStop = false;
+            // 
+            // btnEnrollUserVideo
+            // 
+            this.btnEnrollUserVideo.FlatAppearance.BorderSize = 0;
+            this.btnEnrollUserVideo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.btnEnrollUserVideo.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
+            resources.ApplyResources(this.btnEnrollUserVideo, "btnEnrollUserVideo");
+            this.btnEnrollUserVideo.Image = global::WhoIsDemo.Properties.Resources.play;
+            this.btnEnrollUserVideo.Name = "btnEnrollUserVideo";
+            this.btnEnrollUserVideo.Tag = "0";
+            this.btnEnrollUserVideo.UseVisualStyleBackColor = true;
+            this.btnEnrollUserVideo.Click += new System.EventHandler(this.btnEnrollUserVideo_Click);
+            // 
+            // cboVideos
+            // 
+            this.cboVideos.FormattingEnabled = true;
+            resources.ApplyResources(this.cboVideos, "cboVideos");
+            this.cboVideos.Name = "cboVideos";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbUser);
+            this.groupBox1.Controls.Add(this.rbImport);
+            this.groupBox1.Controls.Add(this.rbNone);
+            this.groupBox1.ForeColor = System.Drawing.Color.DarkGray;
+            resources.ApplyResources(this.groupBox1, "groupBox1");
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.TabStop = false;
+            // 
+            // rbUser
+            // 
+            resources.ApplyResources(this.rbUser, "rbUser");
+            this.rbUser.ForeColor = System.Drawing.Color.DarkGray;
+            this.rbUser.Name = "rbUser";
+            this.rbUser.TabStop = true;
+            this.rbUser.UseVisualStyleBackColor = true;
+            this.rbUser.Click += new System.EventHandler(this.rbUser_Click);
+            // 
+            // rbImport
+            // 
+            resources.ApplyResources(this.rbImport, "rbImport");
+            this.rbImport.ForeColor = System.Drawing.Color.DarkGray;
+            this.rbImport.Name = "rbImport";
+            this.rbImport.TabStop = true;
+            this.rbImport.UseVisualStyleBackColor = true;
+            this.rbImport.Click += new System.EventHandler(this.rbImport_Click);
+            // 
+            // rbNone
+            // 
+            resources.ApplyResources(this.rbNone, "rbNone");
+            this.rbNone.ForeColor = System.Drawing.Color.DarkGray;
+            this.rbNone.Name = "rbNone";
+            this.rbNone.TabStop = true;
+            this.rbNone.UseVisualStyleBackColor = true;
+            this.rbNone.Click += new System.EventHandler(this.rbNone_Click);
             // 
             // label2
             // 
@@ -162,6 +297,12 @@ namespace WhoIsDemo.form
             this.splitContainer1.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.gbUser.ResumeLayout(false);
+            this.gbFile.ResumeLayout(false);
+            this.gbFile.PerformLayout();
+            this.gbVideo.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -178,5 +319,18 @@ namespace WhoIsDemo.form
         private System.Windows.Forms.Button btnDownRecords;
         private System.Windows.Forms.Button btnUploadRecords;
         private System.Windows.Forms.Label lblQuantityRecords;
+        private System.Windows.Forms.GroupBox gbUser;
+        private System.Windows.Forms.GroupBox gbFile;
+        private System.Windows.Forms.Button btnScoreEnroll;
+        private System.Windows.Forms.Button btnForcedEnroll;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.GroupBox gbVideo;
+        private System.Windows.Forms.Button btnEnrollUserVideo;
+        private System.Windows.Forms.ComboBox cboVideos;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton rbUser;
+        private System.Windows.Forms.RadioButton rbImport;
+        private System.Windows.Forms.RadioButton rbNone;
     }
 }

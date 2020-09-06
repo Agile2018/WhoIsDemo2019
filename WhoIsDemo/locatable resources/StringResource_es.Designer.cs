@@ -178,6 +178,15 @@ namespace WhoIsDemo.locatable_resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Los canales de videos no están cargados..
+        /// </summary>
+        internal static string pipe_not_loaded {
+            get {
+                return ResourceManager.GetString("pipe_not loaded", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Librería recargada..
         /// </summary>
         internal static string reload_library {

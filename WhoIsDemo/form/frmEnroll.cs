@@ -57,12 +57,11 @@ namespace WhoIsDemo.form
             this.PerformAutoScale();
             this.Top = 0;
             this.Left = 0;
-            this.Width = 600;
-            this.Height = 460;
+            this.Width = 647;
+            this.Height = 573;
             InitControls();
             JoinChannels();
-                               
-
+                              
         }
         
         #region methods
@@ -77,6 +76,8 @@ namespace WhoIsDemo.form
                 {
                     hearUserPresenter.IdVideos.Add(i + 1);
                     count++;
+                    string labelVideos = "Video " + (i + 1).ToString();
+                    this.cboVideos.Items.Add(labelVideos);                    
                 }
             }
             string channels = ManagerResource.Instance.resourceManager
@@ -85,21 +86,23 @@ namespace WhoIsDemo.form
                 .SetValueTextStatusStrip(channels, 0, this.status);            
         }
 
-        private bool CheckPauseChannels()
+        private bool CheckChannels()
         {
             bool result = true;
             if (hearUserPresenter.IdVideos.Count() == 0)
             {
                 return false;
             }
-            for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
-            {
-                int index = hearUserPresenter.IdVideos[i];
-                if (Configuration.Instance.Channels[index - 1].flow != 1)
-                {
-                    result = false;
-                }
-            }
+            //for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
+            //{
+            //    int index = hearUserPresenter.IdVideos[i];
+            //    if (Configuration.Instance.Channels[index - 1].flow != 1)
+            //    {
+            //        //result = false;
+            //        AipuFace.Instance.StatePaused(index);
+            //        Configuration.Instance.Channels[index - 1].flow = 1;
+            //    }
+            //}
 
             return result;
         }
@@ -112,7 +115,7 @@ namespace WhoIsDemo.form
             this.openFileDialog.Multiselect = true;
             this.lblQuantityRecords.Text = SynchronizationPeoplePresenter
                 .Instance.GetNumbersPersons().ToString();
-
+            this.rbNone.Checked = true;
             SynchronizationPeoplePresenter.Instance.OnListPeople += new SynchronizationPeoplePresenter
                 .ListPeopleDelegate(LoadListSyncUp);
             hearUserPresenter.EnableObserverUser();
@@ -161,6 +164,7 @@ namespace WhoIsDemo.form
         {
             if (value)
             {
+                
                 filesRecognitionPresenter.IsLoadFile = false;
                 this.btnStopLoadFile.Invoke(new Action(() => this.btnStopLoadFile.Enabled = false));
                 this.btnLoadFile.Invoke(new Action(() => this.btnLoadFile.Enabled = true));                
@@ -221,9 +225,18 @@ namespace WhoIsDemo.form
                         int index = SearchPersonList(img.id_face, this.listPersonNewCard);
                         if (index != -1)
                         {
-                            Person personNewCard = this.listPersonNewCard[index];
-                            AddPersonToCard(img.imageStore, personNewCard);
-                            this.listPersonNewCard.RemoveAt(index);
+                            try
+                            {
+                                Person personNewCard = this.listPersonNewCard[index];
+                                AddPersonToCard(img.imageStore, personNewCard);
+                                this.listPersonNewCard.RemoveAt(index);
+                            }
+                            catch (System.ArgumentOutOfRangeException ex)
+                            {
+
+                                Console.WriteLine(ex.Message);
+                            }
+                            
                         }
                     }
                                
@@ -401,22 +414,17 @@ namespace WhoIsDemo.form
             
         }        
 
-        private void btnLoadFile_Click(object sender, EventArgs e)
+        private bool isPipeEnabled()
         {
             bool next = false;
             string message = string.Empty;
             if (Configuration.Instance.IsShowWindow)
             {
-                if (CheckPauseChannels())
+                if (CheckChannels())
                 {
                     next = true;
                 }
-                else
-                {
-                    message = ManagerResource
-                   .Instance.resourceManager.GetString("set_pause_channels");
-
-                }
+                
             }
             else
             {
@@ -434,7 +442,15 @@ namespace WhoIsDemo.form
                 }
             }
 
-            if (next)
+            return next;
+        }
+
+        private void btnLoadFile_Click(object sender, EventArgs e)
+        {
+
+            this.rbNone.Checked = true;
+
+            if (isPipeEnabled())
             {
                 if (this.openFileDialog.ShowDialog() == DialogResult.OK)
                 {                    
@@ -446,7 +462,7 @@ namespace WhoIsDemo.form
                     managerControlView
                         .SetValueTextStatusStrip(StringResource.work,
                         0, this.status);
-                    
+                    string folder = openFileDialog.InitialDirectory;
                     managerControlView.StartProgressStatusStrip(1, this.status);
                     AipuFace.Instance.SetChannel(hearUserPresenter.IdVideos[0]);
                     AipuFace.Instance.SetIsFinishLoadFiles(true);
@@ -456,11 +472,7 @@ namespace WhoIsDemo.form
 
                 }
             }
-            else
-            {
-                managerControlView.SetValueTextStatusStrip(message,
-                        0, this.status);
-            }
+            
         }
 
         private void btnStopLoadFile_Click(object sender, EventArgs e)
@@ -490,6 +502,145 @@ namespace WhoIsDemo.form
         private void btnUploadRecords_Click(object sender, EventArgs e)
         {
             SynchronizationPeoplePresenter.Instance.GetListPeople(false);
+        }               
+
+        private void btnForcedEnroll_Click(object sender, EventArgs e)
+        {
+            
+            if (isPipeEnabled())
+            {
+                using (var fldrDlg = new FolderBrowserDialog())
+                {
+                    //fldrDlg.Filter = "Png Files (*.png)|*.png";
+                    //fldrDlg.Filter = "Excel Files (*.xls, *.xlsx)|*.xls;*.xlsx|CSV Files (*.csv)|*.csv"
+
+                    if (fldrDlg.ShowDialog() == DialogResult.OK)
+                    {
+                        filesRecognitionPresenter.AddCollectionOfImages(fldrDlg.SelectedPath,
+                            hearUserPresenter.IdVideos[0], 1);
+                    }
+                }
+            }
         }
+
+        private void btnScoreEnroll_Click(object sender, EventArgs e)
+        {
+            
+            if (isPipeEnabled())
+            {
+                using (var fldrDlg = new FolderBrowserDialog())
+                {
+
+                    if (fldrDlg.ShowDialog() == DialogResult.OK)
+                    {
+                        filesRecognitionPresenter.AddCollectionOfImages(fldrDlg.SelectedPath,
+                            hearUserPresenter.IdVideos[0], 2);
+                    }
+                }
+            }
+        }
+
+        private void rbNone_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
+            {
+                int index = hearUserPresenter.IdVideos[i];
+                AipuFace.Instance.SetTaskIdentify(-1, index);
+            }
+
+            gbUser.Enabled = false;
+        }
+
+        private void rbImport_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
+            {
+                int index = hearUserPresenter.IdVideos[i];
+                AipuFace.Instance.SetTaskIdentify(0, index);
+            }
+            gbUser.Enabled = false;
+        }
+
+        private void rbUser_Click(object sender, EventArgs e)
+        {
+            for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
+            {
+                int index = hearUserPresenter.IdVideos[i];
+                AipuFace.Instance.SetTaskIdentify(-1, index);
+            }
+
+            gbUser.Enabled = true;
+        }
+
+        private void btnEnrollUserVideo_Click(object sender, EventArgs e)
+        {
+
+            if (Configuration.Instance.IsShowWindow && CheckChannels())
+            {
+                int pipeSelect = 0;
+                if (Convert.ToInt32((sender as Button).Tag) == 0 && cboVideos.SelectedIndex != -1)
+                {
+                    for (int i = 0; i < cboVideos.Items.Count; i++)
+                    {
+
+                    
+                        if (cboVideos.SelectedIndex == i)
+                        {
+                            string currentVideo = cboVideos.Items[i] as string;
+                            string[] splitLabel = currentVideo.Split(' ');
+                            pipeSelect = Convert.ToInt32(splitLabel[1]);
+                            SetTextColourFrame(pipeSelect, 0.0f, 0.0f, 255.0f);                            
+                            AipuFace.Instance.ResetEnrollVideo(pipeSelect);
+                            AipuFace.Instance.SetTaskIdentify(3, pipeSelect);
+                            (sender as Button).Tag = pipeSelect;
+                            (sender as Button).Image = WhoIsDemo.Properties.Resources.stop1;
+                        }
+
+
+                    }
+
+                }
+                else if (cboVideos.SelectedIndex != -1)
+                {
+                    pipeSelect = Convert.ToInt32((sender as Button).Tag);
+                    AipuFace.Instance.SetTaskIdentify(-1, pipeSelect);
+                    SetTextColourFrame(pipeSelect, 0.0f, 0.0f, 0.0f);
+                    (sender as Button).Tag = 0;
+                    (sender as Button).Image = WhoIsDemo.Properties.Resources.play;
+
+                }
+            }
+            else
+            {
+                managerControlView
+                    .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
+                    .GetString("pipe_not loaded"),
+                    0, this.status);
+            }
+            
+            
+        }
+
+        private void SetTextColourFrame(int pipe, Single red, Single green, Single blue)
+        {
+            switch (pipe)
+            {
+                case 1:
+                    AipuFace.Instance.SetColourTextFrameOne(red, green, blue);
+                    break;
+                case 2:
+                    AipuFace.Instance.SetColourTextFrameTwo(red, green, blue);
+                    break;
+                case 3:
+                    AipuFace.Instance.SetColourTextFrameThree(red, green, blue);
+                    break;
+                case 4:
+                    AipuFace.Instance.SetColourTextFrameFour(red, green, blue);
+                    break;
+                default:
+                    break;
+            }
+        }
+
     }
 }
