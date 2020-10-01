@@ -205,6 +205,8 @@
     </Compile>
     <Compile Include="model\Channel.cs" />
     <Compile Include="model\Configuration.cs" />
+    <Compile Include="model\ConfigurationGlobalLib.cs" />
+    <Compile Include="model\ConfigurationPipeline.cs" />
     <Compile Include="model\Database.cs" />
     <Compile Include="model\DatabaseConfig.cs" />
     <Compile Include="model\Detect.cs" />
@@ -217,11 +219,15 @@
     <Compile Include="model\Params.cs" />
     <Compile Include="model\ParamsDatabase.cs" />
     <Compile Include="model\ParamsDetect.cs" />
+    <Compile Include="model\ParamsEnrollmentProcessing.cs" />
+    <Compile Include="model\ParamsFaceProcessing.cs" />
     <Compile Include="model\ParamsFile.cs" />
     <Compile Include="model\ParamsFlow.cs" />
+    <Compile Include="model\ParamsGlobal.cs" />
     <Compile Include="model\ParamsIdentify.cs" />
     <Compile Include="model\ParamsPerformance.cs" />
     <Compile Include="model\ParamsTracking.cs" />
+    <Compile Include="model\ParamsTrackingProcessing.cs" />
     <Compile Include="model\People.cs" />
     <Compile Include="model\PerformanceRecognition.cs" />
     <Compile Include="model\Person.cs" />

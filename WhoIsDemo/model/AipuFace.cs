@@ -137,9 +137,9 @@ namespace WhoIsDemo.model
             aipu.StatePaused(option);
         }               
         
-        public void RecognitionFaceFiles(string file, int client)
+        public void RecognitionFaceFiles(string file, int client, int task)
         {
-            aipu.RecognitionFaceFiles(file, client);
+            aipu.RecognitionFaceFiles(file, client, task);
         }
 
         public void AddCollectionOfImages(string folder, int client, int doing)
@@ -154,7 +154,12 @@ namespace WhoIsDemo.model
         public bool GetIsFinishLoadFiles()
         {
             return aipu.GetIsFinishLoadFiles;
-        }     
+        }
+
+        public void SetNumberPipelines(int value)
+        {
+            aipu.SetNumberPipelines(value);
+        }
 
         public AipuObserver GetObserver()
         {
@@ -164,8 +169,9 @@ namespace WhoIsDemo.model
         public void EnableObserverUser()
         {
             aipuObserver.EnableObserverUser();
-        }        
+        }
 
+        
         public bool IsObserverUser()
         {
             return aipuObserver.IsHearObserverUser;

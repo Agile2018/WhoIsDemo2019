@@ -35,9 +35,7 @@ namespace WhoIsDemo.form
             this.gbUser = new System.Windows.Forms.GroupBox();
             this.gbFile = new System.Windows.Forms.GroupBox();
             this.btnScoreEnroll = new System.Windows.Forms.Button();
-            this.btnForcedEnroll = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.gbVideo = new System.Windows.Forms.GroupBox();
             this.btnEnrollUserVideo = new System.Windows.Forms.Button();
             this.cboVideos = new System.Windows.Forms.ComboBox();
@@ -99,9 +97,7 @@ namespace WhoIsDemo.form
             // gbFile
             // 
             this.gbFile.Controls.Add(this.btnScoreEnroll);
-            this.gbFile.Controls.Add(this.btnForcedEnroll);
             this.gbFile.Controls.Add(this.label3);
-            this.gbFile.Controls.Add(this.label1);
             this.gbFile.ForeColor = System.Drawing.Color.DarkGray;
             resources.ApplyResources(this.gbFile, "gbFile");
             this.gbFile.Name = "gbFile";
@@ -118,26 +114,10 @@ namespace WhoIsDemo.form
             this.btnScoreEnroll.UseVisualStyleBackColor = true;
             this.btnScoreEnroll.Click += new System.EventHandler(this.btnScoreEnroll_Click);
             // 
-            // btnForcedEnroll
-            // 
-            this.btnForcedEnroll.FlatAppearance.BorderSize = 0;
-            this.btnForcedEnroll.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
-            this.btnForcedEnroll.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
-            resources.ApplyResources(this.btnForcedEnroll, "btnForcedEnroll");
-            this.btnForcedEnroll.Image = global::WhoIsDemo.Properties.Resources.play;
-            this.btnForcedEnroll.Name = "btnForcedEnroll";
-            this.btnForcedEnroll.UseVisualStyleBackColor = true;
-            this.btnForcedEnroll.Click += new System.EventHandler(this.btnForcedEnroll_Click);
-            // 
             // label3
             // 
             resources.ApplyResources(this.label3, "label3");
             this.label3.Name = "label3";
-            // 
-            // label1
-            // 
-            resources.ApplyResources(this.label1, "label1");
-            this.label1.Name = "label1";
             // 
             // gbVideo
             // 
@@ -322,9 +302,7 @@ namespace WhoIsDemo.form
         private System.Windows.Forms.GroupBox gbUser;
         private System.Windows.Forms.GroupBox gbFile;
         private System.Windows.Forms.Button btnScoreEnroll;
-        private System.Windows.Forms.Button btnForcedEnroll;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox gbVideo;
         private System.Windows.Forms.Button btnEnrollUserVideo;
         private System.Windows.Forms.ComboBox cboVideos;

@@ -138,6 +138,9 @@
   <data name="directory_config_empty" xml:space="preserve">
     <value>El directorio de configuración está vacio.</value>
   </data>
+  <data name="empty_data" xml:space="preserve">
+    <value>Datos vacios.</value>
+  </data>
   <data name="error" xml:space="preserve">
     <value>Error en la tarea realizada.</value>
   </data>
@@ -155,6 +158,12 @@
   </data>
   <data name="low_score" xml:space="preserve">
     <value>Score bajo:</value>
+  </data>
+  <data name="message_range" xml:space="preserve">
+    <value>El número menor o mayor que el rango.</value>
+  </data>
+  <data name="number_out_range" xml:space="preserve">
+    <value>El número esta fuera de rango.</value>
   </data>
   <data name="pipe_not loaded" xml:space="preserve">
     <value>Los canales de videos no están cargados.</value>

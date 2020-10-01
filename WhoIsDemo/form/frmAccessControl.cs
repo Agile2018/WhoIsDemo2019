@@ -79,7 +79,7 @@ namespace WhoIsDemo.form
                     count++;
                 }
             }
-            SetTaskIdentify(0);
+            SetTaskIdentify(1);
             string channels = ManagerResource.Instance.resourceManager
                 .GetString("channels") + Convert.ToString(count);
             managerControlView
@@ -150,7 +150,7 @@ namespace WhoIsDemo.form
                     0, this.status)));
                 this.Invoke(new Action(() => managerControlView
                 .EnabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME)));
-                SetTaskIdentify(0);
+                SetTaskIdentify(1);
             }
         }
 
@@ -484,6 +484,7 @@ namespace WhoIsDemo.form
                     managerControlView.DisabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);
                     filesRecognitionPresenter.IsLoadFile = true;
                     filesRecognitionPresenter.LinkVideo = hearUserPresenter.IdVideos[0];
+                    filesRecognitionPresenter.TaskIdentify = 1;
                     this.btnLoadFile.Enabled = false;                    
                     this.btnStopLoadFile.Enabled = true;
                     managerControlView

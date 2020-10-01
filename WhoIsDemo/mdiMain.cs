@@ -74,7 +74,7 @@ namespace WhoIsDemo
             managerControlView.CreateStatusBar(this, statusStrip);
             
             SubscriptionReactive();
-            diskPresenter.CreateDirectoryWork(0);
+            diskPresenter.CreateDirectoryWork();
             VerifyFileConfiguration();
             
         }        
@@ -145,93 +145,89 @@ namespace WhoIsDemo
             paramsDatabase.connect = "mongodb://localhost:27017/?minPoolSize=3&maxPoolSize=3";
             paramsDatabase.name = "dbass";
             databaseConfig.Params = paramsDatabase;
-            diskPresenter.SaveDatabaseConfiguration(0, databaseConfig);
+            diskPresenter.SaveDatabaseConfiguration(databaseConfig);
             Configuration.Instance.ConnectDatabase = databaseConfig.Params.connect;
             Configuration.Instance.NameDatabase = databaseConfig.Params.name;
             InitDatabase();
         }
 
-        private void CreateParamsDetect()
-        {
-            Detect detect = new Detect();
-            detect.configuration = "detect_configuration";
-            ParamsDetect paramsDetect = new ParamsDetect();
-            paramsDetect.accuracy = 600;
-            paramsDetect.maxeye = 250 ;
-            paramsDetect.maxfaces = 1;
-            paramsDetect.mineye = 20;
-            paramsDetect.modedetect = 1;
-            paramsDetect.extractionmode = 0;
-            paramsDetect.qualitymodel = 60;
-            detect.Params = paramsDetect;
-            diskPresenter.SaveDetectConfiguration(0, detect);
-        }
 
-        private void CreateParamsIdentify()
+        private void CreateParamsGlobal()
         {
-            Identify identify = new Identify();
-            identify.configuration = "identify_configuration";
-            ParamsIdentify paramsIdentify = new ParamsIdentify();
-            paramsIdentify.A_MinEyeDist = 20;
-            paramsIdentify.A_MaxEyeDist = 250;
-            paramsIdentify.A_FaceDetectionForced = 0;
-            paramsIdentify.A_IdentificationSpeed = 0;
-            paramsIdentify.A_SimilarityThreshold = 40;
-            paramsIdentify.A_BiometricLogLevel = 0;
-            paramsIdentify.A_BestMatchedCandidates = 1;
-            paramsIdentify.A_IgnoreMultipleFaces = 0;
-            paramsIdentify.A_FaceDetectionMode = 1;
-            paramsIdentify.A_SearchorExtractionThreads = 0;
-            paramsIdentify.A_FaceExtractionMode = 1;
-            paramsIdentify.is_register = 1;
-            identify.Params = paramsIdentify;
-            diskPresenter.SaveIdentifyConfiguration(0, identify);
-            
-        }
-
-        private void CreateParamsTracking()
-        {
-            Tracking tracking = new Tracking();
-            tracking.configuration = "tracking_configuration";
-            ParamsTracking paramsTracking = new ParamsTracking();
-            paramsTracking.refreshInterval = 2000;
-            paramsTracking.maxeye = 200;
-            paramsTracking.mineye = 20;
-            paramsTracking.maxfaces = 5;
-            paramsTracking.faceConfidenceThresh = 450;
-            paramsTracking.trackingMode = 1;
-            paramsTracking.trackSpeed = 2;
-            paramsTracking.motionOptimization = 2;
-            paramsTracking.deepTrack = 1;
-            paramsTracking.qualitymodel = 60;
-            tracking.Params = paramsTracking;
-            diskPresenter.SaveTrackingConfiguration(0, tracking);
-        }
-
-        private void CreateParamsFlow()
-        {
-            Flow flow = new Flow();
-            flow.configuration = "flowvideo_configuration";
-            ParamsFlow paramsFlow = new ParamsFlow();
-            paramsFlow.deviceVideo = string.Empty;
-            paramsFlow.fileVideo = "video5.mp4";
-            paramsFlow.ipCamera = string.Empty;
-            paramsFlow.sourceFlow = 2;
-            paramsFlow.videoScaleMethod = 1;
-            flow.Params = paramsFlow;
-            diskPresenter.SaveFlowConfiguration(0, flow);
+            ConfigurationGlobalLib configurationGlobalLib = new ConfigurationGlobalLib();
+            configurationGlobalLib.configurationGlobal = "Global processing";
+            ParamsGlobal paramsGlobal = new ParamsGlobal();
+            paramsGlobal.GLOBAL_MIN_VALID_IMAGE_SIZE = 200;
+            paramsGlobal.GLOBAL_GPU_DEVICE_ID = "0";
+            paramsGlobal.GLOBAL_GPU_ENABLED = "true";
+            paramsGlobal.GLOBAL_THREAD_MANAGEMENT_MODE = 1;
+            paramsGlobal.GLOBAL_THREAD_NUM = "4";
+            paramsGlobal.GLOBAL_CFG_LOG_LEVEL = 0;
+            paramsGlobal.AFACE_PARAMETER_GPU_ENABLED = 1;
+            configurationGlobalLib.paramsGlobal = paramsGlobal;
+            diskPresenter.SaveGlobalConfiguration(configurationGlobalLib);
         }
 
         private void VerifyFileConfiguration()
         {
             if (!diskPresenter.VerifyFileOfConfiguration(0))
             {
-                diskPresenter.CreateContentDirectoryWork(0);
+                //diskPresenter.CreateContentDirectoryWork(0);
+
+                ConfigurationPipeline configurationPipeline = new ConfigurationPipeline();               
+                configurationPipeline.configurationFaceProcessing = "Face processing";
+                ParamsFaceProcessing paramsFaceProcessing = new ParamsFaceProcessing();
+                paramsFaceProcessing.IFACE_GetFaceCropImage = 1;
+                paramsFaceProcessing.FACEDET_CONFIDENCE_THRESHOLD = 200;
+                paramsFaceProcessing.FACEDET_SPEED_ACCURACY_MODE = 0;
+                paramsFaceProcessing.FACETMPLEXT_SPEED_ACCURACY_MODE = 0;
+                paramsFaceProcessing.TRACK_MAX_FACE_SIZE = 200;
+                paramsFaceProcessing.TRACK_MIN_FACE_SIZE = 25;
+                paramsFaceProcessing.QUALITY_MODEL = 40;
+                paramsFaceProcessing.FACE_MAX_DETECT = 1;
+                configurationPipeline.paramsFaceProcessing = paramsFaceProcessing;
+                configurationPipeline.configurationTrackingProcessing = "Tracking processing";
+                ParamsTrackingProcessing paramsTrackingProcessing = new ParamsTrackingProcessing();
+                paramsTrackingProcessing.TRACK_DEEP_TRACK = "true";
+                paramsTrackingProcessing.TRACK_FACE_DISCOVERY_FREQUENCE_MS = 2000;
+                paramsTrackingProcessing.COUNT_REDETECT_TIME_DELTA = 10000;
+                paramsTrackingProcessing.TRACK_MOTION_OPTIMIZATION = 2;
+                paramsTrackingProcessing.TRACK_SPEED_ACCURACY_MODE = 1;
+                paramsTrackingProcessing.TRACK_TRACKING_MODE = 2;
+                configurationPipeline.paramsTrackingProcessing = paramsTrackingProcessing;
+                configurationPipeline.configurationEnrollmentProcessing = "Enrollment processing";
+                ParamsEnrollmentProcessing paramsEnrollmentProcessing = new ParamsEnrollmentProcessing();
+                paramsEnrollmentProcessing.CFG_BEST_CANDIDATES_COUNT = 1;
+                paramsEnrollmentProcessing.CFG_SIMILARITY_THRESHOLD = 45;
+                paramsEnrollmentProcessing.CFG_IDENTIFICATION_SPEED = 0;
+                paramsEnrollmentProcessing.CFG_IFACE_DETECT_FORCED = 1;
+                paramsEnrollmentProcessing.CFG_IFACE_IGNORE_MULTIPLE_FACES = 1;
+                paramsEnrollmentProcessing.CFG_IFACE_DETECTION_MODE = 2;
+                paramsEnrollmentProcessing.CFG_IFACE_EXTRACTION_MODE = 2;
+                paramsEnrollmentProcessing.CFG_IFACE_DETECTION_THRESHOLD = 200;
+                paramsEnrollmentProcessing.AFACE_PARAMETER_ENROLL = 1;
+                paramsEnrollmentProcessing.AFACE_PARAMETER_DEDUPLICATION = 1;
+                paramsEnrollmentProcessing.CFG_SIMILARITY_THRESHOLD_DEDUPLICATION = 45;
+                paramsEnrollmentProcessing.AFACE_PARAMETER_CONCATENATE_TEMPLATES = 1;
+                paramsEnrollmentProcessing.AFACE_PARAMETER_MAXIMUM_TEMPLATES = -1;
+                paramsEnrollmentProcessing.AFACE_PARAMETER_CONCATENATION_MODE = 0;
+                paramsEnrollmentProcessing.AFACE_PARAMETER_SCORE_MIN = 30;
+                paramsEnrollmentProcessing.AFACE_PARAMETER_SCORE_MAX = 60;
+                paramsEnrollmentProcessing.AFACE_PARAMETER_VERIFICATION_SCORE = 20;
+                configurationPipeline.paramsEnrollmentProcessing = paramsEnrollmentProcessing;
+                configurationPipeline.configurationFlowVideo = "Flow video";
+                ParamsFlow paramsFlow = new ParamsFlow();
+                paramsFlow.deviceVideo = string.Empty;
+                paramsFlow.fileVideo = "video5.mp4";
+                paramsFlow.ipCamera = string.Empty;
+                paramsFlow.sourceFlow = 2;
+                paramsFlow.videoScaleMethod = 1;
+                configurationPipeline.paramsFlow = paramsFlow;
+
+                diskPresenter.SaveConfigurationPipe(0, configurationPipeline);
+
                 CreateParamsDatabase();
-                CreateParamsDetect();
-                CreateParamsIdentify();
-                CreateParamsTracking();
-                CreateParamsFlow();
+                CreateParamsGlobal();              
 
                 registryValueDataReader.setKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
                         RegistryValueDataReader.NUM_CHANNELS_KEY, Convert.ToString(0));
@@ -245,9 +241,24 @@ namespace WhoIsDemo
             }
             else
             {
-                GetDatabaseConfiguration();
+                GetDatabaseConfiguration();                
                 GenerateChannels();
             }
+        }
+
+        private void VerifyFileConfigurationChannel()
+        {
+            int index = Configuration.Instance.NumberChannels + 1;
+
+            for (int i = 0; i < index; i++)
+            {
+                if (!diskPresenter.VerifyFileOfConfiguration(i))
+                {
+                    Configuration.Instance.NumberChannels = i - 1;
+                    break;
+                }
+            }
+
         }
 
         private void GenerateChannels()
@@ -259,6 +270,7 @@ namespace WhoIsDemo
                 Configuration.Instance.NumberChannels = Convert.ToInt16(registryValueDataReader
                     .getKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
                     RegistryValueDataReader.NUM_CHANNELS_KEY));
+                VerifyFileConfigurationChannel();
                 diskPresenter.GenerateListChannels();
             }
         }
@@ -274,7 +286,7 @@ namespace WhoIsDemo
                 
         private void GetDatabaseConfiguration()
         {
-            DatabaseConfig databaseConfig = diskPresenter.ReadDatabaseConfiguration(0);
+            DatabaseConfig databaseConfig = diskPresenter.ReadDatabaseConfiguration();
             if (!string.IsNullOrEmpty(databaseConfig.Params.connect))
             {
                 Configuration.Instance.ConnectDatabase = databaseConfig.Params.connect;

@@ -449,7 +449,7 @@ namespace WhoIsDemo.form
         {
 
             this.rbNone.Checked = true;
-
+            
             if (isPipeEnabled())
             {
                 if (this.openFileDialog.ShowDialog() == DialogResult.OK)
@@ -457,6 +457,7 @@ namespace WhoIsDemo.form
                     managerControlView.DisabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);
                     filesRecognitionPresenter.IsLoadFile = true;
                     filesRecognitionPresenter.LinkVideo = hearUserPresenter.IdVideos[0];
+                    filesRecognitionPresenter.TaskIdentify = 0;
                     this.btnLoadFile.Enabled = false;                    
                     this.btnStopLoadFile.Enabled = true;
                     managerControlView
@@ -502,26 +503,7 @@ namespace WhoIsDemo.form
         private void btnUploadRecords_Click(object sender, EventArgs e)
         {
             SynchronizationPeoplePresenter.Instance.GetListPeople(false);
-        }               
-
-        private void btnForcedEnroll_Click(object sender, EventArgs e)
-        {
-            
-            if (isPipeEnabled())
-            {
-                using (var fldrDlg = new FolderBrowserDialog())
-                {
-                    //fldrDlg.Filter = "Png Files (*.png)|*.png";
-                    //fldrDlg.Filter = "Excel Files (*.xls, *.xlsx)|*.xls;*.xlsx|CSV Files (*.csv)|*.csv"
-
-                    if (fldrDlg.ShowDialog() == DialogResult.OK)
-                    {
-                        filesRecognitionPresenter.AddCollectionOfImages(fldrDlg.SelectedPath,
-                            hearUserPresenter.IdVideos[0], 1);
-                    }
-                }
-            }
-        }
+        }                    
 
         private void btnScoreEnroll_Click(object sender, EventArgs e)
         {
@@ -549,7 +531,7 @@ namespace WhoIsDemo.form
             }
 
             gbUser.Enabled = false;
-        }
+        }        
 
         private void rbImport_Click(object sender, EventArgs e)
         {

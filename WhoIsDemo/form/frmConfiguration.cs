@@ -2,7 +2,6 @@
 using Emgu.CV;
 using Emgu.CV.CvEnum;
 using System.Windows.Forms;
-using WhoIsDemo.domain.interactor;
 using WhoIsDemo.model;
 using WhoIsDemo.presenter;
 using WhoIsDemo.repository;
@@ -19,19 +18,96 @@ namespace WhoIsDemo.form
         public string strNameMenu;        
         ManagerControlView managerControlView = new ManagerControlView();
         DiskPresenter diskPresenter = new DiskPresenter();
-        //DropDatabasePresenter dropDatabasePresenter = new DropDatabasePresenter();
+        
         private RegistryValueDataReader registryValueDataReader = new RegistryValueDataReader();
         private StatusStrip status;
         private int channelCurrent = 0;
         private bool testVideo = false;
-        
+        private System.Windows.Forms.ErrorProvider valueErrortxtAccurancy;
+        private System.Windows.Forms.ErrorProvider valueErrortxtModelQuality;
+        private System.Windows.Forms.ErrorProvider valueErrortxtMaxDetect;
+        private System.Windows.Forms.ErrorProvider valueErrortxtRefreshTrack;
+        private System.Windows.Forms.ErrorProvider valueErrortxtRedetectTimeDelta;
+        private System.Windows.Forms.ErrorProvider valueErrortxtDetectionThreshold;
+        private System.Windows.Forms.ErrorProvider valueErrortxtSimilarityThreshold;
+        private System.Windows.Forms.ErrorProvider valueErrortxtScoreMin;
+        private System.Windows.Forms.ErrorProvider valueErrortxtScoreMax;
+        private System.Windows.Forms.ErrorProvider valueErrortxtASimilarity;
+        private System.Windows.Forms.ErrorProvider valueErrortxtBestMatched;
+       
+
         #endregion
         public frmConfiguration()
         {
             InitializeComponent();
             this.status = managerControlView.GetStatusStripMain(mdiMain.NAME);
-            
-        }      
+
+            valueErrortxtAccurancy = new System.Windows.Forms.ErrorProvider();
+            valueErrortxtAccurancy.SetIconAlignment(this.txtAccurancy, ErrorIconAlignment.MiddleRight);
+            valueErrortxtAccurancy.SetIconPadding(this.txtAccurancy, 2);
+            valueErrortxtAccurancy.BlinkRate = 1000;
+            valueErrortxtAccurancy.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+
+            valueErrortxtModelQuality = new System.Windows.Forms.ErrorProvider();
+            valueErrortxtModelQuality.SetIconAlignment(this.txtModelQuality, ErrorIconAlignment.MiddleRight);
+            valueErrortxtModelQuality.SetIconPadding(this.txtModelQuality, 2);
+            valueErrortxtModelQuality.BlinkRate = 1000;
+            valueErrortxtModelQuality.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+
+            valueErrortxtMaxDetect = new System.Windows.Forms.ErrorProvider();
+            valueErrortxtMaxDetect.SetIconAlignment(this.txtMaxDetect, ErrorIconAlignment.MiddleRight);
+            valueErrortxtMaxDetect.SetIconPadding(this.txtMaxDetect, 2);
+            valueErrortxtMaxDetect.BlinkRate = 1000;
+            valueErrortxtMaxDetect.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+
+            valueErrortxtRefreshTrack = new System.Windows.Forms.ErrorProvider();
+            valueErrortxtRefreshTrack.SetIconAlignment(this.txtRefreshTrack, ErrorIconAlignment.MiddleRight);
+            valueErrortxtRefreshTrack.SetIconPadding(this.txtRefreshTrack, 2);
+            valueErrortxtRefreshTrack.BlinkRate = 1000;
+            valueErrortxtRefreshTrack.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+
+            valueErrortxtRedetectTimeDelta = new System.Windows.Forms.ErrorProvider();
+            valueErrortxtRedetectTimeDelta.SetIconAlignment(this.txtRedetectTimeDelta, ErrorIconAlignment.MiddleRight);
+            valueErrortxtRedetectTimeDelta.SetIconPadding(this.txtRedetectTimeDelta, 2);
+            valueErrortxtRedetectTimeDelta.BlinkRate = 1000;
+            valueErrortxtRedetectTimeDelta.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+
+            valueErrortxtDetectionThreshold = new System.Windows.Forms.ErrorProvider();
+            valueErrortxtDetectionThreshold.SetIconAlignment(this.txtDetectionThreshold, ErrorIconAlignment.MiddleRight);
+            valueErrortxtDetectionThreshold.SetIconPadding(this.txtDetectionThreshold, 2);
+            valueErrortxtDetectionThreshold.BlinkRate = 1000;
+            valueErrortxtDetectionThreshold.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+
+            valueErrortxtSimilarityThreshold = new System.Windows.Forms.ErrorProvider();
+            valueErrortxtSimilarityThreshold.SetIconAlignment(this.txtSimilarityThreshold, ErrorIconAlignment.MiddleRight);
+            valueErrortxtSimilarityThreshold.SetIconPadding(this.txtSimilarityThreshold, 2);
+            valueErrortxtSimilarityThreshold.BlinkRate = 1000;
+            valueErrortxtSimilarityThreshold.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+
+            valueErrortxtScoreMin = new System.Windows.Forms.ErrorProvider();
+            valueErrortxtScoreMin.SetIconAlignment(this.txtScoreMin, ErrorIconAlignment.MiddleRight);
+            valueErrortxtScoreMin.SetIconPadding(this.txtScoreMin, 2);
+            valueErrortxtScoreMin.BlinkRate = 1000;
+            valueErrortxtScoreMin.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+
+            valueErrortxtScoreMax = new System.Windows.Forms.ErrorProvider();
+            valueErrortxtScoreMax.SetIconAlignment(this.txtScoreMax, ErrorIconAlignment.MiddleRight);
+            valueErrortxtScoreMax.SetIconPadding(this.txtScoreMax, 2);
+            valueErrortxtScoreMax.BlinkRate = 1000;
+            valueErrortxtScoreMax.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+
+            valueErrortxtASimilarity = new System.Windows.Forms.ErrorProvider();
+            valueErrortxtASimilarity.SetIconAlignment(this.txtASimilarity, ErrorIconAlignment.MiddleRight);
+            valueErrortxtASimilarity.SetIconPadding(this.txtASimilarity, 2);
+            valueErrortxtASimilarity.BlinkRate = 1000;
+            valueErrortxtASimilarity.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+
+            valueErrortxtBestMatched = new System.Windows.Forms.ErrorProvider();
+            valueErrortxtBestMatched.SetIconAlignment(this.txtBestMatched, ErrorIconAlignment.MiddleRight);
+            valueErrortxtBestMatched.SetIconPadding(this.txtBestMatched, 2);
+            valueErrortxtBestMatched.BlinkRate = 1000;
+            valueErrortxtBestMatched.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+        }
 
         private void frmConfiguration_Load(object sender, EventArgs e)
         {
@@ -39,7 +115,9 @@ namespace WhoIsDemo.form
             {                
                           
                 GetDatabaseConfiguration();
-                
+                GetGlobalParameters();
+
+
             }
             catch (FieldAccessException fe)
             {
@@ -77,7 +155,7 @@ namespace WhoIsDemo.form
         private void GetDatabaseConfiguration()
         {
             DatabaseConfig databaseConfig = diskPresenter
-                .ReadDatabaseConfiguration(0);
+                .ReadDatabaseConfiguration();
             if (databaseConfig != null)
             {
                 txtNameDatabase.Text = (string.IsNullOrEmpty(databaseConfig
@@ -98,50 +176,64 @@ namespace WhoIsDemo.form
 
         }
 
-        private void GetParamsDetection(int channel)
+        private void GetParamsEnrollProcessing(ParamsEnrollmentProcessing paramsEnrollmentProcessing)
         {
-            Detect detect = diskPresenter.ReadDetectConfiguration(channel);
-            Identify identify = diskPresenter.ReadIdentifyConfiguration(channel);
-            if (detect != null && identify != null)
+            if (paramsEnrollmentProcessing != null)
             {
-                txtAccurancy.Text = (string.IsNullOrEmpty(detect.Params.accuracy.ToString())) ? "0" :
-                    detect.Params.accuracy.ToString();
-                txtMaxEye.Text = (string.IsNullOrEmpty(detect.Params.maxeye.ToString())) ? "0" :
-                    detect.Params.maxeye.ToString();
-                txtMaxDetect.Text = (string.IsNullOrEmpty(detect.Params.maxfaces.ToString())) ? "0" :
-                    detect.Params.maxfaces.ToString();
-                txtMinEye.Text = (string.IsNullOrEmpty(detect.Params.mineye.ToString())) ? "0" :
-                    detect.Params.mineye.ToString();
-                txtModelQuality.Text = (string.IsNullOrEmpty(detect.Params.qualitymodel.ToString())) ? "0" :
-                    detect.Params.qualitymodel.ToString();
-                cboDetectorMode.SelectedIndex = detect.Params.modedetect;
-                cboExtractionMode.SelectedIndex = detect.Params.extractionmode;
-                /////////////
-                managerControlView.SetValueToComboBox(cboDetectForced,
-                    identify.Params.A_FaceDetectionForced.ToString());
-                managerControlView.SetValueToComboBox(cboIdentificationSpeed,
-                    identify.Params.A_IdentificationSpeed.ToString());              
-                txtASimilarity.Text = (string.IsNullOrEmpty(identify.Params.A_SimilarityThreshold.ToString())) ? "0" :
-                    identify.Params.A_SimilarityThreshold.ToString();
-                txtBestMatched.Text = (string.IsNullOrEmpty(identify.Params.A_BestMatchedCandidates.ToString())) ? "0" :
-                    identify.Params.A_BestMatchedCandidates.ToString();
-                cboBiometricLogLevel.SelectedIndex = identify.Params.A_BiometricLogLevel;
-                cboIgnoreMultipleFaces.SelectedIndex = identify.Params.A_IgnoreMultipleFaces;
-                cboFaceDetectionMode.SelectedIndex = identify.Params.A_FaceDetectionMode;
-                txtSearchorExtractionThreads.Text = (string.IsNullOrEmpty(identify.Params.A_SearchorExtractionThreads.ToString())) ? "0" :
-                    identify.Params.A_SearchorExtractionThreads.ToString();
-                cboFaceExtractionMode.SelectedIndex = identify.Params.A_FaceExtractionMode;
-
-                cboRegisterUser.SelectedIndex = identify.Params.is_register;
+                //managerControlView.SetValueToComboBox(cboDetectForced,
+                //   paramsEnrollmentProcessing.CFG_IFACE_DETECT_FORCED.ToString());
+                cboDetectForced.SelectedIndex = paramsEnrollmentProcessing.CFG_IFACE_DETECT_FORCED;
+                cboIdentificationSpeed.SelectedIndex = paramsEnrollmentProcessing.CFG_IDENTIFICATION_SPEED;
+                //managerControlView.SetValueToComboBox(cboIdentificationSpeed,
+                //    paramsEnrollmentProcessing.CFG_IDENTIFICATION_SPEED.ToString());
+                txtASimilarity.Text = (string.IsNullOrEmpty(paramsEnrollmentProcessing.CFG_SIMILARITY_THRESHOLD.ToString())) ? "0" :
+                    paramsEnrollmentProcessing.CFG_SIMILARITY_THRESHOLD.ToString();
+                txtBestMatched.Text = (string.IsNullOrEmpty(paramsEnrollmentProcessing.CFG_BEST_CANDIDATES_COUNT.ToString())) ? "0" :
+                    paramsEnrollmentProcessing.CFG_BEST_CANDIDATES_COUNT.ToString();                
+                cboIgnoreMultipleFaces.SelectedIndex = paramsEnrollmentProcessing.CFG_IFACE_IGNORE_MULTIPLE_FACES;
+                cboFaceDetectionMode.SelectedIndex = paramsEnrollmentProcessing.CFG_IFACE_DETECTION_MODE;                                              
+                cboFaceExtractionMode.SelectedIndex = paramsEnrollmentProcessing.CFG_IFACE_EXTRACTION_MODE;
+                cboRegisterUser.SelectedIndex = paramsEnrollmentProcessing.AFACE_PARAMETER_ENROLL;
+                txtDetectionThreshold.Text = (string.IsNullOrEmpty(paramsEnrollmentProcessing.CFG_IFACE_DETECTION_THRESHOLD.ToString())) ? "0" :
+                    paramsEnrollmentProcessing.CFG_IFACE_DETECTION_THRESHOLD.ToString();
+                txtScoreMin.Text = (string.IsNullOrEmpty(paramsEnrollmentProcessing.AFACE_PARAMETER_SCORE_MIN.ToString())) ? "0" :
+                    paramsEnrollmentProcessing.AFACE_PARAMETER_SCORE_MIN.ToString();
+                txtScoreMax.Text = (string.IsNullOrEmpty(paramsEnrollmentProcessing.AFACE_PARAMETER_SCORE_MAX.ToString())) ? "0" :
+                    paramsEnrollmentProcessing.AFACE_PARAMETER_SCORE_MAX.ToString();
+              //////////
+                txtSimilarityThreshold.Text = (string.IsNullOrEmpty(paramsEnrollmentProcessing.CFG_SIMILARITY_THRESHOLD_DEDUPLICATION.ToString())) ? "0" :
+                    paramsEnrollmentProcessing.CFG_SIMILARITY_THRESHOLD_DEDUPLICATION.ToString();
+                cboDeduplicate.SelectedIndex = paramsEnrollmentProcessing.AFACE_PARAMETER_DEDUPLICATION;
+                cboConcatenateTemplates.SelectedIndex = paramsEnrollmentProcessing.AFACE_PARAMETER_CONCATENATE_TEMPLATES;
+                txtMaximumTemplates.Text = (string.IsNullOrEmpty(paramsEnrollmentProcessing.AFACE_PARAMETER_MAXIMUM_TEMPLATES.ToString())) ? "0" :
+                    paramsEnrollmentProcessing.AFACE_PARAMETER_MAXIMUM_TEMPLATES.ToString();
+                cboModeConcatenation.SelectedIndex = paramsEnrollmentProcessing.AFACE_PARAMETER_CONCATENATION_MODE;
+                txtVerificationScoreThreshold.Text = (string.IsNullOrEmpty(paramsEnrollmentProcessing.AFACE_PARAMETER_VERIFICATION_SCORE.ToString())) ? "0" :
+                    paramsEnrollmentProcessing.AFACE_PARAMETER_VERIFICATION_SCORE.ToString();
+            }
+                
+        }
+        private void GetParamsFaceProcessing(ParamsFaceProcessing paramsFaceProcessing)
+        {
+                       
+            if (paramsFaceProcessing != null)
+            {
+                txtAccurancy.Text = (string.IsNullOrEmpty(paramsFaceProcessing.FACEDET_CONFIDENCE_THRESHOLD.ToString())) ? "0" :
+                    paramsFaceProcessing.FACEDET_CONFIDENCE_THRESHOLD.ToString();
+                txtMaxEye.Text = (string.IsNullOrEmpty(paramsFaceProcessing.TRACK_MAX_FACE_SIZE.ToString())) ? "0" :
+                    paramsFaceProcessing.TRACK_MAX_FACE_SIZE.ToString();
+                txtMaxDetect.Text = (string.IsNullOrEmpty(paramsFaceProcessing.FACE_MAX_DETECT.ToString())) ? "0" :
+                    paramsFaceProcessing.FACE_MAX_DETECT.ToString();
+                txtMinEye.Text = (string.IsNullOrEmpty(paramsFaceProcessing.TRACK_MIN_FACE_SIZE.ToString())) ? "0" :
+                    paramsFaceProcessing.TRACK_MIN_FACE_SIZE.ToString();
+                txtModelQuality.Text = (string.IsNullOrEmpty(paramsFaceProcessing.QUALITY_MODEL.ToString())) ? "0" :
+                    paramsFaceProcessing.QUALITY_MODEL.ToString();
+                cboDetectorMode.SelectedIndex = paramsFaceProcessing.FACEDET_SPEED_ACCURACY_MODE;
+                cboExtractionMode.SelectedIndex = paramsFaceProcessing.FACETMPLEXT_SPEED_ACCURACY_MODE;
+                cboFaceCrop.SelectedIndex = paramsFaceProcessing.IFACE_GetFaceCropImage;           
+               
             }
 
-        }
-
-        
-
-        private void txtMaxDetect_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            this.managerControlView.OnlyInteger(e);
         }
 
         private void txtAccurancy_KeyPress(object sender, KeyPressEventArgs e)
@@ -157,19 +249,7 @@ namespace WhoIsDemo.form
         private void txtMinEye_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.managerControlView.OnlyInteger(e);
-        }  
-
-        private bool VerifyInputDetect()
-        {
-            return (!string.IsNullOrEmpty(txtAccurancy.Text) &&
-                !string.IsNullOrEmpty(txtMaxDetect.Text) &&
-                !string.IsNullOrEmpty(txtMaxEye.Text) &&
-                !string.IsNullOrEmpty(txtMinEye.Text) &&
-                !string.IsNullOrEmpty(txtMaxEyeTrack.Text) &&
-                cboDetectForced.SelectedIndex != -1 && 
-                cboIdentificationSpeed.SelectedIndex != -1 && 
-                cboDetectorMode.SelectedIndex != -1);
-        }        
+        }         
 
         private int CheckTypeVideo(string description)
         {
@@ -188,123 +268,7 @@ namespace WhoIsDemo.form
             }
             
             return 0;
-        }
-
-        //private void btnSaveVideoList_Click(object sender, EventArgs e)
-        //{
-        //    string quantityVideo = "video_" + (lvwVideo.Items.Count + 1).ToString();
-           
-        //    ListViewItem item = new ListViewItem(quantityVideo,
-        //            lvwVideo.Items.Count);
-        //    item.SubItems.Add(txtIpVideo.Text);
-        //    int typeVideo = CheckTypeVideo(txtIpVideo.Text);
-        //    switch (typeVideo)
-        //    {
-        //        case Configuration.VIDEO_TYPE_IP:
-        //            item.SubItems.Add(Configuration.DESC_TYPE_IP);
-        //            lvwVideo.Items.Add(item);
-        //            break;
-        //        case Configuration.VIDEO_TYPE_FILE:
-        //            item.SubItems.Add(Configuration.DESC_TYPE_FILE);
-        //            lvwVideo.Items.Add(item);
-        //            break;
-        //        case Configuration.VIDEO_TYPE_CAMERA:
-        //            item.SubItems.Add(Configuration.DESC_TYPE_CAMERA);
-        //            lvwVideo.Items.Add(item);
-        //            break;
-        //        default:
-        //            MessageBox.Show(ManagerResource.Instance.resourceManager
-        //            .GetString("type_video_incorrect"));
-        //            break;
-        //    }
-            
-        //}
-
-        private string GetDescTypeVideo(int type)
-        {
-            switch (type)
-            {
-                case Configuration.VIDEO_TYPE_IP:
-                    return Configuration.DESC_TYPE_IP;
-                case Configuration.VIDEO_TYPE_FILE:
-                    return Configuration.DESC_TYPE_FILE;
-                case Configuration.VIDEO_TYPE_CAMERA:
-                    return Configuration.DESC_TYPE_CAMERA;
-                default:
-                    break;
-            }
-            return "";
-        }
-
-        private int GetTypeVideo(string description)
-        {
-            switch (description)
-            {
-                case Configuration.DESC_TYPE_IP:
-                    return Configuration.VIDEO_TYPE_IP;                    
-                case Configuration.DESC_TYPE_FILE:
-                    return Configuration.VIDEO_TYPE_FILE;
-                case Configuration.DESC_TYPE_CAMERA:
-                    return Configuration.VIDEO_TYPE_CAMERA;
-                default:
-                    break;
-            }
-            return 0;
-        }
-
-        //private void SaveVideos()
-        //{
-        //    List<Video> list = new List<Video>();
-        //    foreach (ListViewItem item in lvwVideo.Items)
-        //    {
-        //        Video video = new Video();
-        //        video.id = item.Text;                
-        //        video.type = GetTypeVideo(item.SubItems[2].Text);
-        //        if (video.type == Configuration.VIDEO_TYPE_CAMERA && !item.SubItems[1].Text.Contains("dev"))
-        //        {
-        //            video.path = "/dev/video" + item.SubItems[1].Text;
-        //        }
-        //        else
-        //        {
-        //            video.path = item.SubItems[1].Text;
-        //        }
-                
-        //        list.Add(video);
-        //    }
-
-        //    VideoConfig videoConfig = new VideoConfig();
-        //    videoConfig.configuration = "video_configuration";
-        //    videoConfig.videos = list;
-        //    Configuration.Instance.ListVideo = list;
-        //    SetVideoInControl();
-        //    diskPresenter.SaveVideoConfiguration(videoConfig);
-        //    this.lblVideoOk.Text = "OK";
-        //}
-
-        //private void SetVideoInControl()
-        //{
-        //    if (Configuration.Instance.ListVideo.Count != 0)
-        //    {
-        //        cboVideos.Items.Clear();
-        //        foreach (Video vid in Configuration.Instance.ListVideo)
-        //        {
-        //            cboVideos.Items.Add(vid.path);
-        //        }
-        //    }
-        //}
-
-        //private void btnSaveVideosFile_Click(object sender, EventArgs e)
-        //{
-        //   // SaveVideos();
-        //}
-
-        //private void lvwVideo_KeyDown(object sender, KeyEventArgs e)
-        //{
-        //    if (e.KeyCode == Keys.Delete || e.KeyCode == Keys.Back)
-        //    {
-        //        lvwVideo.SelectedItems[0].Remove();
-        //    }
-        //}
+        }              
 
         private void btnSaveDatabase_Click(object sender, EventArgs e)
         {
@@ -316,7 +280,7 @@ namespace WhoIsDemo.form
                 paramsDatabase.connect = txtConnect.Text;
                 paramsDatabase.name = txtNameDatabase.Text;
                 databaseConfig.Params = paramsDatabase;
-                diskPresenter.SaveDatabaseConfiguration(0, databaseConfig);
+                diskPresenter.SaveDatabaseConfiguration(databaseConfig);
                 System.Threading.Thread closeLibrary = new System
                 .Threading.Thread(new System.Threading
                 .ThreadStart(AipuFace.Instance.Terminate));
@@ -337,80 +301,74 @@ namespace WhoIsDemo.form
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question, 
                 MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
-                //AipuFace.Instance.Terminate();
+                
 
                 Database.Instance.DropDatabase();
 
                 diskPresenter.FileDelete("iengine.db");
                 lblOkClearDatabase.Text = "OK";
                 this.MdiParent.Close();                
-                
-
-                //System.Windows.Forms.Application.Exit();
-
-                //if (dropDatabasePresenter.DropCurrentDatabase())
-                //{
-                //    diskPresenter.FileDelete("iengine.db");
-                //    lblOkClearDatabase.Text = "OK";
-                    
-                //    System.Windows.Forms.Application.Exit();
-                //}
-                //else
-                //{
-                //    managerControlView.SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
-                //        .GetString("error"),
-                //        0, this.status);
-                //}
+                                
             }            
             
             
-        }
-                    
-        private void txtTrackingRefresh_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            this.managerControlView.OnlyInteger(e);
-        }
-
-        private void txtMaxEyeTrack_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            this.managerControlView.OnlyInteger(e);
-        }
-
-        private void txtMinEyeTrack_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            this.managerControlView.OnlyInteger(e);
-        }
+        }                          
 
         private void txtRefreshTrack_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.managerControlView.OnlyInteger(e);
         }
 
-        private void txtConfidenceTrack_KeyPress(object sender, KeyPressEventArgs e)
+        private void GetGlobalParameters()
         {
-            this.managerControlView.OnlyInteger(e);
-        }        
-
-        private void GetParamsFlow(int channel)
+            ConfigurationGlobalLib configurationGlobalLib = diskPresenter.ReadGlobalParameters();
+            ParamsGlobal paramsGlobal = configurationGlobalLib.paramsGlobal;
+            txtGBMinImage.Text = paramsGlobal.GLOBAL_MIN_VALID_IMAGE_SIZE.ToString();
+            cboGBThreadMode.SelectedIndex = paramsGlobal.GLOBAL_THREAD_MANAGEMENT_MODE;
+            txtGBThreadNum.Text = paramsGlobal.GLOBAL_THREAD_NUM.ToString();
+            txtGBLogLevel.Text = paramsGlobal.GLOBAL_CFG_LOG_LEVEL.ToString();
+            cboGBEnabledConfigurationGPU.SelectedIndex = paramsGlobal.AFACE_PARAMETER_GPU_ENABLED;
+            txtGBGpuDevice.Text = paramsGlobal.GLOBAL_GPU_DEVICE_ID;            
+            managerControlView.SetValueToComboBox(cboGBGpuEnabled,
+                paramsGlobal.GLOBAL_GPU_ENABLED);
+        }
+        
+        private void GetParamsConfiguration(int channel)
         {
-            Flow flow = diskPresenter.ReadFlowConfiguration(channel);
-
-            if (flow != null)
+            ConfigurationPipeline configurationPipeline = diskPresenter.ReadConfigurationPipe(channel);
+            if (configurationPipeline != null)
             {
-                int sourceFlow = flow.Params.sourceFlow;
+                ParamsFlow paramsFlow = configurationPipeline.paramsFlow;
+                GetParamsFlow(paramsFlow);
+                ParamsTrackingProcessing paramsTrackingProcessing = configurationPipeline.paramsTrackingProcessing;
+                GetParamsTracking(paramsTrackingProcessing);
+                ParamsFaceProcessing paramsFaceProcessing = configurationPipeline.paramsFaceProcessing;
+                GetParamsFaceProcessing(paramsFaceProcessing);
+                ParamsEnrollmentProcessing paramsEnrollmentProcessing = configurationPipeline.paramsEnrollmentProcessing;
+                GetParamsEnrollProcessing(paramsEnrollmentProcessing);
+            }
+        }
+
+        private void GetParamsFlow(ParamsFlow paramsFlow)
+        {
+            
+
+            if (paramsFlow != null)
+            {
+                int sourceFlow = paramsFlow.sourceFlow;
                 switch (sourceFlow)
                 {
                     case 1:
                         rbTypeChannelIP.Checked = true;
-                        txtDescriptionChannel.Text = flow.Params.ipCamera;
+                        txtDescriptionChannel.Text = paramsFlow.ipCamera;
                         break;
                     case 2:
                         rbTypeChannelFile.Checked = true;
-                        txtDescriptionChannel.Text = flow.Params.fileVideo;
+                        txtDescriptionChannel.Text = paramsFlow.fileVideo;
                         break;
                     case 3:
                         rbTypeChannelDevice.Checked = true;
-                        txtDescriptionChannel.Text = flow.Params.deviceVideo;
+                        txtDescriptionChannel.Text = paramsFlow.deviceVideo;
                         break;
                     default:
                         break;
@@ -424,167 +382,39 @@ namespace WhoIsDemo.form
             }
         }
 
-        private void GetParamsTracking(int channel)
+        private void GetParamsTracking(ParamsTrackingProcessing paramsTrackingProcessing)
         {
-            Tracking tracking = diskPresenter.ReadTrackingConfiguration(channel);
             
-            if (tracking != null)
-            {
 
-                txtMaxEyeTrack.Text = (string.IsNullOrEmpty(tracking.Params.maxeye.ToString())) ? "0" :
-                    tracking.Params.maxeye.ToString();
-                txtMinEyeTrack.Text = (string.IsNullOrEmpty(tracking.Params.mineye.ToString())) ? "0" :
-                    tracking.Params.mineye.ToString();
+            if (paramsTrackingProcessing != null)
+            {                
 
-                txtRefreshTrack.Text = (string.IsNullOrEmpty(tracking.Params.refreshInterval.ToString())) ? "0" :
-                    tracking.Params.refreshInterval.ToString();
+                txtRefreshTrack.Text = (string.IsNullOrEmpty(paramsTrackingProcessing.TRACK_FACE_DISCOVERY_FREQUENCE_MS.ToString())) ? "0" :
+                    paramsTrackingProcessing.TRACK_FACE_DISCOVERY_FREQUENCE_MS.ToString();
+                if (paramsTrackingProcessing.TRACK_DEEP_TRACK == "true")
+                {
+                    chkDeepTrack.Checked = true;
+                }
+                else
+                {
+                    chkDeepTrack.Checked = false;
+                }
+                
+                cboTrackingMode.SelectedIndex = paramsTrackingProcessing.TRACK_TRACKING_MODE;
+                cboTrackSpeed.SelectedIndex = paramsTrackingProcessing.TRACK_SPEED_ACCURACY_MODE;
+                cboTrackMotion.SelectedIndex = paramsTrackingProcessing.TRACK_MOTION_OPTIMIZATION;
+                txtRedetectTimeDelta.Text = paramsTrackingProcessing.COUNT_REDETECT_TIME_DELTA.ToString();
 
-                txtConfidenceTrack.Text = (string.IsNullOrEmpty(tracking.Params.faceConfidenceThresh.ToString())) ? "0" :
-                    tracking.Params.faceConfidenceThresh.ToString();
-
-                chkDeepTrack.Checked = Convert.ToBoolean(tracking.Params.deepTrack);
-                cboTrackingMode.SelectedIndex = tracking.Params.trackingMode;
-                cboTrackSpeed.SelectedIndex = tracking.Params.trackSpeed;
-                cboTrackMotion.SelectedIndex = tracking.Params.motionOptimization;
-               
             }
 
-        }        
+        }
 
         private bool ValidateFlow()
         {
 
             return (CheckTypeVideo(txtDescriptionChannel.Text) != 0);
             
-        }
-        private bool SaveConfigurationFlow(int channel)
-        {
-            bool result = false;
-
-            if (ValidateFlow())
-            {
-                Flow flow = new Flow();
-                flow.configuration = "flowvideo_configuration";
-                ParamsFlow paramsFlow = new ParamsFlow();
-                if (rbTypeChannelIP.Checked == true)
-                {
-                    paramsFlow.sourceFlow = 1;
-                    paramsFlow.ipCamera = txtDescriptionChannel.Text;
-                    paramsFlow.fileVideo = string.Empty;
-                    paramsFlow.deviceVideo = string.Empty;
-                }
-
-                if (rbTypeChannelFile.Checked == true)
-                {
-                    paramsFlow.sourceFlow = 2;
-                    paramsFlow.ipCamera = string.Empty;
-                    paramsFlow.fileVideo = txtDescriptionChannel.Text;
-                    paramsFlow.deviceVideo = string.Empty;
-                }
-
-                if (rbTypeChannelDevice.Checked == true)
-                {
-                    paramsFlow.sourceFlow = 3;
-                    paramsFlow.ipCamera = string.Empty;
-                    paramsFlow.fileVideo = string.Empty;
-                    paramsFlow.deviceVideo = txtDescriptionChannel.Text;
-                }
-
-                paramsFlow.videoScaleMethod = 1;
-
-                flow.Params = paramsFlow;
-                diskPresenter.SaveFlowConfiguration(channel, flow);
-                result = true;
-            }
-            
-            return result;
-        }
-
-        private bool ValidateTracking()
-        {
-            return (txtMaxEyeTrack.Text != "0"
-                && txtMinEyeTrack.Text != "0"
-                && txtRefreshTrack.Text != "0"
-                && txtConfidenceTrack.Text != "0");
-        }
-
-        private bool SaveConfigurationTracking(int channel)
-        {
-            bool result = false;
-            if (ValidateTracking())
-            {
-                Tracking tracking = new Tracking();
-                tracking.configuration = "tracking_configuration";
-                ParamsTracking paramsTracking = new ParamsTracking();
-                paramsTracking.maxeye = Convert.ToInt16(txtMaxEyeTrack.Text);
-                paramsTracking.mineye = Convert.ToInt16(txtMinEyeTrack.Text);
-                paramsTracking.maxfaces = 5;
-                paramsTracking.refreshInterval = Convert.ToInt16(txtRefreshTrack.Text);
-                paramsTracking.faceConfidenceThresh = Convert.ToInt16(txtConfidenceTrack.Text);
-                paramsTracking.deepTrack = Convert.ToInt16(chkDeepTrack.Checked);
-                paramsTracking.trackingMode = cboTrackingMode.SelectedIndex;
-                paramsTracking.trackSpeed = cboTrackSpeed.SelectedIndex;
-                paramsTracking.motionOptimization = cboTrackMotion.SelectedIndex;
-                paramsTracking.qualitymodel = Convert.ToInt16(txtModelQuality.Text);
-                tracking.Params = paramsTracking;
-                diskPresenter.SaveTrackingConfiguration(channel, tracking);
-
-                result = true;
-            }
-            
-            return result;
-        }
-
-        private bool SaveConfigurationDetect(int channel)
-        {
-            bool result = false;
-            if (VerifyInputDetect())
-            {
-                Detect detect = new Detect();
-                Identify identify = new Identify();
-                identify.configuration = "identify_configuration";
-                detect.configuration = "detect_configuration";
-                ParamsIdentify paramsIdentify = new ParamsIdentify();
-                ParamsDetect paramsDetect = new ParamsDetect();
-                paramsDetect.accuracy = Convert.ToInt16(txtAccurancy.Text);
-                paramsDetect.maxeye = Convert.ToInt16(txtMaxEye.Text);
-                paramsDetect.maxfaces = Convert.ToInt16(txtMaxDetect.Text);
-                paramsDetect.mineye = Convert.ToInt16(txtMinEye.Text);
-                paramsDetect.extractionmode = cboExtractionMode.SelectedIndex;
-                paramsDetect.modedetect = cboDetectorMode.SelectedIndex;
-                paramsDetect.qualitymodel = Convert.ToInt16(txtModelQuality.Text);
-                paramsIdentify.A_MaxEyeDist = Convert.ToInt16(txtMaxEye.Text);
-                paramsIdentify.A_MinEyeDist = Convert.ToInt16(txtMinEye.Text);
-                paramsIdentify.A_FaceDetectionForced = Convert.ToInt16(cboDetectForced.Text);
-                paramsIdentify.A_IdentificationSpeed = Convert.ToInt16(cboIdentificationSpeed.Text);
-                paramsIdentify.A_SimilarityThreshold = Convert.ToInt16(txtASimilarity.Text);
-                paramsIdentify.A_BiometricLogLevel = cboBiometricLogLevel.SelectedIndex;
-                paramsIdentify.A_BestMatchedCandidates = Convert.ToInt16(txtBestMatched.Text);
-                paramsIdentify.A_IgnoreMultipleFaces = cboIgnoreMultipleFaces.SelectedIndex;
-                paramsIdentify.A_FaceDetectionMode = cboFaceDetectionMode.SelectedIndex;
-                paramsIdentify.A_SearchorExtractionThreads = Convert.ToInt16(txtSearchorExtractionThreads.Text);
-                paramsIdentify.A_FaceExtractionMode = cboFaceExtractionMode.SelectedIndex;
-                paramsIdentify.is_register = cboRegisterUser.SelectedIndex;
-                detect.Params = paramsDetect;
-                identify.Params = paramsIdentify;
-                diskPresenter.SaveDetectConfiguration(channel, detect);
-                diskPresenter.SaveIdentifyConfiguration(channel, identify);
-                result = true;
-                
-            }
-            return result;
-        }
-        
-
-        private void txtASimilarity_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            this.managerControlView.OnlyInteger(e);
-        }
-
-        private void txtBestMatched_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            this.managerControlView.OnlyInteger(e);
-        }
+        }                                    
 
         private void cboChannel_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -592,38 +422,99 @@ namespace WhoIsDemo.form
             {
                 testVideo = false;
                 channelCurrent = (sender as ComboBox).SelectedIndex;
-                GetDataConfiguration(channelCurrent);
+                GetParamsConfiguration(channelCurrent);
             }
-                        
-        }
 
-        private void GetDataConfiguration(int channel)
-        {
-            GetParamsFlow(channel);
-            GetParamsDetection(channel);
-            GetParamsTracking(channel);
-        }
+        }       
 
         private bool SaveDataConfiguration(int channel)
         {
-            bool result = false;
-            if (channel > Configuration.Instance.NumberChannels + 2)
+            
+            if (channel > Configuration.Instance.NumberChannels + 2 || !ValidateFlow())
             {
-                return result;
+                return false;
             }
-            diskPresenter.CreateDirectoryWork(channel);
-            diskPresenter.CreateContentDirectoryWork(channel);
-            if (SaveConfigurationFlow(channel))
+            
+            ConfigurationPipeline configurationPipeline = new ConfigurationPipeline();
+            configurationPipeline.configurationFaceProcessing = "Face processing";
+            ParamsFaceProcessing paramsFaceProcessing = new ParamsFaceProcessing();
+            paramsFaceProcessing.IFACE_GetFaceCropImage = cboFaceCrop.SelectedIndex;
+            paramsFaceProcessing.FACEDET_CONFIDENCE_THRESHOLD = Convert.ToInt16(txtAccurancy.Text.ToString());
+            paramsFaceProcessing.FACEDET_SPEED_ACCURACY_MODE = cboDetectorMode.SelectedIndex;
+            paramsFaceProcessing.FACETMPLEXT_SPEED_ACCURACY_MODE = cboExtractionMode.SelectedIndex;
+            paramsFaceProcessing.TRACK_MAX_FACE_SIZE = Convert.ToInt16(txtMaxEye.Text.ToString());
+            paramsFaceProcessing.TRACK_MIN_FACE_SIZE = Convert.ToInt16(txtMinEye.Text.ToString());
+            paramsFaceProcessing.QUALITY_MODEL = Convert.ToInt32(txtModelQuality.Text);
+            paramsFaceProcessing.FACE_MAX_DETECT = Convert.ToInt32(txtMaxDetect.Text);
+            configurationPipeline.paramsFaceProcessing = paramsFaceProcessing;
+            configurationPipeline.configurationTrackingProcessing = "Tracking processing";
+            ParamsTrackingProcessing paramsTrackingProcessing = new ParamsTrackingProcessing();
+            if (chkDeepTrack.Checked)
             {
-                if (SaveConfigurationTracking(channel))
-                {
-                    if (SaveConfigurationDetect(channel))
-                    {
-                        result = true;
-                    }
-                }
+                paramsTrackingProcessing.TRACK_DEEP_TRACK = "true";
+            }
+            else
+            {
+                paramsTrackingProcessing.TRACK_DEEP_TRACK = "false";
             }
 
+            paramsTrackingProcessing.TRACK_FACE_DISCOVERY_FREQUENCE_MS = Convert.ToInt32(txtRefreshTrack.Text);
+            paramsTrackingProcessing.COUNT_REDETECT_TIME_DELTA = Convert.ToInt32(txtRedetectTimeDelta.Text);
+            paramsTrackingProcessing.TRACK_MOTION_OPTIMIZATION = cboTrackMotion.SelectedIndex;
+            paramsTrackingProcessing.TRACK_SPEED_ACCURACY_MODE = cboTrackSpeed.SelectedIndex;
+            paramsTrackingProcessing.TRACK_TRACKING_MODE = cboTrackingMode.SelectedIndex;
+            configurationPipeline.paramsTrackingProcessing = paramsTrackingProcessing;
+            configurationPipeline.configurationEnrollmentProcessing = "Enrollment processing";
+            ParamsEnrollmentProcessing paramsEnrollmentProcessing = new ParamsEnrollmentProcessing();
+            paramsEnrollmentProcessing.CFG_BEST_CANDIDATES_COUNT = Convert.ToInt16(txtBestMatched.Text); ;
+            paramsEnrollmentProcessing.CFG_SIMILARITY_THRESHOLD = Convert.ToInt16(txtASimilarity.Text);
+            paramsEnrollmentProcessing.CFG_IDENTIFICATION_SPEED = Convert.ToInt16(cboIdentificationSpeed.Text);
+            paramsEnrollmentProcessing.CFG_IFACE_DETECT_FORCED = cboDetectForced.SelectedIndex;
+            paramsEnrollmentProcessing.CFG_IFACE_IGNORE_MULTIPLE_FACES = cboIgnoreMultipleFaces.SelectedIndex;
+            paramsEnrollmentProcessing.CFG_IFACE_DETECTION_MODE = cboFaceDetectionMode.SelectedIndex;
+            paramsEnrollmentProcessing.CFG_IFACE_EXTRACTION_MODE = cboFaceExtractionMode.SelectedIndex;
+            paramsEnrollmentProcessing.CFG_IFACE_DETECTION_THRESHOLD = Convert.ToInt16(txtDetectionThreshold.Text);
+            paramsEnrollmentProcessing.AFACE_PARAMETER_SCORE_MIN = Convert.ToInt16(txtScoreMin.Text);
+            paramsEnrollmentProcessing.AFACE_PARAMETER_SCORE_MAX = Convert.ToInt16(txtScoreMax.Text);
+            paramsEnrollmentProcessing.AFACE_PARAMETER_ENROLL = cboRegisterUser.SelectedIndex;
+            /////////
+            paramsEnrollmentProcessing.CFG_SIMILARITY_THRESHOLD_DEDUPLICATION = Convert.ToInt16(txtSimilarityThreshold.Text);
+            paramsEnrollmentProcessing.AFACE_PARAMETER_DEDUPLICATION = cboDeduplicate.SelectedIndex;
+            paramsEnrollmentProcessing.AFACE_PARAMETER_CONCATENATE_TEMPLATES = cboConcatenateTemplates.SelectedIndex;
+            paramsEnrollmentProcessing.AFACE_PARAMETER_MAXIMUM_TEMPLATES = Convert.ToInt16(txtMaximumTemplates.Text);
+            paramsEnrollmentProcessing.AFACE_PARAMETER_CONCATENATION_MODE = cboModeConcatenation.SelectedIndex;
+            paramsEnrollmentProcessing.AFACE_PARAMETER_VERIFICATION_SCORE = Convert.ToInt16(txtVerificationScoreThreshold.Text);
+
+            configurationPipeline.paramsEnrollmentProcessing = paramsEnrollmentProcessing;
+            configurationPipeline.configurationFlowVideo = "Flow video";
+            ParamsFlow paramsFlow = new ParamsFlow();
+            if (rbTypeChannelIP.Checked == true)
+            {
+                paramsFlow.deviceVideo = string.Empty;
+                paramsFlow.fileVideo = string.Empty;
+                paramsFlow.ipCamera = txtDescriptionChannel.Text;
+                paramsFlow.sourceFlow = 1;
+            }
+            if (rbTypeChannelFile.Checked == true)
+            {
+                paramsFlow.deviceVideo = string.Empty;
+                paramsFlow.fileVideo = txtDescriptionChannel.Text;
+                paramsFlow.ipCamera = string.Empty;
+                paramsFlow.sourceFlow = 2;
+            }
+
+            if (rbTypeChannelDevice.Checked == true)
+            {
+                paramsFlow.deviceVideo = txtDescriptionChannel.Text;
+                paramsFlow.fileVideo = string.Empty;
+                paramsFlow.ipCamera = string.Empty;
+                paramsFlow.sourceFlow = 3;
+            }
+            paramsFlow.videoScaleMethod = 1;
+            configurationPipeline.paramsFlow = paramsFlow;
+
+            diskPresenter.SaveConfigurationPipe(channel, configurationPipeline);
+            
             if (channel > Configuration.Instance.NumberChannels)
             {
                 registryValueDataReader.setKeyValueRegistry(RegistryValueDataReader.PATH_KEY,
@@ -633,24 +524,8 @@ namespace WhoIsDemo.form
 
             diskPresenter.GenerateListChannels();
 
-            return result;
-        }
-
-        private void btnSaveConfiguration_Click(object sender, EventArgs e)
-        {
-            if (!testVideo || !SaveDataConfiguration(channelCurrent))
-            {
-                MessageBox.Show(ManagerResource.Instance.resourceManager
-                    .GetString("configuration_empty"));
-            }
-            else
-            {
-                managerControlView.SetValueTextStatusStrip(ManagerResource
-                    .Instance.resourceManager
-                        .GetString("save_ok"),
-                        0, this.status);
-            }
-        }
+            return true;
+        }       
 
         private void frmConfiguration_Shown(object sender, EventArgs e)
         {
@@ -715,11 +590,374 @@ namespace WhoIsDemo.form
                     0, this.status);
             }
             
-        }
+        }       
 
-        private void txtSearchorExtractionThreads_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtRedetectTimeDelta_KeyPress(object sender, KeyPressEventArgs e)
         {
             this.managerControlView.OnlyInteger(e);
+        }
+
+        private void txtDetectionThreshold_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.managerControlView.OnlyInteger(e);
+        }
+
+        private void txtScoreMin_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.managerControlView.OnlyInteger(e);
+        }
+
+        private void txtScoreMax_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.managerControlView.OnlyInteger(e);
+        }
+
+        private void btnSaveGlobalParameters_Click(object sender, EventArgs e)
+        {
+            ConfigurationGlobalLib configurationGlobalLib = new ConfigurationGlobalLib();
+            ParamsGlobal paramsGlobal = new ParamsGlobal();
+            paramsGlobal.GLOBAL_MIN_VALID_IMAGE_SIZE = Convert.ToInt16(txtGBMinImage.Text);
+            paramsGlobal.GLOBAL_THREAD_MANAGEMENT_MODE = cboGBThreadMode.SelectedIndex;
+            paramsGlobal.GLOBAL_THREAD_NUM = txtGBThreadNum.Text;
+            paramsGlobal.GLOBAL_CFG_LOG_LEVEL = Convert.ToInt16(txtGBLogLevel.Text);
+            paramsGlobal.AFACE_PARAMETER_GPU_ENABLED = cboGBEnabledConfigurationGPU.SelectedIndex;
+            paramsGlobal.GLOBAL_GPU_DEVICE_ID = txtGBGpuDevice.Text;
+            paramsGlobal.GLOBAL_GPU_ENABLED = cboGBGpuEnabled.SelectedText;
+            configurationGlobalLib.paramsGlobal = paramsGlobal;
+            diskPresenter.SaveGlobalConfiguration(configurationGlobalLib);
+
+            managerControlView.SetValueTextStatusStrip(ManagerResource
+                   .Instance.resourceManager
+                       .GetString("save_ok"),
+                       0, this.status);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (!testVideo || !SaveDataConfiguration(channelCurrent))
+            {
+                MessageBox.Show(ManagerResource.Instance.resourceManager
+                    .GetString("configuration_empty"));
+            }
+            else
+            {
+                managerControlView.SetValueTextStatusStrip(ManagerResource
+                    .Instance.resourceManager
+                        .GetString("save_ok"),
+                        0, this.status);
+            }
+        }
+
+        private void txtBestMatched_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.managerControlView.OnlyInteger(e);
+        }
+
+        private void txtASimilarity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.managerControlView.OnlyInteger(e);
+        }
+
+        private void txtMaxDetect_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.managerControlView.OnlyInteger(e);
+        }
+
+        private void txtSimilarityThreshold_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.managerControlView.OnlyInteger(e);
+        }
+
+        private void cboModeConcatenation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((sender as ComboBox).SelectedIndex == 0)
+            {
+                txtScoreMin.ReadOnly = false;
+                txtScoreMax.ReadOnly = false;
+            }
+            else
+            {
+                txtScoreMin.ReadOnly = true;
+                txtScoreMax.ReadOnly = true;
+            }
+        }
+
+        private void cboConcatenateTemplates_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((sender as ComboBox).SelectedIndex == 1)
+            {
+                cboModeConcatenation.SelectedIndex = 0;
+                cboModeConcatenation.Enabled = true;
+            }
+            else
+            {
+                cboModeConcatenation.SelectedIndex = 1;
+                cboModeConcatenation.Enabled = false;
+            }
+        }
+
+        private void txtModelQuality_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.managerControlView.OnlyInteger(e);
+        }
+
+        private void txtMaximumTemplates_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.managerControlView.OnlyInteger(e);
+        }
+
+        private void txtVerificationScoreThreshold_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            this.managerControlView.OnlyInteger(e);
+        }
+
+        private void txtAccurancy_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidValueInput((sender as TextBox).Text.ToString(), 
+                out errorMsg, 0, 10000))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.valueErrortxtAccurancy.SetError((sender as TextBox), errorMsg);
+            }
+        }
+
+        private bool ValidValueInput(string inputData, out string errorMessage, int limLower, int limHigher)
+        {
+            int input = -1;
+
+            if (string.IsNullOrEmpty(inputData))
+            {
+                errorMessage = ManagerResource.Instance.resourceManager
+                    .GetString("empty_data");
+                return false;
+            }
+            else
+            {
+                input = Convert.ToInt16(inputData);
+            }
+
+            if (input <= limHigher && input >= limLower)
+            {
+                errorMessage = "";
+                return true;
+            }
+            else
+            {
+                errorMessage = ManagerResource.Instance.resourceManager
+                    .GetString("number_out_range");
+                return false;
+            }
+                                
+        }
+
+        private void txtAccurancy_Validated(object sender, EventArgs e)
+        {
+            valueErrortxtAccurancy.SetError((sender as TextBox), "");
+        }
+
+        private void txtModelQuality_Validated(object sender, EventArgs e)
+        {
+            valueErrortxtModelQuality.SetError((sender as TextBox), "");
+        }
+
+        private void txtModelQuality_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidValueInput((sender as TextBox).Text.ToString(),
+                out errorMsg, 1, 255))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.valueErrortxtModelQuality.SetError((sender as TextBox), errorMsg);
+            }
+        }
+
+        private void txtRefreshTrack_Validated(object sender, EventArgs e)
+        {
+            valueErrortxtRefreshTrack.SetError((sender as TextBox), "");
+        }
+
+        private void txtRefreshTrack_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidValueInput((sender as TextBox).Text.ToString(),
+                out errorMsg, 100, 3000))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.valueErrortxtRefreshTrack.SetError((sender as TextBox), errorMsg);
+            }
+        }
+
+        private void txtRedetectTimeDelta_Validated(object sender, EventArgs e)
+        {
+            valueErrortxtRedetectTimeDelta.SetError((sender as TextBox), "");
+        }
+
+        private void txtRedetectTimeDelta_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidValueInput((sender as TextBox).Text.ToString(),
+                out errorMsg, 0, 10000))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.valueErrortxtRedetectTimeDelta.SetError((sender as TextBox), errorMsg);
+            }
+        }
+
+        private void txtDetectionThreshold_Validated(object sender, EventArgs e)
+        {
+            valueErrortxtDetectionThreshold.SetError((sender as TextBox), "");
+        }
+
+        private void txtDetectionThreshold_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidValueInput((sender as TextBox).Text.ToString(),
+                out errorMsg, 1, 10000))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.valueErrortxtDetectionThreshold.SetError((sender as TextBox), errorMsg);
+            }
+        }
+
+        private void txtSimilarityThreshold_Validated(object sender, EventArgs e)
+        {
+            valueErrortxtSimilarityThreshold.SetError((sender as TextBox), "");
+        }
+
+        private void txtSimilarityThreshold_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidValueInput((sender as TextBox).Text.ToString(),
+                out errorMsg, 0, 1000))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.valueErrortxtSimilarityThreshold.SetError((sender as TextBox), errorMsg);
+            }
+        }
+
+        private void txtScoreMin_Validated(object sender, EventArgs e)
+        {
+            valueErrortxtScoreMin.SetError((sender as TextBox), "");
+        }
+
+        private void txtScoreMin_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidValueInput((sender as TextBox).Text.ToString(),
+                out errorMsg, 0, 100))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.valueErrortxtScoreMin.SetError((sender as TextBox), errorMsg);
+            }
+        }
+
+        private void txtScoreMax_Validated(object sender, EventArgs e)
+        {
+            valueErrortxtScoreMax.SetError((sender as TextBox), "");
+        }
+
+        private void txtScoreMax_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidValueInput((sender as TextBox).Text.ToString(),
+                out errorMsg, 0, 100))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.valueErrortxtScoreMax.SetError((sender as TextBox), errorMsg);
+            }
+        }
+
+        private void txtASimilarity_Validated(object sender, EventArgs e)
+        {
+            valueErrortxtASimilarity.SetError((sender as TextBox), "");
+        }
+
+        private void txtASimilarity_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidValueInput((sender as TextBox).Text.ToString(),
+                out errorMsg, 0, 1000))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.valueErrortxtASimilarity.SetError((sender as TextBox), errorMsg);
+            }
+        }
+
+        private void txtBestMatched_Validated(object sender, EventArgs e)
+        {
+            valueErrortxtBestMatched.SetError((sender as TextBox), "");
+        }
+
+        private void txtBestMatched_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidValueInput((sender as TextBox).Text.ToString(),
+                out errorMsg, 1, 5))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.valueErrortxtBestMatched.SetError((sender as TextBox), errorMsg);
+            }
+        }
+
+        private void txtMaxDetect_Validated(object sender, EventArgs e)
+        {
+            valueErrortxtMaxDetect.SetError((sender as TextBox), "");
+        }
+
+        private void txtMaxDetect_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            string errorMsg;
+            if (!ValidValueInput((sender as TextBox).Text.ToString(),
+                out errorMsg, 1, 5))
+            {
+                // Cancel the event and select the text to be corrected by the user.
+                e.Cancel = true;
+                (sender as TextBox).Select(0, (sender as TextBox).Text.Length);
+
+                // Set the ErrorProvider error with the text to display. 
+                this.valueErrortxtMaxDetect.SetError((sender as TextBox), errorMsg);
+            }
         }
     }
 }

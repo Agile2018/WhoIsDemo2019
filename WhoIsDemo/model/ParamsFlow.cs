@@ -1,6 +1,6 @@
 ﻿namespace WhoIsDemo.model
 {
-    class ParamsFlow
+    public class ParamsFlow
     {
         public string deviceVideo { get; set; }
         public string fileVideo { get; set; }

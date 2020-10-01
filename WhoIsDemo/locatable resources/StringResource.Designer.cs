@@ -124,6 +124,15 @@ namespace WhoIsDemo.locatable_resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Data empty..
+        /// </summary>
+        internal static string empty_data {
+            get {
+                return ResourceManager.GetString("empty_data", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Error in the task performed..
         /// </summary>
         internal static string error {
@@ -174,6 +183,24 @@ namespace WhoIsDemo.locatable_resources {
         internal static string low_score {
             get {
                 return ResourceManager.GetString("low_score", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The number less than or greater than the range..
+        /// </summary>
+        internal static string message_range {
+            get {
+                return ResourceManager.GetString("message_range", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Number out of range..
+        /// </summary>
+        internal static string number_out_range {
+            get {
+                return ResourceManager.GetString("number_out_range", resourceCulture);
             }
         }
         

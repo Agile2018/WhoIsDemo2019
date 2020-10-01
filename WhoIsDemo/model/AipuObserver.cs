@@ -132,10 +132,8 @@ namespace WhoIsDemo.model
         {
             return Task.Run(() =>
             {
-                //Console.WriteLine("OBSERVANDO-------");
                 return aipu.GetUser;
             });
-
         }
 
         public void Dispose()

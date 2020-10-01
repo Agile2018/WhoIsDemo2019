@@ -138,7 +138,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnScoreEnroll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>56, 39</value>
+    <value>31, 43</value>
   </data>
   <data name="btnScoreEnroll.Size" type="System.Drawing.Size, System.Drawing">
     <value>35, 31</value>
@@ -159,33 +159,6 @@
   <data name="&gt;&gt;btnScoreEnroll.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="btnForcedEnroll.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="btnForcedEnroll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnForcedEnroll.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 39</value>
-  </data>
-  <data name="btnForcedEnroll.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 31</value>
-  </data>
-  <data name="btnForcedEnroll.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
-  </data>
-  <data name="&gt;&gt;btnForcedEnroll.Name" xml:space="preserve">
-    <value>btnForcedEnroll</value>
-  </data>
-  <data name="&gt;&gt;btnForcedEnroll.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnForcedEnroll.Parent" xml:space="preserve">
-    <value>gbFile</value>
-  </data>
-  <data name="&gt;&gt;btnForcedEnroll.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
   <data name="label3.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
@@ -193,16 +166,16 @@
     <value>NoControl</value>
   </data>
   <data name="label3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>54, 23</value>
+    <value>22, 21</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>35, 13</value>
+    <value>52, 13</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
   <data name="label3.Text" xml:space="preserve">
-    <value>Score</value>
+    <value>Load files</value>
   </data>
   <data name="&gt;&gt;label3.Name" xml:space="preserve">
     <value>label3</value>
@@ -214,34 +187,7 @@
     <value>gbFile</value>
   </data>
   <data name="&gt;&gt;label3.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="label1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="label1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>7, 23</value>
-  </data>
-  <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>40, 13</value>
-  </data>
-  <data name="label1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Forced</value>
-  </data>
-  <data name="&gt;&gt;label1.Name" xml:space="preserve">
-    <value>label1</value>
-  </data>
-  <data name="&gt;&gt;label1.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;label1.Parent" xml:space="preserve">
-    <value>gbFile</value>
-  </data>
-  <data name="&gt;&gt;label1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>1</value>
   </data>
   <data name="gbFile.Location" type="System.Drawing.Point, System.Drawing">
     <value>115, 17</value>
