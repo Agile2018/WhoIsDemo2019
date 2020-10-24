@@ -290,27 +290,27 @@ namespace WhoIsDemo.presenter
         //    return flow;
         //}
 
-        public PerformanceRecognition ReadPerformance(int channel)
-        {
-            PerformanceRecognition performanceRecognition = new PerformanceRecognition();
-            try
-            {
-                string pathFile = folder_configuration + "/" + file_performance;
-                string content = disk.ReadTextFile(pathFile);
-                performanceRecognition = JsonConvert.DeserializeObject<PerformanceRecognition>(content);
+        //public PerformanceRecognition ReadPerformance(int channel)
+        //{
+        //    PerformanceRecognition performanceRecognition = new PerformanceRecognition();
+        //    try
+        //    {
+        //        string pathFile = folder_configuration + "/" + file_performance;
+        //        string content = disk.ReadTextFile(pathFile);
+        //        performanceRecognition = JsonConvert.DeserializeObject<PerformanceRecognition>(content);
 
-            }
-            catch (System.IO.FileNotFoundException e)
-            {
+        //    }
+        //    catch (System.IO.FileNotFoundException e)
+        //    {
 
-                Console.WriteLine(e.Message);
-            }
-            catch (Newtonsoft.Json.JsonReaderException ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            return performanceRecognition;
-        }
+        //        Console.WriteLine(e.Message);
+        //    }
+        //    catch (Newtonsoft.Json.JsonReaderException ex)
+        //    {
+        //        Console.WriteLine(ex.Message);
+        //    }
+        //    return performanceRecognition;
+        //}
         //public void SaveVideoConfiguration(VideoConfig videoConfig)
         //{
 

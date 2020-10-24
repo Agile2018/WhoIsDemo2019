@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -177,15 +178,16 @@ namespace WhoIsDemo.form
                     .GetString("complete"),
                     0, this.status)));
                 this.openFileDialog.FileNames.ToList().Clear();
-                PerformanceRecognition performanceRecognition = diskPresenter
-                    .ReadPerformance(hearUserPresenter.IdVideos[0] - 1);
-                if (performanceRecognition != null)
-                {
-                    int countLowScore = performanceRecognition.Params.LowScore;
-                    int countRepeatUser = performanceRecognition.Params.RepeatUser;
-                    int countNotDetect = performanceRecognition.Params.NotDetect;
 
-                }
+                //PerformanceRecognition performanceRecognition = diskPresenter
+                //    .ReadPerformance(hearUserPresenter.IdVideos[0] - 1);
+                //if (performanceRecognition != null)
+                //{
+                //    int countLowScore = performanceRecognition.Params.LowScore;
+                //    int countRepeatUser = performanceRecognition.Params.RepeatUser;
+                //    int countNotDetect = performanceRecognition.Params.NotDetect;
+
+                //}
                 
                 this.Invoke(new Action(() => managerControlView
                 .EnabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME)));
@@ -238,6 +240,9 @@ namespace WhoIsDemo.form
                             }
                             
                         }
+                        var results = JsonConvert.DeserializeObject<dynamic>(img.log);
+                        
+                        Console.WriteLine(results.Channel);
                     }
                                
                     this.imagesNewCard.RemoveAt(0);                                        
@@ -467,7 +472,7 @@ namespace WhoIsDemo.form
                     managerControlView.StartProgressStatusStrip(1, this.status);
                     AipuFace.Instance.SetChannel(hearUserPresenter.IdVideos[0]);
                     AipuFace.Instance.SetIsFinishLoadFiles(true);
-                    AipuFace.Instance.ResetPerformance(hearUserPresenter.IdVideos[0]);                                       
+                    //AipuFace.Instance.ResetPerformance(hearUserPresenter.IdVideos[0]);                                       
                     Task taskRecognition = filesRecognitionPresenter
                         .TaskImageFileForRecognition(openFileDialog.FileNames);
 
@@ -572,7 +577,7 @@ namespace WhoIsDemo.form
                             string[] splitLabel = currentVideo.Split(' ');
                             pipeSelect = Convert.ToInt32(splitLabel[1]);
                             SetTextColourFrame(pipeSelect, 0.0f, 0.0f, 255.0f);                            
-                            AipuFace.Instance.ResetEnrollVideo(pipeSelect);
+                            AipuFace.Instance.ResetEnrollVideo(pipeSelect, 0);
                             AipuFace.Instance.SetTaskIdentify(3, pipeSelect);
                             (sender as Button).Tag = pipeSelect;
                             (sender as Button).Image = WhoIsDemo.Properties.Resources.stop1;
@@ -585,7 +590,9 @@ namespace WhoIsDemo.form
                 else if (cboVideos.SelectedIndex != -1)
                 {
                     pipeSelect = Convert.ToInt32((sender as Button).Tag);
+                    AipuFace.Instance.ResetEnrollVideo(pipeSelect, 1);
                     AipuFace.Instance.SetTaskIdentify(-1, pipeSelect);
+                    AipuFace.Instance.AddUserEnrollVideo(pipeSelect);
                     SetTextColourFrame(pipeSelect, 0.0f, 0.0f, 0.0f);
                     (sender as Button).Tag = 0;
                     (sender as Button).Image = WhoIsDemo.Properties.Resources.play;

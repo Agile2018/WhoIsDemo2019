@@ -159,16 +159,15 @@
             // 
             // tcConfiguration
             // 
-            resources.ApplyResources(this.tcConfiguration, "tcConfiguration");
             this.tcConfiguration.Controls.Add(this.tabPage1);
             this.tcConfiguration.Controls.Add(this.tabPage3);
             this.tcConfiguration.Controls.Add(this.tabPage2);
+            resources.ApplyResources(this.tcConfiguration, "tcConfiguration");
             this.tcConfiguration.Name = "tcConfiguration";
             this.tcConfiguration.SelectedIndex = 0;
             // 
             // tabPage1
             // 
-            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Controls.Add(this.btnSave);
             this.tabPage1.Controls.Add(this.groupBox9);
             this.tabPage1.Controls.Add(this.groupBox7);
@@ -176,21 +175,21 @@
             this.tabPage1.Controls.Add(this.groupBox5);
             this.tabPage1.Controls.Add(this.lblOkDetect);
             this.tabPage1.Controls.Add(this.groupBox3);
+            resources.ApplyResources(this.tabPage1, "tabPage1");
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // btnSave
             // 
-            resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSave.BackgroundImage = global::WhoIsDemo.Properties.Resources.ic_save_black_48dp;
+            resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.Name = "btnSave";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // groupBox9
             // 
-            resources.ApplyResources(this.groupBox9, "groupBox9");
             this.groupBox9.Controls.Add(this.cboIdentificationSpeed);
             this.groupBox9.Controls.Add(this.label2);
             this.groupBox9.Controls.Add(this.txtBestMatched);
@@ -199,12 +198,12 @@
             this.groupBox9.Controls.Add(this.label27);
             this.groupBox9.Controls.Add(this.txtASimilarity);
             this.groupBox9.Controls.Add(this.label12);
+            resources.ApplyResources(this.groupBox9, "groupBox9");
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.TabStop = false;
             // 
             // cboIdentificationSpeed
             // 
-            resources.ApplyResources(this.cboIdentificationSpeed, "cboIdentificationSpeed");
             this.cboIdentificationSpeed.FormattingEnabled = true;
             this.cboIdentificationSpeed.Items.AddRange(new object[] {
             resources.GetString("cboIdentificationSpeed.Items"),
@@ -218,6 +217,7 @@
             resources.GetString("cboIdentificationSpeed.Items8"),
             resources.GetString("cboIdentificationSpeed.Items9"),
             resources.GetString("cboIdentificationSpeed.Items10")});
+            resources.ApplyResources(this.cboIdentificationSpeed, "cboIdentificationSpeed");
             this.cboIdentificationSpeed.Name = "cboIdentificationSpeed";
             // 
             // label2
@@ -264,22 +264,22 @@
             // 
             // groupBox7
             // 
-            resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Controls.Add(this.btnTestChannel);
             this.groupBox7.Controls.Add(this.txtDescriptionChannel);
             this.groupBox7.Controls.Add(this.label18);
             this.groupBox7.Controls.Add(this.groupBox8);
             this.groupBox7.Controls.Add(this.cboChannel);
             this.groupBox7.Controls.Add(this.label16);
+            resources.ApplyResources(this.groupBox7, "groupBox7");
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
             // 
             // btnTestChannel
             // 
-            resources.ApplyResources(this.btnTestChannel, "btnTestChannel");
             this.btnTestChannel.FlatAppearance.BorderSize = 0;
             this.btnTestChannel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.btnTestChannel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
+            resources.ApplyResources(this.btnTestChannel, "btnTestChannel");
             this.btnTestChannel.Image = global::WhoIsDemo.Properties.Resources.test_tube;
             this.btnTestChannel.Name = "btnTestChannel";
             this.btnTestChannel.UseVisualStyleBackColor = true;
@@ -297,10 +297,10 @@
             // 
             // groupBox8
             // 
-            resources.ApplyResources(this.groupBox8, "groupBox8");
             this.groupBox8.Controls.Add(this.rbTypeChannelDevice);
             this.groupBox8.Controls.Add(this.rbTypeChannelFile);
             this.groupBox8.Controls.Add(this.rbTypeChannelIP);
+            resources.ApplyResources(this.groupBox8, "groupBox8");
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.TabStop = false;
             // 
@@ -327,13 +327,13 @@
             // 
             // cboChannel
             // 
-            resources.ApplyResources(this.cboChannel, "cboChannel");
             this.cboChannel.FormattingEnabled = true;
             this.cboChannel.Items.AddRange(new object[] {
             resources.GetString("cboChannel.Items"),
             resources.GetString("cboChannel.Items1"),
             resources.GetString("cboChannel.Items2"),
             resources.GetString("cboChannel.Items3")});
+            resources.ApplyResources(this.cboChannel, "cboChannel");
             this.cboChannel.Name = "cboChannel";
             this.cboChannel.SelectedIndexChanged += new System.EventHandler(this.cboChannel_SelectedIndexChanged);
             // 
@@ -344,7 +344,6 @@
             // 
             // groupBox6
             // 
-            resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Controls.Add(this.label17);
             this.groupBox6.Controls.Add(this.cboModeConcatenation);
             this.groupBox6.Controls.Add(this.label43);
@@ -365,6 +364,7 @@
             this.groupBox6.Controls.Add(this.label13);
             this.groupBox6.Controls.Add(this.cboRegisterUser);
             this.groupBox6.Controls.Add(this.label11);
+            resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
             // 
@@ -375,11 +375,11 @@
             // 
             // cboModeConcatenation
             // 
-            resources.ApplyResources(this.cboModeConcatenation, "cboModeConcatenation");
             this.cboModeConcatenation.FormattingEnabled = true;
             this.cboModeConcatenation.Items.AddRange(new object[] {
             resources.GetString("cboModeConcatenation.Items"),
             resources.GetString("cboModeConcatenation.Items1")});
+            resources.ApplyResources(this.cboModeConcatenation, "cboModeConcatenation");
             this.cboModeConcatenation.Name = "cboModeConcatenation";
             this.cboModeConcatenation.SelectedIndexChanged += new System.EventHandler(this.cboModeConcatenation_SelectedIndexChanged);
             // 
@@ -392,7 +392,6 @@
             // 
             resources.ApplyResources(this.txtMaximumTemplates, "txtMaximumTemplates");
             this.txtMaximumTemplates.Name = "txtMaximumTemplates";
-            this.txtMaximumTemplates.ReadOnly = true;
             this.txtMaximumTemplates.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMaximumTemplates_KeyPress);
             // 
             // label42
@@ -402,11 +401,11 @@
             // 
             // cboConcatenateTemplates
             // 
-            resources.ApplyResources(this.cboConcatenateTemplates, "cboConcatenateTemplates");
             this.cboConcatenateTemplates.FormattingEnabled = true;
             this.cboConcatenateTemplates.Items.AddRange(new object[] {
             resources.GetString("cboConcatenateTemplates.Items"),
             resources.GetString("cboConcatenateTemplates.Items1")});
+            resources.ApplyResources(this.cboConcatenateTemplates, "cboConcatenateTemplates");
             this.cboConcatenateTemplates.Name = "cboConcatenateTemplates";
             this.cboConcatenateTemplates.SelectedIndexChanged += new System.EventHandler(this.cboConcatenateTemplates_SelectedIndexChanged);
             // 
@@ -430,11 +429,11 @@
             // 
             // cboDeduplicate
             // 
-            resources.ApplyResources(this.cboDeduplicate, "cboDeduplicate");
             this.cboDeduplicate.FormattingEnabled = true;
             this.cboDeduplicate.Items.AddRange(new object[] {
             resources.GetString("cboDeduplicate.Items"),
             resources.GetString("cboDeduplicate.Items1")});
+            resources.ApplyResources(this.cboDeduplicate, "cboDeduplicate");
             this.cboDeduplicate.Name = "cboDeduplicate";
             // 
             // label7
@@ -489,11 +488,11 @@
             // 
             // cboRegisterUser
             // 
-            resources.ApplyResources(this.cboRegisterUser, "cboRegisterUser");
             this.cboRegisterUser.FormattingEnabled = true;
             this.cboRegisterUser.Items.AddRange(new object[] {
             resources.GetString("cboRegisterUser.Items"),
             resources.GetString("cboRegisterUser.Items1")});
+            resources.ApplyResources(this.cboRegisterUser, "cboRegisterUser");
             this.cboRegisterUser.Name = "cboRegisterUser";
             // 
             // label11
@@ -503,7 +502,6 @@
             // 
             // groupBox5
             // 
-            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Controls.Add(this.cboTrackMotion);
             this.groupBox5.Controls.Add(this.cboTrackSpeed);
             this.groupBox5.Controls.Add(this.cboTrackingMode);
@@ -516,38 +514,39 @@
             this.groupBox5.Controls.Add(this.label15);
             this.groupBox5.Controls.Add(this.txtRedetectTimeDelta);
             this.groupBox5.Controls.Add(this.label14);
+            resources.ApplyResources(this.groupBox5, "groupBox5");
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.TabStop = false;
             // 
             // cboTrackMotion
             // 
-            resources.ApplyResources(this.cboTrackMotion, "cboTrackMotion");
             this.cboTrackMotion.FormattingEnabled = true;
             this.cboTrackMotion.Items.AddRange(new object[] {
             resources.GetString("cboTrackMotion.Items"),
             resources.GetString("cboTrackMotion.Items1"),
             resources.GetString("cboTrackMotion.Items2"),
             resources.GetString("cboTrackMotion.Items3")});
+            resources.ApplyResources(this.cboTrackMotion, "cboTrackMotion");
             this.cboTrackMotion.Name = "cboTrackMotion";
             // 
             // cboTrackSpeed
             // 
-            resources.ApplyResources(this.cboTrackSpeed, "cboTrackSpeed");
             this.cboTrackSpeed.FormattingEnabled = true;
             this.cboTrackSpeed.Items.AddRange(new object[] {
             resources.GetString("cboTrackSpeed.Items"),
             resources.GetString("cboTrackSpeed.Items1"),
             resources.GetString("cboTrackSpeed.Items2")});
+            resources.ApplyResources(this.cboTrackSpeed, "cboTrackSpeed");
             this.cboTrackSpeed.Name = "cboTrackSpeed";
             // 
             // cboTrackingMode
             // 
-            resources.ApplyResources(this.cboTrackingMode, "cboTrackingMode");
             this.cboTrackingMode.FormattingEnabled = true;
             this.cboTrackingMode.Items.AddRange(new object[] {
             resources.GetString("cboTrackingMode.Items"),
             resources.GetString("cboTrackingMode.Items1"),
             resources.GetString("cboTrackingMode.Items2")});
+            resources.ApplyResources(this.cboTrackingMode, "cboTrackingMode");
             this.cboTrackingMode.Name = "cboTrackingMode";
             // 
             // label23
@@ -611,7 +610,6 @@
             // 
             // groupBox3
             // 
-            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Controls.Add(this.label19);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.txtMaxDetect);
@@ -637,6 +635,7 @@
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Controls.Add(this.txtMaxEye);
             this.groupBox3.Controls.Add(this.label8);
+            resources.ApplyResources(this.groupBox3, "groupBox3");
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.TabStop = false;
             // 
@@ -665,7 +664,6 @@
             // 
             // cboFaceExtractionMode
             // 
-            resources.ApplyResources(this.cboFaceExtractionMode, "cboFaceExtractionMode");
             this.cboFaceExtractionMode.FormattingEnabled = true;
             this.cboFaceExtractionMode.Items.AddRange(new object[] {
             resources.GetString("cboFaceExtractionMode.Items"),
@@ -674,6 +672,7 @@
             resources.GetString("cboFaceExtractionMode.Items3"),
             resources.GetString("cboFaceExtractionMode.Items4"),
             resources.GetString("cboFaceExtractionMode.Items5")});
+            resources.ApplyResources(this.cboFaceExtractionMode, "cboFaceExtractionMode");
             this.cboFaceExtractionMode.Name = "cboFaceExtractionMode";
             // 
             // label28
@@ -683,13 +682,13 @@
             // 
             // cboFaceDetectionMode
             // 
-            resources.ApplyResources(this.cboFaceDetectionMode, "cboFaceDetectionMode");
             this.cboFaceDetectionMode.FormattingEnabled = true;
             this.cboFaceDetectionMode.Items.AddRange(new object[] {
             resources.GetString("cboFaceDetectionMode.Items"),
             resources.GetString("cboFaceDetectionMode.Items1"),
             resources.GetString("cboFaceDetectionMode.Items2"),
             resources.GetString("cboFaceDetectionMode.Items3")});
+            resources.ApplyResources(this.cboFaceDetectionMode, "cboFaceDetectionMode");
             this.cboFaceDetectionMode.Name = "cboFaceDetectionMode";
             // 
             // label26
@@ -699,11 +698,11 @@
             // 
             // cboIgnoreMultipleFaces
             // 
-            resources.ApplyResources(this.cboIgnoreMultipleFaces, "cboIgnoreMultipleFaces");
             this.cboIgnoreMultipleFaces.FormattingEnabled = true;
             this.cboIgnoreMultipleFaces.Items.AddRange(new object[] {
             resources.GetString("cboIgnoreMultipleFaces.Items"),
             resources.GetString("cboIgnoreMultipleFaces.Items1")});
+            resources.ApplyResources(this.cboIgnoreMultipleFaces, "cboIgnoreMultipleFaces");
             this.cboIgnoreMultipleFaces.Name = "cboIgnoreMultipleFaces";
             // 
             // label25
@@ -713,11 +712,11 @@
             // 
             // cboDetectForced
             // 
-            resources.ApplyResources(this.cboDetectForced, "cboDetectForced");
             this.cboDetectForced.FormattingEnabled = true;
             this.cboDetectForced.Items.AddRange(new object[] {
             resources.GetString("cboDetectForced.Items"),
             resources.GetString("cboDetectForced.Items1")});
+            resources.ApplyResources(this.cboDetectForced, "cboDetectForced");
             this.cboDetectForced.Name = "cboDetectForced";
             // 
             // label3
@@ -727,7 +726,6 @@
             // 
             // cboFaceCrop
             // 
-            resources.ApplyResources(this.cboFaceCrop, "cboFaceCrop");
             this.cboFaceCrop.FormattingEnabled = true;
             this.cboFaceCrop.Items.AddRange(new object[] {
             resources.GetString("cboFaceCrop.Items"),
@@ -735,6 +733,7 @@
             resources.GetString("cboFaceCrop.Items2"),
             resources.GetString("cboFaceCrop.Items3"),
             resources.GetString("cboFaceCrop.Items4")});
+            resources.ApplyResources(this.cboFaceCrop, "cboFaceCrop");
             this.cboFaceCrop.Name = "cboFaceCrop";
             // 
             // label29
@@ -752,13 +751,13 @@
             // 
             // cboExtractionMode
             // 
-            resources.ApplyResources(this.cboExtractionMode, "cboExtractionMode");
             this.cboExtractionMode.FormattingEnabled = true;
             this.cboExtractionMode.Items.AddRange(new object[] {
             resources.GetString("cboExtractionMode.Items"),
             resources.GetString("cboExtractionMode.Items1"),
             resources.GetString("cboExtractionMode.Items2"),
             resources.GetString("cboExtractionMode.Items3")});
+            resources.ApplyResources(this.cboExtractionMode, "cboExtractionMode");
             this.cboExtractionMode.Name = "cboExtractionMode";
             // 
             // label24
@@ -768,13 +767,13 @@
             // 
             // cboDetectorMode
             // 
-            resources.ApplyResources(this.cboDetectorMode, "cboDetectorMode");
             this.cboDetectorMode.FormattingEnabled = true;
             this.cboDetectorMode.Items.AddRange(new object[] {
             resources.GetString("cboDetectorMode.Items"),
             resources.GetString("cboDetectorMode.Items1"),
             resources.GetString("cboDetectorMode.Items2"),
             resources.GetString("cboDetectorMode.Items3")});
+            resources.ApplyResources(this.cboDetectorMode, "cboDetectorMode");
             this.cboDetectorMode.Name = "cboDetectorMode";
             // 
             // label6
@@ -819,17 +818,17 @@
             // 
             // tabPage3
             // 
-            resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Controls.Add(this.groupBox2);
             this.tabPage3.Controls.Add(this.groupBox1);
+            resources.ApplyResources(this.tabPage3, "tabPage3");
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Controls.Add(this.lblOkClearDatabase);
             this.groupBox2.Controls.Add(this.btnClearDatabase);
+            resources.ApplyResources(this.groupBox2, "groupBox2");
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.TabStop = false;
             // 
@@ -841,29 +840,29 @@
             // 
             // btnClearDatabase
             // 
-            resources.ApplyResources(this.btnClearDatabase, "btnClearDatabase");
             this.btnClearDatabase.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnClearDatabase.BackgroundImage = global::WhoIsDemo.Properties.Resources.cached;
+            resources.ApplyResources(this.btnClearDatabase, "btnClearDatabase");
             this.btnClearDatabase.Name = "btnClearDatabase";
             this.btnClearDatabase.UseVisualStyleBackColor = false;
             this.btnClearDatabase.Click += new System.EventHandler(this.btnClearDatabase_Click);
             // 
             // groupBox1
             // 
-            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Controls.Add(this.btnSaveDatabase);
             this.groupBox1.Controls.Add(this.txtConnect);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.txtNameDatabase);
             this.groupBox1.Controls.Add(this.label4);
+            resources.ApplyResources(this.groupBox1, "groupBox1");
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.TabStop = false;
             // 
             // btnSaveDatabase
             // 
-            resources.ApplyResources(this.btnSaveDatabase, "btnSaveDatabase");
             this.btnSaveDatabase.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSaveDatabase.BackgroundImage = global::WhoIsDemo.Properties.Resources.lock_reset;
+            resources.ApplyResources(this.btnSaveDatabase, "btnSaveDatabase");
             this.btnSaveDatabase.Name = "btnSaveDatabase";
             this.btnSaveDatabase.UseVisualStyleBackColor = false;
             this.btnSaveDatabase.Click += new System.EventHandler(this.btnSaveDatabase_Click);
@@ -890,14 +889,13 @@
             // 
             // tabPage2
             // 
-            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Controls.Add(this.groupBox4);
+            resources.ApplyResources(this.tabPage2, "tabPage2");
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox4
             // 
-            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Controls.Add(this.textBox3);
             this.groupBox4.Controls.Add(this.label38);
             this.groupBox4.Controls.Add(this.btnSaveGlobalParameters);
@@ -915,6 +913,7 @@
             this.groupBox4.Controls.Add(this.label32);
             this.groupBox4.Controls.Add(this.txtGBMinImage);
             this.groupBox4.Controls.Add(this.label31);
+            resources.ApplyResources(this.groupBox4, "groupBox4");
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.TabStop = false;
             // 
@@ -930,20 +929,20 @@
             // 
             // btnSaveGlobalParameters
             // 
-            resources.ApplyResources(this.btnSaveGlobalParameters, "btnSaveGlobalParameters");
             this.btnSaveGlobalParameters.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSaveGlobalParameters.BackgroundImage = global::WhoIsDemo.Properties.Resources.ic_save_black_48dp;
+            resources.ApplyResources(this.btnSaveGlobalParameters, "btnSaveGlobalParameters");
             this.btnSaveGlobalParameters.Name = "btnSaveGlobalParameters";
             this.btnSaveGlobalParameters.UseVisualStyleBackColor = false;
             this.btnSaveGlobalParameters.Click += new System.EventHandler(this.btnSaveGlobalParameters_Click);
             // 
             // cboGBEnabledConfigurationGPU
             // 
-            resources.ApplyResources(this.cboGBEnabledConfigurationGPU, "cboGBEnabledConfigurationGPU");
             this.cboGBEnabledConfigurationGPU.FormattingEnabled = true;
             this.cboGBEnabledConfigurationGPU.Items.AddRange(new object[] {
             resources.GetString("cboGBEnabledConfigurationGPU.Items"),
             resources.GetString("cboGBEnabledConfigurationGPU.Items1")});
+            resources.ApplyResources(this.cboGBEnabledConfigurationGPU, "cboGBEnabledConfigurationGPU");
             this.cboGBEnabledConfigurationGPU.Name = "cboGBEnabledConfigurationGPU";
             // 
             // label37
@@ -973,11 +972,11 @@
             // 
             // cboGBGpuEnabled
             // 
-            resources.ApplyResources(this.cboGBGpuEnabled, "cboGBGpuEnabled");
             this.cboGBGpuEnabled.FormattingEnabled = true;
             this.cboGBGpuEnabled.Items.AddRange(new object[] {
             resources.GetString("cboGBGpuEnabled.Items"),
             resources.GetString("cboGBGpuEnabled.Items1")});
+            resources.ApplyResources(this.cboGBGpuEnabled, "cboGBGpuEnabled");
             this.cboGBGpuEnabled.Name = "cboGBGpuEnabled";
             // 
             // label34
@@ -997,12 +996,12 @@
             // 
             // cboGBThreadMode
             // 
-            resources.ApplyResources(this.cboGBThreadMode, "cboGBThreadMode");
             this.cboGBThreadMode.FormattingEnabled = true;
             this.cboGBThreadMode.Items.AddRange(new object[] {
             resources.GetString("cboGBThreadMode.Items"),
             resources.GetString("cboGBThreadMode.Items1"),
             resources.GetString("cboGBThreadMode.Items2")});
+            resources.ApplyResources(this.cboGBThreadMode, "cboGBThreadMode");
             this.cboGBThreadMode.Name = "cboGBThreadMode";
             // 
             // label32
@@ -1022,9 +1021,9 @@
             // 
             // btnClose
             // 
-            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnClose.BackgroundImage = global::WhoIsDemo.Properties.Resources.ic_clear_black_48dp;
+            resources.ApplyResources(this.btnClose, "btnClose");
             this.btnClose.Name = "btnClose";
             this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);

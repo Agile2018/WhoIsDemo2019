@@ -103,6 +103,8 @@ namespace WhoIsDemo.model
                 {
                     return aipu.GetError;
                 }
+
+
                 catch(System.NullReferenceException ex)
                 {
                     Console.WriteLine("ERROR NULL AIPU " + ex.Message);

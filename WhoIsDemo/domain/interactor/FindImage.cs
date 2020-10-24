@@ -49,6 +49,7 @@ namespace WhoIsDemo.domain.interactor
                 Image64 image64 = new Image64();
                 image64.id_face = idFace;
                 image64.data_64 = imageDb.data_64;
+                image64.log = imageDb.log;
                 ImageReturn = image64;
             }
                         
@@ -70,6 +71,7 @@ namespace WhoIsDemo.domain.interactor
                 Image64 image64 = new Image64();
                 image64.id_face = idFace;
                 image64.data_64 = imageDb.data_64;
+                image64.log = imageDb.log;
                 if (imageDb.data_64_aux != "empty")
                 {
                     image64.data_64_aux = imageDb.data_64_aux;

@@ -25,7 +25,7 @@ namespace WhoIsDemo.domain.interactor
         {
             if (!string.IsNullOrEmpty(user))
             {
-                Console.WriteLine("WHOIS USER: " + user);
+                //Console.WriteLine("WHOIS USER: " + user);
                 subjectUser.OnNext(user);
             }
         }

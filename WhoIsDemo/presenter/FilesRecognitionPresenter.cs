@@ -59,7 +59,7 @@ namespace WhoIsDemo.presenter
             }
             
             CancelLoad = false;
-            AipuFace.Instance.SavePerformance(linkVideo);
+            //AipuFace.Instance.SavePerformance(linkVideo);
             subjectLoad.OnNext(true);
             
         }

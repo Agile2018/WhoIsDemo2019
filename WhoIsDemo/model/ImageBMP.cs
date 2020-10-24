@@ -9,5 +9,6 @@ namespace WhoIsDemo.model
         public Bitmap imageStore { get; set; }
 
         public Bitmap imageNew { get; set; }
+        public string log { get; set; }
     }
 }

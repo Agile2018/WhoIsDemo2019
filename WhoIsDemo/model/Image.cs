@@ -20,5 +20,7 @@ namespace WhoIsDemo.model
 
         [BsonElement("data_64_aux")] 
         public string data_64_aux { get; set; }
+        [BsonElement("log")]
+        public string log { get; set; }
     }
 }

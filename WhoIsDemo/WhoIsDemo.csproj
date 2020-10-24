@@ -225,11 +225,9 @@
     <Compile Include="model\ParamsFlow.cs" />
     <Compile Include="model\ParamsGlobal.cs" />
     <Compile Include="model\ParamsIdentify.cs" />
-    <Compile Include="model\ParamsPerformance.cs" />
     <Compile Include="model\ParamsTracking.cs" />
     <Compile Include="model\ParamsTrackingProcessing.cs" />
     <Compile Include="model\People.cs" />
-    <Compile Include="model\PerformanceRecognition.cs" />
     <Compile Include="model\Person.cs" />
     <Compile Include="model\PersonDb.cs" />
     <Compile Include="model\TimePerson.cs" />

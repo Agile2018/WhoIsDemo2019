@@ -493,7 +493,7 @@ namespace WhoIsDemo.form
                     managerControlView.StartProgressStatusStrip(1, this.status);
                     AipuFace.Instance.SetChannel(hearUserPresenter.IdVideos[0]);
                     AipuFace.Instance.SetIsFinishLoadFiles(true);
-                    AipuFace.Instance.ResetPerformance(hearUserPresenter.IdVideos[0]);
+                    //AipuFace.Instance.ResetPerformance(hearUserPresenter.IdVideos[0]);
                     
                     Task taskRecognition = filesRecognitionPresenter
                         .TaskImageFileForRecognition(openFileDialog.FileNames);

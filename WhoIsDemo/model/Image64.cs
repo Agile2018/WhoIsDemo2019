@@ -7,5 +7,6 @@
         public string data_64 { get; set; }
         
         public string data_64_aux { get; set; }
+        public string log { get; set; }
     }
 }

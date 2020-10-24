@@ -80,6 +80,7 @@ namespace WhoIsDemo.presenter
                 {
                     imageBMP.id_face = image64.id_face;
                     imageBMP.imageStore = imageTransform;
+                    imageBMP.log = image64.log;
                     subjectImage.OnNext(imageBMP);
                 }
             }
@@ -92,6 +93,7 @@ namespace WhoIsDemo.presenter
                     imageBMP.id_face = image64.id_face;
                     imageBMP.imageStore = imageGallery;
                     imageBMP.imageNew = imageCamera;
+                    imageBMP.log = image64.log;
                     subjectImage.OnNext(imageBMP);
                 }
             }

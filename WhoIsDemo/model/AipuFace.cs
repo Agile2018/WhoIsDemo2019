@@ -89,9 +89,14 @@ namespace WhoIsDemo.model
             aipu.SetTaskIdentify(value, option);
         }
 
-        public void ResetEnrollVideo(int option)
+        public void ResetEnrollVideo(int option, int value)
         {
-            aipu.ResetEnrollVideo(option);
+            aipu.ResetEnrollVideo(option, value);
+        }
+
+        public void AddUserEnrollVideo(int channel)
+        {
+            aipu.AddUserEnrollVideo(channel);
         }
 
         public void SetColourTextFrameOne(float red, float green, float blue)
@@ -119,14 +124,14 @@ namespace WhoIsDemo.model
             aipu.SetChannel(channel);
         }
 
-        public void ResetPerformance(int option)
-        {
-            aipu.ResetPerformance(option);
-        }
-        public void SavePerformance(int option)
-        {
-            aipu.SavePerformance(option);
-        }
+        //public void ResetPerformance(int option)
+        //{
+        //    aipu.ResetPerformance(option);
+        //}
+        //public void SavePerformance(int option)
+        //{
+        //    aipu.SavePerformance(option);
+        //}
 
         public void StatePlay(int option)
         {
