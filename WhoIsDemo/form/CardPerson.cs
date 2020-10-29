@@ -16,6 +16,7 @@ namespace WhoIsDemo.form
         private string idFace;
         private string channel;
         private string score;
+        private string tracer;
         #endregion
         public CardPerson()
         {
@@ -102,6 +103,22 @@ namespace WhoIsDemo.form
             {
                 score = value;
                 txtScore.Text = value;
+            }
+
+        }
+
+        [Category("Card Props")]
+        public string Tracer
+        {
+            get
+            {
+                return tracer;
+            }
+
+            set
+            {
+                tracer = value;
+                txtTracer.Text = value;
             }
 
         }

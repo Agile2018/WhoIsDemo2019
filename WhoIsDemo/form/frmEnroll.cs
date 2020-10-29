@@ -58,7 +58,7 @@ namespace WhoIsDemo.form
             this.PerformAutoScale();
             this.Top = 0;
             this.Left = 0;
-            this.Width = 647;
+            this.Width = 785;
             this.Height = 573;
             InitControls();
             JoinChannels();
@@ -230,7 +230,8 @@ namespace WhoIsDemo.form
                             try
                             {
                                 Person personNewCard = this.listPersonNewCard[index];
-                                AddPersonToCard(img.imageStore, personNewCard);
+                                //AddPersonToCard(img.imageStore, personNewCard);
+                                AddNewCardPerson(img.imageStore, personNewCard, img.log);
                                 this.listPersonNewCard.RemoveAt(index);
                             }
                             catch (System.ArgumentOutOfRangeException ex)
@@ -240,9 +241,7 @@ namespace WhoIsDemo.form
                             }
                             
                         }
-                        var results = JsonConvert.DeserializeObject<dynamic>(img.log);
                         
-                        Console.WriteLine(results.Channel);
                     }
                                
                     this.imagesNewCard.RemoveAt(0);                                        
@@ -260,11 +259,11 @@ namespace WhoIsDemo.form
             });
         }       
 
-        private void AddPersonToCard(Bitmap image, Person personNewCard)
-        {            
-            this.AddNewCardPerson(image, personNewCard);
+        //private void AddPersonToCard(Bitmap image, Person personNewCard)
+        //{            
+        //    this.AddNewCardPerson(image, personNewCard);
             
-        }        
+        //}        
                 
         
         private int SearchPersonList(int id, List<Person> people)
@@ -280,7 +279,23 @@ namespace WhoIsDemo.form
             return index;
         }
        
-        private void AddNewCardPerson(Bitmap image, Person personNewCard)
+        private string BuildTracerResult(string log)
+        {
+            var dataJson = JsonConvert.DeserializeObject<dynamic>(log);
+            string tracer = "Images: " + dataJson.Quantity_Flow + Environment.NewLine;
+            tracer += "Size: " + dataJson.Size_Image + Environment.NewLine;
+            tracer += "Confidence: " + dataJson.Confidence_Threshold + Environment.NewLine;
+            tracer += "Quality: " + dataJson.Template_Quality + Environment.NewLine;
+            tracer += "Find: " + dataJson.FindUser + Environment.NewLine;
+            tracer += "Match Score: " + dataJson.Match_Score + Environment.NewLine;
+            tracer += "Templates: " + dataJson.Templates + Environment.NewLine;
+            tracer += "Result: " + dataJson.Result + Environment.NewLine;
+            //Console.WriteLine(results.Channel);
+            //Console.WriteLine(results);
+            return tracer;
+        }
+
+        private void AddNewCardPerson(Bitmap image, Person personNewCard, string log)
         {
             try
             {
@@ -299,6 +314,7 @@ namespace WhoIsDemo.form
                 cardPerson.LastName = personNewCard.Params.Lastname;
                 cardPerson.Channel = personNewCard.Params.Client;
                 cardPerson.Score = personNewCard.Params.Score;
+                cardPerson.Tracer = BuildTracerResult(log);
                 if (image != null)
                 {
                     Bitmap imgResize = findImagePresenter.ResizeBitmap(image);

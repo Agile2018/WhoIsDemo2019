@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -61,7 +62,7 @@ namespace WhoIsDemo.form
             this.PerformAutoScale();
             this.Top = 0;
             this.Left = 0;
-            this.Width = 440;
+            this.Width = 585;
             this.Height = 540;
             InitControls();
             JoinChannels();
@@ -329,6 +330,21 @@ namespace WhoIsDemo.form
             }
         }
 
+        private string BuildTracerResult(string log)
+        {
+            var dataJson = JsonConvert.DeserializeObject<dynamic>(log);
+            string tracer = "Images: " + dataJson.Quantity_Flow + Environment.NewLine;
+            tracer += "Size: " + dataJson.Size_Image + Environment.NewLine;
+            tracer += "Confidence: " + dataJson.Confidence_Threshold + Environment.NewLine;
+            tracer += "Quality: " + dataJson.Template_Quality + Environment.NewLine;
+            tracer += "Find: " + dataJson.FindUser + Environment.NewLine;
+            //tracer += "Match Score: " + dataJson.Match_Score + Environment.NewLine;
+            //tracer += "Templates: " + dataJson.Templates + Environment.NewLine;
+            tracer += "Result: " + dataJson.Result + Environment.NewLine;
+            
+            return tracer;
+        }
+
         private void AddNewCardPerson(ImageBMP imageBMP, Person personNewCard)
         {
             try
@@ -357,6 +373,7 @@ namespace WhoIsDemo.form
                 }
                 cardPerson.Channel = personNewCard.Params.Client;
                 cardPerson.Score = personNewCard.Params.Score;
+                cardPerson.Tracer = BuildTracerResult(imageBMP.log);
                 this.flowLayoutPanel1.Invoke(new Action(() =>
                 this.flowLayoutPanel1.Controls.Add(cardPerson)));
                 this.flowLayoutPanel1.Invoke(new Action(() =>

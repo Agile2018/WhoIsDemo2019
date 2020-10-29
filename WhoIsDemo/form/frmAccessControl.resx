@@ -199,7 +199,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>148, 11</value>
+    <value>217, 11</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>135, 23</value>
@@ -247,7 +247,7 @@
     <value>0, 0</value>
   </data>
   <data name="flowLayoutPanel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>430, 450</value>
+    <value>569, 450</value>
   </data>
   <data name="flowLayoutPanel1.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -280,7 +280,7 @@
     <value>1</value>
   </data>
   <data name="splitContainer1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>430, 501</value>
+    <value>569, 501</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
     <value>47</value>
@@ -307,7 +307,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>430, 501</value>
+    <value>569, 501</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Entry Control</value>

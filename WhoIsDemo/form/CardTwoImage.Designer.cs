@@ -47,6 +47,8 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.picPhotoGallery = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtTracer = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPhotoCamera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhotoGallery)).BeginInit();
@@ -54,9 +56,10 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(75)))), ((int)(((byte)(174)))));
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtTracer);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.txtScore);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.lblNameChannel);
@@ -74,13 +77,14 @@
             this.panel1.Controls.Add(this.txtId);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.picPhotoGallery);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
             // txtScore
             // 
-            resources.ApplyResources(this.txtScore, "txtScore");
             this.txtScore.BackColor = System.Drawing.Color.White;
             this.txtScore.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtScore, "txtScore");
             this.txtScore.Name = "txtScore";
             this.txtScore.ReadOnly = true;
             // 
@@ -98,9 +102,9 @@
             // 
             // txtDatetime
             // 
-            resources.ApplyResources(this.txtDatetime, "txtDatetime");
             this.txtDatetime.BackColor = System.Drawing.Color.White;
             this.txtDatetime.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtDatetime, "txtDatetime");
             this.txtDatetime.Name = "txtDatetime";
             this.txtDatetime.ReadOnly = true;
             // 
@@ -130,16 +134,16 @@
             // 
             // label4
             // 
-            resources.ApplyResources(this.label4, "label4");
             this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            resources.ApplyResources(this.label4, "label4");
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Name = "label4";
             // 
             // btnSave
             // 
-            resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(75)))), ((int)(((byte)(174)))));
             this.btnSave.BackgroundImage = global::WhoIsDemo.Properties.Resources.done;
+            resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.Name = "btnSave";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -147,9 +151,9 @@
             // 
             // txtLastName
             // 
-            resources.ApplyResources(this.txtLastName, "txtLastName");
             this.txtLastName.BackColor = System.Drawing.Color.White;
             this.txtLastName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtLastName, "txtLastName");
             this.txtLastName.Name = "txtLastName";
             // 
             // label3
@@ -160,9 +164,9 @@
             // 
             // txtFirstName
             // 
-            resources.ApplyResources(this.txtFirstName, "txtFirstName");
             this.txtFirstName.BackColor = System.Drawing.Color.White;
             this.txtFirstName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtFirstName, "txtFirstName");
             this.txtFirstName.Name = "txtFirstName";
             // 
             // label2
@@ -173,9 +177,9 @@
             // 
             // txtId
             // 
-            resources.ApplyResources(this.txtId, "txtId");
             this.txtId.BackColor = System.Drawing.Color.White;
             this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtId, "txtId");
             this.txtId.Name = "txtId";
             // 
             // label1
@@ -189,6 +193,20 @@
             resources.ApplyResources(this.picPhotoGallery, "picPhotoGallery");
             this.picPhotoGallery.Name = "picPhotoGallery";
             this.picPhotoGallery.TabStop = false;
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Name = "label9";
+            // 
+            // txtTracer
+            // 
+            this.txtTracer.BackColor = System.Drawing.Color.White;
+            this.txtTracer.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtTracer, "txtTracer");
+            this.txtTracer.Name = "txtTracer";
             // 
             // CardTwoImage
             // 
@@ -224,5 +242,7 @@
         private System.Windows.Forms.Label lblNameChannel;
         private System.Windows.Forms.TextBox txtScore;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtTracer;
+        private System.Windows.Forms.Label label9;
     }
 }

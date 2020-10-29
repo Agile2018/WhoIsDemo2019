@@ -18,6 +18,7 @@ namespace WhoIsDemo.form
         private string dateTime;
         private string channel;
         private string score;
+        private string tracer;
         #endregion
         public CardTwoImage()
         {
@@ -144,7 +145,21 @@ namespace WhoIsDemo.form
             }
 
         }
+        [Category("CardTwo Props")]
+        public string Tracer
+        {
+            get
+            {
+                return tracer;
+            }
 
+            set
+            {
+                tracer = value;
+                txtTracer.Text = value;
+            }
+
+        }
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(txtFirstName.Text)

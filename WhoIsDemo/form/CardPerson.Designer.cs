@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardPerson));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtTracer = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.txtScore = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblChannel = new System.Windows.Forms.Label();
@@ -48,9 +50,10 @@
             // 
             // panel1
             // 
-            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.BackColor = System.Drawing.Color.LightCyan;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.txtTracer);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtScore);
             this.panel1.Controls.Add(this.label5);
             this.panel1.Controls.Add(this.lblChannel);
@@ -63,13 +66,28 @@
             this.panel1.Controls.Add(this.txtId);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.picPhoto);
+            resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
+            // 
+            // txtTracer
+            // 
+            this.txtTracer.BackColor = System.Drawing.Color.Cyan;
+            this.txtTracer.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtTracer, "txtTracer");
+            this.txtTracer.Name = "txtTracer";
+            // 
+            // label6
+            // 
+            this.label6.BackColor = System.Drawing.Color.DeepSkyBlue;
+            resources.ApplyResources(this.label6, "label6");
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Name = "label6";
             // 
             // txtScore
             // 
-            resources.ApplyResources(this.txtScore, "txtScore");
             this.txtScore.BackColor = System.Drawing.Color.Cyan;
             this.txtScore.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtScore, "txtScore");
             this.txtScore.Name = "txtScore";
             // 
             // label5
@@ -86,16 +104,16 @@
             // 
             // label4
             // 
-            resources.ApplyResources(this.label4, "label4");
             this.label4.BackColor = System.Drawing.Color.DeepSkyBlue;
+            resources.ApplyResources(this.label4, "label4");
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Name = "label4";
             // 
             // btnSave
             // 
-            resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.BackColor = System.Drawing.Color.Azure;
             this.btnSave.BackgroundImage = global::WhoIsDemo.Properties.Resources.done;
+            resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.FlatAppearance.BorderSize = 0;
             this.btnSave.Name = "btnSave";
             this.btnSave.UseVisualStyleBackColor = false;
@@ -103,9 +121,9 @@
             // 
             // txtLastName
             // 
-            resources.ApplyResources(this.txtLastName, "txtLastName");
             this.txtLastName.BackColor = System.Drawing.Color.Cyan;
             this.txtLastName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtLastName, "txtLastName");
             this.txtLastName.Name = "txtLastName";
             // 
             // label3
@@ -116,9 +134,9 @@
             // 
             // txtFirstName
             // 
-            resources.ApplyResources(this.txtFirstName, "txtFirstName");
             this.txtFirstName.BackColor = System.Drawing.Color.Cyan;
             this.txtFirstName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtFirstName, "txtFirstName");
             this.txtFirstName.Name = "txtFirstName";
             // 
             // label2
@@ -129,9 +147,9 @@
             // 
             // txtId
             // 
-            resources.ApplyResources(this.txtId, "txtId");
             this.txtId.BackColor = System.Drawing.Color.Cyan;
             this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtId, "txtId");
             this.txtId.Name = "txtId";
             // 
             // label1
@@ -174,5 +192,7 @@
         private System.Windows.Forms.Label lblChannel;
         private System.Windows.Forms.TextBox txtScore;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtTracer;
+        private System.Windows.Forms.Label label6;
     }
 }
