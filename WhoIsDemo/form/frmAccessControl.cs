@@ -62,8 +62,8 @@ namespace WhoIsDemo.form
             this.PerformAutoScale();
             this.Top = 0;
             this.Left = 0;
-            this.Width = 585;
-            this.Height = 540;
+            this.Width = 612;
+            this.Height = 555;
             InitControls();
             JoinChannels();
         }
@@ -80,7 +80,7 @@ namespace WhoIsDemo.form
                     count++;
                 }
             }
-            SetTaskIdentify(1);
+            SetTaskIdentify(-1);
             string channels = ManagerResource.Instance.resourceManager
                 .GetString("channels") + Convert.ToString(count);
             managerControlView
@@ -139,7 +139,7 @@ namespace WhoIsDemo.form
         {
             if (value)
             {
-                filesRecognitionPresenter.IsLoadFile = false;
+                //filesRecognitionPresenter.IsLoadFile = false;
                 this.btnStopLoadFile.Invoke(new Action(() => this.btnStopLoadFile.Enabled = false));
                 this.btnLoadFile.Invoke(new Action(() => this.btnLoadFile.Enabled = true));                
                 this.status.Invoke(new Action(() => managerControlView
@@ -151,7 +151,7 @@ namespace WhoIsDemo.form
                     0, this.status)));
                 this.Invoke(new Action(() => managerControlView
                 .EnabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME)));
-                SetTaskIdentify(1);
+               
             }
         }
 
@@ -338,7 +338,7 @@ namespace WhoIsDemo.form
             tracer += "Confidence: " + dataJson.Confidence_Threshold + Environment.NewLine;
             tracer += "Quality: " + dataJson.Template_Quality + Environment.NewLine;
             tracer += "Find: " + dataJson.FindUser + Environment.NewLine;
-            //tracer += "Match Score: " + dataJson.Match_Score + Environment.NewLine;
+            tracer += "Param Similarity Threshold: " + dataJson.Param_Similarity_Threshold + Environment.NewLine;
             //tracer += "Templates: " + dataJson.Templates + Environment.NewLine;
             tracer += "Result: " + dataJson.Result + Environment.NewLine;
             
@@ -357,11 +357,11 @@ namespace WhoIsDemo.form
                 cardPerson.LastName = personNewCard.Params.Lastname;
                 cardPerson.DateTime = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
                 
-                Bitmap imgGallery = findImagePresenter.ResizeBitmap(imageBMP.imageStore);
+                Bitmap imgGallery = Transform.Instance.ResizeBitmap(imageBMP.imageStore);
                 cardPerson.Photo = imgGallery;
                 if (imageBMP.imageNew != null)
                 {
-                    Bitmap imgCamera = findImagePresenter.ResizeBitmap(imageBMP.imageNew);
+                    Bitmap imgCamera = Transform.Instance.ResizeBitmap(imageBMP.imageNew);
                     cardPerson.PhotoCamera = imgCamera;
                 }
 
@@ -438,14 +438,16 @@ namespace WhoIsDemo.form
                 
                 this.flowLayoutPanel1.Dispose();
                 
-                //this.listPersonRegister.Clear();
-                //this.lisTimePerson.Clear();
                 
                 this.imagesNewCard.Clear();
                 this.listPersonNewCard.Clear();
                 managerControlView.EnabledOptionMenu(strNameMenu, mdiMain.NAME);
                 managerControlView.EnabledOptionMenu("enrolamientoToolStripMenuItem", mdiMain.NAME);
-                //managerControlView.EnabledOptionMenu("configuraciónToolStripMenuItem", mdiMain.NAME);
+                if (Application.OpenForms.Count == 2)
+                {
+                    managerControlView.EnabledOptionMenu("configuraciónToolStripMenuItem", mdiMain.NAME);
+                }
+                managerControlView.SetValueTextStatusStrip("", 0, this.status);
             }
             catch (System.AccessViolationException ex)
             {
@@ -463,46 +465,43 @@ namespace WhoIsDemo.form
         {
             SubscriptionReactive();
             RunNewCardToFlowLayout();
-        }        
+        }
+
+        private void SetNoneTaskChannels()
+        {
+            if (Convert.ToInt16(btnControlEntryVideo.Tag) == 1)
+            {
+                btnControlEntryVideo.PerformClick();
+            }
+        }
+
+        private bool IsPipeEnabled()
+        {
+
+            if (hearUserPresenter.IdVideos.Count == 0) return false;
+
+            int pipe = hearUserPresenter.IdVideos[0];
+            AipuFace.Instance.SetChannel(pipe);
+            if (!AipuFace.Instance.GetIsLoadConfiguration())
+            {
+                AipuFace.Instance.LoadConfigurationPipe(pipe);
+            }
+            return true;
+
+        }
 
         private void btnLoadFile_Click(object sender, EventArgs e)
         {
-            bool next = false;
-            string message = string.Empty;
-            if (Configuration.Instance.IsShowWindow)
+            SetNoneTaskChannels();
+            if (IsPipeEnabled())
             {
-                if (CheckChannels())
-                {
-                    next = true;
-                }
-                
-            }
-            else
-            {
-                if(hearUserPresenter.IdVideos.Count > 0)
-                {
-                    int pipe = hearUserPresenter.IdVideos[0];
-                    AipuFace.Instance.LoadConfigurationPipe(pipe);
-                    next = true;
-                }
-                else
-                {
-                    message = ManagerResource
-                   .Instance.resourceManager.GetString("video_not_found");
-                    
-                }
-            }
-
-            if (next)
-            {
-                SetTaskIdentify(-1);
                 if (this.openFileDialog.ShowDialog() == DialogResult.OK)
                 {
                     managerControlView.DisabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);
                     filesRecognitionPresenter.IsLoadFile = true;
                     filesRecognitionPresenter.LinkVideo = hearUserPresenter.IdVideos[0];
                     filesRecognitionPresenter.TaskIdentify = 1;
-                    this.btnLoadFile.Enabled = false;                    
+                    this.btnLoadFile.Enabled = false;
                     this.btnStopLoadFile.Enabled = true;
                     managerControlView
                         .SetValueTextStatusStrip(StringResource.work,
@@ -510,8 +509,8 @@ namespace WhoIsDemo.form
                     managerControlView.StartProgressStatusStrip(1, this.status);
                     AipuFace.Instance.SetChannel(hearUserPresenter.IdVideos[0]);
                     AipuFace.Instance.SetIsFinishLoadFiles(true);
-                    //AipuFace.Instance.ResetPerformance(hearUserPresenter.IdVideos[0]);
-                    
+
+
                     Task taskRecognition = filesRecognitionPresenter
                         .TaskImageFileForRecognition(openFileDialog.FileNames);
 
@@ -519,14 +518,121 @@ namespace WhoIsDemo.form
             }
             else
             {
-                managerControlView.SetValueTextStatusStrip(message,
-                        0, this.status);
+                managerControlView
+                    .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
+                    .GetString("video_not_found"),
+                    0, this.status);
             }
+
+            //    bool next = false;
+            //string message = string.Empty;
+            //if (Configuration.Instance.IsShowWindow)
+            //{
+            //    if (CheckChannels())
+            //    {
+            //        next = true;
+            //    }
+
+            //}
+            //else
+            //{
+            //    if(hearUserPresenter.IdVideos.Count > 0)
+            //    {
+            //        int pipe = hearUserPresenter.IdVideos[0];
+            //        AipuFace.Instance.LoadConfigurationPipe(pipe);
+            //        next = true;
+            //    }
+            //    else
+            //    {
+            //        message = ManagerResource
+            //       .Instance.resourceManager.GetString("video_not_found");
+
+            //    }
+            //}
+
+            //if (next)
+            //{
+            //    SetTaskIdentify(-1);
+            //    if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            //    {
+            //        managerControlView.DisabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);
+            //        filesRecognitionPresenter.IsLoadFile = true;
+            //        filesRecognitionPresenter.LinkVideo = hearUserPresenter.IdVideos[0];
+            //        filesRecognitionPresenter.TaskIdentify = 1;
+            //        this.btnLoadFile.Enabled = false;                    
+            //        this.btnStopLoadFile.Enabled = true;
+            //        managerControlView
+            //            .SetValueTextStatusStrip(StringResource.work,
+            //            0, this.status);
+            //        managerControlView.StartProgressStatusStrip(1, this.status);
+            //        AipuFace.Instance.SetChannel(hearUserPresenter.IdVideos[0]);
+            //        AipuFace.Instance.SetIsFinishLoadFiles(true);
+
+
+            //        Task taskRecognition = filesRecognitionPresenter
+            //            .TaskImageFileForRecognition(openFileDialog.FileNames);
+
+            //    }
+            //}
+            //else
+            //{
+            //    managerControlView.SetValueTextStatusStrip(message,
+            //            0, this.status);
+            //}
         }
 
         private void btnStopLoadFile_Click(object sender, EventArgs e)
         {
             filesRecognitionPresenter.CancelLoad = true;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private bool CheckVideoRunning()
+        {
+            if (hearUserPresenter.IdVideos.Count == 0) return false;
+
+            int pipe = hearUserPresenter.IdVideos[0];
+
+            if (pipe <= Configuration.Instance.NumberWindowsShow)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        private void btnControlEntryVideo_Click(object sender, EventArgs e)
+        {
+
+            if (CheckVideoRunning())
+            {
+                if (Convert.ToInt32((sender as Button).Tag) == 0)
+                {
+                    filesRecognitionPresenter.IsLoadFile = false;
+                    (sender as Button).Tag = 1;
+                    (sender as Button).Image = WhoIsDemo.Properties.Resources.video_box_off;
+                    SetTaskIdentify(1);
+                    
+                }
+                else
+                {
+                    (sender as Button).Tag = 0;
+                    (sender as Button).Image = WhoIsDemo.Properties.Resources.video_account;
+                    SetTaskIdentify(-1);
+                }
+            }
+            else
+            {
+                string message = ManagerResource
+                   .Instance.resourceManager.GetString("video_not_found") + " or " +
+                   ManagerResource.Instance.resourceManager.GetString("windows_not_loaded"); 
+                managerControlView.SetValueTextStatusStrip(message,
+                        0, this.status);
+            }
         }
     }
 }

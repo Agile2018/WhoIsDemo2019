@@ -126,6 +126,9 @@
   <data name="channel_not_exist" xml:space="preserve">
     <value>El canal no existe y debe ser creado.</value>
   </data>
+  <data name="channel_off" xml:space="preserve">
+    <value>Por favor apague el canal.</value>
+  </data>
   <data name="complete" xml:space="preserve">
     <value>Operación completada.</value>
   </data>
@@ -200,6 +203,9 @@
   </data>
   <data name="video_ok" xml:space="preserve">
     <value>El video es correcto.</value>
+  </data>
+  <data name="windows_not_loaded" xml:space="preserve">
+    <value>Las ventanas no están cargadas.</value>
   </data>
   <data name="window_disabled" xml:space="preserve">
     <value>El video debe estar desactivado y la libreria cargada.</value>

@@ -47,7 +47,7 @@ namespace WhoIsDemo.model
                 userJson = value;
                 OnUser(userJson);
             }
-        }
+        }        
 
         public bool IsHearObserverUser { get => isHearObserverUser; set => isHearObserverUser = value; }
         
@@ -56,6 +56,7 @@ namespace WhoIsDemo.model
         public delegate void UserJsonDelegate(string dataUser);
         public event UserJsonDelegate OnUser;
         
+
         #endregion
 
         #region methods
@@ -69,15 +70,14 @@ namespace WhoIsDemo.model
 
         ~AipuObserver()
         {
-
+            this.aipu = null;
         }
 
         public void EnableObserverUser()
         {
-            ObserverUser();
+            ObserverUser();            
             isHearObserverUser = true;
         }
-
 
         private void ObserverError()
         {
@@ -140,10 +140,11 @@ namespace WhoIsDemo.model
 
         public void Dispose()
         {
-            this.aipu = null;
+            
             if (isHearObserverUser)
             {
                 subscriptionUser.Dispose();
+               
             }
             
             subscriptionError.Dispose();            

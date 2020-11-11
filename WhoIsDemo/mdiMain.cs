@@ -16,6 +16,7 @@ namespace WhoIsDemo
     {
         #region constants
         public const string NAME = "mdiMain";
+        private const int number_channels = 4;
         #endregion
         #region variables
         private bool flagCloseApplication = false;
@@ -66,8 +67,10 @@ namespace WhoIsDemo
 
         private void mdiMain_Load(object sender, EventArgs e)
         {
-            this.Height = Screen.PrimaryScreen.Bounds.Height;
-            this.Width = Screen.PrimaryScreen.Bounds.Width;
+            //this.Height = Screen.PrimaryScreen.Bounds.Height;
+            //this.Width = Screen.PrimaryScreen.Bounds.Width;
+            this.Height = 750;
+            this.Width = 850;
             this.Top = 0;
             this.Left = (int)((Screen.PrimaryScreen.WorkingArea.Width - this.Width) / 2);
             Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.Black;
@@ -131,9 +134,7 @@ namespace WhoIsDemo
                 this.statusStrip.Invoke(new Action(() => managerControlView
                     .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
                     .GetString("library_not_load"), 0, this.statusStrip)));
-
             }
-
 
         }
 
@@ -181,8 +182,8 @@ namespace WhoIsDemo
                 paramsFaceProcessing.FACEDET_CONFIDENCE_THRESHOLD = 200;
                 paramsFaceProcessing.FACEDET_SPEED_ACCURACY_MODE = 0;
                 paramsFaceProcessing.FACETMPLEXT_SPEED_ACCURACY_MODE = 0;
-                paramsFaceProcessing.TRACK_MAX_FACE_SIZE = 200;
-                paramsFaceProcessing.TRACK_MIN_FACE_SIZE = 25;
+                paramsFaceProcessing.TRACK_MAX_FACE_SIZE = 200.0f;
+                paramsFaceProcessing.TRACK_MIN_FACE_SIZE = 25.0f;
                 paramsFaceProcessing.QUALITY_MODEL = 40;
                 paramsFaceProcessing.FACE_MAX_DETECT = 1;
                 configurationPipeline.paramsFaceProcessing = paramsFaceProcessing;
@@ -233,7 +234,7 @@ namespace WhoIsDemo
                         RegistryValueDataReader.NUM_CHANNELS_KEY, Convert.ToString(0));
                 Configuration.Instance.NumberChannels = 0;
                 diskPresenter.GenerateListChannels();
-
+                AipuFace.Instance.SetNumberPipelines(number_channels);
                 this.statusStrip.Invoke(new Action(() => managerControlView
                     .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
                     .GetString("configuration_empty"), 0, this.statusStrip)));
@@ -243,6 +244,7 @@ namespace WhoIsDemo
             {
                 GetDatabaseConfiguration();                
                 GenerateChannels();
+                AipuFace.Instance.SetNumberPipelines(number_channels);
             }
         }
 
@@ -313,7 +315,7 @@ namespace WhoIsDemo
             frmEnroll frmWork = new frmEnroll() { MdiParent = this };
             frmWork.strNameMenu = "enrolamientoToolStripMenuItem";            
             enrolamientoToolStripMenuItem.Enabled = false;            
-            //configuraciónToolStripMenuItem.Enabled = false;
+            configuraciónToolStripMenuItem.Enabled = false;
             frmWork.Show();
         }
 
@@ -327,7 +329,7 @@ namespace WhoIsDemo
             
             controlDeEntradaToolStripMenuItem.Enabled = false;
             
-            //configuraciónToolStripMenuItem.Enabled = false;
+            configuraciónToolStripMenuItem.Enabled = false;
             frmWork.Show();
         }
 

@@ -71,23 +71,25 @@
             // 
             // txtTracer
             // 
-            this.txtTracer.BackColor = System.Drawing.Color.Cyan;
+            this.txtTracer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtTracer.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.txtTracer, "txtTracer");
+            this.txtTracer.ForeColor = System.Drawing.Color.White;
             this.txtTracer.Name = "txtTracer";
             // 
             // label6
             // 
-            this.label6.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             resources.ApplyResources(this.label6, "label6");
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Name = "label6";
             // 
             // txtScore
             // 
-            this.txtScore.BackColor = System.Drawing.Color.Cyan;
+            this.txtScore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtScore.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.txtScore, "txtScore");
+            this.txtScore.ForeColor = System.Drawing.Color.White;
             this.txtScore.Name = "txtScore";
             // 
             // label5
@@ -104,7 +106,7 @@
             // 
             // label4
             // 
-            this.label4.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             resources.ApplyResources(this.label4, "label4");
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Name = "label4";
@@ -121,9 +123,10 @@
             // 
             // txtLastName
             // 
-            this.txtLastName.BackColor = System.Drawing.Color.Cyan;
+            this.txtLastName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtLastName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.txtLastName, "txtLastName");
+            this.txtLastName.ForeColor = System.Drawing.Color.White;
             this.txtLastName.Name = "txtLastName";
             // 
             // label3
@@ -134,9 +137,10 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.BackColor = System.Drawing.Color.Cyan;
+            this.txtFirstName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtFirstName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.txtFirstName, "txtFirstName");
+            this.txtFirstName.ForeColor = System.Drawing.Color.White;
             this.txtFirstName.Name = "txtFirstName";
             // 
             // label2
@@ -147,9 +151,10 @@
             // 
             // txtId
             // 
-            this.txtId.BackColor = System.Drawing.Color.Cyan;
+            this.txtId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.txtId, "txtId");
+            this.txtId.ForeColor = System.Drawing.Color.White;
             this.txtId.Name = "txtId";
             // 
             // label1

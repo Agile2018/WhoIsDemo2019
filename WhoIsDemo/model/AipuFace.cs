@@ -1,26 +1,27 @@
 ﻿using Aipu2NetLib;
+using System;
 
 namespace WhoIsDemo.model
 {
     class AipuFace
     {
         #region constant
-        private const int reset = 1;
-        private const int finish = 0;
+        //private const int reset = 1;
+        //private const int finish = 0;
         #endregion
         #region variables
         AipuNet aipu;
         AipuObserver aipuObserver;
         private bool isRunVideo = false;
         private bool isStopAipu = false;
-        private bool isTracking = false;
+        //private bool isTracking = false;
         private bool isLoadLibrary = false;
         private static readonly AipuFace instance = new AipuFace();
         public static AipuFace Instance => instance;
 
         public bool IsRunVideo { get => isRunVideo; set => isRunVideo = value; }
         public bool IsStopAipu { get => isStopAipu; set => isStopAipu = value; }
-        public bool IsTracking { get => isTracking; set => isTracking = value; }
+        //public bool IsTracking { get => isTracking; set => isTracking = value; }
         public bool IsLoadLibrary { get => isLoadLibrary; set => isLoadLibrary = value; }
         #endregion
 
@@ -49,6 +50,16 @@ namespace WhoIsDemo.model
             IsLoadLibrary = true;
         }
 
+        public void CloseConnectionIdentification(int channel)
+        {
+            aipu.CloseConnectionIdentification(channel);
+        }
+
+        public void LoadConnectionIdentification(int channel)
+        {
+            aipu.LoadConnectionIdentification(channel);
+        }
+
         public void LoadConfiguration(int option)
         {
             aipu.LoadConfiguration(option);
@@ -59,6 +70,30 @@ namespace WhoIsDemo.model
             aipu.LoadConfigurationPipe(pipeline);
         }
 
+        public void DownConfigurationModel(int channel)
+        {
+            aipu.DownConfigurationModel(channel);
+        }
+
+        public bool GetIsLoadConfiguration()
+        {
+            return aipu.GetIsLoadConfiguration;
+        }
+        public void LoadConfigurationModel(int channel)
+        {
+            aipu.LoadConfigurationModel(channel);
+        }
+
+        public void LoadConfigurationIdentify(int channel)
+        {
+            aipu.LoadConfigurationIdentify(channel);
+        }
+
+        public void LoadConfigurationTracking(int channel)
+        {
+            aipu.LoadConfigurationTracking(channel);
+        }       
+
         public void InitWindowMain(int option)
         {
             aipu.InitWindowMain(option);
@@ -68,6 +103,11 @@ namespace WhoIsDemo.model
         {
             aipu.RunVideo(option);
             IsRunVideo = true;
+        }
+
+        public int GetTaskIdentify()
+        {
+            return aipu.GetTaskIdentify;
         }
 
         public void CloseWindow()
@@ -122,16 +162,7 @@ namespace WhoIsDemo.model
         public void SetChannel(int channel)
         {
             aipu.SetChannel(channel);
-        }
-
-        //public void ResetPerformance(int option)
-        //{
-        //    aipu.ResetPerformance(option);
-        //}
-        //public void SavePerformance(int option)
-        //{
-        //    aipu.SavePerformance(option);
-        //}
+        }       
 
         public void StatePlay(int option)
         {
@@ -161,6 +192,11 @@ namespace WhoIsDemo.model
             return aipu.GetIsFinishLoadFiles;
         }
 
+        //public bool GetIsFinishLoadTemplates()
+        //{
+        //    return aipu.GetIsFinishLoadTemplates;
+        //}
+
         public void SetNumberPipelines(int value)
         {
             aipu.SetNumberPipelines(value);
@@ -176,11 +212,26 @@ namespace WhoIsDemo.model
             aipuObserver.EnableObserverUser();
         }
 
-        
+        //public void EnableObserverTemplate()
+        //{
+        //    aipuObserver.EnableObserverTemplate();
+        //}
+
         public bool IsObserverUser()
         {
             return aipuObserver.IsHearObserverUser;
-        }        
+        }
+
+        //public bool IsObserverTemplate()
+        //{
+        //    return aipuObserver.IsHearObserverTemplate;
+        //}
+
+        public string GetTemplateDataJSON()
+        {
+            return aipu.GetTemplateJSON;
+
+        }
 
         public void ReloadAipu()
         {
@@ -214,9 +265,9 @@ namespace WhoIsDemo.model
             {
                 aipu.Terminate();
             }
-
-            aipu.Dispose();
             aipuObserver.Dispose();
+            aipu.Dispose();
+            
         }
         #endregion
     }

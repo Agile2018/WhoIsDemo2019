@@ -6,6 +6,9 @@ using WhoIsDemo.model;
 using WhoIsDemo.presenter;
 using WhoIsDemo.repository;
 using WhoIsDemo.view.tool;
+using System.Threading;
+using System.Runtime.InteropServices;
+using MongoDB.Bson;
 
 namespace WhoIsDemo.form
 {
@@ -112,11 +115,17 @@ namespace WhoIsDemo.form
         private void frmConfiguration_Load(object sender, EventArgs e)
         {
             try
-            {                
-                          
+            {
+                this.AutoScaleMode = AutoScaleMode.Dpi;
+                this.PerformAutoScale();
+                this.Top = 0;
+                this.Left = 0;
                 GetDatabaseConfiguration();
                 GetGlobalParameters();
-
+                if (Configuration.Instance.IsShowWindow)
+                {
+                    this.txtDescriptionChannel.ReadOnly = true;
+                }
 
             }
             catch (FieldAccessException fe)
@@ -143,6 +152,7 @@ namespace WhoIsDemo.form
             managerControlView.EnabledOptionMenu("controlDeEntradaToolStripMenuItem", mdiMain.NAME);
             managerControlView.EnabledOptionMenu("enrolamientoToolStripMenuItem", mdiMain.NAME);
             managerControlView.EnabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);
+            managerControlView.SetValueTextStatusStrip("", 0, this.status);
         }
 
         private bool ValidateDatabase()
@@ -243,12 +253,12 @@ namespace WhoIsDemo.form
 
         private void txtMaxEye_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.managerControlView.OnlyInteger(e);
+            this.managerControlView.OnlyDecimal(e);
         }
 
         private void txtMinEye_KeyPress(object sender, KeyPressEventArgs e)
         {
-            this.managerControlView.OnlyInteger(e);
+            this.managerControlView.OnlyDecimal(e);
         }         
 
         private int CheckTypeVideo(string description)
@@ -442,8 +452,8 @@ namespace WhoIsDemo.form
             paramsFaceProcessing.FACEDET_CONFIDENCE_THRESHOLD = Convert.ToInt16(txtAccurancy.Text.ToString());
             paramsFaceProcessing.FACEDET_SPEED_ACCURACY_MODE = cboDetectorMode.SelectedIndex;
             paramsFaceProcessing.FACETMPLEXT_SPEED_ACCURACY_MODE = cboExtractionMode.SelectedIndex;
-            paramsFaceProcessing.TRACK_MAX_FACE_SIZE = Convert.ToInt16(txtMaxEye.Text.ToString());
-            paramsFaceProcessing.TRACK_MIN_FACE_SIZE = Convert.ToInt16(txtMinEye.Text.ToString());
+            paramsFaceProcessing.TRACK_MAX_FACE_SIZE = Convert.ToSingle(txtMaxEye.Text.ToString());
+            paramsFaceProcessing.TRACK_MIN_FACE_SIZE = Convert.ToSingle(txtMinEye.Text.ToString());
             paramsFaceProcessing.QUALITY_MODEL = Convert.ToInt32(txtModelQuality.Text);
             paramsFaceProcessing.FACE_MAX_DETECT = Convert.ToInt32(txtMaxDetect.Text);
             configurationPipeline.paramsFaceProcessing = paramsFaceProcessing;
@@ -634,18 +644,72 @@ namespace WhoIsDemo.form
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (!testVideo || !SaveDataConfiguration(channelCurrent))
+           
+            if (ToTurnOffChannel())
             {
-                MessageBox.Show(ManagerResource.Instance.resourceManager
-                    .GetString("configuration_empty"));
+                if (!testVideo || !SaveDataConfiguration(channelCurrent))
+                {
+                    MessageBox.Show(ManagerResource.Instance.resourceManager
+                        .GetString("configuration_empty"));
+                }
+                else
+                {
+                    CheckConfigurationChannel(channelCurrent + 1);
+                    managerControlView.SetValueTextStatusStrip(ManagerResource
+                       .Instance.resourceManager
+                           .GetString("save_ok"),
+                           0, this.status);
+
+
+                }
             }
             else
             {
                 managerControlView.SetValueTextStatusStrip(ManagerResource
-                    .Instance.resourceManager
-                        .GetString("save_ok"),
-                        0, this.status);
+                .Instance.resourceManager
+                    .GetString("channel_off"),
+                    0, this.status);
             }
+            
+        }
+
+        private void CheckConfigurationChannel(int channel)
+        {
+            
+            AipuFace.Instance.SetChannel(channel);
+            if (AipuFace.Instance.GetIsLoadConfiguration())
+            {
+                AipuFace.Instance.DownConfigurationModel(channel);
+                AipuFace.Instance.CloseConnectionIdentification(channel);
+                Thread.Sleep(20);
+                AipuFace.Instance.LoadConfigurationModel(channel);
+                AipuFace.Instance.LoadConfigurationIdentify(channel);
+                AipuFace.Instance.LoadConnectionIdentification(channel);
+                AipuFace.Instance.LoadConfigurationTracking(channel);
+            }
+
+        }
+
+        private bool ToTurnOffChannel()
+        {
+
+            bool stateChannels = true;
+            if (Configuration.Instance.IsShowWindow)
+            {
+                int numberChannels = Configuration.Instance.NumberChannels + 1;
+
+                for (int i = 0; i < numberChannels; i++)
+                {
+                    if (Configuration.Instance.Channels[i].loop == 0)
+                    {
+                        stateChannels = false;
+                        break;
+                    }
+                }
+            }
+
+            return stateChannels;
+            
         }
 
         private void txtBestMatched_KeyPress(object sender, KeyPressEventArgs e)
@@ -959,5 +1023,7 @@ namespace WhoIsDemo.form
                 this.valueErrortxtMaxDetect.SetError((sender as TextBox), errorMsg);
             }
         }
+
+        
     }
 }

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 using WhoIsDemo.model;
+using WhoIsDemo.presenter;
 using WhoIsDemo.view.tool;
 
 namespace WhoIsDemo.form
@@ -15,6 +17,7 @@ namespace WhoIsDemo.form
         public string strNameMenu;
         private int numberWindow = 1;
         ManagerControlView managerControlView = new ManagerControlView();
+        DiskPresenter diskPresenter = new DiskPresenter();
         #endregion
         public frmManagerChannels()
         {
@@ -358,7 +361,11 @@ namespace WhoIsDemo.form
         private void frmManagerChannels_FormClosing(object sender, FormClosingEventArgs e)
         {
             managerControlView.EnabledOptionMenu(strNameMenu, mdiMain.NAME);
-            managerControlView.EnabledOptionMenu("configuraciónToolStripMenuItem", mdiMain.NAME);
+            if (Application.OpenForms.Count == 2)
+            {
+                managerControlView.EnabledOptionMenu("configuraciónToolStripMenuItem", mdiMain.NAME);
+            }
+           
         }
 
         private void btnPlay1_Click(object sender, EventArgs e)
@@ -432,7 +439,7 @@ namespace WhoIsDemo.form
 
         private void btnQuitLoop1_Click(object sender, EventArgs e)
         {
-            AipuFace.Instance.SetFinishLoop(1);
+            AipuFace.Instance.SetFinishLoop(1);            
             btnRunFlow1.Enabled = true;
             btnQuitLoop1.Enabled = false;
             Configuration.Instance.Channels[0].loop = 1;
@@ -441,7 +448,7 @@ namespace WhoIsDemo.form
 
         private void btnQuitLoop2_Click(object sender, EventArgs e)
         {
-            AipuFace.Instance.SetFinishLoop(2);
+            AipuFace.Instance.SetFinishLoop(2);            
             btnRunFlow2.Enabled = true;
             btnQuitLoop2.Enabled = false;
             Configuration.Instance.Channels[1].loop = 1;
@@ -468,6 +475,7 @@ namespace WhoIsDemo.form
 
         private void btnRunFlow1_Click(object sender, EventArgs e)
         {
+            AipuFace.Instance.LoadConfigurationPipe(1);
             AipuFace.Instance.ReRunVideo(1);
             btnRunFlow1.Enabled = false;
             btnQuitLoop1.Enabled = true;
@@ -481,6 +489,7 @@ namespace WhoIsDemo.form
 
         private void btnRunFlow2_Click(object sender, EventArgs e)
         {
+            AipuFace.Instance.LoadConfigurationPipe(2);
             AipuFace.Instance.ReRunVideo(2);
             btnRunFlow2.Enabled = false;
             btnQuitLoop2.Enabled = true;
@@ -493,6 +502,7 @@ namespace WhoIsDemo.form
 
         private void btnRunFlow3_Click(object sender, EventArgs e)
         {
+            AipuFace.Instance.LoadConfigurationPipe(3);
             AipuFace.Instance.ReRunVideo(3);
             btnRunFlow3.Enabled = false;
             btnQuitLoop3.Enabled = true;
@@ -505,6 +515,7 @@ namespace WhoIsDemo.form
 
         private void btnRunFlow4_Click(object sender, EventArgs e)
         {
+            AipuFace.Instance.LoadConfigurationPipe(4);
             AipuFace.Instance.ReRunVideo(4);
             btnRunFlow4.Enabled = false;
             btnQuitLoop4.Enabled = true;

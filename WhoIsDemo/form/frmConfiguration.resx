@@ -1698,6 +1698,9 @@
   <data name="&gt;&gt;lblOkDetect.ZOrder" xml:space="preserve">
     <value>5</value>
   </data>
+  <data name="label19.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
   <data name="label19.Location" type="System.Drawing.Point, System.Drawing">
     <value>174, 231</value>
   </data>

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAccessControl));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnControlEntryVideo = new System.Windows.Forms.Button();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnStopLoadFile = new System.Windows.Forms.Button();
             this.btnLoadFile = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,21 +44,47 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(81)))));
+            this.splitContainer1.BackColor = System.Drawing.Color.White;
             resources.ApplyResources(this.splitContainer1, "splitContainer1");
+            this.splitContainer1.ForeColor = System.Drawing.Color.White;
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
             // 
-            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(81)))));
+            this.splitContainer1.Panel1.BackColor = System.Drawing.Color.White;
+            this.splitContainer1.Panel1.Controls.Add(this.btnControlEntryVideo);
+            this.splitContainer1.Panel1.Controls.Add(this.btnClose);
             this.splitContainer1.Panel1.Controls.Add(this.btnStopLoadFile);
             this.splitContainer1.Panel1.Controls.Add(this.btnLoadFile);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
+            this.splitContainer1.Panel1.ForeColor = System.Drawing.Color.White;
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(81)))));
             this.splitContainer1.Panel2.Controls.Add(this.flowLayoutPanel1);
+            // 
+            // btnControlEntryVideo
+            // 
+            this.btnControlEntryVideo.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.btnControlEntryVideo, "btnControlEntryVideo");
+            this.btnControlEntryVideo.ForeColor = System.Drawing.Color.Transparent;
+            this.btnControlEntryVideo.Image = global::WhoIsDemo.Properties.Resources.video_account;
+            this.btnControlEntryVideo.Name = "btnControlEntryVideo";
+            this.btnControlEntryVideo.Tag = "0";
+            this.btnControlEntryVideo.UseVisualStyleBackColor = true;
+            this.btnControlEntryVideo.Click += new System.EventHandler(this.btnControlEntryVideo_Click);
+            // 
+            // btnClose
+            // 
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.btnClose.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
+            resources.ApplyResources(this.btnClose, "btnClose");
+            this.btnClose.Image = global::WhoIsDemo.Properties.Resources.close;
+            this.btnClose.Name = "btnClose";
+            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
             // 
             // btnStopLoadFile
             // 
@@ -75,7 +103,7 @@
             this.btnLoadFile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.btnLoadFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
             resources.ApplyResources(this.btnLoadFile, "btnLoadFile");
-            this.btnLoadFile.Image = global::WhoIsDemo.Properties.Resources.file;
+            this.btnLoadFile.Image = global::WhoIsDemo.Properties.Resources.file_account;
             this.btnLoadFile.Name = "btnLoadFile";
             this.btnLoadFile.UseVisualStyleBackColor = true;
             this.btnLoadFile.Click += new System.EventHandler(this.btnLoadFile_Click);
@@ -83,12 +111,13 @@
             // label2
             // 
             resources.ApplyResources(this.label2, "label2");
-            this.label2.ForeColor = System.Drawing.Color.DarkGray;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Name = "label2";
             // 
             // flowLayoutPanel1
             // 
             resources.ApplyResources(this.flowLayoutPanel1, "flowLayoutPanel1");
+            this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             // 
@@ -119,5 +148,7 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnLoadFile;
         private System.Windows.Forms.Button btnStopLoadFile;
+        private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.Button btnControlEntryVideo;
     }
 }

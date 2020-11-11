@@ -226,4 +226,25 @@
   <data name="account_plus_outline" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\account-plus-outline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="file_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\file-account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="folder_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\folder-account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="video_account" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\video-account.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="video_box" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\video-box.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="video_box_off" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\video-box-off.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="timer_off_outline" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\timer-off-outline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="restart" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\restart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

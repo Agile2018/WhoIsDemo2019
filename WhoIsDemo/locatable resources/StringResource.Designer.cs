@@ -79,6 +79,15 @@ namespace WhoIsDemo.locatable_resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Please turn off the channel..
+        /// </summary>
+        internal static string channel_off {
+            get {
+                return ResourceManager.GetString("channel_off", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Join channel: .
         /// </summary>
         internal static string channels {
@@ -318,6 +327,15 @@ namespace WhoIsDemo.locatable_resources {
         internal static string window_disabled {
             get {
                 return ResourceManager.GetString("window_disabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a The windows are not loaded..
+        /// </summary>
+        internal static string windows_not_loaded {
+            get {
+                return ResourceManager.GetString("windows_not_loaded", resourceCulture);
             }
         }
         

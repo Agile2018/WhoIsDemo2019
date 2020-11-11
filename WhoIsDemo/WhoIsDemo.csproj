@@ -154,6 +154,12 @@
     <Compile Include="form\CardSimple.Designer.cs">
       <DependentUpon>CardSimple.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\CardTemplate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="form\CardTemplate.Designer.cs">
+      <DependentUpon>CardTemplate.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\CardTwoImage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -216,6 +222,7 @@
     <Compile Include="model\Image.cs" />
     <Compile Include="model\Image64.cs" />
     <Compile Include="model\ImageBMP.cs" />
+    <Compile Include="model\ImageTemplate.cs" />
     <Compile Include="model\Params.cs" />
     <Compile Include="model\ParamsDatabase.cs" />
     <Compile Include="model\ParamsDetect.cs" />
@@ -225,6 +232,7 @@
     <Compile Include="model\ParamsFlow.cs" />
     <Compile Include="model\ParamsGlobal.cs" />
     <Compile Include="model\ParamsIdentify.cs" />
+    <Compile Include="model\ParamsTemplate.cs" />
     <Compile Include="model\ParamsTracking.cs" />
     <Compile Include="model\ParamsTrackingProcessing.cs" />
     <Compile Include="model\People.cs" />
@@ -239,6 +247,7 @@
     <Compile Include="presenter\FilesRecognitionPresenter.cs" />
     <Compile Include="presenter\FindImagePresenter.cs" />
     <Compile Include="presenter\HearInvalidPresenter.cs" />
+    <Compile Include="presenter\HearTemplateImagePresenter.cs" />
     <Compile Include="presenter\HearUserPresenter.cs" />
     <Compile Include="presenter\SynchronizationPeoplePresenter.cs" />
     <Compile Include="presenter\UpdatePersonPresenter.cs" />
@@ -248,6 +257,7 @@
     <Compile Include="repository\RegistryValueDataReader.cs" />
     <Compile Include="view\tool\ManagerControlView.cs" />
     <Compile Include="view\tool\ManagerResource.cs" />
+    <Compile Include="view\tool\Transform.cs" />
     <EmbeddedResource Include="form\CardPerson.es.resx">
       <DependentUpon>CardPerson.cs</DependentUpon>
     </EmbeddedResource>
@@ -256,6 +266,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="form\CardSimple.resx">
       <DependentUpon>CardSimple.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\CardTemplate.resx">
+      <DependentUpon>CardTemplate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\CardTwoImage.es.resx">
       <DependentUpon>CardTwoImage.cs</DependentUpon>
@@ -325,6 +338,13 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="License-LGPL.txt" />
+    <None Include="Resources\restart.png" />
+    <None Include="Resources\timer-off-outline.png" />
+    <None Include="Resources\video-box-off.png" />
+    <None Include="Resources\video-box.png" />
+    <None Include="Resources\video-account.png" />
+    <None Include="Resources\folder-account.png" />
+    <None Include="Resources\file-account.png" />
     <None Include="Resources\account-plus-outline.png" />
     <None Include="Resources\expand-all.png" />
     <None Include="Resources\test-tube.png" />

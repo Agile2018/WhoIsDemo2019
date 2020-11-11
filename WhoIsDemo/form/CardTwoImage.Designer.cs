@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CardTwoImage));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtTracer = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.txtScore = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.lblNameChannel = new System.Windows.Forms.Label();
@@ -47,8 +49,6 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.picPhotoGallery = new System.Windows.Forms.PictureBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtTracer = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picPhotoCamera)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPhotoGallery)).BeginInit();
@@ -56,7 +56,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(75)))), ((int)(((byte)(174)))));
+            this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.txtTracer);
             this.panel1.Controls.Add(this.label9);
@@ -80,11 +80,26 @@
             resources.ApplyResources(this.panel1, "panel1");
             this.panel1.Name = "panel1";
             // 
+            // txtTracer
+            // 
+            this.txtTracer.BackColor = System.Drawing.Color.White;
+            this.txtTracer.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            resources.ApplyResources(this.txtTracer, "txtTracer");
+            this.txtTracer.Name = "txtTracer";
+            // 
+            // label9
+            // 
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            resources.ApplyResources(this.label9, "label9");
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Name = "label9";
+            // 
             // txtScore
             // 
-            this.txtScore.BackColor = System.Drawing.Color.White;
+            this.txtScore.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtScore.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.txtScore, "txtScore");
+            this.txtScore.ForeColor = System.Drawing.Color.White;
             this.txtScore.Name = "txtScore";
             this.txtScore.ReadOnly = true;
             // 
@@ -97,14 +112,15 @@
             // lblNameChannel
             // 
             resources.ApplyResources(this.lblNameChannel, "lblNameChannel");
-            this.lblNameChannel.ForeColor = System.Drawing.Color.White;
+            this.lblNameChannel.ForeColor = System.Drawing.Color.Black;
             this.lblNameChannel.Name = "lblNameChannel";
             // 
             // txtDatetime
             // 
-            this.txtDatetime.BackColor = System.Drawing.Color.White;
+            this.txtDatetime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtDatetime.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.txtDatetime, "txtDatetime");
+            this.txtDatetime.ForeColor = System.Drawing.Color.White;
             this.txtDatetime.Name = "txtDatetime";
             this.txtDatetime.ReadOnly = true;
             // 
@@ -134,14 +150,14 @@
             // 
             // label4
             // 
-            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
+            this.label4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             resources.ApplyResources(this.label4, "label4");
             this.label4.ForeColor = System.Drawing.Color.White;
             this.label4.Name = "label4";
             // 
             // btnSave
             // 
-            this.btnSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(83)))), ((int)(((byte)(75)))), ((int)(((byte)(174)))));
+            this.btnSave.BackColor = System.Drawing.Color.White;
             this.btnSave.BackgroundImage = global::WhoIsDemo.Properties.Resources.done;
             resources.ApplyResources(this.btnSave, "btnSave");
             this.btnSave.FlatAppearance.BorderSize = 0;
@@ -151,9 +167,10 @@
             // 
             // txtLastName
             // 
-            this.txtLastName.BackColor = System.Drawing.Color.White;
+            this.txtLastName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtLastName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.txtLastName, "txtLastName");
+            this.txtLastName.ForeColor = System.Drawing.Color.White;
             this.txtLastName.Name = "txtLastName";
             // 
             // label3
@@ -164,9 +181,10 @@
             // 
             // txtFirstName
             // 
-            this.txtFirstName.BackColor = System.Drawing.Color.White;
+            this.txtFirstName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtFirstName.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.txtFirstName, "txtFirstName");
+            this.txtFirstName.ForeColor = System.Drawing.Color.White;
             this.txtFirstName.Name = "txtFirstName";
             // 
             // label2
@@ -177,9 +195,10 @@
             // 
             // txtId
             // 
-            this.txtId.BackColor = System.Drawing.Color.White;
+            this.txtId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
             this.txtId.BorderStyle = System.Windows.Forms.BorderStyle.None;
             resources.ApplyResources(this.txtId, "txtId");
+            this.txtId.ForeColor = System.Drawing.Color.White;
             this.txtId.Name = "txtId";
             // 
             // label1
@@ -193,20 +212,6 @@
             resources.ApplyResources(this.picPhotoGallery, "picPhotoGallery");
             this.picPhotoGallery.Name = "picPhotoGallery";
             this.picPhotoGallery.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(35)))), ((int)(((byte)(126)))));
-            resources.ApplyResources(this.label9, "label9");
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Name = "label9";
-            // 
-            // txtTracer
-            // 
-            this.txtTracer.BackColor = System.Drawing.Color.White;
-            this.txtTracer.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            resources.ApplyResources(this.txtTracer, "txtTracer");
-            this.txtTracer.Name = "txtTracer";
             // 
             // CardTwoImage
             // 
