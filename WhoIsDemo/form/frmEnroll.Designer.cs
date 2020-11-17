@@ -34,12 +34,8 @@ namespace WhoIsDemo.form
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmEnroll));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.gbUser = new System.Windows.Forms.GroupBox();
-            this.btnStopLoadFile = new System.Windows.Forms.Button();
-            this.btnFile = new System.Windows.Forms.Button();
             this.btnImportVideo = new System.Windows.Forms.Button();
-            this.picMainImage = new System.Windows.Forms.PictureBox();
             this.btnCamera = new System.Windows.Forms.Button();
-            this.btnImages = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flpTemplates = new System.Windows.Forms.FlowLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
@@ -51,13 +47,17 @@ namespace WhoIsDemo.form
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.toolTipBtn = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnStopLoadFile = new System.Windows.Forms.Button();
+            this.btnFile = new System.Windows.Forms.Button();
+            this.btnImages = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.gbUser.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picMainImage)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -70,6 +70,7 @@ namespace WhoIsDemo.form
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.splitContainer1.Panel1.Controls.Add(this.groupBox2);
             this.splitContainer1.Panel1.Controls.Add(this.gbUser);
             this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
             this.splitContainer1.Panel1.Controls.Add(this.label2);
@@ -89,39 +90,12 @@ namespace WhoIsDemo.form
             // 
             resources.ApplyResources(this.gbUser, "gbUser");
             this.gbUser.BackColor = System.Drawing.Color.Transparent;
-            this.gbUser.Controls.Add(this.btnStopLoadFile);
-            this.gbUser.Controls.Add(this.btnFile);
             this.gbUser.Controls.Add(this.btnImportVideo);
-            this.gbUser.Controls.Add(this.picMainImage);
             this.gbUser.Controls.Add(this.btnCamera);
-            this.gbUser.Controls.Add(this.btnImages);
             this.gbUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.gbUser.ForeColor = System.Drawing.Color.Black;
             this.gbUser.Name = "gbUser";
             this.gbUser.TabStop = false;
-            // 
-            // btnStopLoadFile
-            // 
-            resources.ApplyResources(this.btnStopLoadFile, "btnStopLoadFile");
-            this.btnStopLoadFile.FlatAppearance.BorderSize = 0;
-            this.btnStopLoadFile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
-            this.btnStopLoadFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
-            this.btnStopLoadFile.Image = global::WhoIsDemo.Properties.Resources.timer_off;
-            this.btnStopLoadFile.Name = "btnStopLoadFile";
-            this.btnStopLoadFile.UseVisualStyleBackColor = true;
-            this.btnStopLoadFile.Click += new System.EventHandler(this.btnStopLoadFile_Click);
-            // 
-            // btnFile
-            // 
-            this.btnFile.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.btnFile, "btnFile");
-            this.btnFile.ForeColor = System.Drawing.Color.White;
-            this.btnFile.Image = global::WhoIsDemo.Properties.Resources.file_account;
-            this.btnFile.Name = "btnFile";
-            this.btnFile.Tag = "0";
-            this.btnFile.UseVisualStyleBackColor = true;
-            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
-            this.btnFile.MouseHover += new System.EventHandler(this.btnFile_MouseHover);
             // 
             // btnImportVideo
             // 
@@ -135,13 +109,6 @@ namespace WhoIsDemo.form
             this.btnImportVideo.Click += new System.EventHandler(this.btnImportVideo_Click);
             this.btnImportVideo.MouseHover += new System.EventHandler(this.btnImportVideo_MouseHover);
             // 
-            // picMainImage
-            // 
-            this.picMainImage.Image = global::WhoIsDemo.Properties.Resources.account;
-            resources.ApplyResources(this.picMainImage, "picMainImage");
-            this.picMainImage.Name = "picMainImage";
-            this.picMainImage.TabStop = false;
-            // 
             // btnCamera
             // 
             this.btnCamera.FlatAppearance.BorderSize = 0;
@@ -152,18 +119,6 @@ namespace WhoIsDemo.form
             this.btnCamera.UseVisualStyleBackColor = true;
             this.btnCamera.Click += new System.EventHandler(this.btnCamera_Click);
             this.btnCamera.MouseHover += new System.EventHandler(this.btnCamera_MouseHover);
-            // 
-            // btnImages
-            // 
-            this.btnImages.FlatAppearance.BorderSize = 0;
-            resources.ApplyResources(this.btnImages, "btnImages");
-            this.btnImages.ForeColor = System.Drawing.Color.White;
-            this.btnImages.Image = global::WhoIsDemo.Properties.Resources.folder_account;
-            this.btnImages.Name = "btnImages";
-            this.btnImages.Tag = "0";
-            this.btnImages.UseVisualStyleBackColor = true;
-            this.btnImages.Click += new System.EventHandler(this.btnImages_Click);
-            this.btnImages.MouseHover += new System.EventHandler(this.btnImages_MouseHover);
             // 
             // groupBox1
             // 
@@ -178,6 +133,7 @@ namespace WhoIsDemo.form
             // flpTemplates
             // 
             resources.ApplyResources(this.flpTemplates, "flpTemplates");
+            this.flpTemplates.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.flpTemplates.Name = "flpTemplates";
             // 
             // label2
@@ -245,6 +201,50 @@ namespace WhoIsDemo.form
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Name = "label4";
             // 
+            // groupBox2
+            // 
+            resources.ApplyResources(this.groupBox2, "groupBox2");
+            this.groupBox2.Controls.Add(this.btnStopLoadFile);
+            this.groupBox2.Controls.Add(this.btnFile);
+            this.groupBox2.Controls.Add(this.btnImages);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.TabStop = false;
+            // 
+            // btnStopLoadFile
+            // 
+            resources.ApplyResources(this.btnStopLoadFile, "btnStopLoadFile");
+            this.btnStopLoadFile.FlatAppearance.BorderSize = 0;
+            this.btnStopLoadFile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.btnStopLoadFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
+            this.btnStopLoadFile.Image = global::WhoIsDemo.Properties.Resources.timer_off;
+            this.btnStopLoadFile.Name = "btnStopLoadFile";
+            this.btnStopLoadFile.UseVisualStyleBackColor = true;
+            this.btnStopLoadFile.Click += new System.EventHandler(this.btnStopLoadFile_Click);
+            // 
+            // btnFile
+            // 
+            this.btnFile.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.btnFile, "btnFile");
+            this.btnFile.ForeColor = System.Drawing.Color.White;
+            this.btnFile.Image = global::WhoIsDemo.Properties.Resources.file_account;
+            this.btnFile.Name = "btnFile";
+            this.btnFile.Tag = "0";
+            this.btnFile.UseVisualStyleBackColor = true;
+            this.btnFile.Click += new System.EventHandler(this.btnFile_Click);
+            this.btnFile.MouseHover += new System.EventHandler(this.btnFile_MouseHover);
+            // 
+            // btnImages
+            // 
+            this.btnImages.FlatAppearance.BorderSize = 0;
+            resources.ApplyResources(this.btnImages, "btnImages");
+            this.btnImages.ForeColor = System.Drawing.Color.White;
+            this.btnImages.Image = global::WhoIsDemo.Properties.Resources.folder_account;
+            this.btnImages.Name = "btnImages";
+            this.btnImages.Tag = "0";
+            this.btnImages.UseVisualStyleBackColor = true;
+            this.btnImages.Click += new System.EventHandler(this.btnImages_Click);
+            this.btnImages.MouseHover += new System.EventHandler(this.btnImages_MouseHover);
+            // 
             // frmEnroll
             // 
             resources.ApplyResources(this, "$this");
@@ -265,8 +265,8 @@ namespace WhoIsDemo.form
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.gbUser.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.picMainImage)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -283,14 +283,14 @@ namespace WhoIsDemo.form
         private System.Windows.Forms.Label lblQuantityRecords;
         private System.Windows.Forms.GroupBox gbUser;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button btnImages;
         private System.Windows.Forms.Button btnCamera;
-        private System.Windows.Forms.PictureBox picMainImage;
         private System.Windows.Forms.FlowLayoutPanel flpTemplates;
-        private System.Windows.Forms.Button btnFile;
         private System.Windows.Forms.Button btnImportVideo;
-        private System.Windows.Forms.Button btnStopLoadFile;
         private System.Windows.Forms.ToolTip toolTipBtn;
         private System.Windows.Forms.Button btnClose;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Button btnStopLoadFile;
+        private System.Windows.Forms.Button btnFile;
+        private System.Windows.Forms.Button btnImages;
     }
 }

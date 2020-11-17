@@ -128,7 +128,7 @@
   <data name="splitContainer1.Orientation" type="System.Windows.Forms.Orientation, System.Windows.Forms">
     <value>Horizontal</value>
   </data>
-  <data name="gbUser.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+  <data name="groupBox2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Right</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -142,13 +142,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnStopLoadFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 125</value>
+    <value>17, 117</value>
   </data>
   <data name="btnStopLoadFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 36</value>
   </data>
   <data name="btnStopLoadFile.TabIndex" type="System.Int32, mscorlib">
-    <value>19</value>
+    <value>22</value>
   </data>
   <data name="&gt;&gt;btnStopLoadFile.Name" xml:space="preserve">
     <value>btnStopLoadFile</value>
@@ -157,7 +157,7 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnStopLoadFile.Parent" xml:space="preserve">
-    <value>gbUser</value>
+    <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;btnStopLoadFile.ZOrder" xml:space="preserve">
     <value>0</value>
@@ -169,13 +169,13 @@
     <value>NoControl</value>
   </data>
   <data name="btnFile.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 78</value>
+    <value>17, 73</value>
   </data>
   <data name="btnFile.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 30</value>
   </data>
   <data name="btnFile.TabIndex" type="System.Int32, mscorlib">
-    <value>6</value>
+    <value>21</value>
   </data>
   <data name="&gt;&gt;btnFile.Name" xml:space="preserve">
     <value>btnFile</value>
@@ -184,10 +184,67 @@
     <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;btnFile.Parent" xml:space="preserve">
-    <value>gbUser</value>
+    <value>groupBox2</value>
   </data>
   <data name="&gt;&gt;btnFile.ZOrder" xml:space="preserve">
     <value>1</value>
+  </data>
+  <data name="btnImages.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnImages.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnImages.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 29</value>
+  </data>
+  <data name="btnImages.Size" type="System.Drawing.Size, System.Drawing">
+    <value>39, 30</value>
+  </data>
+  <data name="btnImages.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="&gt;&gt;btnImages.Name" xml:space="preserve">
+    <value>btnImages</value>
+  </data>
+  <data name="&gt;&gt;btnImages.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnImages.Parent" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;btnImages.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="groupBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Dubai, 10pt, style=Bold</value>
+  </data>
+  <data name="groupBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>689, 35</value>
+  </data>
+  <data name="groupBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>72, 174</value>
+  </data>
+  <data name="groupBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>22</value>
+  </data>
+  <data name="groupBox2.Text" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Name" xml:space="preserve">
+    <value>groupBox2</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Type" xml:space="preserve">
+    <value>System.Windows.Forms.GroupBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.Parent" xml:space="preserve">
+    <value>splitContainer1.Panel1</value>
+  </data>
+  <data name="&gt;&gt;groupBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="gbUser.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Right</value>
   </data>
   <data name="btnImportVideo.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -196,7 +253,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnImportVideo.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 78</value>
+    <value>15, 73</value>
   </data>
   <data name="btnImportVideo.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 30</value>
@@ -214,34 +271,7 @@
     <value>gbUser</value>
   </data>
   <data name="&gt;&gt;btnImportVideo.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="picMainImage.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="picMainImage.Location" type="System.Drawing.Point, System.Drawing">
-    <value>64, 24</value>
-  </data>
-  <data name="picMainImage.Size" type="System.Drawing.Size, System.Drawing">
-    <value>107, 142</value>
-  </data>
-  <data name="picMainImage.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
-    <value>StretchImage</value>
-  </data>
-  <data name="picMainImage.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;picMainImage.Name" xml:space="preserve">
-    <value>picMainImage</value>
-  </data>
-  <data name="&gt;&gt;picMainImage.Type" xml:space="preserve">
-    <value>System.Windows.Forms.PictureBox, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;picMainImage.Parent" xml:space="preserve">
-    <value>gbUser</value>
-  </data>
-  <data name="&gt;&gt;picMainImage.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="btnCamera.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
@@ -250,7 +280,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnCamera.Location" type="System.Drawing.Point, System.Drawing">
-    <value>9, 33</value>
+    <value>15, 29</value>
   </data>
   <data name="btnCamera.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 30</value>
@@ -268,49 +298,22 @@
     <value>gbUser</value>
   </data>
   <data name="&gt;&gt;btnCamera.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="btnImages.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
-    <value>Flat</value>
-  </data>
-  <data name="btnImages.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="btnImages.Location" type="System.Drawing.Point, System.Drawing">
-    <value>188, 33</value>
-  </data>
-  <data name="btnImages.Size" type="System.Drawing.Size, System.Drawing">
-    <value>39, 30</value>
-  </data>
-  <data name="btnImages.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;btnImages.Name" xml:space="preserve">
-    <value>btnImages</value>
-  </data>
-  <data name="&gt;&gt;btnImages.Type" xml:space="preserve">
-    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="&gt;&gt;btnImages.Parent" xml:space="preserve">
-    <value>gbUser</value>
-  </data>
-  <data name="&gt;&gt;btnImages.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>1</value>
   </data>
   <data name="gbUser.Font" type="System.Drawing.Font, System.Drawing">
     <value>Dubai, 10pt, style=Bold</value>
   </data>
   <data name="gbUser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>526, 35</value>
+    <value>611, 35</value>
   </data>
   <data name="gbUser.Size" type="System.Drawing.Size, System.Drawing">
-    <value>235, 174</value>
+    <value>72, 174</value>
   </data>
   <data name="gbUser.TabIndex" type="System.Int32, mscorlib">
     <value>21</value>
   </data>
   <data name="gbUser.Text" xml:space="preserve">
-    <value>Person</value>
+    <value>Video</value>
   </data>
   <data name="&gt;&gt;gbUser.Name" xml:space="preserve">
     <value>gbUser</value>
@@ -322,13 +325,10 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;gbUser.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="groupBox1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Left, Right</value>
-  </data>
-  <data name="flpTemplates.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="flpTemplates.AutoScroll" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -337,10 +337,13 @@
     <value>6, 19</value>
   </data>
   <data name="flpTemplates.Size" type="System.Drawing.Size, System.Drawing">
-    <value>478, 144</value>
+    <value>581, 167</value>
   </data>
   <data name="flpTemplates.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="flpTemplates.WrapContents" type="System.Boolean, mscorlib">
+    <value>False</value>
   </data>
   <data name="&gt;&gt;flpTemplates.Name" xml:space="preserve">
     <value>flpTemplates</value>
@@ -358,10 +361,10 @@
     <value>Dubai, 10pt, style=Bold</value>
   </data>
   <data name="groupBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 35</value>
+    <value>12, 35</value>
   </data>
   <data name="groupBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>490, 174</value>
+    <value>593, 197</value>
   </data>
   <data name="groupBox1.TabIndex" type="System.Int32, mscorlib">
     <value>20</value>
@@ -379,7 +382,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;groupBox1.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top</value>
@@ -394,7 +397,7 @@
     <value>NoControl</value>
   </data>
   <data name="label2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>329, 9</value>
+    <value>329, 6</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
     <value>103, 32</value>
@@ -415,7 +418,7 @@
     <value>splitContainer1.Panel1</value>
   </data>
   <data name="&gt;&gt;label2.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="&gt;&gt;splitContainer1.Panel1.Name" xml:space="preserve">
     <value>splitContainer1.Panel1</value>
@@ -436,7 +439,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnClose.Location" type="System.Drawing.Point, System.Drawing">
-    <value>706, 330</value>
+    <value>706, 326</value>
   </data>
   <data name="btnClose.Size" type="System.Drawing.Size, System.Drawing">
     <value>39, 30</value>
@@ -499,7 +502,7 @@
     <value>NoControl</value>
   </data>
   <data name="btnDownRecords.Location" type="System.Drawing.Point, System.Drawing">
-    <value>208, 264</value>
+    <value>208, 300</value>
   </data>
   <data name="btnDownRecords.Size" type="System.Drawing.Size, System.Drawing">
     <value>60, 58</value>
@@ -553,10 +556,10 @@
     <value>True</value>
   </data>
   <data name="flpDatabase.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 37</value>
+    <value>18, 32</value>
   </data>
   <data name="flpDatabase.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 323</value>
+    <value>190, 315</value>
   </data>
   <data name="flpDatabase.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -652,7 +655,7 @@
     <value>773, 609</value>
   </data>
   <data name="splitContainer1.SplitterDistance" type="System.Int32, mscorlib">
-    <value>223</value>
+    <value>238</value>
   </data>
   <data name="splitContainer1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>

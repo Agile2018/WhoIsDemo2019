@@ -80,6 +80,7 @@ namespace WhoIsDemo.presenter
                 {
                     listData.Add(dataImage);
                 }
+                
             }
             foreach (string item in listData)
             {

@@ -1,5 +1,6 @@
 ﻿using Aipu2NetLib;
 using System;
+using System.Runtime.ExceptionServices;
 
 namespace WhoIsDemo.model
 {
@@ -226,11 +227,21 @@ namespace WhoIsDemo.model
         //{
         //    return aipuObserver.IsHearObserverTemplate;
         //}
-
+        [HandleProcessCorruptedStateExceptions]
         public string GetTemplateDataJSON()
         {
-            return aipu.GetTemplateJSON;
+            try
+            {
+                return aipu.GetTemplateJSON;
+            }
+            catch (System.AccessViolationException e)
+            {
 
+                Console.WriteLine(e.Message);
+
+            }
+
+            return "";
         }
 
         public void ReloadAipu()

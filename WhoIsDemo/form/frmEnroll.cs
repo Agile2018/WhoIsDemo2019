@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WhoIsDemo.locatable_resources;
@@ -224,7 +225,7 @@ namespace WhoIsDemo.form
                                 AddNewCardPerson(img.imageStore, personNewCard, img.log);
                                 this.listPersonNewCard.RemoveAt(index);
                                 if (numberTemplates > 0)
-                                {
+                                {                                    
                                     Task setTemplates = TaskGetTemplates(numberTemplates);
                                 }
                             }
@@ -322,7 +323,7 @@ namespace WhoIsDemo.form
                 {
                     Bitmap imgResize = Transform.Instance.ResizeBitmap(image);
                     cardPerson.Photo = imgResize;
-                    picMainImage.Image = imgResize;
+                    //picMainImage.Image = imgResize;
                 }
                 this.flowLayoutPanel1.Invoke(new Action(() =>
                 this.flowLayoutPanel1.Controls.Add(cardPerson)));
@@ -520,30 +521,30 @@ namespace WhoIsDemo.form
             }
         }
 
-        private void btnImages_Click(object sender, EventArgs e)
-        {
-            if (IsPipeEnabled())
-            {
-                SetNoneTaskChannels();
-                using (var fldrDlg = new FolderBrowserDialog())
-                {
-                    this.flpTemplates.Controls.Clear();
-                    picMainImage.Image = WhoIsDemo.Properties.Resources.account;
-                    if (fldrDlg.ShowDialog() == DialogResult.OK)
-                    {                        
-                        filesRecognitionPresenter.AddCollectionOfImages(fldrDlg.SelectedPath,
-                            hearUserPresenter.IdVideos[0], 2);
-                    }
-                }
-            }
-            else
-            {
-                managerControlView
-                    .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
-                    .GetString("video_not_found"),
-                    0, this.status);
-            }
-        }
+        //private void btnImages_Click(object sender, EventArgs e)
+        //{
+        //    if (IsPipeEnabled())
+        //    {
+        //        SetNoneTaskChannels();
+        //        using (var fldrDlg = new FolderBrowserDialog())
+        //        {
+        //            this.flpTemplates.Controls.Clear();
+        //            //picMainImage.Image = WhoIsDemo.Properties.Resources.account;
+        //            if (fldrDlg.ShowDialog() == DialogResult.OK)
+        //            {                        
+        //                filesRecognitionPresenter.AddCollectionOfImages(fldrDlg.SelectedPath,
+        //                    hearUserPresenter.IdVideos[0], 2);
+        //            }
+        //        }
+        //    }
+        //    else
+        //    {
+        //        managerControlView
+        //            .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
+        //            .GetString("video_not_found"),
+        //            0, this.status);
+        //    }
+        //}
 
         private bool CheckVideoRunning()
         {
@@ -569,7 +570,7 @@ namespace WhoIsDemo.form
                 {
                     managerControlView.StartProgressStatusStrip(1, this.status);
                     this.flpTemplates.Controls.Clear();
-                    picMainImage.Image = WhoIsDemo.Properties.Resources.account;
+                    //picMainImage.Image = WhoIsDemo.Properties.Resources.account;
                     pipeSelect = hearUserPresenter.IdVideos[0];
                     SetTextColourFrame(pipeSelect, 0.0f, 0.0f, 255.0f);
                     AipuFace.Instance.ResetEnrollVideo(pipeSelect, 0);
@@ -601,11 +602,123 @@ namespace WhoIsDemo.form
             }
         }
 
+        //private void btnFile_Click(object sender, EventArgs e)
+        //{
+        //    SetNoneTaskChannels();
+        //    this.flpTemplates.Controls.Clear();
+        //    //picMainImage.Image = WhoIsDemo.Properties.Resources.account;
+
+        //    if (IsPipeEnabled())
+        //    {
+        //        if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+        //        {
+        //            managerControlView.DisabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);
+        //            filesRecognitionPresenter.IsLoadFile = true;
+        //            filesRecognitionPresenter.LinkVideo = hearUserPresenter.IdVideos[0];
+        //            filesRecognitionPresenter.TaskIdentify = 0;
+        //            this.btnFile.Enabled = false;
+        //            this.btnStopLoadFile.Enabled = true;
+        //            managerControlView
+        //                .SetValueTextStatusStrip(StringResource.work,
+        //                0, this.status);
+        //            string folder = openFileDialog.InitialDirectory;
+        //            managerControlView.StartProgressStatusStrip(1, this.status);
+        //            AipuFace.Instance.SetChannel(hearUserPresenter.IdVideos[0]);
+        //            AipuFace.Instance.SetIsFinishLoadFiles(true);
+        //            Task taskRecognition = filesRecognitionPresenter
+        //                .TaskImageFileForRecognition(openFileDialog.FileNames);
+
+        //        }
+        //    }
+        //    else
+        //    {
+        //        managerControlView
+        //            .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
+        //            .GetString("video_not_found"),
+        //            0, this.status);
+        //    }
+        //}
+
+        private void btnImportVideo_Click(object sender, EventArgs e)
+        {
+            this.flpTemplates.Controls.Clear();
+
+            if (CheckVideoRunning())
+            {
+                if (Convert.ToInt32((sender as Button).Tag) == 0)
+                {
+                    //picMainImage.Image = WhoIsDemo.Properties.Resources.account;
+                    managerControlView.StartProgressStatusStrip(1, this.status);
+                    (sender as Button).Tag = 1;
+                    (sender as Button).Image = WhoIsDemo.Properties.Resources.video_box_off;
+                    for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
+                    {
+                        int index = hearUserPresenter.IdVideos[i];
+                        AipuFace.Instance.SetTaskIdentify(0, index);
+                    }
+                }
+                else
+                {
+                    managerControlView.StopProgressStatusStrip(1, this.status);
+                    (sender as Button).Tag = 0;
+                    (sender as Button).Image = WhoIsDemo.Properties.Resources.video_account;
+                    for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
+                    {
+                        int index = hearUserPresenter.IdVideos[i];
+                        AipuFace.Instance.SetTaskIdentify(-1, index);
+                    }
+                }
+            }
+            else
+            {
+                managerControlView
+                    .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
+                    .GetString("pipe_not loaded"),
+                    0, this.status);
+            }
+
+        }
+
+        //private void btnStopLoadFile_Click(object sender, EventArgs e)
+        //{
+        //    filesRecognitionPresenter.CancelLoad = true;
+        //}
+
+        private void btnCamera_MouseHover(object sender, EventArgs e)
+        {
+            toolTipBtn.SetToolTip(btnCamera, "Enroll video with templates");
+        }
+
+        private void btnImportVideo_MouseHover(object sender, EventArgs e)
+        {
+            toolTipBtn.SetToolTip(btnImportVideo, "Enroll one frame");
+        }
+
+        //private void btnImages_MouseHover(object sender, EventArgs e)
+        //{
+        //    toolTipBtn.SetToolTip(btnImages, "Enroll all folder");
+        //}
+
+        //private void btnFile_MouseHover(object sender, EventArgs e)
+        //{
+        //    toolTipBtn.SetToolTip(btnFile, "Enroll one file");
+        //}
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnStopLoadFile_Click(object sender, EventArgs e)
+        {
+            filesRecognitionPresenter.CancelLoad = true;
+        }
+
         private void btnFile_Click(object sender, EventArgs e)
         {
             SetNoneTaskChannels();
             this.flpTemplates.Controls.Clear();
-            picMainImage.Image = WhoIsDemo.Properties.Resources.account;
+            //picMainImage.Image = WhoIsDemo.Properties.Resources.account;
 
             if (IsPipeEnabled())
             {
@@ -638,33 +751,19 @@ namespace WhoIsDemo.form
             }
         }
 
-        private void btnImportVideo_Click(object sender, EventArgs e)
+        private void btnImages_Click(object sender, EventArgs e)
         {
-            this.flpTemplates.Controls.Clear();
-
-            if (CheckVideoRunning())
+            if (IsPipeEnabled())
             {
-                if (Convert.ToInt32((sender as Button).Tag) == 0)
+                SetNoneTaskChannels();
+                using (var fldrDlg = new FolderBrowserDialog())
                 {
-                    picMainImage.Image = WhoIsDemo.Properties.Resources.account;
-                    managerControlView.StartProgressStatusStrip(1, this.status);
-                    (sender as Button).Tag = 1;
-                    (sender as Button).Image = WhoIsDemo.Properties.Resources.video_box_off;
-                    for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
+                    this.flpTemplates.Controls.Clear();
+                    //picMainImage.Image = WhoIsDemo.Properties.Resources.account;
+                    if (fldrDlg.ShowDialog() == DialogResult.OK)
                     {
-                        int index = hearUserPresenter.IdVideos[i];
-                        AipuFace.Instance.SetTaskIdentify(0, index);
-                    }
-                }
-                else
-                {
-                    managerControlView.StopProgressStatusStrip(1, this.status);
-                    (sender as Button).Tag = 0;
-                    (sender as Button).Image = WhoIsDemo.Properties.Resources.video_account;
-                    for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
-                    {
-                        int index = hearUserPresenter.IdVideos[i];
-                        AipuFace.Instance.SetTaskIdentify(-1, index);
+                        filesRecognitionPresenter.AddCollectionOfImages(fldrDlg.SelectedPath,
+                            hearUserPresenter.IdVideos[0], 2);
                     }
                 }
             }
@@ -672,30 +771,9 @@ namespace WhoIsDemo.form
             {
                 managerControlView
                     .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
-                    .GetString("pipe_not loaded"),
+                    .GetString("video_not_found"),
                     0, this.status);
             }
-
-        }
-
-        private void btnStopLoadFile_Click(object sender, EventArgs e)
-        {
-            filesRecognitionPresenter.CancelLoad = true;
-        }
-
-        private void btnCamera_MouseHover(object sender, EventArgs e)
-        {
-            toolTipBtn.SetToolTip(btnCamera, "Enroll video with templates");
-        }
-
-        private void btnImportVideo_MouseHover(object sender, EventArgs e)
-        {
-            toolTipBtn.SetToolTip(btnImportVideo, "Enroll one frame");
-        }
-
-        private void btnImages_MouseHover(object sender, EventArgs e)
-        {
-            toolTipBtn.SetToolTip(btnImages, "Enroll all folder");
         }
 
         private void btnFile_MouseHover(object sender, EventArgs e)
@@ -703,9 +781,9 @@ namespace WhoIsDemo.form
             toolTipBtn.SetToolTip(btnFile, "Enroll one file");
         }
 
-        private void btnClose_Click(object sender, EventArgs e)
+        private void btnImages_MouseHover(object sender, EventArgs e)
         {
-            this.Close();
+            toolTipBtn.SetToolTip(btnImages, "Enroll all folder");
         }
     }
 }

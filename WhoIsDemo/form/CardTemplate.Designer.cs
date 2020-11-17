@@ -37,17 +37,18 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.picTemplate);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(81, 102);
+            this.panel1.Size = new System.Drawing.Size(91, 107);
             this.panel1.TabIndex = 0;
             // 
             // picTemplate
             // 
-            this.picTemplate.Location = new System.Drawing.Point(3, 3);
+            this.picTemplate.Location = new System.Drawing.Point(8, 9);
             this.picTemplate.Name = "picTemplate";
-            this.picTemplate.Size = new System.Drawing.Size(74, 96);
+            this.picTemplate.Size = new System.Drawing.Size(74, 86);
             this.picTemplate.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picTemplate.TabIndex = 0;
             this.picTemplate.TabStop = false;
@@ -58,7 +59,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel1);
             this.Name = "CardTemplate";
-            this.Size = new System.Drawing.Size(86, 106);
+            this.Size = new System.Drawing.Size(97, 113);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picTemplate)).EndInit();
             this.ResumeLayout(false);
