@@ -18,6 +18,7 @@ namespace WhoIsDemo.form
         private int numberWindow = 1;
         ManagerControlView managerControlView = new ManagerControlView();
         DiskPresenter diskPresenter = new DiskPresenter();
+        private StatusStrip status;
         #endregion
         public frmManagerChannels()
         {
@@ -88,6 +89,7 @@ namespace WhoIsDemo.form
 
         private void frmManagerChannels_Load(object sender, EventArgs e)
         {
+            this.status = managerControlView.GetStatusStripMain(mdiMain.NAME);
             EnableChannels();
             EnablePanelControlVideo();
             EnableStateButton();
@@ -208,48 +210,76 @@ namespace WhoIsDemo.form
         {
             if (Configuration.Instance.IsShowWindow)
             {
-                btnPlayAll.Enabled = false;
-                switch (Configuration.Instance.NumberWindowsShow)
+                //btnPlayAll.Enabled = false;
+                for (int i = 0; i < Configuration.Instance.Channels.Count; i++)
                 {
-                    case 1:
-                        rbOne.Checked = true;
-                        panel1Channel1.Enabled = true;
-                        panel2Channel1.Enabled = true;
-                        break;
-                    case 2:
-                        rbTwo.Checked = true;
-                        panel1Channel1.Enabled = true;
-                        panel2Channel1.Enabled = true;
-                        panel1Channel2.Enabled = true;
-                        panel2Channel2.Enabled = true;
-                        break;
-                    case 3:
-                        rbThree.Checked = true;
-                        panel1Channel1.Enabled = true;
-                        panel2Channel1.Enabled = true;
-                        panel1Channel2.Enabled = true;
-                        panel2Channel2.Enabled = true;
-                        panel1Channel3.Enabled = true;
-                        panel2Channel3.Enabled = true;
-                        //if (gbChannel4.Enabled)
-                        //{
-                        //    panel1Channel4.Enabled = true;
-                        //}
-                        break;
-                    case 4:
-                        rbFour.Checked = true;
-                        panel1Channel1.Enabled = true;
-                        panel2Channel1.Enabled = true;
-                        panel1Channel2.Enabled = true;
-                        panel2Channel2.Enabled = true;
-                        panel1Channel3.Enabled = true;
-                        panel2Channel3.Enabled = true;
-                        panel1Channel4.Enabled = true;
-                        panel2Channel4.Enabled = true;
-                        break;
-                    default:
-                        break;
+                    if (Configuration.Instance.Channels[i].flow == 0)
+                    {
+                        switch (i)
+                        {
+                            case 0:
+                                panel1Channel1.Enabled = true;
+                                panel2Channel1.Enabled = true;
+                                break;
+                            case 1:
+                                panel1Channel2.Enabled = true;
+                                panel2Channel2.Enabled = true;
+                                break;
+                            case 2:
+                                panel1Channel3.Enabled = true;
+                                panel2Channel3.Enabled = true;
+                                break;
+                            case 3:
+                                panel1Channel4.Enabled = true;
+                                panel2Channel4.Enabled = true;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
                 }
+
+                //switch (Configuration.Instance.NumberWindowsShow)
+                //{
+                //    case 1:
+                //        rbOne.Checked = true;
+                //        panel1Channel1.Enabled = true;
+                //        panel2Channel1.Enabled = true;
+                //        break;
+                //    case 2:
+                //        rbTwo.Checked = true;
+                //        panel1Channel1.Enabled = true;
+                //        panel2Channel1.Enabled = true;
+                //        panel1Channel2.Enabled = true;
+                //        panel2Channel2.Enabled = true;
+                //        break;
+                //    case 3:
+                //        rbThree.Checked = true;
+                //        panel1Channel1.Enabled = true;
+                //        panel2Channel1.Enabled = true;
+                //        panel1Channel2.Enabled = true;
+                //        panel2Channel2.Enabled = true;
+                //        panel1Channel3.Enabled = true;
+                //        panel2Channel3.Enabled = true;
+                //        //if (gbChannel4.Enabled)
+                //        //{
+                //        //    panel1Channel4.Enabled = true;
+                //        //}
+                //        break;
+                //    case 4:
+                //        rbFour.Checked = true;
+                //        panel1Channel1.Enabled = true;
+                //        panel2Channel1.Enabled = true;
+                //        panel1Channel2.Enabled = true;
+                //        panel2Channel2.Enabled = true;
+                //        panel1Channel3.Enabled = true;
+                //        panel2Channel3.Enabled = true;
+                //        panel1Channel4.Enabled = true;
+                //        panel2Channel4.Enabled = true;
+                //        break;
+                //    default:
+                //        break;
+                //}
                
             }
         }
@@ -271,17 +301,46 @@ namespace WhoIsDemo.form
 
         private void btnPlayAll_Click(object sender, EventArgs e)
         {
-            
-            Configuration.Instance.IsShowWindow = true;
-            Configuration.Instance.NumberWindowsShow = numberWindow;
-            SetStateButtonChannel();
-            DisabledChannelsNotUsed();
-            ThrowChannels();
-            EnablePanelControlVideo();
-            //Thread videoThread = new Thread(new ThreadStart(ThrowChannels));
-            //videoThread.Priority = ThreadPriority.AboveNormal;
-            //videoThread.Start();
-            //videoThread.Abort();
+            if (!Configuration.Instance.IsShowWindow)
+            {
+                string channels = "";
+                Configuration.Instance.IsShowWindow = true;
+                Configuration.Instance.NumberWindowsShow = numberWindow;
+                SetStateButtonChannel();
+                DisabledChannelsNotUsed();
+                for (int i = 0; i < numberWindow; i++)
+                {
+                    if (i == 0)
+                    {
+                        channels = (i + 1).ToString();
+                    }
+                    else
+                    {
+                        channels += "*" + (i + 1).ToString();
+                    }
+
+                }
+                ThrowChannels(channels);
+                EnablePanelControlVideo();
+            }
+                        
+        }
+
+        private void SetStateButtomChannel(int index)
+        {
+            for (int i = 0; i < Configuration.Instance.NumberChannels + 1; i++)
+            {
+                if (i == index)
+                {
+                    Configuration.Instance.Channels[i].flow = 0;
+                    Configuration.Instance.Channels[i].loop = 0;
+                }
+                else
+                {
+                    Configuration.Instance.Channels[i].flow = 1;
+                    Configuration.Instance.Channels[i].loop = 1;
+                }
+            }
         }
 
         private void SetStateButtonChannel()
@@ -351,11 +410,23 @@ namespace WhoIsDemo.form
                     break;
             }
         }
-        private void ThrowChannels()
+
+        private void ThrowOnlyChannel(int channel)
         {
+
+            AipuFace.Instance.LoadConfigurationPipe(channel);                        
+            AipuFace.Instance.RunVideo(numberWindow, channel.ToString());
+            AipuFace.Instance.InitWindowMain(numberWindow, channel.ToString());
+
+        }
+
+        private void ThrowChannels(string channels)
+        {
+
             AipuFace.Instance.LoadConfiguration(numberWindow);
-            AipuFace.Instance.InitWindowMain(numberWindow);
-            AipuFace.Instance.RunVideo(numberWindow);
+            AipuFace.Instance.RunVideo(numberWindow, channels);
+            AipuFace.Instance.InitWindowMain(numberWindow, channels);
+            
         }
 
         private void frmManagerChannels_FormClosing(object sender, FormClosingEventArgs e)
@@ -525,6 +596,120 @@ namespace WhoIsDemo.form
             btnPlay4.Enabled = false;
             btnPause4.Enabled = true;
         }
-      
+
+        private void btnShootVideo1_Click(object sender, EventArgs e)
+        {
+            if (!Configuration.Instance.IsShowWindow)
+            {                
+                Configuration.Instance.IsShowWindow = true;
+                numberWindow = 1;
+                Configuration.Instance.NumberWindowsShow = numberWindow;
+                SetStateButtomChannel(0);
+                ThrowOnlyChannel(1);
+                EnabledPanelControlVideo(1);
+                EnableStateButton();
+                managerControlView.SetValueTextStatusStrip("", 0, this.status);
+                Configuration.Instance.ChannelSelected = 1;
+            }
+            
+        }
+
+        private void EnabledPanelControlVideo(int enabled)
+        {
+            switch (enabled)
+            {
+                case 1:
+                    panel1Channel1.Enabled = true;
+                    panel2Channel1.Enabled = true;
+                    panel1Channel2.Enabled = false;
+                    panel2Channel2.Enabled = false;
+                    panel1Channel3.Enabled = false;
+                    panel2Channel3.Enabled = false;
+                    panel1Channel4.Enabled = false;
+                    panel2Channel4.Enabled = false;
+                    break;
+                case 2:
+                    panel1Channel1.Enabled = false;
+                    panel2Channel1.Enabled = false;
+                    panel1Channel2.Enabled = true;
+                    panel2Channel2.Enabled = true;
+                    panel1Channel3.Enabled = false;
+                    panel2Channel3.Enabled = false;
+                    panel1Channel4.Enabled = false;
+                    panel2Channel4.Enabled = false;
+                    break;
+                case 3:
+                    panel1Channel1.Enabled = false;
+                    panel2Channel1.Enabled = false;
+                    panel1Channel2.Enabled = false;
+                    panel2Channel2.Enabled = false;
+                    panel1Channel3.Enabled = true;
+                    panel2Channel3.Enabled = true;
+                    panel1Channel4.Enabled = false;
+                    panel2Channel4.Enabled = false;
+                    break;
+                case 4:
+                    panel1Channel1.Enabled = false;
+                    panel2Channel1.Enabled = false;
+                    panel1Channel2.Enabled = false;
+                    panel2Channel2.Enabled = false;
+                    panel1Channel3.Enabled = false;
+                    panel2Channel3.Enabled = false;
+                    panel1Channel4.Enabled = true;
+                    panel2Channel4.Enabled = true;
+
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void btnShootVideo2_Click(object sender, EventArgs e)
+        {
+            if (!Configuration.Instance.IsShowWindow)
+            {
+                Configuration.Instance.IsShowWindow = true;
+                numberWindow = 1;
+                Configuration.Instance.NumberWindowsShow = numberWindow;
+                SetStateButtomChannel(1);
+                ThrowOnlyChannel(2);
+                EnabledPanelControlVideo(2);
+                EnableStateButton();
+                managerControlView.SetValueTextStatusStrip("", 0, this.status);
+                Configuration.Instance.ChannelSelected = 2;
+            }
+        }
+
+        private void btnShootVideo3_Click(object sender, EventArgs e)
+        {
+            if (!Configuration.Instance.IsShowWindow)
+            {
+                Configuration.Instance.IsShowWindow = true;
+                numberWindow = 1;
+                Configuration.Instance.NumberWindowsShow = numberWindow;
+                SetStateButtomChannel(2);
+                ThrowOnlyChannel(3);
+                EnabledPanelControlVideo(3);
+                EnableStateButton();
+                managerControlView.SetValueTextStatusStrip("", 0, this.status);
+                Configuration.Instance.ChannelSelected = 3;
+            }
+        }
+
+        private void btnShootVideo4_Click(object sender, EventArgs e)
+        {
+            if (!Configuration.Instance.IsShowWindow)
+            {
+                Configuration.Instance.IsShowWindow = true;
+                numberWindow = 1;
+                Configuration.Instance.NumberWindowsShow = numberWindow;
+                SetStateButtomChannel(3);
+                ThrowOnlyChannel(4);
+                EnabledPanelControlVideo(4);
+                EnableStateButton();
+                managerControlView.SetValueTextStatusStrip("", 0, this.status);
+                Configuration.Instance.ChannelSelected = 4;
+            }
+        }
     }
 }

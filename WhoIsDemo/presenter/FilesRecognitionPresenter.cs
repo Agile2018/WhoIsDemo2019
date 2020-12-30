@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reactive.Subjects;
+using System.Threading;
 using System.Threading.Tasks;
 using WhoIsDemo.model;
 
@@ -42,26 +44,30 @@ namespace WhoIsDemo.presenter
 
         public void LaunchImageFileForRecognition(string[] listPath)
         {
+
             int count = 0;
             while (count < listPath.Count() && !CancelLoad)
             {
-                
+
                 if (AipuFace.Instance.GetIsFinishLoadFiles())
                 {
-                    
+                    AipuFace.Instance.SetIsFinishLoadFiles(false);
                     string fileImage = listPath[count];
 
                     AipuFace.Instance.RecognitionFaceFiles(fileImage, linkVideo, TaskIdentify);
+
                     count++;
 
                 }
 
             }
-            
+
+            Thread.Sleep(30);
+
             CancelLoad = false;
-            //AipuFace.Instance.SavePerformance(linkVideo);
+
             subjectLoad.OnNext(true);
-            
+
         }
 
         public void AddCollectionOfImages(string folder, int client, int doing)

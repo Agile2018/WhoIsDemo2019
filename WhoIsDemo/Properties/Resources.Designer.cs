@@ -273,6 +273,16 @@ namespace WhoIsDemo.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap file_video {
+            get {
+                object obj = ResourceManager.GetObject("file_video", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap flash {
             get {
                 object obj = ResourceManager.GetObject("flash", resourceCulture);
@@ -486,6 +496,26 @@ namespace WhoIsDemo.Properties {
         internal static System.Drawing.Bitmap video_box_off {
             get {
                 object obj = ResourceManager.GetObject("video_box_off", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap video_check {
+            get {
+                object obj = ResourceManager.GetObject("video_check", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap videoX {
+            get {
+                object obj = ResourceManager.GetObject("videoX", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

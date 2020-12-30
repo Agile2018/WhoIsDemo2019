@@ -87,7 +87,7 @@ namespace WhoIsDemo.model
                 
             });
             subscriptionError = observableError
-                .Where(res => res != ErrorBiometrics && res != null)
+                .Where(res => !string.IsNullOrEmpty(res))
                 .Delay(TimeSpan.FromSeconds(1))
                 .Repeat()
                 .Subscribe(

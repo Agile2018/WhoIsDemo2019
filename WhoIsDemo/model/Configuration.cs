@@ -17,6 +17,7 @@ namespace WhoIsDemo.model
         //public const string DESC_TYPE_FILE = "FILE";
         #endregion
         #region variables
+        private int channelSelected = -1;
         private static readonly Configuration instance = new Configuration();
         public static Configuration Instance => instance;
         public string ConnectDatabase { get => connectDatabase; set => connectDatabase = value; }
@@ -29,6 +30,7 @@ namespace WhoIsDemo.model
         public List<Channel> Channels { get => channels; set => channels = value; }
         public bool IsShowWindow { get => isShowWindow; set => isShowWindow = value; }
         public int NumberWindowsShow { get => numberWindowsShow; set => numberWindowsShow = value; }
+        public int ChannelSelected { get => channelSelected; set => channelSelected = value; }
 
         private List<Channel> channels = new List<Channel>();
         

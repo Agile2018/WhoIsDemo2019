@@ -125,9 +125,7 @@ namespace WhoIsDemo.form
                 img => AddTemplate(img),
                 () => Console.WriteLine(StringResource.complete));
         }
-
        
-
         private void AddTemplate(Bitmap img)
         {
             CardTemplate cardTemplate = new CardTemplate();
@@ -182,8 +180,11 @@ namespace WhoIsDemo.form
                 
                 this.Invoke(new Action(() => managerControlView
                 .EnabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME)));
-                
+                Task t = Task.Factory.StartNew(new
+                    Action(Configuration.Instance.SynchronizeDatabaseFace));
+
             }
+            
         }       
 
         private void RunNewCardToFlowLayout()
@@ -225,9 +226,12 @@ namespace WhoIsDemo.form
                                 AddNewCardPerson(img.imageStore, personNewCard, img.log);
                                 this.listPersonNewCard.RemoveAt(index);
                                 if (numberTemplates > 0)
-                                {                                    
+                                {
+                                    Thread.Sleep(50);
                                     Task setTemplates = TaskGetTemplates(numberTemplates);
                                 }
+                                this.lblQuantityRecords.Invoke(new Action(() => 
+                                this.lblQuantityRecords.Text = SynchronizationPeoplePresenter.Instance.GetNumbersPersons().ToString()));
                             }
                             catch (System.ArgumentOutOfRangeException ex)
                             {
@@ -323,15 +327,19 @@ namespace WhoIsDemo.form
                 {
                     Bitmap imgResize = Transform.Instance.ResizeBitmap(image);
                     cardPerson.Photo = imgResize;
-                    //picMainImage.Image = imgResize;
+                    
                 }
                 this.flowLayoutPanel1.Invoke(new Action(() =>
                 this.flowLayoutPanel1.Controls.Add(cardPerson)));
                 this.flowLayoutPanel1.Invoke(new Action(() =>
                 this.flowLayoutPanel1.Refresh()));
                 this.countFlowLayoutControls++;
-                Task t = Task.Factory.StartNew(new 
+                if (!filesRecognitionPresenter.IsLoadFile)
+                {
+                    Task t = Task.Factory.StartNew(new
                     Action(Configuration.Instance.SynchronizeDatabaseFace));
+                }
+                
             }
             catch (Exception ex)
             {
@@ -340,9 +348,7 @@ namespace WhoIsDemo.form
             }                    
             
         }
-
        
-
         private async Task TaskUploadPeopleOfDatabase(List<People> list)
         {
             await Task.Run(() =>
@@ -502,49 +508,10 @@ namespace WhoIsDemo.form
 
         private void SetTextColourFrame(int pipe, Single red, Single green, Single blue)
         {
-            switch (pipe)
-            {
-                case 1:
-                    AipuFace.Instance.SetColourTextFrameOne(red, green, blue);
-                    break;
-                case 2:
-                    AipuFace.Instance.SetColourTextFrameTwo(red, green, blue);
-                    break;
-                case 3:
-                    AipuFace.Instance.SetColourTextFrameThree(red, green, blue);
-                    break;
-                case 4:
-                    AipuFace.Instance.SetColourTextFrameFour(red, green, blue);
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        //private void btnImages_Click(object sender, EventArgs e)
-        //{
-        //    if (IsPipeEnabled())
-        //    {
-        //        SetNoneTaskChannels();
-        //        using (var fldrDlg = new FolderBrowserDialog())
-        //        {
-        //            this.flpTemplates.Controls.Clear();
-        //            //picMainImage.Image = WhoIsDemo.Properties.Resources.account;
-        //            if (fldrDlg.ShowDialog() == DialogResult.OK)
-        //            {                        
-        //                filesRecognitionPresenter.AddCollectionOfImages(fldrDlg.SelectedPath,
-        //                    hearUserPresenter.IdVideos[0], 2);
-        //            }
-        //        }
-        //    }
-        //    else
-        //    {
-        //        managerControlView
-        //            .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
-        //            .GetString("video_not_found"),
-        //            0, this.status);
-        //    }
-        //}
+            int indexFrame = pipe - 1;
+            AipuFace.Instance.SetColourLabelFrame(indexFrame, red, green, blue);
+            
+        }        
 
         private bool CheckVideoRunning()
         {
@@ -552,7 +519,8 @@ namespace WhoIsDemo.form
 
             int pipe = hearUserPresenter.IdVideos[0];
 
-            if (pipe <= Configuration.Instance.NumberWindowsShow)
+            if (pipe <= Configuration.Instance.NumberWindowsShow || 
+                hearUserPresenter.IdVideos.Contains(Configuration.Instance.ChannelSelected))
             {
                 return true;
             }
@@ -570,8 +538,16 @@ namespace WhoIsDemo.form
                 {
                     managerControlView.StartProgressStatusStrip(1, this.status);
                     this.flpTemplates.Controls.Clear();
-                    //picMainImage.Image = WhoIsDemo.Properties.Resources.account;
-                    pipeSelect = hearUserPresenter.IdVideos[0];
+
+                    if (hearUserPresenter.IdVideos.Contains(Configuration.Instance.ChannelSelected))
+                    {
+                        pipeSelect = Configuration.Instance.ChannelSelected;
+                    }
+                    else
+                    {
+                        pipeSelect = hearUserPresenter.IdVideos[0];
+                    }
+                    
                     SetTextColourFrame(pipeSelect, 0.0f, 0.0f, 255.0f);
                     AipuFace.Instance.ResetEnrollVideo(pipeSelect, 0);
                     AipuFace.Instance.SetTaskIdentify(3, pipeSelect);
@@ -587,7 +563,7 @@ namespace WhoIsDemo.form
                     AipuFace.Instance.ResetEnrollVideo(pipeSelect, 1);
                     AipuFace.Instance.SetTaskIdentify(-1, pipeSelect);
                     AipuFace.Instance.AddUserEnrollVideo(pipeSelect);
-                    SetTextColourFrame(pipeSelect, 0.0f, 0.0f, 0.0f);
+                    SetTextColourFrame(pipeSelect, 0.5f, 0.8f, 0.2f);
                     (sender as Button).Tag = 0;
                     (sender as Button).Image = WhoIsDemo.Properties.Resources.video_box;
                 }
@@ -595,49 +571,18 @@ namespace WhoIsDemo.form
             }
             else
             {
-                managerControlView
-                    .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
-                    .GetString("pipe_not loaded"),
-                    0, this.status);
+                if (!Configuration.Instance.IsShowWindow)
+                {
+
+                    managerControlView.ExecuteMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);
+                }
+                else
+                {
+                    managerControlView.SetValueTextStatusStrip(ManagerResource.Instance
+                        .resourceManager.GetString("channel_not_exist"), 0, this.status);
+                }
             }
-        }
-
-        //private void btnFile_Click(object sender, EventArgs e)
-        //{
-        //    SetNoneTaskChannels();
-        //    this.flpTemplates.Controls.Clear();
-        //    //picMainImage.Image = WhoIsDemo.Properties.Resources.account;
-
-        //    if (IsPipeEnabled())
-        //    {
-        //        if (this.openFileDialog.ShowDialog() == DialogResult.OK)
-        //        {
-        //            managerControlView.DisabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);
-        //            filesRecognitionPresenter.IsLoadFile = true;
-        //            filesRecognitionPresenter.LinkVideo = hearUserPresenter.IdVideos[0];
-        //            filesRecognitionPresenter.TaskIdentify = 0;
-        //            this.btnFile.Enabled = false;
-        //            this.btnStopLoadFile.Enabled = true;
-        //            managerControlView
-        //                .SetValueTextStatusStrip(StringResource.work,
-        //                0, this.status);
-        //            string folder = openFileDialog.InitialDirectory;
-        //            managerControlView.StartProgressStatusStrip(1, this.status);
-        //            AipuFace.Instance.SetChannel(hearUserPresenter.IdVideos[0]);
-        //            AipuFace.Instance.SetIsFinishLoadFiles(true);
-        //            Task taskRecognition = filesRecognitionPresenter
-        //                .TaskImageFileForRecognition(openFileDialog.FileNames);
-
-        //        }
-        //    }
-        //    else
-        //    {
-        //        managerControlView
-        //            .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
-        //            .GetString("video_not_found"),
-        //            0, this.status);
-        //    }
-        //}
+        }        
 
         private void btnImportVideo_Click(object sender, EventArgs e)
         {
@@ -651,11 +596,22 @@ namespace WhoIsDemo.form
                     managerControlView.StartProgressStatusStrip(1, this.status);
                     (sender as Button).Tag = 1;
                     (sender as Button).Image = WhoIsDemo.Properties.Resources.video_box_off;
-                    for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
+
+                    if (hearUserPresenter.IdVideos.Contains(Configuration.Instance.ChannelSelected))
                     {
-                        int index = hearUserPresenter.IdVideos[i];
-                        AipuFace.Instance.SetTaskIdentify(0, index);
+                        int pipeSelect = Configuration.Instance.ChannelSelected;
+                        AipuFace.Instance.SetTaskIdentify(0, pipeSelect);
                     }
+                    else
+                    {
+                        for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
+                        {
+                            int index = hearUserPresenter.IdVideos[i];
+                            AipuFace.Instance.SetTaskIdentify(0, index);
+                        }
+                    }
+
+                    
                 }
                 else
                 {
@@ -671,38 +627,28 @@ namespace WhoIsDemo.form
             }
             else
             {
-                managerControlView
-                    .SetValueTextStatusStrip(ManagerResource.Instance.resourceManager
-                    .GetString("pipe_not loaded"),
-                    0, this.status);
+                if (!Configuration.Instance.IsShowWindow)
+                {
+                    managerControlView.ExecuteMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);
+                }
+                else
+                {
+                    managerControlView.SetValueTextStatusStrip(ManagerResource.Instance
+                        .resourceManager.GetString("channel_not_exist"), 0, this.status);
+                }
             }
 
-        }
-
-        //private void btnStopLoadFile_Click(object sender, EventArgs e)
-        //{
-        //    filesRecognitionPresenter.CancelLoad = true;
-        //}
+        }        
 
         private void btnCamera_MouseHover(object sender, EventArgs e)
         {
-            toolTipBtn.SetToolTip(btnCamera, "Enroll video with templates");
+            toolTipBtn.SetToolTip(btnCamera, "Enroll multiple Faces to single User ID");
         }
 
         private void btnImportVideo_MouseHover(object sender, EventArgs e)
         {
-            toolTipBtn.SetToolTip(btnImportVideo, "Enroll one frame");
-        }
-
-        //private void btnImages_MouseHover(object sender, EventArgs e)
-        //{
-        //    toolTipBtn.SetToolTip(btnImages, "Enroll all folder");
-        //}
-
-        //private void btnFile_MouseHover(object sender, EventArgs e)
-        //{
-        //    toolTipBtn.SetToolTip(btnFile, "Enroll one file");
-        //}
+            toolTipBtn.SetToolTip(btnImportVideo, "Enroll all Faces to separate User ID's");
+        }        
 
         private void btnClose_Click(object sender, EventArgs e)
         {
@@ -718,8 +664,7 @@ namespace WhoIsDemo.form
         {
             SetNoneTaskChannels();
             this.flpTemplates.Controls.Clear();
-            //picMainImage.Image = WhoIsDemo.Properties.Resources.account;
-
+            
             if (IsPipeEnabled())
             {
                 if (this.openFileDialog.ShowDialog() == DialogResult.OK)
@@ -733,10 +678,11 @@ namespace WhoIsDemo.form
                     managerControlView
                         .SetValueTextStatusStrip(StringResource.work,
                         0, this.status);
-                    string folder = openFileDialog.InitialDirectory;
+                    //string folder = openFileDialog.InitialDirectory;
+
                     managerControlView.StartProgressStatusStrip(1, this.status);
                     AipuFace.Instance.SetChannel(hearUserPresenter.IdVideos[0]);
-                    AipuFace.Instance.SetIsFinishLoadFiles(true);
+                    AipuFace.Instance.SetIsFinishLoadFiles(true);                                        
                     Task taskRecognition = filesRecognitionPresenter
                         .TaskImageFileForRecognition(openFileDialog.FileNames);
 
@@ -778,12 +724,13 @@ namespace WhoIsDemo.form
 
         private void btnFile_MouseHover(object sender, EventArgs e)
         {
-            toolTipBtn.SetToolTip(btnFile, "Enroll one file");
+            toolTipBtn.SetToolTip(btnFile, "Enroll all selected Faces as separate User ID's.");
         }
 
         private void btnImages_MouseHover(object sender, EventArgs e)
         {
-            toolTipBtn.SetToolTip(btnImages, "Enroll all folder");
+            toolTipBtn.SetToolTip(btnImages, "Enroll all Faces in Folder to single User ID.");
         }
+        
     }
 }

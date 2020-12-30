@@ -135,6 +135,9 @@
   <data name="configuration_empty" xml:space="preserve">
     <value>Defina los parámetros de configuración y el orden de los canales , realice la verificación de video, por favor.</value>
   </data>
+  <data name="control_entry" xml:space="preserve">
+    <value>Control de entrada en canal:</value>
+  </data>
   <data name="delete_database" xml:space="preserve">
     <value>Esta seguro de borrar la base de datos? La aplicación se cerrará.</value>
   </data>
@@ -191,6 +194,9 @@
   </data>
   <data name="type_video_incorrect" xml:space="preserve">
     <value>El tipo de video es incorrecto.</value>
+  </data>
+  <data name="user_enroll" xml:space="preserve">
+    <value>Enrolar usuario en canal:</value>
   </data>
   <data name="value_key_empty" xml:space="preserve">
     <value>El valor de la llave está vacio.</value>

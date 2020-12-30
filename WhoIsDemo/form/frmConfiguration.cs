@@ -21,7 +21,7 @@ namespace WhoIsDemo.form
         public string strNameMenu;        
         ManagerControlView managerControlView = new ManagerControlView();
         DiskPresenter diskPresenter = new DiskPresenter();
-        
+        OpenFileDialog openFileDialog = new OpenFileDialog();
         private RegistryValueDataReader registryValueDataReader = new RegistryValueDataReader();
         private StatusStrip status;
         private int channelCurrent = 0;
@@ -37,7 +37,7 @@ namespace WhoIsDemo.form
         private System.Windows.Forms.ErrorProvider valueErrortxtScoreMax;
         private System.Windows.Forms.ErrorProvider valueErrortxtASimilarity;
         private System.Windows.Forms.ErrorProvider valueErrortxtBestMatched;
-       
+        private System.Windows.Forms.ErrorProvider valueErrortxtMaxEye;
 
         #endregion
         public frmConfiguration()
@@ -110,6 +110,8 @@ namespace WhoIsDemo.form
             valueErrortxtBestMatched.SetIconPadding(this.txtBestMatched, 2);
             valueErrortxtBestMatched.BlinkRate = 1000;
             valueErrortxtBestMatched.BlinkStyle = System.Windows.Forms.ErrorBlinkStyle.AlwaysBlink;
+
+
         }
 
         private void frmConfiguration_Load(object sender, EventArgs e)
@@ -120,6 +122,7 @@ namespace WhoIsDemo.form
                 this.PerformAutoScale();
                 this.Top = 0;
                 this.Left = 0;
+                this.openFileDialog.Filter = "Video Files(*.MP4;*.AVI;*.MOV)|*.MP4;*.AVI;*.MOV";
                 GetDatabaseConfiguration();
                 GetGlobalParameters();
                 if (Configuration.Instance.IsShowWindow)
@@ -1024,6 +1027,27 @@ namespace WhoIsDemo.form
             }
         }
 
-        
+        private void btnLoadFile_Click(object sender, EventArgs e)
+        {
+            if (this.openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                this.txtDescriptionChannel.Text = this.openFileDialog.FileName;
+            }
+        }
+
+        private void cboRegisterUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if((sender as ComboBox).SelectedIndex == 0)
+            {
+                this.lblOptionEnroll.Text = ManagerResource.Instance.resourceManager
+                    .GetString("control_entry");
+            }
+            else
+            {
+                this.lblOptionEnroll.Text = ManagerResource.Instance.resourceManager
+                    .GetString("user_enroll");
+
+            }
+        }
     }
 }

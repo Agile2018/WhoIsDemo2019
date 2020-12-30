@@ -187,7 +187,7 @@
     <value>10</value>
   </data>
   <data name="cboIdentificationSpeed.Location" type="System.Drawing.Point, System.Drawing">
-    <value>261, 92</value>
+    <value>280, 92</value>
   </data>
   <data name="cboIdentificationSpeed.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 21</value>
@@ -238,7 +238,7 @@
     <value>1</value>
   </data>
   <data name="txtBestMatched.Location" type="System.Drawing.Point, System.Drawing">
-    <value>283, 65</value>
+    <value>302, 65</value>
   </data>
   <data name="txtBestMatched.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 20</value>
@@ -295,7 +295,7 @@
     <value>False</value>
   </data>
   <data name="txtVerificationScoreThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>283, 41</value>
+    <value>302, 41</value>
   </data>
   <data name="txtVerificationScoreThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 20</value>
@@ -352,7 +352,7 @@
     <value>5</value>
   </data>
   <data name="txtASimilarity.Location" type="System.Drawing.Point, System.Drawing">
-    <value>283, 19</value>
+    <value>302, 19</value>
   </data>
   <data name="txtASimilarity.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 20</value>
@@ -429,6 +429,33 @@
   <data name="&gt;&gt;groupBox9.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <data name="btnLoadFile.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
+    <value>Flat</value>
+  </data>
+  <data name="btnLoadFile.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+    <value>NoControl</value>
+  </data>
+  <data name="btnLoadFile.Location" type="System.Drawing.Point, System.Drawing">
+    <value>490, 87</value>
+  </data>
+  <data name="btnLoadFile.Size" type="System.Drawing.Size, System.Drawing">
+    <value>24, 26</value>
+  </data>
+  <data name="btnLoadFile.TabIndex" type="System.Int32, mscorlib">
+    <value>66</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFile.Name" xml:space="preserve">
+    <value>btnLoadFile</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFile.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Button, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFile.Parent" xml:space="preserve">
+    <value>groupBox7</value>
+  </data>
+  <data name="&gt;&gt;btnLoadFile.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
   <data name="btnTestChannel.FlatStyle" type="System.Windows.Forms.FlatStyle, System.Windows.Forms">
     <value>Flat</value>
   </data>
@@ -454,7 +481,7 @@
     <value>groupBox7</value>
   </data>
   <data name="&gt;&gt;btnTestChannel.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="txtDescriptionChannel.Location" type="System.Drawing.Point, System.Drawing">
     <value>77, 91</value>
@@ -478,7 +505,7 @@
     <value>groupBox7</value>
   </data>
   <data name="&gt;&gt;txtDescriptionChannel.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="label18.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -508,7 +535,7 @@
     <value>groupBox7</value>
   </data>
   <data name="&gt;&gt;label18.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>3</value>
   </data>
   <data name="rbTypeChannelDevice.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -622,7 +649,7 @@
     <value>groupBox7</value>
   </data>
   <data name="&gt;&gt;groupBox8.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>4</value>
   </data>
   <data name="cboChannel.Items" xml:space="preserve">
     <value>1</value>
@@ -655,7 +682,7 @@
     <value>groupBox7</value>
   </data>
   <data name="&gt;&gt;cboChannel.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>5</value>
   </data>
   <data name="label16.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -685,13 +712,13 @@
     <value>groupBox7</value>
   </data>
   <data name="&gt;&gt;label16.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>6</value>
   </data>
   <data name="groupBox7.Location" type="System.Drawing.Point, System.Drawing">
     <value>9, 9</value>
   </data>
   <data name="groupBox7.Size" type="System.Drawing.Size, System.Drawing">
-    <value>494, 129</value>
+    <value>524, 129</value>
   </data>
   <data name="groupBox7.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -748,7 +775,7 @@
     <value>Forced</value>
   </data>
   <data name="cboModeConcatenation.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 220</value>
+    <value>281, 220</value>
   </data>
   <data name="cboModeConcatenation.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 21</value>
@@ -799,7 +826,7 @@
     <value>2</value>
   </data>
   <data name="txtMaximumTemplates.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 189</value>
+    <value>303, 189</value>
   </data>
   <data name="txtMaximumTemplates.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 20</value>
@@ -859,7 +886,7 @@
     <value>YES</value>
   </data>
   <data name="cboConcatenateTemplates.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 160</value>
+    <value>281, 160</value>
   </data>
   <data name="cboConcatenateTemplates.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 21</value>
@@ -910,7 +937,7 @@
     <value>6</value>
   </data>
   <data name="txtSimilarityThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 131</value>
+    <value>303, 131</value>
   </data>
   <data name="txtSimilarityThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 20</value>
@@ -970,7 +997,7 @@
     <value>YES</value>
   </data>
   <data name="cboDeduplicate.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 102</value>
+    <value>281, 102</value>
   </data>
   <data name="cboDeduplicate.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 21</value>
@@ -1024,7 +1051,7 @@
     <value>False</value>
   </data>
   <data name="txtGallery.Location" type="System.Drawing.Point, System.Drawing">
-    <value>101, 18</value>
+    <value>119, 18</value>
   </data>
   <data name="txtGallery.Size" type="System.Drawing.Size, System.Drawing">
     <value>221, 20</value>
@@ -1081,7 +1108,7 @@
     <value>12</value>
   </data>
   <data name="txtScoreMax.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 279</value>
+    <value>303, 279</value>
   </data>
   <data name="txtScoreMax.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 20</value>
@@ -1135,7 +1162,7 @@
     <value>14</value>
   </data>
   <data name="txtScoreMin.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 250</value>
+    <value>303, 250</value>
   </data>
   <data name="txtScoreMin.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 20</value>
@@ -1159,7 +1186,7 @@
     <value>15</value>
   </data>
   <data name="txtDetectionThreshold.Location" type="System.Drawing.Point, System.Drawing">
-    <value>285, 45</value>
+    <value>303, 45</value>
   </data>
   <data name="txtDetectionThreshold.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 20</value>
@@ -1219,7 +1246,7 @@
     <value>YES</value>
   </data>
   <data name="cboRegisterUser.Location" type="System.Drawing.Point, System.Drawing">
-    <value>263, 74</value>
+    <value>281, 74</value>
   </data>
   <data name="cboRegisterUser.Size" type="System.Drawing.Size, System.Drawing">
     <value>58, 21</value>
@@ -1239,34 +1266,34 @@
   <data name="&gt;&gt;cboRegisterUser.ZOrder" xml:space="preserve">
     <value>18</value>
   </data>
-  <data name="label11.AutoSize" type="System.Boolean, mscorlib">
+  <data name="lblOptionEnroll.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
   </data>
-  <data name="label11.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
+  <data name="lblOptionEnroll.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
     <value>NoControl</value>
   </data>
-  <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
+  <data name="lblOptionEnroll.Location" type="System.Drawing.Point, System.Drawing">
     <value>10, 78</value>
   </data>
-  <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
+  <data name="lblOptionEnroll.Size" type="System.Drawing.Size, System.Drawing">
     <value>141, 13</value>
   </data>
-  <data name="label11.TabIndex" type="System.Int32, mscorlib">
+  <data name="lblOptionEnroll.TabIndex" type="System.Int32, mscorlib">
     <value>71</value>
   </data>
-  <data name="label11.Text" xml:space="preserve">
+  <data name="lblOptionEnroll.Text" xml:space="preserve">
     <value>Enroll User in Face Channel:</value>
   </data>
-  <data name="&gt;&gt;label11.Name" xml:space="preserve">
-    <value>label11</value>
+  <data name="&gt;&gt;lblOptionEnroll.Name" xml:space="preserve">
+    <value>lblOptionEnroll</value>
   </data>
-  <data name="&gt;&gt;label11.Type" xml:space="preserve">
+  <data name="&gt;&gt;lblOptionEnroll.Type" xml:space="preserve">
     <value>System.Windows.Forms.Label, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="&gt;&gt;label11.Parent" xml:space="preserve">
+  <data name="&gt;&gt;lblOptionEnroll.Parent" xml:space="preserve">
     <value>groupBox6</value>
   </data>
-  <data name="&gt;&gt;label11.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;lblOptionEnroll.ZOrder" xml:space="preserve">
     <value>19</value>
   </data>
   <data name="groupBox6.Location" type="System.Drawing.Point, System.Drawing">
@@ -2410,13 +2437,13 @@
     <value>6, 45</value>
   </data>
   <data name="label8.Size" type="System.Drawing.Size, System.Drawing">
-    <value>167, 13</value>
+    <value>161, 13</value>
   </data>
   <data name="label8.TabIndex" type="System.Int32, mscorlib">
     <value>47</value>
   </data>
   <data name="label8.Text" xml:space="preserve">
-    <value>Maximun Image Face Size (1200):</value>
+    <value>Maximun Image Face Size (400):</value>
   </data>
   <data name="&gt;&gt;label8.Name" xml:space="preserve">
     <value>label8</value>
@@ -3196,7 +3223,7 @@
     <value>1</value>
   </data>
   <data name="txtGBMinImage.Text" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
   <data name="&gt;&gt;txtGBMinImage.Name" xml:space="preserve">
     <value>txtGBMinImage</value>

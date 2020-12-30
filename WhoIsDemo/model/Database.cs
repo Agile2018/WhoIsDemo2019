@@ -16,7 +16,7 @@ namespace WhoIsDemo.model
         public const int LIMIT_RECORDS = 20;
         #endregion
         #region variables
-        private string connection = "mongodb://localhost:27017/?minPoolSize=3&maxPoolSize=3";
+        private string connection = "mongodb://192.168.0.9:27017/?minPoolSize=3&maxPoolSize=3"; //localhost
         private string nameDatabase = "dbass";
         private int indexSkip = 0;
         private MongoClient client;

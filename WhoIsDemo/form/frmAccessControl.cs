@@ -89,12 +89,21 @@ namespace WhoIsDemo.form
 
         private void SetTaskIdentify(int task)
         {
+
             if (hearUserPresenter.IdVideos.Count() != 0)
             {
-                for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
+                if (hearUserPresenter.IdVideos.Contains(Configuration.Instance.ChannelSelected))
                 {
-                    int index = hearUserPresenter.IdVideos[i];
-                    AipuFace.Instance.SetTaskIdentify(task, index);
+                    AipuFace.Instance.SetTaskIdentify(task, Configuration.Instance.ChannelSelected);
+                }
+                else
+                {
+                    for (int i = 0; i < hearUserPresenter.IdVideos.Count(); i++)
+                    {
+                        int index = hearUserPresenter.IdVideos[i];
+                        AipuFace.Instance.SetTaskIdentify(task, index);
+                    }
+
                 }
 
             }
@@ -241,6 +250,7 @@ namespace WhoIsDemo.form
                 if (SearchPersonList(Convert.ToInt32(personNewCard.Params.Id_face),
                         this.listPersonRegister) == -1)
                 {
+
                     TimePerson timePerson = new TimePerson();
                     timePerson.id = Convert.ToInt32(personNewCard.Params.Id_face);
                     timePerson.income = DateTime.Now;
@@ -358,19 +368,24 @@ namespace WhoIsDemo.form
                 cardPerson.DateTime = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
                 
                 Bitmap imgGallery = Transform.Instance.ResizeBitmap(imageBMP.imageStore);
-                cardPerson.Photo = imgGallery;
-                if (imageBMP.imageNew != null)
-                {
-                    Bitmap imgCamera = Transform.Instance.ResizeBitmap(imageBMP.imageNew);
-                    cardPerson.PhotoCamera = imgCamera;
-                }
 
                 if (personNewCard.Params.Register == "3")
                 {
                     int id = Convert.ToInt32(personNewCard.Params.Id_face);
                     RemoveUnidentified(id);
                     cardPerson.BackColor = Color.FromArgb(255, 0, 0);
+                    cardPerson.PhotoCamera = imgGallery;
                 }
+                else
+                {
+                    cardPerson.Photo = imgGallery;
+                    if (imageBMP.imageNew != null)
+                    {
+                        Bitmap imgCamera = Transform.Instance.ResizeBitmap(imageBMP.imageNew);
+                        cardPerson.PhotoCamera = imgCamera;
+                    }
+                }
+                                
                 cardPerson.Channel = personNewCard.Params.Client;
                 cardPerson.Score = personNewCard.Params.Score;
                 cardPerson.Tracer = BuildTracerResult(imageBMP.log);
@@ -379,10 +394,7 @@ namespace WhoIsDemo.form
                 this.flowLayoutPanel1.Invoke(new Action(() =>
                 this.flowLayoutPanel1.Refresh()));
                 this.countFlowLayoutControls++;
-
-                
-                
-
+                                
             }
             catch (NullReferenceException ex)
             {
@@ -405,13 +417,14 @@ namespace WhoIsDemo.form
 
         private void RemoveUnidentified(int id)
         {
-            
-            if (lastUserUnidentified != 0)
-            {
-                Database.Instance.DeleteUser(lastUserUnidentified);
-                Database.Instance.DeleteImageUser(lastUserUnidentified);
-            }
-            lastUserUnidentified = id;
+            Database.Instance.DeleteUser(id);
+            Database.Instance.DeleteImageUser(id);
+            //if (lastUserUnidentified != 0)
+            //{
+            //    Database.Instance.DeleteUser(lastUserUnidentified);
+            //    Database.Instance.DeleteImageUser(lastUserUnidentified);
+            //}
+            //lastUserUnidentified = id;
         }
 
         private void AddPersonIndentify(Person person)
@@ -431,7 +444,7 @@ namespace WhoIsDemo.form
             try
             {                
                 isFinishNewCard = true;
-                RemoveUnidentified(0);
+                //RemoveUnidentified(0);
                 if (subscriptionHearUser != null) subscriptionHearUser.Dispose();
                 if (subscriptionFindImage != null) subscriptionFindImage.Dispose();
                 if (subscriptionGraffits != null) subscriptionGraffits.Dispose();
@@ -524,61 +537,7 @@ namespace WhoIsDemo.form
                     0, this.status);
             }
 
-            //    bool next = false;
-            //string message = string.Empty;
-            //if (Configuration.Instance.IsShowWindow)
-            //{
-            //    if (CheckChannels())
-            //    {
-            //        next = true;
-            //    }
-
-            //}
-            //else
-            //{
-            //    if(hearUserPresenter.IdVideos.Count > 0)
-            //    {
-            //        int pipe = hearUserPresenter.IdVideos[0];
-            //        AipuFace.Instance.LoadConfigurationPipe(pipe);
-            //        next = true;
-            //    }
-            //    else
-            //    {
-            //        message = ManagerResource
-            //       .Instance.resourceManager.GetString("video_not_found");
-
-            //    }
-            //}
-
-            //if (next)
-            //{
-            //    SetTaskIdentify(-1);
-            //    if (this.openFileDialog.ShowDialog() == DialogResult.OK)
-            //    {
-            //        managerControlView.DisabledOptionMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);
-            //        filesRecognitionPresenter.IsLoadFile = true;
-            //        filesRecognitionPresenter.LinkVideo = hearUserPresenter.IdVideos[0];
-            //        filesRecognitionPresenter.TaskIdentify = 1;
-            //        this.btnLoadFile.Enabled = false;                    
-            //        this.btnStopLoadFile.Enabled = true;
-            //        managerControlView
-            //            .SetValueTextStatusStrip(StringResource.work,
-            //            0, this.status);
-            //        managerControlView.StartProgressStatusStrip(1, this.status);
-            //        AipuFace.Instance.SetChannel(hearUserPresenter.IdVideos[0]);
-            //        AipuFace.Instance.SetIsFinishLoadFiles(true);
-
-
-            //        Task taskRecognition = filesRecognitionPresenter
-            //            .TaskImageFileForRecognition(openFileDialog.FileNames);
-
-            //    }
-            //}
-            //else
-            //{
-            //    managerControlView.SetValueTextStatusStrip(message,
-            //            0, this.status);
-            //}
+            
         }
 
         private void btnStopLoadFile_Click(object sender, EventArgs e)
@@ -597,7 +556,8 @@ namespace WhoIsDemo.form
 
             int pipe = hearUserPresenter.IdVideos[0];
 
-            if (pipe <= Configuration.Instance.NumberWindowsShow)
+            if (pipe <= Configuration.Instance.NumberWindowsShow ||
+                hearUserPresenter.IdVideos.Contains(Configuration.Instance.ChannelSelected))
             {
                 return true;
             }
@@ -627,11 +587,16 @@ namespace WhoIsDemo.form
             }
             else
             {
-                string message = ManagerResource
-                   .Instance.resourceManager.GetString("video_not_found") + " or " +
-                   ManagerResource.Instance.resourceManager.GetString("windows_not_loaded"); 
-                managerControlView.SetValueTextStatusStrip(message,
-                        0, this.status);
+                if (!Configuration.Instance.IsShowWindow)
+                {
+                    managerControlView.ExecuteMenu("channelHandlerToolStripMenuItem", mdiMain.NAME);
+                }
+                else
+                {                    
+                    managerControlView.SetValueTextStatusStrip(ManagerResource.Instance
+                        .resourceManager.GetString("channel_not_exist"), 0, this.status);
+                }
+
             }
         }
     }

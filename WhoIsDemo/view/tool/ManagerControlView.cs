@@ -321,6 +321,32 @@ namespace WhoIsDemo.view.tool
 
         }
 
+        public void ExecuteMenu(string nameMenu, string nameMDI)
+        {
+            Form frm = new Form();
+            foreach (Form f in Application.OpenForms)
+            {
+                if (f.Name == nameMDI)
+                    frm = f;
+            }
+
+
+            foreach (ToolStripMenuItem mnu in frm.MainMenuStrip.Items)
+            {
+                foreach (ToolStripDropDownItem smnu in mnu.DropDownItems)
+                {
+
+                    if (smnu.Name == nameMenu)
+                    {
+                        smnu.PerformClick();
+                    }
+
+
+                }
+            }
+            
+        }
+        
         public void EnabledOptionMenu(string nameMenu, string nameMDI)
         {
             Form frm = new Form();
@@ -347,6 +373,8 @@ namespace WhoIsDemo.view.tool
             }
         }
 
+
+
         public void EnabledOptionSubMenu(string nameOption, string nameMDI)
         {
             Form frm = new Form();
@@ -367,6 +395,7 @@ namespace WhoIsDemo.view.tool
                         {
                             semnu.Enabled = true;
                             semnu.Visible = true;
+                            
                         }
                     }
                 }

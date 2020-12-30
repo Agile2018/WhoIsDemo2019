@@ -135,6 +135,9 @@
   <data name="configuration_empty" xml:space="preserve">
     <value>Define configuration parameters and channels, take a video test, please. </value>
   </data>
+  <data name="control_entry" xml:space="preserve">
+    <value>Entry Control in Face Channel:</value>
+  </data>
   <data name="delete_database" xml:space="preserve">
     <value>Are you sure to delete the database? The application will close.</value>
   </data>
@@ -191,6 +194,9 @@
   </data>
   <data name="type_video_incorrect" xml:space="preserve">
     <value>The type of video is incorrect.</value>
+  </data>
+  <data name="user_enroll" xml:space="preserve">
+    <value>Enroll User in Face Channel:</value>
   </data>
   <data name="value_key_empty" xml:space="preserve">
     <value>The value key is empty</value>

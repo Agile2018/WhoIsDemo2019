@@ -51,9 +51,19 @@ namespace WhoIsDemo.model
             IsLoadLibrary = true;
         }
 
+        [HandleProcessCorruptedStateExceptions]
         public void CloseConnectionIdentification(int channel)
         {
-            aipu.CloseConnectionIdentification(channel);
+            try
+            {
+                aipu.CloseConnectionIdentification(channel);
+            }
+            catch (System.AccessViolationException e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+            
         }
 
         public void LoadConnectionIdentification(int channel)
@@ -95,14 +105,14 @@ namespace WhoIsDemo.model
             aipu.LoadConfigurationTracking(channel);
         }       
 
-        public void InitWindowMain(int option)
+        public void InitWindowMain(int option, string channels)
         {
-            aipu.InitWindowMain(option);
+            aipu.InitWindowMain(option, channels);
         }
 
-        public void RunVideo(int option)
+        public void RunVideo(int option, string channels)
         {
-            aipu.RunVideo(option);
+            aipu.RunVideo(option, channels);
             IsRunVideo = true;
         }
 
@@ -140,25 +150,10 @@ namespace WhoIsDemo.model
             aipu.AddUserEnrollVideo(channel);
         }
 
-        public void SetColourTextFrameOne(float red, float green, float blue)
+        public void SetColourLabelFrame(int indexFrame, float red, float green, float blue)
         {
-            aipu.SetColourTextFrameOne(red, green, blue);
-        }
-
-        public void SetColourTextFrameTwo(float red, float green, float blue)
-        {
-            aipu.SetColourTextFrameTwo(red, green, blue);
-        }
-
-        public void SetColourTextFrameThree(float red, float green, float blue)
-        {
-            aipu.SetColourTextFrameThree(red, green, blue);
-        }
-
-        public void SetColourTextFrameFour(float red, float green, float blue)
-        {
-            aipu.SetColourTextFrameFour(red, green, blue);
-        }
+            aipu.SetColourLabelFrame(indexFrame, red, green, blue);
+        }        
 
         public void SetChannel(int channel)
         {
@@ -171,13 +166,26 @@ namespace WhoIsDemo.model
         }
         public void StatePaused(int option)
         {
+           
             aipu.StatePaused(option);
-        }               
-        
-        public void RecognitionFaceFiles(string file, int client, int task)
-        {
-            aipu.RecognitionFaceFiles(file, client, task);
         }
+
+        [HandleProcessCorruptedStateExceptions]
+        public void RecognitionFaceFiles(string nameFile, int client, int task)
+        {
+            try
+            {
+                
+                aipu.RecognitionFaceFiles(nameFile, client, task);
+                
+            }
+            catch (System.AccessViolationException e)
+            {
+
+                throw new Exception(e.Message, e.InnerException);
+            }
+            
+        }        
 
         public void AddCollectionOfImages(string folder, int client, int doing)
         {
@@ -191,12 +199,7 @@ namespace WhoIsDemo.model
         public bool GetIsFinishLoadFiles()
         {
             return aipu.GetIsFinishLoadFiles;
-        }
-
-        //public bool GetIsFinishLoadTemplates()
-        //{
-        //    return aipu.GetIsFinishLoadTemplates;
-        //}
+        }        
 
         public void SetNumberPipelines(int value)
         {
@@ -211,22 +214,14 @@ namespace WhoIsDemo.model
         public void EnableObserverUser()
         {
             aipuObserver.EnableObserverUser();
-        }
-
-        //public void EnableObserverTemplate()
-        //{
-        //    aipuObserver.EnableObserverTemplate();
-        //}
+        }       
 
         public bool IsObserverUser()
         {
             return aipuObserver.IsHearObserverUser;
         }
 
-        //public bool IsObserverTemplate()
-        //{
-        //    return aipuObserver.IsHearObserverTemplate;
-        //}
+        
         [HandleProcessCorruptedStateExceptions]
         public string GetTemplateDataJSON()
         {

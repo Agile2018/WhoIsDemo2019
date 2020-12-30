@@ -42,6 +42,7 @@
             this.txtASimilarity = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.btnLoadFile = new System.Windows.Forms.Button();
             this.btnTestChannel = new System.Windows.Forms.Button();
             this.txtDescriptionChannel = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -71,7 +72,7 @@
             this.txtDetectionThreshold = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.cboRegisterUser = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
+            this.lblOptionEnroll = new System.Windows.Forms.Label();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.cboTrackMotion = new System.Windows.Forms.ComboBox();
             this.cboTrackSpeed = new System.Windows.Forms.ComboBox();
@@ -264,6 +265,7 @@
             // 
             // groupBox7
             // 
+            this.groupBox7.Controls.Add(this.btnLoadFile);
             this.groupBox7.Controls.Add(this.btnTestChannel);
             this.groupBox7.Controls.Add(this.txtDescriptionChannel);
             this.groupBox7.Controls.Add(this.label18);
@@ -274,13 +276,24 @@
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.TabStop = false;
             // 
+            // btnLoadFile
+            // 
+            this.btnLoadFile.FlatAppearance.BorderSize = 0;
+            this.btnLoadFile.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
+            this.btnLoadFile.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
+            resources.ApplyResources(this.btnLoadFile, "btnLoadFile");
+            this.btnLoadFile.Image = global::WhoIsDemo.Properties.Resources.file_video;
+            this.btnLoadFile.Name = "btnLoadFile";
+            this.btnLoadFile.UseVisualStyleBackColor = true;
+            this.btnLoadFile.Click += new System.EventHandler(this.btnLoadFile_Click);
+            // 
             // btnTestChannel
             // 
             this.btnTestChannel.FlatAppearance.BorderSize = 0;
             this.btnTestChannel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Lime;
             this.btnTestChannel.FlatAppearance.MouseOverBackColor = System.Drawing.Color.CadetBlue;
             resources.ApplyResources(this.btnTestChannel, "btnTestChannel");
-            this.btnTestChannel.Image = global::WhoIsDemo.Properties.Resources.test_tube;
+            this.btnTestChannel.Image = global::WhoIsDemo.Properties.Resources.video_check;
             this.btnTestChannel.Name = "btnTestChannel";
             this.btnTestChannel.UseVisualStyleBackColor = true;
             this.btnTestChannel.Click += new System.EventHandler(this.btnTestChannel_Click);
@@ -363,7 +376,7 @@
             this.groupBox6.Controls.Add(this.txtDetectionThreshold);
             this.groupBox6.Controls.Add(this.label13);
             this.groupBox6.Controls.Add(this.cboRegisterUser);
-            this.groupBox6.Controls.Add(this.label11);
+            this.groupBox6.Controls.Add(this.lblOptionEnroll);
             resources.ApplyResources(this.groupBox6, "groupBox6");
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.TabStop = false;
@@ -494,11 +507,12 @@
             resources.GetString("cboRegisterUser.Items1")});
             resources.ApplyResources(this.cboRegisterUser, "cboRegisterUser");
             this.cboRegisterUser.Name = "cboRegisterUser";
+            this.cboRegisterUser.SelectedIndexChanged += new System.EventHandler(this.cboRegisterUser_SelectedIndexChanged);
             // 
-            // label11
+            // lblOptionEnroll
             // 
-            resources.ApplyResources(this.label11, "label11");
-            this.label11.Name = "label11";
+            resources.ApplyResources(this.lblOptionEnroll, "lblOptionEnroll");
+            this.lblOptionEnroll.Name = "lblOptionEnroll";
             // 
             // groupBox5
             // 
@@ -1118,7 +1132,7 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.TextBox txtModelQuality;
         private System.Windows.Forms.ComboBox cboRegisterUser;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblOptionEnroll;
         private System.Windows.Forms.Button btnTestChannel;
         private System.Windows.Forms.ComboBox cboFaceCrop;
         private System.Windows.Forms.Label label29;
@@ -1181,5 +1195,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Button btnLoadFile;
     }
 }

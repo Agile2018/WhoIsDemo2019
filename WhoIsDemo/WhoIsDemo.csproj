@@ -338,6 +338,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="License-LGPL.txt" />
+    <None Include="Resources\videoX.png" />
+    <None Include="Resources\file-video.png" />
+    <None Include="Resources\video-check.png" />
     <None Include="Resources\restart.png" />
     <None Include="Resources\timer-off-outline.png" />
     <None Include="Resources\video-box-off.png" />

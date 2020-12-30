@@ -115,6 +115,15 @@ namespace WhoIsDemo.locatable_resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Control de entrada en canal:.
+        /// </summary>
+        internal static string control_entry {
+            get {
+                return ResourceManager.GetString("control_entry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Esta seguro de borrar la base de datos? La aplicación se cerrará..
         /// </summary>
         internal static string delete_database {
@@ -282,6 +291,15 @@ namespace WhoIsDemo.locatable_resources {
         internal static string type_video_incorrect {
             get {
                 return ResourceManager.GetString("type_video_incorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enrolar usuario en canal:.
+        /// </summary>
+        internal static string user_enroll {
+            get {
+                return ResourceManager.GetString("user_enroll", resourceCulture);
             }
         }
         

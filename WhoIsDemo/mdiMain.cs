@@ -60,7 +60,12 @@ namespace WhoIsDemo
 
         private void LaunchMessage(string result)
         {
-
+            if (result == "FINISH LOOP")
+            {
+                Configuration.Instance.IsShowWindow = false;
+                Configuration.Instance.ChannelSelected = -1;
+                Configuration.Instance.NumberWindowsShow = 0;
+            }
             this.statusStrip.Invoke(new Action(() => managerControlView
                     .SetValueTextStatusStrip(result, 0, this.statusStrip)));
         }
@@ -349,7 +354,7 @@ namespace WhoIsDemo
             frmWork.Show();
         }
 
-        private void channelHandlerToolStripMenuItem_Click(object sender, EventArgs e)
+        public void channelHandlerToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmManagerChannels frmWork = new frmManagerChannels() { MdiParent = this };
             frmWork.strNameMenu = "channelHandlerToolStripMenuItem";

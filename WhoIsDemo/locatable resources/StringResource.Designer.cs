@@ -115,6 +115,15 @@ namespace WhoIsDemo.locatable_resources {
         }
         
         /// <summary>
+        ///   Busca una cadena traducida similar a Entry Control in Face Channel:.
+        /// </summary>
+        internal static string control_entry {
+            get {
+                return ResourceManager.GetString("control_entry", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Busca una cadena traducida similar a Are you sure to delete the database? The application will close..
         /// </summary>
         internal static string delete_database {
@@ -282,6 +291,15 @@ namespace WhoIsDemo.locatable_resources {
         internal static string type_video_incorrect {
             get {
                 return ResourceManager.GetString("type_video_incorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a Enroll User in Face Channel:.
+        /// </summary>
+        internal static string user_enroll {
+            get {
+                return ResourceManager.GetString("user_enroll", resourceCulture);
             }
         }
         
